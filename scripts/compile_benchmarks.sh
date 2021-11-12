@@ -21,7 +21,7 @@ function compile_suite {
 source NOELLE/enable ;
 
 # Download the git repository
-if ! test -d all_benchmark_suites ;
+if ! test -d all_benchmark_suites ; then
   git clone https://github.com/scampanoni/wholeprogram_benchmarks.git all_benchmark_suites
 fi
 
