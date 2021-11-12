@@ -27,7 +27,9 @@ fi
 
 # Setup the git repository
 cd all_benchmark_suites ;
-make ;
+if ! test -e install ; then
+  make ;
+fi
 
 # Compile all benchmark suites
 cd build ;
