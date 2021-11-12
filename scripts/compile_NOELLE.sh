@@ -7,4 +7,6 @@ fi
 
 # Setup the git repository
 cd NOELLE ;
-make ;
+if ! test -e enable ; then
+  make ;
+fi

@@ -14,7 +14,7 @@ echo "${prefixString} Start compiling NOELLE" ;
 echo "${prefixString}   NOELLE has been compiled succesfully" ;
 
 # Compile all benchmarks
-echo "${prefixString} Start compiling all benchmarks for all configurations (WARNING: this will take several hours";
+echo "${prefixString} Start compiling all benchmarks for all configurations (WARNING: this will take several hours)";
 ./scripts/compile_benchmarks.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All benchmarks have been compiled for all configurations" ;
 
