@@ -31,7 +31,7 @@ function generate_loop_results {
 
 # Define the directory where we are going to dump the results
 origDir=`pwd` ;
-ivResult="${origDir}/results/loops"; 
+ivResult="${origDir}/results/current_machine/loops"; 
 
 # Generate the results for all benchmarks in all benchmark suites
 pushd ./ ;
