@@ -17,6 +17,8 @@ function compile_suite {
   return ;
 }
 
+origDir="`pwd`" ;
+
 # Enable NOELLE
 source NOELLE/enable ;
 
@@ -37,3 +39,16 @@ compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
 compile_suite "SPEC2017" ;
 compile_suite "PolyBench" ;
+
+# Cache the bitcode files
+outputDir="${origDir}/results/current_machine" ;
+for i in `ls */benchmarks/*/baseline_parallelized.bc` ; do
+  echo $i ;
+
+  dirName="`dirname $i`" ;
+  echo $dirName
+  mkdir -p ${outputDir}/IR/${dirName} ;
+  cp ${dirName}/NOELLE_input.bc ${outputDir}/IR/${dirName} ;
+  cp ${dirName}/baseline_with_metadata.bc ${outputDir}/IR/${dirName} ;
+  cp ${dirName}/baseline_parallelized.bc ${outputDir}/IR/${dirName} ;
+done
