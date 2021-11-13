@@ -15,23 +15,25 @@ function generate_loop_results {
   # Collect the data
   pushd ./ ;
   cd ${benchSuite}/benchmarks ;
-  for i in `ls` ; do
-    if ! test -d $i ; then
+  for j in `ls` ; do
+    if ! test -d $j ; then
       continue ;
     fi
-    if ! test -e ${i}/baseline_with_metadata.bc ; then
+    if ! test -e ${j}/baseline_with_metadata.bc ; then
       continue ;
     fi
 
     pushd ./ ;
-    cd $i ;
+    cd $j ;
     mkdir -p ${currentIVResult}/raw ;
-    if ! test -e ${currentIVResult}/raw/${i}.txt ; then
-      noelle-loop-stats baseline_with_metadata.bc &> ${currentIVResult}/raw/${i}.txt
+    if ! test -e ${currentIVResult}/raw/${j}.txt ; then
+      noelle-loop-stats baseline_with_metadata.bc &> ${currentIVResult}/raw/${j}.txt
     fi
     popd ;
   done
   popd ;
+
+  return ;
 }
 
 function analyze_results {
