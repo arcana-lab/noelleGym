@@ -25,8 +25,14 @@ echo "${prefixString}   All loop statistics are generated" ;
 
 # Generate times of baseline binaries for all benchmarks
 echo "${prefixString} Start running baseline binaries (this will take a few hours)";
+./scripts/generate_baseline_binaries.sh >> output.txt 2>&1 ;
+echo "${prefixString}   Binaries for baseline are generated" ;
+./scripts/run_baseline.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All baseline binaries are run" ;
 
 # Generate times of parallelized binaries for all benchmarks
-echo "${prefixString} Start running parallelized binaries (this will take a few hours)";
-echo "${prefixString}   All parallelized binaries are run" ;
+echo "${prefixString} Start running NOELLE binaries (this will take a few hours)";
+./scripts/generate_NOELLE_binaries.sh >> output.txt 2>&1 ;
+echo "${prefixString}   NOELLE binaries are generated" ;
+./scripts/run_NOELLE_binaries.sh >> output.txt 2>&1 ;
+echo "${prefixString}   All NOELLE binaries are run" ;
