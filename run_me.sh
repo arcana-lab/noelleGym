@@ -12,6 +12,7 @@ echo "" ;
 echo "${prefixString} Start compiling NOELLE" ;
 ./scripts/compile_NOELLE.sh >> output.txt 2>&1 ;
 echo "${prefixString}   NOELLE has been compiled succesfully" ;
+source NOELLE/enable ;
 
 # Compile all benchmarks
 echo "${prefixString} Start compiling all benchmarks for all configurations (WARNING: this will take several hours)";
