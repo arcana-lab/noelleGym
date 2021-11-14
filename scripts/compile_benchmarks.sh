@@ -10,7 +10,7 @@ function compile_benchmark {
   fi
 
   # The benchmark needs to be optimized
-  make optimization BENCHMARK=$benchToOptimize ;;
+  make optimization BENCHMARK=$benchToOptimize ;
 
   return ;
 }
