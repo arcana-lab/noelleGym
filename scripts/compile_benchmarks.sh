@@ -1,5 +1,20 @@
 #!/bin/bash -e
 
+function compile_benchmark {
+  local suiteOfBench=$1 ;
+  local benchToOptimize=$2 ;
+
+  # Check if the benchmark has been optimized already
+  if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized.bc ; then
+    return ;
+  fi
+
+  # The benchmark needs to be optimized
+  make optimization BENCHMARK=$benchToOptimize ;;
+
+  return ;
+}
+
 function compile_suite {
   local suite=$1 ;
 
@@ -7,13 +22,19 @@ function compile_suite {
   cd $suite ;
 
   # Generate the single bitcode file for all benchmarks of the suite
-  make ; 
+  if ! test -d benchmarks ; then
+    make ; 
+  else
+    make clean ; 
+    make bitcode_copy ;
+  fi
 
-  # Run our middle-end passes
-  make optimization ;
+  # Fetch the benchmarks that might need to be optimized
+  for bench in `ls benchmarks` ; do
+    compile_benchmark $suite $bench ;
+  done
 
   popd ;
-
   return ;
 }
 
@@ -37,7 +58,7 @@ fi
 cd build ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
-compile_suite "SPEC2017" ;
+#compile_suite "SPEC2017" ;
 compile_suite "PolyBench" ;
 
 # Cache the bitcode files

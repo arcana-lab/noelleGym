@@ -12,12 +12,16 @@ function generate_binaries {
   pushd ./ ;
   cd ${origDir}/results/current_machine/IR/${benchSuite}/benchmarks ;
   for j in `ls` ; do
+
+    # Check if the current directory contains a benchmark we compiled
     if ! test -d $j ; then
       continue ;
     fi
     if ! test -e ${j}/NOELLE_input.bc ; then
       continue ;
     fi
+
+    # The benchmark has been compiled and optimized. Let's generate the binary
     cp ${j}/NOELLE_input.bc ${origDir}/all_benchmark_suites/build/${benchSuite}/benchmarks/${j}/${j}.bc ;
   done
   popd ;
