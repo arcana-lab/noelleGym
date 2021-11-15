@@ -58,8 +58,8 @@ fi
 cd build ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
-#compile_suite "SPEC2017" ;
 compile_suite "PolyBench" ;
+#compile_suite "SPEC2017" ;
 
 # Cache the bitcode files
 outputDir="${origDir}/results/current_machine" ;
