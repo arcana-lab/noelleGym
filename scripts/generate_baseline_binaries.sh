@@ -25,7 +25,7 @@ function generate_binaries {
       continue ;
     fi
 
-    # The benchmark has been compiled and optimized. Let's generate the binary
+    # The benchmark has been compiled and optimized. Let's copy the final IR
     cp ${j}/NOELLE_input.bc ${origDir}/all_benchmark_suites/build/${benchSuite}/benchmarks/${j}/${j}.bc ;
   done
   popd ;
