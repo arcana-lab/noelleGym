@@ -1,6 +1,6 @@
 #!/bin/bash
 
-numRuns=5 ;
+numRuns=1 ;
 
 function generate_results {
   local benchSuite="$1" ;
@@ -57,12 +57,6 @@ function generate_results {
   return ;
 }
 
-function analyze_results {
-  local benchSuite="$1" ;
-
-  return ;
-}
-
 # Define the directory where we are going to dump the results
 origDir=`pwd` ;
 dirResult="${origDir}/results/current_machine/time"; 
@@ -78,7 +72,7 @@ for currentDirectory in `ls` ; do
   if ! test -d $currentDirectory ; then
     continue ;
   fi
-  echo "Benchmark suite $i" ;
+  echo "Benchmark suite $currentDirectory" ;
 
   # Create the output directory
   currentResults="${dirResult}/${currentDirectory}/baseline" ;
@@ -87,8 +81,6 @@ for currentDirectory in `ls` ; do
   # Generate the raw data
   generate_results $currentDirectory ;
 
-  # Analyze the raw data
-  analyze_results $currentDirectory ;
 done
 popd ;
 
