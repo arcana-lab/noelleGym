@@ -26,16 +26,16 @@ echo "${prefixString}   All loop statistics are generated" ;
 
 # Generate times of baseline binaries for all benchmarks
 echo "${prefixString} Start running baseline binaries (this will take a few hours)";
-#./scripts/generate_baseline_binaries.sh >> output.txt 2>&1 ;
+./scripts/generate_baseline_binaries.sh >> output.txt 2>&1 ;
 echo "${prefixString}   Binaries for baseline are generated" ;
-#./scripts/run_baseline.sh >> output.txt 2>&1 ;
+./scripts/run_baseline.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All baseline binaries are run" ;
 
 # Generate times of DOALL parallelized binaries for all benchmarks
 echo "${prefixString} Start running NOELLE DOALL binaries (this will take a few hours)";
-#./scripts/generate_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
+./scripts/generate_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
 echo "${prefixString}   NOELLE DOALL binaries are generated" ;
-#./scripts/run_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
+./scripts/run_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
 echo "${prefixString}   All NOELLE DOALL binaries have run" ;
 
 # Generate times of HELIX parallelized binaries for all benchmarks
@@ -46,3 +46,12 @@ echo "${prefixString}   NOELLE HELIX IR files are generated" ;
 echo "${prefixString}   NOELLE HELIX binaries are generated" ;
 ./scripts/run_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
 echo "${prefixString}   All NOELLE HELIX binaries have run" ;
+
+# Generate times of DSWP parallelized binaries for all benchmarks
+echo "${prefixString} Start running NOELLE DSWP binaries (this will take a few hours)";
+./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
+echo "${prefixString}   NOELLE DSWP IR files are generated" ;
+./scripts/generate_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
+echo "${prefixString}   NOELLE DSWP binaries are generated" ;
+./scripts/run_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
+echo "${prefixString}   All NOELLE DSWP binaries have run" ;
