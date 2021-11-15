@@ -81,7 +81,7 @@ for currentDirectory in `ls` ; do
   echo "Benchmark suite $i" ;
 
   # Create the output directory
-  currentResults="${dirResult}/${currentDirectory}/baseline" ;
+  currentResults="${dirResult}/${currentDirectory}/DOALL" ;
   mkdir -p $currentResults ;
 
   # Generate the raw data
