@@ -8,6 +8,10 @@ function generate_binaries {
     return ;
   fi
 
+  # Clean the state of the suite
+  cd ${benchSuite} ;
+  make clean ;
+
   # Copy the IR files
   pushd ./ ;
   cd ${origDir}/results/current_machine/IR/${benchSuite}/benchmarks ;
