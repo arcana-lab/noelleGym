@@ -26,7 +26,7 @@ function generate_binaries {
     fi
 
     # The benchmark has been compiled and optimized. Let's copy the final IR
-    cp ${j}/baseline_parallelized_HELIX.bc ${origDir}/all_benchmark_suites/build/${benchSuite}/benchmarks/${j}/${j}.bc ;
+    cp ${j}/baseline_parallelized_${optimizationName}.bc ${origDir}/all_benchmark_suites/build/${benchSuite}/benchmarks/${j}/${j}.bc ;
   done
   popd ;
 
@@ -35,6 +35,13 @@ function generate_binaries {
 
   return ;
 }
+
+# Fetch the inputs
+if test $# -lt 1 ; then
+  echo "USAGE: `basename $0` OPTIMIZATION" ;
+  exit 1;
+fi
+optimizationName="$1" ;
 
 # Define the directory where we are going to dump the results
 origDir=`pwd` ;

@@ -5,7 +5,7 @@ function compile_benchmark {
   local benchToOptimize=$2 ;
 
   # Check if the benchmark has been optimized already
-  if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_HELIX.bc ; then
+  if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_${optimizationName}.bc ; then
     return ;
   fi
 
@@ -30,8 +30,8 @@ function compile_suite {
   make clean ; 
   make bitcode_copy ;
 
-  # Copy the HELIX makefile
-  cp ${origDir}/makefiles/${suite}/HELIX/Makefile makefiles/ ;
+  # Copy the optimization-specific makefile
+  cp ${origDir}/makefiles/${suite}/${optimizationName}/Makefile makefiles/ ;
 
   # Fetch the benchmarks that might need to be optimized
   for bench in `ls benchmarks` ; do
@@ -42,6 +42,12 @@ function compile_suite {
   return ;
 }
 
+# Fetch the inputs
+if test $# -lt 1 ; then
+  echo "USAGE: `basename $0` OPTIMIZATION" ;
+  exit 1;
+fi
+optimizationName="$1" ;
 origDir="`pwd`" ;
 
 # Enable NOELLE
@@ -62,5 +68,5 @@ for i in `ls */benchmarks/*/baseline_parallelized.bc` ; do
   dirName="`dirname $i`" ;
   echo $dirName
   mkdir -p ${outputDir}/IR/${dirName} ;
-  cp ${dirName}/baseline_parallelized.bc ${outputDir}/IR/${dirName}/baseline_parallelized_HELIX.bc ;
+  cp ${dirName}/baseline_parallelized.bc ${outputDir}/IR/${dirName}/baseline_parallelized_${optimizationName}.bc ;
 done

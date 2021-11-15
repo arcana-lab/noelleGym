@@ -57,6 +57,13 @@ function generate_results {
   return ;
 }
 
+# Fetch the inputs
+if test $# -lt 1 ; then
+  echo "USAGE: `basename $0` OPTIMIZATION" ;
+  exit 1;
+fi
+optimizationName="$1" ;
+
 # Define the directory where we are going to dump the results
 origDir=`pwd` ;
 dirResult="${origDir}/results/current_machine/time"; 
@@ -75,7 +82,7 @@ for currentDirectory in `ls` ; do
   echo "Benchmark suite $currentDirectory" ;
 
   # Create the output directory
-  currentResults="${dirResult}/${currentDirectory}/DOALL" ;
+  currentResults="${dirResult}/${currentDirectory}/${optimizationName}" ;
   mkdir -p $currentResults ;
 
   # Generate the raw data
