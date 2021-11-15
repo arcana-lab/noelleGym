@@ -31,7 +31,6 @@ function generate_binaries {
   popd ;
 
   # Generate the binaries
-  cd ${benchSuite} ;
   make binary ;
 
   return ;
