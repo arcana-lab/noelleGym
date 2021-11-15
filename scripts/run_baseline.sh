@@ -1,5 +1,7 @@
 #!/bin/bash
 
+numRuns=5 ;
+
 function generate_results {
   local benchSuite="$1" ;
 
@@ -11,7 +13,45 @@ function generate_results {
   # Collect the data
   pushd ./ ;
   cd ${benchSuite} ;
-  make run ;
+  local bench;
+  for bench in `ls benchmarks` ; do
+    if ! test -e benchmarks/${bench}/${bench} ; then
+      continue ;
+    fi
+
+    # Check if the benchmark already run
+    outputFile="${currentResults}/${bench}.txt" ;
+    if test -e $outputFile ; then
+      continue ;
+    fi
+
+    # Create the output file
+    touch $outputFile ;
+
+    # Run the benchmark enough times
+    for i in `seq 1 $numRuns` ; do
+
+        # Run
+        make run BENCHMARK=$bench INPUT=native &> ${tempFile} ;
+        if test $? -ne 0 ; then
+          echo "$b Error during execution" >> ${outputFile} ;
+          break ;
+        fi
+
+        # Collect the time
+        baselineTime=`awk '{
+            if (  ($2 == "seconds") &&
+                  ($3 == "time")    &&
+                  ($4 == "elapsed") ){
+              print $1 ;
+            }
+          }' ${tempFile}` ;
+
+        # Append the time
+        echo "$baselineTime" >> ${outputFile} ;
+
+    done
+  done
   popd ;
 
   return ;
@@ -19,7 +59,6 @@ function generate_results {
 
 function analyze_results {
   local benchSuite="$1" ;
-  currentResults="${dirResult}/${benchSuite}" ;
 
   return ;
 }
@@ -27,20 +66,31 @@ function analyze_results {
 # Define the directory where we are going to dump the results
 origDir=`pwd` ;
 dirResult="${origDir}/results/current_machine/time"; 
+mkdir -p $dirResult ;
+
+# Create a temporary file
+tempFile=`mktemp` ;
 
 # Generate the results for all benchmarks in all benchmark suites
 pushd ./ ;
 cd all_benchmark_suites/build ;
-for i in `ls` ; do
-  if ! test -d $i ; then
+for currentDirectory in `ls` ; do
+  if ! test -d $currentDirectory ; then
     continue ;
   fi
   echo "Benchmark suite $i" ;
 
+  # Create the output directory
+  currentResults="${dirResult}/${currentDirectory}" ;
+  mkdir -p $currentResults ;
+
   # Generate the raw data
-  generate_results $i ;
+  generate_results $currentDirectory ;
 
   # Analyze the raw data
-  analyze_results $i ;
+  analyze_results $currentDirectory ;
 done
 popd ;
+
+# Clean
+rm $tempFile ;
