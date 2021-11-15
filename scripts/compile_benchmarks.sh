@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 function compile_benchmark {
   local suiteOfBench=$1 ;
