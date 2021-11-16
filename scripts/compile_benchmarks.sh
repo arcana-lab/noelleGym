@@ -10,13 +10,30 @@ function compile_benchmark {
   fi
 
   # Check if we should generate extra data
-  if test -z ${NOELLE_EXTRA} ; then
+  if test -z ${NOELLE_FINAL} ; then
 
     # Check if the benchcmark is part of the list of extra ones
     if test $benchToOptimize == "lame" ; then
       return ;
     fi
     if test $benchToOptimize == "lout" ; then
+      return ;
+    fi
+  fi
+  if test -z ${NOELLE_SUBMISSION} ; then
+    if test $benchToOptimize == "omnetpp_r" ; then
+      return ;
+    fi
+    if test $benchToOptimize == "perlbench_r" ; then
+      return ;
+    fi
+    if test $benchToOptimize == "x264_r" ; then
+      return ;
+    fi
+    if test $benchToOptimize == "blender_r" ; then
+      return ;
+    fi
+    if test $benchToOptimize == "parest_r" ; then
       return ;
     fi
   fi
@@ -73,8 +90,10 @@ fi
 cd build ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
-compile_suite "PolyBench" ;
 #compile_suite "SPEC2017" ;
+if test -z ${NOELLE_FINAL} ; then
+  compile_suite "PolyBench" ;
+fi
 
 # Cache the bitcode files
 outputDir="${origDir}/results/current_machine" ;
