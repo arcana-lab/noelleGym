@@ -4,25 +4,79 @@ This repository includes the evaluation materials for the NOELLE CGO 2022 paper:
 
 ## Artifact
 
-This artifact includes the evaluation of the data that supports the version of the paper that was submitted in September.
-Next you can find the instructions to reproduce the related results.
+This artifact generates three set of results.
+- MINIMAL: Data that supports the version of the paper that was submitted in September excluding the few benchmarks from SPEC CPU2017 that requires several days each (4 days)
+- SUBMISSION: Data about the few benchmarks from SPEC CPU2017 that requires several days each (extra 12 days)
+- FINAL: New results that were not included in the submitted version of the paper, but will be added to the final version of the paper (extra 5 days)
+Next you can find the instructions to reproduce all the above results.
 
+### Prerequisites 
+
+The artifact is available as a docker image.
+The artifact will generate the results when invoking the script ```./run_me.sh``` included in the directory ```CGO_2022_artifact_evaluation```.
+Which results will be generated depends on the envionment variables set (see below).
+
+We open sourced NOELLE more than a year ago.
+We also open sourced the infrastructure we built to evaluate NOELLE on several benchmark suites (e.g., PARSEC, MiBench, SPEC CPU2017).
+Therefore, we decided to not include these frameworks within the artifact.
+Instead, the script ```run_me.sh``` will clone the open sourced git repository (from GitHub).
+So please make sure to have a network connection when you run the artifact.
+
+### Experiments and results
+
+Next we describe the three set of experiments and results that can be generated with this artifact.
+
+Some results differ slighlty from the plots shown in the submitted paper because we found a few minor bugs in one of the alias analyses we relied on.
+We fixed these bugs and we noticed two conseguences:
+- a few more dependences now exist in the PDG of a few benchmarks. These dependences do not actually exist, but the current alias analyses aren't able to prove it. These dependences have reduced the speedups obtained for a few benchmarks like streamcluster of PARSEC.
+- a few dependences have been removed from the PDG. This allows NOELLE to have higher speedups than the submitted version of the paper in a few benchmarks like blackscholes of PARSEC.
+Moreover, the changes to dependences had a minor impact to the number of invariants and loop dependences.
+Finally, all these changes are minimal and do not change the claims made in the paper.
+
+
+#### MINIMAL
+This set of experiments and results are about all benchmarks included in the submitted version of the paper with the only exception of 6 SPEC CPU2017 benchmarks.
+This is because these 6 benchmarks require a significant amount of time so we decided to keep them separate from the minimal set; these benchmarks are included in the SUBMISSION set.
+
+To generate the MINIMAL results, then do the following:
+```
+cd CGO_2022_artifact_evaluation ;
+unset NOELLE_SUBMISSION ;
+unset NOELLE_FINAL ;
+./run_me.sh
+```
+
+Please look at the output of the script to know how to check the current state.
+Finally, results will be stored in ```results/current_machine```.
+
+
+#### SUBMISSION
+
+A few SPEC CPU2017 benchmarks are evaluated for this set of experiments/results.
+Warning: each of these benchmarks will take several days to compile and run for all configurations required by the NOELLE paper (total of 12 days).
+
+To generate the SUBMISSION results, then first generate MINIMAL, and then do the following:
+```
+cd CGO_2022_artifact_evaluation ;
+unset NOELLE_FINAL ;
+export NOELLE_SUBMISSION=1;
+./run_me.sh ;
+```
+
+
+#### FINAL
 Since NOELLE is an ongoing project, we did not stop working on it after submission.
 We improved NOELLE after submission to the point that we can now target more benchmarks and we can perform more evaluations.
 This artifact also includes the capability to generate these extra evaluations and benchmarks.
 Finally, these new evaluations and benchmarks will be included in the final version of the paper.
 
-### Prerequisites 
-
-The artifact is available as a docker image.
-
-The docker image includes the following software:
-- go (we use 1.13.7)
-- LLVM (with clang) 9.0.0
-- cmake 3
-- awk
-- sed
-- bash
+To generate the FINAL results, then first generate MINIMAL, and then do the following:
+```
+cd CGO_2022_artifact_evaluation ;
+unset NOELLE_SUBMISSION ;
+export NOELLE_FINAL=1 ;
+./run_me.sh ;
+```
 
 
 ## Data collection
@@ -76,5 +130,5 @@ TODO
 ### Speedups
 TODO
 
-### (Optional) Compilation
+### (Optional) Induction variables
 TODO
