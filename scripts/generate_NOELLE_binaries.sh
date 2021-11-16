@@ -42,6 +42,7 @@ if test $# -lt 1 ; then
   exit 1;
 fi
 optimizationName="$1" ;
+echo "Generate NOELLE binaries for $optimizationName" ;
 
 # Define the directory where we are going to dump the results
 origDir=`pwd` ;
@@ -60,3 +61,5 @@ for i in `ls` ; do
 
 done
 popd ;
+
+echo "" ;

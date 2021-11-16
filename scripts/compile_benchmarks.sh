@@ -91,7 +91,7 @@ cd build ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
 #compile_suite "SPEC2017" ;
-if test -z ${NOELLE_FINAL} ; then
+if ! test -z ${NOELLE_FINAL} ; then
   compile_suite "PolyBench" ;
 fi
 
