@@ -16,6 +16,9 @@ function compile_benchmark {
     if test $benchToOptimize == "lame" ; then
       return ;
     fi
+    if test $benchToOptimize == "lout" ; then
+      return ;
+    fi
   fi
 
   # Copy the optimization-specific makefile
