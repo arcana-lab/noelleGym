@@ -55,3 +55,6 @@ echo "${prefixString}   NOELLE DSWP IR files are generated" ;
 echo "${prefixString}   NOELLE DSWP binaries are generated" ;
 ./scripts/run_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
 echo "${prefixString}   All NOELLE DSWP binaries have run" ;
+
+# Compute the speedups
+./scripts/compute_speedups.sh ;
