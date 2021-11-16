@@ -9,11 +9,11 @@ function generate_binaries {
   fi
 
   # Clean the state of the suite
+  pushd ./ ;
   cd ${benchSuite} ;
   make clean ;
 
   # Copy the IR files
-  pushd ./ ;
   cd ${origDir}/results/current_machine/IR/${benchSuite}/benchmarks ;
   for j in `ls` ; do
 
@@ -24,8 +24,12 @@ function generate_binaries {
     if ! test -e ${j}/NOELLE_input.bc ; then
       continue ;
     fi
+    if ! test -e ${j}/baseline_parallelized_${optimizationName}.bc ; then
+      continue ;
+    fi
 
     # The benchmark has been compiled and optimized. Let's copy the final IR
+    echo "    Benchmark $j" ;
     cp ${j}/baseline_parallelized_${optimizationName}.bc ${origDir}/all_benchmark_suites/build/${benchSuite}/benchmarks/${j}/${j}.bc ;
   done
   popd ;
@@ -54,7 +58,7 @@ for i in `ls` ; do
   if ! test -d $i ; then
     continue ;
   fi
-  echo "Benchmark suite $i" ;
+  echo "  Benchmark suite $i" ;
 
   # Generate the binaries
   generate_binaries $i ;
