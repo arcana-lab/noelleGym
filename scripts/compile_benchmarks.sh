@@ -9,6 +9,15 @@ function compile_benchmark {
     return ;
   fi
 
+  # Check if we should generate extra data
+  if test "${NOELLE_EXTRA}" == "0" ; then
+
+    # Check if the benchcmark is part of the list of extra ones
+    if test $benchToOptimize == "lame" ; then
+      return ;
+    fi
+  fi
+
   # Copy the optimization-specific makefile
   cp ${origDir}/makefiles/${suite}/DOALL//Makefile makefiles/ ;
 
