@@ -104,5 +104,7 @@ for currentDirectory in `ls` ; do
 done
 popd ;
 
+find ./results -empty -delete;
+
 # Clean
 rm $tempFile ;
