@@ -4,6 +4,11 @@ function compile_benchmark {
   local suiteOfBench=$1 ;
   local benchToOptimize=$2 ;
 
+  # Check if the baseline IR has been generated
+  if ! test -f ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/NOELLE_input.bc ; then
+    return ;
+  fi
+
   # Check if the benchmark has been optimized already
   if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_${optimizationName}.bc ; then
     return ;
@@ -55,10 +60,12 @@ source NOELLE/enable ;
 
 # Compile all benchmark suites
 cd all_benchmark_suites/build ;
-#compile_suite "MiBench" ;
-#compile_suite "PARSEC3" ;
-#compile_suite "SPEC2017" ;
-compile_suite "PolyBench" ;
+compile_suite "MiBench" ;
+compile_suite "PARSEC3" ;
+compile_suite "SPEC2017" ;
+if ! test -z ${NOELLE_FINAL} ; then
+  compile_suite "PolyBench" ;
+fi
 
 # Cache the bitcode files
 outputDir="${origDir}/results/current_machine" ;
