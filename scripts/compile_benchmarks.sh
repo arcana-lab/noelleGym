@@ -9,6 +9,9 @@ function compile_benchmark {
     return ;
   fi
 
+  # Copy the optimization-specific makefile
+  cp ${origDir}/makefiles/${suite}/DOALL//Makefile makefiles/ ;
+
   # The benchmark needs to be optimized
   make optimization BENCHMARK=$benchToOptimize ;
 
