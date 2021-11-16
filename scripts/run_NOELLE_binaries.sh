@@ -29,6 +29,7 @@ function generate_results {
     touch $outputFile ;
 
     # Run the benchmark enough times
+    echo "    Benchmark $bench ($numRuns runs)" ;
     for i in `seq 1 $numRuns` ; do
 
         # Run
@@ -63,6 +64,7 @@ if test $# -lt 1 ; then
   exit 1;
 fi
 optimizationName="$1" ;
+echo "Run NOELLE binaries for $optimizationName" ;
 
 # Define the directory where we are going to dump the results
 origDir=`pwd` ;
@@ -79,7 +81,7 @@ for currentDirectory in `ls` ; do
   if ! test -d $currentDirectory ; then
     continue ;
   fi
-  echo "Benchmark suite $currentDirectory" ;
+  echo "  Benchmark suite $currentDirectory" ;
 
   # Create the output directory
   currentResults="${dirResult}/${currentDirectory}/${optimizationName}" ;

@@ -7,6 +7,9 @@ function generate_binaries {
   if ! test -d ${benchSuite}/benchmarks ; then
     return ;
   fi
+  if ! test -d ${origDir}/results/current_machine/IR/${benchSuite}/benchmarks ; then
+    return ;
+  fi
 
   # Clean the state of the suite
   pushd ./ ;
@@ -14,6 +17,7 @@ function generate_binaries {
   make clean ;
 
   # Copy the IR files
+  pushd ./ ;
   cd ${origDir}/results/current_machine/IR/${benchSuite}/benchmarks ;
   for j in `ls` ; do
 
@@ -37,6 +41,7 @@ function generate_binaries {
   # Generate the binaries
   make binary ;
 
+  popd ;
   return ;
 }
 
