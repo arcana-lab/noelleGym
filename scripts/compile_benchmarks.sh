@@ -5,12 +5,12 @@ function compile_benchmark {
   local benchToOptimize=$2 ;
 
   # Check if the benchmark has been optimized already
-  if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized.bc ; then
+  if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_DOALL.bc ; then
     return ;
   fi
 
   # Check if we should generate extra data
-  if test "${NOELLE_EXTRA}" == "0" ; then
+  if test -z ${NOELLE_EXTRA} ; then
 
     # Check if the benchcmark is part of the list of extra ones
     if test $benchToOptimize == "lame" ; then
@@ -86,5 +86,5 @@ for i in `ls */benchmarks/*/baseline_parallelized.bc` ; do
   mkdir -p ${outputDir}/IR/${dirName} ;
   cp ${dirName}/NOELLE_input.bc ${outputDir}/IR/${dirName} ;
   cp ${dirName}/baseline_with_metadata.bc ${outputDir}/IR/${dirName} ;
-  cp ${dirName}/baseline_parallelized.bc ${outputDir}/IR/${dirName} ;
+  cp ${dirName}/baseline_parallelized.bc ${outputDir}/IR/${dirName}/baseline_parallelized_DOALL.bc ;
 done
