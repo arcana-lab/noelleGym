@@ -28,15 +28,15 @@ Next we describe the three set of experiments and results that can be generated 
 
 Some results differ slighlty from the plots shown in the submitted paper because we found a few minor bugs in one of the alias analyses we relied on.
 We fixed these bugs and we noticed two conseguences:
-- a few more dependences now exist in the PDG of a few benchmarks. These dependences do not actually exist, but the current alias analyses aren't able to prove it. These dependences have reduced the speedups obtained for a few benchmarks like streamcluster of PARSEC.
+- a few more dependences now exist in the PDG of a few benchmarks. These dependences do not actually exist, but the current alias analyses aren't able to prove it because of our conservarive fix. These dependences have reduced the speedups obtained for a few benchmarks like streamcluster of PARSEC.
 - a few dependences have been removed from the PDG. This allows NOELLE to have higher speedups than the submitted version of the paper in a few benchmarks like blackscholes of PARSEC.
 Moreover, the changes to dependences had a minor impact to the number of invariants and loop dependences.
 Finally, all these changes are minimal and do not change the claims made in the paper.
 
 
 #### MINIMAL
-This set of experiments and results are about all benchmarks included in the submitted version of the paper with the only exception of 6 SPEC CPU2017 benchmarks.
-This is because these 6 benchmarks require a significant amount of time so we decided to keep them separate from the minimal set; these benchmarks are included in the SUBMISSION set.
+This set of experiments and results are about all benchmarks included in the submitted version of the paper with the only exception of five SPEC CPU2017 benchmarks (omnetpp_r, perlbench_r, x264_r, blender_r, parest_r).
+This is because these five benchmarks require a significant amount of time so we decided to keep them separate from the minimal set; these benchmarks are included in the SUBMISSION set.
 
 To generate the MINIMAL results, then do the following:
 ```
@@ -52,7 +52,7 @@ Finally, results will be stored in ```results/current_machine```.
 
 #### SUBMISSION
 
-A few SPEC CPU2017 benchmarks are evaluated for this set of experiments/results.
+A few SPEC CPU2017 benchmarks are evaluated for this set of experiments/results (omnetpp_r, perlbench_r, x264_r, blender_r, parest_r).
 Warning: each of these benchmarks will take several days to compile and run for all configurations required by the NOELLE paper (total of 12 days).
 
 To generate the SUBMISSION results, then first generate MINIMAL, and then do the following:
