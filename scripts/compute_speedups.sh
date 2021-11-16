@@ -86,6 +86,9 @@ for currentDirectory in `ls` ; do
   for optimizationName in DOALL HELIX DSWP ; do
     echo "Optimization $optimizationName" ;
 
+    # Clean previous files
+    rm -f "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
+
     # Check if we have results for the current benchmark suite
     currentResults="${dirResult}/${currentDirectory}/${optimizationName}" ;
     if ! test -d $currentResults ; then
