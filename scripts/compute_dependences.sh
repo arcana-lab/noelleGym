@@ -7,6 +7,7 @@ function generate_dependence_results {
   if ! test -d ${benchSuite}/benchmarks ; then
     return ;
   fi
+  echo "Benchmark suite $i" ;
 
   # Create the output directory
   currentDepsResult="${ivResult}/${benchSuite}" ;
@@ -22,6 +23,7 @@ function generate_dependence_results {
     if ! test -e ${j}/baseline_with_metadata.bc ; then
       continue ;
     fi
+    echo "  Benchmark $j" ;
 
     pushd ./ ;
     cd $j ;
@@ -84,7 +86,7 @@ function analyze_results {
 
   paste ../benchmarks.txt ../noelle.txt ../llvm.txt ../max.txt > ../absolute_values.txt ;
   awk '{
-    printf("%s %f %f\n", $1, $2 / $4, $3 / $4);
+      printf("%s %f %f\n", $1, ($2 / $4) * 100, ($3 / $4) * 100);
     }' ../absolute_values.txt > ../relative_values.txt ;
 
   # Clean
@@ -100,18 +102,17 @@ ivResult="${origDir}/results/current_machine/dependences";
 
 # Generate the results for all benchmarks in all benchmark suites
 pushd ./ ;
-cd all_benchmark_suites/build ;
+cd results/current_machine/IR ;
 for i in `ls` ; do
   if ! test -d $i ; then
     continue ;
   fi
-  echo "Benchmark suite $i" ;
 
   # Generate the raw data
   generate_dependence_results $i ;
 
   # Analyze the raw data
   analyze_results $i ;
-  exit 
+
 done
 popd ;
