@@ -138,7 +138,20 @@ The third column is the number of invariants accumulated over all loops of a giv
 The IR that is analyzed to generate this information is the result of all NOELLE transformations that run before a parallelization scheme (this code is the IR file `baseline_with_metadata.bc` of a given benchmark).
 
 ### Dependences
-For each benchmark in a benchmark suite you will find a text file in the benchmark suite directory (e.g., `results/current_machine/PARSEC3/blackscholes.txt` )
+The number of dependences computed by LLVM and NOELLE can be found in `results/current_machine/dependences/BENCHMARK_SUITE/absolute_values.txt` and `results/current_machine/dependences/BENCHMARK_SUITE/relative_values.txt`.
+The first file includes the absolute numbers of dependences and the second file includes the fraction of dependences declared by LLVM and NOELLE.
+
+The file `absolute_values.txt` has the following structure.
+One row per benchmark and three column.
+The first column is the name of the benchmark.
+The second column is about LLVM.
+The third column is about NOELLE.
+
+The file `relative_values.txt` has the following structure.
+One row per benchmark and three column.
+The first column is the name of the benchmark.
+The second column is about LLVM.
+The third column is about NOELLE.
 
 ### (Optional) Induction variables
 The induction variables of all loops of all benchmarks of a benchmark suite can be found in `results/current_machine/loops/BENCHMARK_SUITE/induction_variables.txt`.
