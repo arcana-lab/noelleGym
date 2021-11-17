@@ -155,7 +155,12 @@ This file is organized in three columns.
 The first column is the name of the benchmark.
 The second column is the number of invariants accumulated over all loops of a given benchmark that are detected by LLVM.
 The third column is the number of invariants accumulated over all loops of a given benchmark that are detected by NOELLE.
-The IR that is analyzed to generate this information is the result of all NOELLE transformations that run before a parallelization scheme (this code is the IR file `baseline_with_metadata.bc` of a given benchmark).
+The IR that is analyzed to generate this information is the result of all NOELLE transformations that run before a parallelization scheme.
+This is the IR file `baseline_with_metadata.bc` of a given benchmark, which can be found in `results/current_machine/IR/BENCHMARK_SUITE/BENCHMARK`.
+For example, for `blackscholes` of PARSEC, the IR file that is analyzed to generate the invariants is 
+```
+results/current_machine/IR/BENCHMARK_SUITE/blackscholes/baseline_with_metadata.bc
+```
 
 ### Dependences
 The number of memory dependences in the PDG computed by using only the LLVM alias analyses and those computed by adding other alias analyses included in NOELLE can be found in `results/current_machine/dependences/BENCHMARK_SUITE/absolute_values.txt` and `results/current_machine/dependences/BENCHMARK_SUITE/relative_values.txt`.
