@@ -5,7 +5,8 @@ This repository includes the evaluation materials for the NOELLE CGO 2022 paper:
 ## Artifact
 
 This artifact generates three set of results.
-- MINIMAL: Data that supports the version of the paper that was submitted in September excluding the few benchmarks from SPEC CPU2017 that requires several days each (4 days)
+Adding or not SPEC CPU2017 to each set of results is optional (see the section "Experiments and results" for more details).
+- MINIMAL: Data that supports the version of the paper that was submitted in September excluding the few benchmarks from SPEC CPU2017 that requires several days each (4 days when SPEC CPU2017 is included, 1 day otherwise)
 - SUBMISSION: Data about the few benchmarks from SPEC CPU2017 that requires several days each (extra 12 days)
 - FINAL: New results that were not included in the submitted version of the paper, but will be added to the final version of the paper (extra 5 days)
 Next you can find the instructions to reproduce all the above results.
@@ -18,8 +19,8 @@ Which results will be generated depends on the envionment variables set (see bel
 
 We open sourced NOELLE more than a year ago.
 We also open sourced the infrastructure we built to evaluate NOELLE on several benchmark suites (e.g., PARSEC, MiBench, SPEC CPU2017).
-Therefore, we decided to not include these frameworks within the artifact.
-Instead, the script ```run_me.sh``` will clone the open sourced git repository (from GitHub).
+We decided to only include NOELLE in the artifact, everything else will be downloaded automatically.
+In more details, the script ``run_me.sh`` will clone the open sourced git repositories (from GitHub).
 So please make sure to have a network connection when you run the artifact.
 
 ### Experiments and results
