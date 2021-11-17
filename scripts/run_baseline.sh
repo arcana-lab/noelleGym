@@ -29,6 +29,7 @@ function generate_results {
     touch $outputFile ;
 
     # Run the benchmark enough times
+    echo "    Benchmark $bench ($numRuns runs)" ;
     for i in `seq 1 $numRuns` ; do
 
         # Run
@@ -72,7 +73,7 @@ for currentDirectory in `ls` ; do
   if ! test -d $currentDirectory ; then
     continue ;
   fi
-  echo "Benchmark suite $currentDirectory" ;
+  echo "  Benchmark suite $currentDirectory" ;
 
   # Create the output directory
   currentResults="${dirResult}/${currentDirectory}/baseline" ;
