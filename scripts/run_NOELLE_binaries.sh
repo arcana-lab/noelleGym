@@ -15,7 +15,14 @@ function generate_results {
   cd ${benchSuite} ;
   local bench;
   for bench in `ls benchmarks` ; do
+
+    # Check if the benchmark has been compiled
     if ! test -e benchmarks/${bench}/${bench} ; then
+      continue ;
+    fi
+
+    # Check if the benchmark has been optimized
+    if ! test -e ${origDir}/results/current_machine/IR/${benchSuite}/benchmarks/${bench}/baseline_parallelized_${optimizationName}.bc ; then
       continue ;
     fi
 
@@ -95,3 +102,4 @@ popd ;
 
 # Clean
 rm $tempFile ;
+echo "" ;
