@@ -127,10 +127,26 @@ The speedups of HELIX over the baseline can be found in `results/current_machine
 The speedups of DSWP over the baseline can be found in `results/current_machine/time/BENCHMARK_SUITE/DSWP.txt`.
 
 ### Invariants
-TODO
+The invariants of all loops of all benchmarks of a benchmark suite can be found in `results/current_machine/loops/BENCHMARK_SUITE/invariants.txt`.
+For example, the invariants of PARSEC benchmarks can be found in the file `results/current_machine/loops/PARSEC3/invariants.txt`.
+
+Each benchmark has one line in the related `invariants.txt`. 
+This file is organized in three columns.
+The first column is the name of the benchmark.
+The second column is the number of invariants accumulated over all loops of a given benchmark that are detected by LLVM.
+The third column is the number of invariants accumulated over all loops of a given benchmark that are detected by NOELLE.
+The IR that is analyzed to generate this information is the result of all NOELLE transformations that run before a parallelization scheme (this code is the IR file `baseline_with_metadata.bc` of a given benchmark).
 
 ### Dependences
 For each benchmark in a benchmark suite you will find a text file in the benchmark suite directory (e.g., `results/current_machine/PARSEC3/blackscholes.txt` )
 
 ### (Optional) Induction variables
-TODO
+The induction variables of all loops of all benchmarks of a benchmark suite can be found in `results/current_machine/loops/BENCHMARK_SUITE/induction_variables.txt`.
+For example, the induction variables of PARSEC benchmarks can be found in the file `results/current_machine/loops/PARSEC3/induction_variables.txt`.
+
+Each benchmark has one line in the related `induction_variables.txt`. 
+This file is organized in three columns.
+The first column is the name of the benchmark.
+The second column is the number of induction variables accumulated over all loops of a given benchmark that are detected by LLVM.
+The third column is the number of induction variables accumulated over all loops of a given benchmark that are detected by NOELLE.
+The IR that is analyzed to generate this information is the result of all NOELLE transformations that run before a parallelization scheme (this code is the IR file `baseline_with_metadata.bc` of a given benchmark).
