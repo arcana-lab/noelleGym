@@ -18,7 +18,7 @@ The artifact is available as a docker image and can be downloaded at
 ```
 http://www.cs.northwestern.edu/~simonec/files/Software/Artifacts/Noelle.tar
 ```
-The artifact will generate the results when invoking the script ```./run_me.sh``` included in the directory ```CGO_2022_artifact_evaluation```.
+The artifact will generate the results when invoking the script ```./run_me.sh```.
 The results set that is generated depends on the envionment variables set (see below).
 
 We open sourced NOELLE, VIRGIL, and the SCAF alias analysis framework more than a year ago.
@@ -45,7 +45,7 @@ Finally, all these changes are minimal and do not change the claims made in the 
 Because SPEC CPU2017 cannot be shared, this artifact enables/disables this suite by having, or not having, the environment variable `NOELLE_SPEC`. 
 This environment variable is not set by default and therefore SPEC benchmarks will not run by default.
 To include the SPEC CPU2017 benchmarks, you need to:
-- copy the SPEC CPU2017 archived and compressed using gzip into the file `CGO_2022_artifact_evaluation/benchmarkSuites/SPEC2017.tar.gz` 
+- copy the SPEC CPU2017 archived and compressed using gzip into the file `benchmarkSuites/SPEC2017.tar.gz` 
 - set the environment variable `NOELLE_SPEC` to an integer value (e.g., `export NOELLE_SPEC=1`)
 - Run the other steps as described next (e.g., MINIMAL)
 
@@ -77,7 +77,7 @@ This is because these five benchmarks require a significant amount of time so we
 
 To generate the MINIMAL results, do the following:
 ```
-cd CGO_2022_artifact_evaluation ;
+cd ~ ;
 unset NOELLE_SUBMISSION ;
 unset NOELLE_FINAL ;
 ./run_me.sh
@@ -94,7 +94,7 @@ Warning: each of these benchmarks will take several days to compile and run for 
 
 To generate the SUBMISSION results, first generate MINIMAL, and then do the following:
 ```
-cd CGO_2022_artifact_evaluation ;
+cd ~ ;
 unset NOELLE_FINAL ;
 export NOELLE_SUBMISSION=1;
 ./run_me.sh ;
@@ -109,7 +109,7 @@ Finally, these new evaluations and benchmarks will be included in the final vers
 
 To generate the FINAL results, first generate MINIMAL, and then do the following:
 ```
-cd CGO_2022_artifact_evaluation ;
+cd ~ ; 
 unset NOELLE_SUBMISSION ;
 export NOELLE_FINAL=1 ;
 ./run_me.sh ;
