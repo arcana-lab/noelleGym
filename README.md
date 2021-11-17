@@ -41,6 +41,12 @@ For example, if you want to run each time-experiment 11 times, then run
 and then generate one of the three set of results (see below).
 If you don't set ```NOELLE_RUNS`, then each time-sensitive result is generated 5 times.
 
+Finally, because SPEC CPU2017 cannot be shared, this artifact enable/disable this suite by having or not the environment variable `NOELLE_SPEC`. 
+This environment variable is not set by default and therefore SPEC benchmarks will not run by default.
+To include the SPEC CPU2017 benchmarks, you need to:
+- copy the SPEC CPU2017 archived and compressed using gzip into the file `benchmarkSuites/SPEC2017.tar.gz` 
+- set the environment variable `NOELLE_SPEC` to an integer value (e.g., `export NOELLE_SPEC=1`)
+- Run the other steps as described next (e.g., MINIMAL)
 
 #### MINIMAL
 This set of experiments and results are about all benchmarks included in the submitted version of the paper with the only exception of five SPEC CPU2017 benchmarks (omnetpp_r, perlbench_r, x264_r, blender_r, parest_r).
