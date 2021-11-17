@@ -112,10 +112,14 @@ Each benchmark suite has three sub-directories:
 
 ### Speedups
 Each benchmark is run using the vanilla `clang` compilation pipeline (called baseline) as well as using DOALL, HELIX, and DSWP included in NOELLE.
+
 Baseline results can be found in `results/current_machine/time/BENCHMARK_SUITE/baseline`.
 For example, the execution times of blackscholes from PARSEC can be found in `results/current_machine/time/PARSEC3/baseline/blackscholes.txt`.
+
 DOALL results can be found in `results/current_machine/time/BENCHMARK_SUITE/DOALL`.
+
 HELIX results can be found in `results/current_machine/time/BENCHMARK_SUITE/HELIX`.
+
 Finally, DSWP results can be found in `results/current_machine/time/BENCHMARK_SUITE/DSWP`.
 
 The speedups of DOALL over the baseline can be found in `results/current_machine/time/BENCHMARK_SUITE/DOALL.txt`.
