@@ -61,6 +61,7 @@ Also, execution times vary significantly for DSWP depending on the core-to-core 
 
 Results need to be generated in an equivalent platform as the one described in the NOELLE paper.
 Turbo boost and hypter-threading needs to be disabled (they only impact the execution times).
+Finally, because of HELIX and DSWP are sensitive to either latency or bandwidth between cores, it is important to keep all threads running on the same NUMA zone.
 
 #### MINIMAL
 This set of experiments and results are about all benchmarks included in the submitted version of the paper with the only exception of five SPEC CPU2017 benchmarks (omnetpp_r, perlbench_r, x264_r, blender_r, parest_r).
