@@ -138,7 +138,7 @@ The third column is the number of invariants accumulated over all loops of a giv
 The IR that is analyzed to generate this information is the result of all NOELLE transformations that run before a parallelization scheme (this code is the IR file `baseline_with_metadata.bc` of a given benchmark).
 
 ### Dependences
-The number of dependences computed by LLVM and NOELLE can be found in `results/current_machine/dependences/BENCHMARK_SUITE/absolute_values.txt` and `results/current_machine/dependences/BENCHMARK_SUITE/relative_values.txt`.
+The number of memory dependences in the PDG computed by using only LLVM alias analyses and those computed by adding other alias analyses included in NOELLE can be found in `results/current_machine/dependences/BENCHMARK_SUITE/absolute_values.txt` and `results/current_machine/dependences/BENCHMARK_SUITE/relative_values.txt`.
 The first file includes the absolute numbers of dependences and the second file includes the fraction of dependences declared by LLVM and NOELLE.
 
 The file `absolute_values.txt` has the following structure.
