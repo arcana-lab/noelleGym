@@ -1,6 +1,10 @@
 #!/bin/bash
 
-numRuns=1 ;
+# Set the number of runs
+numRuns=5 ;
+if ! test -z ${NOELLE_SPEC} ; then
+  numRuns="${NOELLE_SPEC}" ;
+fi
 
 function generate_results {
   local benchSuite="$1" ;
