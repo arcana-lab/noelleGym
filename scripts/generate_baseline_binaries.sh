@@ -7,8 +7,12 @@ function generate_binaries {
   if ! test -d ${benchSuite}/benchmarks ; then
     return ;
   fi
+  if ! test -d ${origDir}/results/current_machine/IR/${benchSuite}/benchmarks ; then
+    return ;
+  fi
 
   # Clean the state of the suite
+  pushd ./ ;
   cd ${benchSuite} ;
   make clean ;
 
@@ -26,6 +30,7 @@ function generate_binaries {
     fi
 
     # The benchmark has been compiled and optimized. Let's copy the final IR
+    echo "    Benchmark $j" ;
     cp ${j}/NOELLE_input.bc ${origDir}/all_benchmark_suites/build/${benchSuite}/benchmarks/${j}/${j}.bc ;
   done
   popd ;
@@ -33,6 +38,7 @@ function generate_binaries {
   # Generate the binaries
   make binary ;
 
+  popd ;
   return ;
 }
 
@@ -46,10 +52,12 @@ for i in `ls` ; do
   if ! test -d $i ; then
     continue ;
   fi
-  echo "Benchmark suite $i" ;
+  echo "  Benchmark suite $i" ;
 
   # Generate the binaries
   generate_binaries $i ;
 
 done
 popd ;
+
+echo "" ;
