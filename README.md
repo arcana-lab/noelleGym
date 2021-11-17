@@ -5,7 +5,7 @@ This repository includes the evaluation materials for the NOELLE CGO 2022 paper:
 ## Artifact
 
 This artifact generates three sets of results.
-Adding or not SPEC CPU2017 to each set of results is optional (see the section "Experiments and results" for more details).
+Adding SPEC CPU2017 to each set of results is optional (see the section "Experiments and results" for more details).
 - MINIMAL: Data that supports the version of the paper that was submitted in September excluding the few benchmarks from SPEC CPU2017 that requires several days each (6 days when SPEC CPU2017 is included while excluding the five benchmarks mentioned, 2 days otherwise).
 - SUBMISSION: Data about the few benchmarks from SPEC CPU2017 that requires several days each (extra 12 days).
 - FINAL: New results that were not included in the submitted version of the paper, but will be added to the final version of the paper (extra 5 days).
@@ -19,12 +19,12 @@ The artifact is available as a docker image and can be downloaded at
 http://www.cs.northwestern.edu/~simonec/files/Software/Artifacts/Noelle.tar
 ```
 The artifact will generate the results when invoking the script ```./run_me.sh``` included in the directory ```CGO_2022_artifact_evaluation```.
-Which results will be generated depends on the envionment variables set (see below).
+The results set that is generated depends on the envionment variables set (see below).
 
 We open sourced NOELLE, VIRGIL, and the SCAF alias analysis framework more than a year ago.
 We also open sourced the infrastructure we built to evaluate NOELLE on several benchmark suites (e.g., PARSEC, MiBench, SPEC CPU2017, PolyBench).
 We decided to only include NOELLE in the artifact, everything else will be downloaded automatically.
-In more details, the script ``run_me.sh`` will clone the open sourced git repositories (from GitHub) that are not included within the docker image.
+This means the script ``run_me.sh`` will clone the open sourced git repositories (from GitHub) that are not included within the docker image.
 So please make sure to have a network connection when you run the artifact.
 
 ### Experiments and results
@@ -33,8 +33,8 @@ Next we describe the three set of experiments and results that can be generated 
 
 Some results might differ slighlty from the plots shown in the submitted paper (the claims made in the paper are still valid).
 Changes are created because we found a few minor bugs in one of the alias analyses NOELLE relies on (they are not part of NOELLE).
-We fixed these bugs and we noticed two conseguences:
-- a few more dependences now exist in the PDG of a few benchmarks. These dependences do not actually exist, but the current alias analyses aren't able to prove it because of our conservarive fix. These dependences have reduced the speedups obtained for a few benchmarks like streamcluster of PARSEC.
+We fixed these bugs and we noticed two consequences:
+- a few more dependences now exist in the PDG of a few benchmarks. These dependences do not actually exist, but the current alias analyses aren't able to prove it because of our conservative fix. These dependences have reduced the speedups obtained for a few benchmarks like streamcluster of PARSEC.
 - a few dependences have been removed from the PDG. This allows NOELLE to have higher speedups than the submitted version of the paper in a few benchmarks like blackscholes of PARSEC.
 
 The above changes to dependences had a minor impact to the number of loop invariants and dependences in the PDG.
@@ -42,7 +42,7 @@ Finally, all these changes are minimal and do not change the claims made in the 
 
 #### SPEC CPU2017
 
-Because SPEC CPU2017 cannot be shared, this artifact enable/disable this suite by having or not the environment variable `NOELLE_SPEC`. 
+Because SPEC CPU2017 cannot be shared, this artifact enables/disables this suite by having, or not having, the environment variable `NOELLE_SPEC`. 
 This environment variable is not set by default and therefore SPEC benchmarks will not run by default.
 To include the SPEC CPU2017 benchmarks, you need to:
 - copy the SPEC CPU2017 archived and compressed using gzip into the file `CGO_2022_artifact_evaluation/benchmarkSuites/SPEC2017.tar.gz` 
@@ -75,7 +75,7 @@ Finally, the Intel-based multicore needs to have at least 8 physical cores in th
 This set of experiments and results are about all benchmarks included in the submitted version of the paper with the only exception of five SPEC CPU2017 benchmarks (omnetpp_r, perlbench_r, x264_r, blender_r, parest_r).
 This is because these five benchmarks require a significant amount of time so we decided to keep them separate from the minimal set; these benchmarks are included in the SUBMISSION set.
 
-To generate the MINIMAL results, then do the following:
+To generate the MINIMAL results, do the following:
 ```
 cd CGO_2022_artifact_evaluation ;
 unset NOELLE_SUBMISSION ;
@@ -92,7 +92,7 @@ Finally, results will be stored in ```results/current_machine```.
 A few SPEC CPU2017 benchmarks are evaluated for this set of experiments/results (omnetpp_r, perlbench_r, x264_r, blender_r, parest_r).
 Warning: each of these benchmarks will take several days to compile and run for all configurations required by the NOELLE paper (total of 12 days).
 
-To generate the SUBMISSION results, then first generate MINIMAL, and then do the following:
+To generate the SUBMISSION results, first generate MINIMAL, and then do the following:
 ```
 cd CGO_2022_artifact_evaluation ;
 unset NOELLE_FINAL ;
@@ -103,11 +103,11 @@ export NOELLE_SUBMISSION=1;
 
 #### FINAL
 Since NOELLE is an ongoing project, we did not stop working on it after submission.
-We improved NOELLE after submission to the point that we can now target more benchmarks and we can perform more evaluations compared to when we submitted the paper.
+We improved NOELLE after submission to the point that we can now target more benchmarks, and we can perform more evaluations compared to when we submitted the paper.
 This artifact also includes the capability to generate these extra evaluations and benchmarks.
 Finally, these new evaluations and benchmarks will be included in the final version of the paper.
 
-To generate the FINAL results, then first generate MINIMAL, and then do the following:
+To generate the FINAL results, first generate MINIMAL, and then do the following:
 ```
 cd CGO_2022_artifact_evaluation ;
 unset NOELLE_SUBMISSION ;
@@ -163,8 +163,8 @@ results/current_machine/IR/PARSEC3/benchmarks/blackscholes/baseline_with_metadat
 ```
 
 ### Dependences
-The number of memory dependences in the PDG computed by using only the LLVM alias analyses and those computed by adding other alias analyses included in NOELLE can be found in `results/current_machine/dependences/BENCHMARK_SUITE/absolute_values.txt` and `results/current_machine/dependences/BENCHMARK_SUITE/relative_values.txt`.
-The first file includes the absolute numbers of dependences and the second file includes the fraction of dependences declared by LLVM and NOELLE.
+The number of memory dependences in the PDG computed by using only the LLVM alias analyses, and those computed by adding other alias analyses included in NOELLE, can be found in `results/current_machine/dependences/BENCHMARK_SUITE/absolute_values.txt` and `results/current_machine/dependences/BENCHMARK_SUITE/relative_values.txt`.
+The first file includes the absolute numbers of dependences, and the second file includes the fraction of dependences declared by LLVM and NOELLE.
 The second file is what creates Figure 3 of the paper.
 
 The file `absolute_values.txt` has the following structure.
