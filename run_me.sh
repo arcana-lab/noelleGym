@@ -27,6 +27,11 @@ echo "${prefixString} Start generating statistics about loops (this one should l
 ./scripts/loops.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All loop statistics are generated" ;
 
+# Generate statistics about dependences
+echo "${prefixString} Start generating statistics about dependences (1 hour)" ;
+./scripts/compute_dependences.sh >> output.txt 2>&1 ;
+echo "${prefixString}   Dependences statistics are generated" ;
+
 # Generate times of baseline binaries for all benchmarks
 echo "${prefixString} Start running baseline binaries (this will take a few hours)";
 ./scripts/generate_baseline_binaries.sh >> output.txt 2>&1 ;
