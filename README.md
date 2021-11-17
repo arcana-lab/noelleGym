@@ -144,6 +144,7 @@ Finally, DSWP results can be found in `results/current_machine/time/BENCHMARK_SU
 The speedups of DOALL over the baseline can be found in `results/current_machine/time/BENCHMARK_SUITE/DOALL.txt`.
 The speedups of HELIX over the baseline can be found in `results/current_machine/time/BENCHMARK_SUITE/HELIX.txt`.
 The speedups of DSWP over the baseline can be found in `results/current_machine/time/BENCHMARK_SUITE/DSWP.txt`.
+These speedups (DOALL, HELIX, DSWP) are used to generate Figure 5 of the paper.
 
 ### Invariants
 The invariants of all loops of all benchmarks of a benchmark suite can be found in `results/current_machine/loops/BENCHMARK_SUITE/invariants.txt`.
