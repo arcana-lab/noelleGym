@@ -14,6 +14,11 @@ function compile_benchmark {
     return ;
   fi
 
+  # Check if there is a benchmark-specific makefile
+  if test -f ${origDir}/makefiles/${suite}/${optimizationName}/${benchToOptimize}/Makefile ; then
+    cp ${origDir}/makefiles/${suite}/${optimizationName}/${benchToOptimize}/Makefile makefiles/ ;
+  fi
+
   # The benchmark needs to be optimized
   make optimization BENCHMARK=$benchToOptimize ;
 
