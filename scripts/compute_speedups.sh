@@ -35,9 +35,6 @@ function analyze_results {
   cd ${benchSuite} ;
   local bench;
   for bench in `ls benchmarks` ; do
-    if ! test -e benchmarks/${bench}/${bench} ; then
-      continue ;
-    fi
 
     # Check if the benchmark run
     outputFile="${currentResults}/${bench}.txt" ;
@@ -81,10 +78,11 @@ for currentDirectory in `ls` ; do
   if ! test -d $currentDirectory ; then
     continue ;
   fi
+  echo "Benchmark suite $currentDirectory" ;
 
   # Consider all optimizations
   for optimizationName in DOALL HELIX DSWP ; do
-    echo "Optimization $optimizationName" ;
+    echo "  Optimization $optimizationName" ;
 
     # Clean previous files
     rm -f "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
@@ -96,7 +94,6 @@ for currentDirectory in `ls` ; do
     fi
 
     # Analyze the results
-    echo "  Benchmark suite $currentDirectory" ;
     analyze_results $currentDirectory ;
   done
 
