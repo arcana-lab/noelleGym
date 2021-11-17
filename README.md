@@ -45,12 +45,22 @@ export NOELLE_RUNS=11;
 and then generate one of the three set of results (see below).
 If you do not set ```NOELLE_RUNS```, then each time-sensitive result is generated 5 times.
 
-Finally, because SPEC CPU2017 cannot be shared, this artifact enable/disable this suite by having or not the environment variable `NOELLE_SPEC`. 
+Because SPEC CPU2017 cannot be shared, this artifact enable/disable this suite by having or not the environment variable `NOELLE_SPEC`. 
 This environment variable is not set by default and therefore SPEC benchmarks will not run by default.
 To include the SPEC CPU2017 benchmarks, you need to:
 - copy the SPEC CPU2017 archived and compressed using gzip into the file `benchmarkSuites/SPEC2017.tar.gz` 
 - set the environment variable `NOELLE_SPEC` to an integer value (e.g., `export NOELLE_SPEC=1`)
 - Run the other steps as described next (e.g., MINIMAL)
+
+#### Results
+
+Execution times might vary depending on the platform.
+We tuned the parallelization techniques for our platform, the one described in the NOELLE paper submitted in September.
+We noticed exeution times vary significantly for HELIX depending on the core-to-core latencies.
+Also, execution times vary significantly for DSWP depending on the core-to-core bandwidth.
+
+Results need to be generated in an equivalent platform as the one described in the NOELLE paper.
+Turbo boost and hypter-threading needs to be disabled (they only impact the execution times).
 
 #### MINIMAL
 This set of experiments and results are about all benchmarks included in the submitted version of the paper with the only exception of five SPEC CPU2017 benchmarks (omnetpp_r, perlbench_r, x264_r, blender_r, parest_r).
