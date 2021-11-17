@@ -21,6 +21,9 @@ function compile_benchmark {
     fi
   fi
   if test -z ${NOELLE_SUBMISSION} ; then
+    if test ${suite} == "SPEC2017" -a $benchToOptimize == *_s ; then
+      return ;
+    fi
     if test $benchToOptimize == "omnetpp_r" ; then
       return ;
     fi
