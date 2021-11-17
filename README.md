@@ -6,7 +6,7 @@ This repository includes the evaluation materials for the NOELLE CGO 2022 paper:
 
 This artifact generates three sets of results.
 Adding or not SPEC CPU2017 to each set of results is optional (see the section "Experiments and results" for more details).
-- MINIMAL: Data that supports the version of the paper that was submitted in September excluding the few benchmarks from SPEC CPU2017 that requires several days each (4 days when SPEC CPU2017 is included, 1 day otherwise).
+- MINIMAL: Data that supports the version of the paper that was submitted in September excluding the few benchmarks from SPEC CPU2017 that requires several days each (6 days when SPEC CPU2017 is included while excluding the five benchmarks mentioned, 2 days otherwise).
 - SUBMISSION: Data about the few benchmarks from SPEC CPU2017 that requires several days each (extra 12 days).
 - FINAL: New results that were not included in the submitted version of the paper, but will be added to the final version of the paper (extra 5 days).
 
@@ -14,7 +14,10 @@ Next you can find the instructions to reproduce all the above results.
 
 ### Prerequisites 
 
-The artifact is available as a docker image.
+The artifact is available as a docker image and can be downloaded at
+```
+http://www.cs.northwestern.edu/~simonec/files/Software/Artifacts/Noelle.tar
+```
 The artifact will generate the results when invoking the script ```./run_me.sh``` included in the directory ```CGO_2022_artifact_evaluation```.
 Which results will be generated depends on the envionment variables set (see below).
 
