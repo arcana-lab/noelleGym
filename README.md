@@ -84,7 +84,7 @@ export NOELLE_SUBMISSION=1;
 
 #### FINAL
 Since NOELLE is an ongoing project, we did not stop working on it after submission.
-We improved NOELLE after submission to the point that we can now target more benchmarks and we can perform more evaluations.
+We improved NOELLE after submission to the point that we can now target more benchmarks and we can perform more evaluations compared to when we submitted the paper.
 This artifact also includes the capability to generate these extra evaluations and benchmarks.
 Finally, these new evaluations and benchmarks will be included in the final version of the paper.
 
