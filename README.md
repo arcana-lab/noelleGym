@@ -142,16 +142,17 @@ The number of memory dependences in the PDG computed by using only LLVM alias an
 The first file includes the absolute numbers of dependences and the second file includes the fraction of dependences declared by LLVM and NOELLE.
 
 The file `absolute_values.txt` has the following structure.
-One row per benchmark and three column.
+One row per benchmark and four columns for each row.
 The first column is the name of the benchmark.
-The second column is about LLVM.
-The third column is about NOELLE.
+The second column is about NOELLE.
+The third column is about LLVM.
+The forth column is the total number of memory dependences computed assuming all memory instructions depend on each other.
 
 The file `relative_values.txt` has the following structure.
-One row per benchmark and three column.
+One row per benchmark and three columns for each row.
 The first column is the name of the benchmark.
-The second column is about LLVM.
-The third column is about NOELLE.
+The second column is about NOELLE.
+The third column is about LLVM.
 
 ### (Optional) Induction variables
 The induction variables of all loops of all benchmarks of a benchmark suite can be found in `results/current_machine/loops/BENCHMARK_SUITE/induction_variables.txt`.
