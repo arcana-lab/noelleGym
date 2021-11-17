@@ -165,6 +165,7 @@ results/current_machine/IR/PARSEC3/benchmarks/blackscholes/baseline_with_metadat
 ### Dependences
 The number of memory dependences in the PDG computed by using only the LLVM alias analyses and those computed by adding other alias analyses included in NOELLE can be found in `results/current_machine/dependences/BENCHMARK_SUITE/absolute_values.txt` and `results/current_machine/dependences/BENCHMARK_SUITE/relative_values.txt`.
 The first file includes the absolute numbers of dependences and the second file includes the fraction of dependences declared by LLVM and NOELLE.
+The second file is what creates Figure 3 of the paper.
 
 The file `absolute_values.txt` has the following structure.
 One row per benchmark and four columns for each row.
