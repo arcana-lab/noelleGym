@@ -28,6 +28,7 @@ function compile_suite {
 
   # Check if the benchmark suite has been compiled
   if ! test -d benchmarks ; then
+    popd ;
     return ;
   fi
 
