@@ -63,7 +63,9 @@ source NOELLE/enable ;
 cd all_benchmark_suites/build ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
-compile_suite "SPEC2017" ;
+if ! test -z ${NOELLE_SPEC} ; then
+  compile_suite "SPEC2017" ;
+fi
 if ! test -z ${NOELLE_FINAL} ; then
   compile_suite "PolyBench" ;
 fi

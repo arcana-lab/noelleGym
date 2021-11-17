@@ -55,7 +55,32 @@ function compile_suite {
 
   # Generate the single bitcode file for all benchmarks of the suite
   if ! test -d benchmarks ; then
-    make ; 
+
+    # Fetch the file name of the archive
+    if test "$suite" == "PARSEC3" ; then
+      benchmarkSuiteArchive="${origDir}/benchmarkSuites/parsec-3.0.tar.gz"; 
+      wget --no-check-certificate http://parsec.cs.princeton.edu/download/3.0/parsec-3.0.tar.gz -O "${benchmarkSuiteArchive}" ;
+
+    elif test "$suite" == "MiBench" ; then
+      benchmarkSuiteArchive="${origDir}/benchmarkSuites/mibench-master.tar.bz2"; 
+
+    elif test "$suite" == "PolyBench" ; then
+      benchmarkSuiteArchive="${origDir}/benchmarkSuites/polybench-3.1.tar.gz"; 
+
+    else
+      benchmarkSuiteArchive="${origDir}/benchmarkSuites/SPEC2017.tar.gz" ;
+    fi
+    
+    # Check if the file exists
+    if ! test -e "${benchmarkSuiteArchive}" ; then
+      echo "ERROR = The file ${benchmarkSuiteArchive} does not exist" ;
+      popd ;
+      return ;
+    fi
+
+    # Copy the archive and generate a whole-IR file for each benchmark
+    make TAR="${benchmarkSuiteArchive}"; 
+
   else
     make clean ; 
     make bitcode_copy ;
@@ -90,7 +115,9 @@ fi
 cd build ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
-#compile_suite "SPEC2017" ;
+if ! test -z ${NOELLE_SPEC} ; then
+  compile_suite "SPEC2017" ;
+fi
 if ! test -z ${NOELLE_FINAL} ; then
   compile_suite "PolyBench" ;
 fi
