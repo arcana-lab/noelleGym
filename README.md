@@ -1,4 +1,4 @@
-# NOELLE artifact evaluation for CGO 2022 for CGO 2022
+# NOELLE artifact evaluation for CGO 2022
 
 This repository includes the evaluation materials for the NOELLE CGO 2022 paper: "NOELLE Offers Empowering LLVM Extensions".
 
