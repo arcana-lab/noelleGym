@@ -16,7 +16,7 @@ Next you can find the instructions to reproduce all the above results.
 
 The artifact is available as a docker image and can be downloaded at
 ```
-http://www.cs.northwestern.edu/~simonec/files/Software/Artifacts/Noelle.tar
+http://www.cs.northwestern.edu/~simonec/files/Software/Artifacts/noelle.tar
 ```
 The artifact will generate the results when invoking the script ```./run_me.sh```.
 The results set that is generated depends on the envionment variables set (see below).
