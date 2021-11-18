@@ -1,0 +1,52 @@
+# Set the universe
+Universe = vanilla
+
+# Describe the target machine
+#Requirements = (Machine != "fix.cs.northwestern.edu") && (Machine != "allagash.cs.northwestern.edu") && (Machine != "piraat.cs.northwestern.edu") 
+Requirements = 
+
+Rank = TARGET.Mips
+Copy_To_Spool = False
+
+# Notification
+Notification = error
+
+# Notification email
+Notify_User = 
+
+# Set the environment
+Getenv = True
+#Environment = VAR="value";VAR2="value2"
+
+# Set the repository
+RepoPath = 
+
+# Set the directories for the execution
+InitialDir = $(RepoPath)
+Executable = $(RepoPath)/condor/bin/runRegression.sh
+TestsPath  = 
+
+# Define the output directories
+LogDir = $(RepoPath)/condor/log
+OutputFileName = out_$(TestsPath).txt
+ErrorFileName = err_$(TestsPath).txt
+LogFileName = log_$(TestsPath).txt
+Output = $(LogDir)/$(OutputFileName)
+Error = $(LogDir)/$(ErrorFileName)
+Log = $(LogDir)/$(LogFileName)
+
+# Each job requires access to the whole machine
++IsWholeMachineJob      = false
++IsSuspensionJob        = false
+
+# Set the priority
+priority = 0
+
+# Arguments of run.sh
+ParallelizationOptions = 
+NoelleOptions = 
+FrontEndOptions =
+PreMiddleEndOptions =
+Arguments = "$(InitialDir) $(InitialDir)/$(TestsPath)/$(Test) '$(NoelleOptions)' '$(ParallelizationOptions)' '$(FrontEndOptions)' '$(PreMiddleEndOptions)' $(InitialDir)/$(TestsPath)/errors.txt"
+
+# List the tests
