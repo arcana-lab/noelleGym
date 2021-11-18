@@ -5,7 +5,7 @@ RUN apt search cmake
 RUN apt-get install -y curl
 RUN apt-get update
 RUN apt remove --purge --auto-remove gcc g++
-RUN apt-get install -y vim make binutils wget  gawk sed  zlib1g-dev build-essential libtool autoconf unzip gcc-8 g++-8 
+RUN apt-get install -y vim make binutils wget  gawk sed  zlib1g-dev build-essential libtool autoconf unzip gcc-8 g++-8 bc 
 RUN apt-get install -y libllvm-9-ocaml-dev libllvm9 llvm-9 llvm-9-dev llvm-9-doc llvm-9-examples llvm-9-runtime
 RUN apt-get install -y clang-9 clang-tools-9 clang-9-doc libclang-common-9-dev libclang-9-dev libclang1-9 clang-format-9 python-clang-9 clangd-9 
 RUN apt-get update
@@ -24,6 +24,9 @@ RUN update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 10
 RUN update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-9 10
 
 RUN useradd --create-home --shell /bin/bash cgo22ae
+
+ENV PATH=/usr/lib/llvm-9/bin/:$PATH
+ENV LD_LIBRARY_PATH=/usr/lib/llvm-9/lib:$LD_LIBRARY_PATH
 
 #USER cgo22ae
 RUN mkdir -p /home/cgo22ae
