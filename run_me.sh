@@ -76,4 +76,4 @@ if test "${run_HELIX_DSWP}" == "1" ; then
 fi
 
 # Compute the speedups
-./scripts/compute_speedups.sh ;
+./scripts/compute_speedups.sh >> output.txt 2>&1 ;
