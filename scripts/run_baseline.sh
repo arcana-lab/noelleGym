@@ -19,10 +19,20 @@ function generate_results {
   cd ${benchSuite} ;
   local bench;
   for bench in `ls benchmarks` ; do
-
-    # Check if the benchmark has been compiled
     if ! test -e benchmarks/${bench}/${bench} ; then
       continue ;
+    fi
+
+    # Check if we should run the benchmark
+    if test -z ${NOELLE_FINAL} ; then
+
+      # Check if the benchcmark is part of the list of extra ones
+      if test $bench == "lame" ; then
+        continue ;
+      fi
+      if test $bench == "lout" ; then
+        continue ;
+      fi
     fi
 
     # Check if the benchmark already run
