@@ -28,17 +28,16 @@ RUN useradd --create-home --shell /bin/bash cgo22ae
 ENV PATH=/usr/lib/llvm-9/bin/:$PATH
 ENV LD_LIBRARY_PATH=/usr/lib/llvm-9/lib:$LD_LIBRARY_PATH
 
-#USER cgo22ae
-RUN mkdir -p /home/cgo22ae
+USER cgo22ae
 WORKDIR /home/cgo22ae
 
-COPY --chown=cgo22ae ../README.md /home/cgo22ae/README.md
-COPY --chown=cgo22ae ../scripts /home/cgo22ae/scripts
-COPY --chown=cgo22ae ../run_me.sh /home/cgo22ae/run_me.sh
-COPY --chown=cgo22ae ../LICENSE /home/cgo22ae/LICENSE
-COPY --chown=cgo22ae ../makefiles /home/cgo22ae/makefiles
-COPY --chown=cgo22ae ../results /home/cgo22ae/results
-COPY --chown=cgo22ae ../NOELLE /home/cgo22ae/NOELLE
-COPY --chown=cgo22ae ../benchmarkSuites /home/cgo22ae/benchmarkSuites
+COPY --chown=cgo22ae ./README.md /home/cgo22ae/README.md
+COPY --chown=cgo22ae ./scripts /home/cgo22ae/scripts
+COPY --chown=cgo22ae ./run_me.sh /home/cgo22ae/run_me.sh
+COPY --chown=cgo22ae ./LICENSE /home/cgo22ae/LICENSE
+COPY --chown=cgo22ae ./makefiles /home/cgo22ae/makefiles
+COPY --chown=cgo22ae ./results /home/cgo22ae/results
+COPY --chown=cgo22ae ./NOELLE /home/cgo22ae/NOELLE
+COPY --chown=cgo22ae ./benchmarkSuites /home/cgo22ae/benchmarkSuites
 
 CMD /bin/bash
