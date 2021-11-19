@@ -46,23 +46,34 @@ echo "${prefixString}   NOELLE DOALL binaries are generated" ;
 ./scripts/run_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
 echo "${prefixString}   All NOELLE DOALL binaries have run" ;
 
-# Generate times of HELIX parallelized binaries for all benchmarks
-echo "${prefixString} Start running NOELLE HELIX binaries (this will take a few hours)";
-./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
-echo "${prefixString}   NOELLE HELIX IR files are generated" ;
-./scripts/generate_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
-echo "${prefixString}   NOELLE HELIX binaries are generated" ;
-./scripts/run_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
-echo "${prefixString}   All NOELLE HELIX binaries have run" ;
+# Check if we need to run HELIX and DSWP
+run_HELIX_DSWP="0";
+if ! test -z ${NOELLE_SUBMISSION} ; then
+  run_HELIX_DSWP="1";
+fi
+if ! test -z ${NOELLE_FINAL} ; then
+  run_HELIX_DSWP="1";
+fi
+if test "${run_HELIX_DSWP}" == "1" ; then
 
-# Generate times of DSWP parallelized binaries for all benchmarks
-echo "${prefixString} Start running NOELLE DSWP binaries (this will take a few hours)";
-./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
-echo "${prefixString}   NOELLE DSWP IR files are generated" ;
-./scripts/generate_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
-echo "${prefixString}   NOELLE DSWP binaries are generated" ;
-./scripts/run_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
-echo "${prefixString}   All NOELLE DSWP binaries have run" ;
+    # Generate times of HELIX parallelized binaries for all benchmarks
+    echo "${prefixString} Start running NOELLE HELIX binaries (this will take a few hours)";
+    ./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
+    echo "${prefixString}   NOELLE HELIX IR files are generated" ;
+    ./scripts/generate_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
+    echo "${prefixString}   NOELLE HELIX binaries are generated" ;
+    ./scripts/run_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
+    echo "${prefixString}   All NOELLE HELIX binaries have run" ;
+
+    # Generate times of DSWP parallelized binaries for all benchmarks
+    echo "${prefixString} Start running NOELLE DSWP binaries (this will take a few hours)";
+    ./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
+    echo "${prefixString}   NOELLE DSWP IR files are generated" ;
+    ./scripts/generate_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
+    echo "${prefixString}   NOELLE DSWP binaries are generated" ;
+    ./scripts/run_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
+    echo "${prefixString}   All NOELLE DSWP binaries have run" ;
+fi
 
 # Compute the speedups
 ./scripts/compute_speedups.sh ;
