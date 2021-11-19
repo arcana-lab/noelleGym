@@ -2,8 +2,8 @@
 
 # Set the number of runs
 numRuns=5 ;
-if ! test -z ${NOELLE_SPEC} ; then
-  numRuns="${NOELLE_SPEC}" ;
+if ! test -z ${NOELLE_RUNS} ; then
+  numRuns="${NOELLE_RUNS}" ;
 fi
 
 function generate_results {

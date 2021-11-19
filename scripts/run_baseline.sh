@@ -2,8 +2,8 @@
 
 # Set the number of runs
 numRuns=5 ;
-if ! test -z ${NOELLE_SPEC} ; then
-  numRuns="${NOELLE_SPEC}" ;
+if ! test -z ${NOELLE_RUNS} ; then
+  numRuns="${NOELLE_RUNS}" ;
 fi
 
 function generate_results {
@@ -19,6 +19,8 @@ function generate_results {
   cd ${benchSuite} ;
   local bench;
   for bench in `ls benchmarks` ; do
+
+    # Check if the benchmark has been compiled
     if ! test -e benchmarks/${bench}/${bench} ; then
       continue ;
     fi
@@ -91,3 +93,4 @@ popd ;
 
 # Clean
 rm $tempFile ;
+echo "" ;

@@ -21,9 +21,6 @@ function compile_benchmark {
     fi
   fi
   if test -z ${NOELLE_SUBMISSION} ; then
-    if test ${suite} == "SPEC2017" -a $benchToOptimize == *_s ; then
-      return ;
-    fi
     if test $benchToOptimize == "omnetpp_r" ; then
       return ;
     fi
@@ -41,8 +38,13 @@ function compile_benchmark {
     fi
   fi
 
+  # Skip SPEC speed versions of the benchmarks
+  if test ${suite} == "SPEC2017" -a $benchToOptimize == *_s ; then
+    return ;
+  fi
+
   # Copy the optimization-specific makefile
-  cp ${origDir}/makefiles/${suite}/DOALL//Makefile makefiles/ ;
+  cp ${origDir}/makefiles/${suite}/DOALL/Makefile makefiles/ ;
 
   # The benchmark needs to be optimized
   make optimization BENCHMARK=$benchToOptimize ;
