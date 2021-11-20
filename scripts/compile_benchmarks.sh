@@ -47,6 +47,7 @@ function compile_benchmark {
   cp ${origDir}/makefiles/${suite}/DOALL/Makefile makefiles/ ;
 
   # The benchmark needs to be optimized
+  echo "    Compile the benchmark $benchToOptimize" ;
   make optimization BENCHMARK=$benchToOptimize ;
 
   return ;
@@ -57,6 +58,7 @@ function compile_suite {
 
   pushd ./ ;
   cd $suite ;
+  echo "Compile the benchmark suite $suite" ;
 
   # Generate the single bitcode file for all benchmarks of the suite
   if ! test -d benchmarks ; then
@@ -84,14 +86,17 @@ function compile_suite {
     fi
 
     # Copy the archive and generate a whole-IR file for each benchmark
+    echo "  Benchmarks need to be translated into a single-IR file" ;
     make TAR="${benchmarkSuiteArchive}"; 
 
   else
+    echo "  Copy the single-IR files of benchmarks" ;
     make clean ; 
     make bitcode_copy ;
   fi
 
   # Fetch the benchmarks that might need to be optimized
+  echo "  Compile benchmarks included in the suite" ;
   for bench in `ls benchmarks` ; do
     compile_benchmark $suite $bench ;
   done
