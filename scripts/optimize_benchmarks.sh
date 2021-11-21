@@ -17,6 +17,10 @@ function compile_benchmark {
   # Check if there is a benchmark-specific makefile
   if test -f ${origDir}/makefiles/${suite}/${optimizationName}/${benchToOptimize}/Makefile ; then
     cp ${origDir}/makefiles/${suite}/${optimizationName}/${benchToOptimize}/Makefile makefiles/ ;
+  else
+
+    # Copy the optimization-specific makefile
+    cp ${origDir}/makefiles/${suite}/${optimizationName}/Makefile makefiles/ ;
   fi
 
   # The benchmark needs to be optimized
@@ -40,9 +44,6 @@ function compile_suite {
   # Copy the baseline IR 
   make clean ; 
   make bitcode_copy ;
-
-  # Copy the optimization-specific makefile
-  cp ${origDir}/makefiles/${suite}/${optimizationName}/Makefile makefiles/ ;
 
   # Fetch the benchmarks that might need to be optimized
   for bench in `ls benchmarks` ; do
