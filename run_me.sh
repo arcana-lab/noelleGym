@@ -23,7 +23,7 @@ echo "${prefixString} Start compiling all benchmarks for all configurations (WAR
 echo "${prefixString}   All benchmarks have been compiled for all configurations" ;
 
 # Generate statistics about loops
-echo "${prefixString} Start generating statistics about loops (this one should less than 30 minutes)" ;
+echo "${prefixString} Start generating statistics about loops (this one should take less than 30 minutes)" ;
 ./scripts/loops.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All loop statistics are generated" ;
 

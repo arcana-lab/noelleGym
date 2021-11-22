@@ -22,6 +22,7 @@ function generate_loop_results {
     if ! test -e ${j}/baseline_with_metadata.bc ; then
       continue ;
     fi
+    echo "${prefixString}     Benchmark $j" ;
 
     pushd ./ ;
     cd $j ;
@@ -59,23 +60,39 @@ function analyze_results {
   return ;
 }
 
+# Start
+prefixString="Loops: " ;
+echo "${prefixString} Start" ;
+
 # Define the directory where we are going to dump the results
 origDir=`pwd` ;
 ivResult="${origDir}/results/current_machine/loops"; 
 
+# Check if we have IRs
+if ! test -d ${origDir}/results/current_machine/IR ; then
+  echo "${prefixString}   No IRs are available" ;
+  echo "${prefixString} End";
+  exit 0;
+fi
+
 # Generate the results for all benchmarks in all benchmark suites
 pushd ./ ;
-cd all_benchmark_suites/build ;
+cd ${origDir}/results/current_machine/IR ;
 for i in `ls` ; do
   if ! test -d $i ; then
     continue ;
   fi
-  echo "Benchmark suite $i" ;
+  echo "${prefixString}   Benchmark suite $i" ;
 
   # Generate the raw data
   generate_loop_results $i ;
 
   # Analyze the raw data
   analyze_results $i ;
+
+  echo "${prefixString}";
 done
 popd ;
+
+# Exit
+echo "${prefixString} End";
