@@ -21,6 +21,9 @@ function generate_binaries {
   cd ${origDir}/results/current_machine/IR/${benchSuite}/benchmarks ;
   for j in `ls` ; do
 
+    # Remove the IR file
+    rm -f ${origDir}/all_benchmark_suites/build/${benchSuite}/benchmarks/${j}/${j}.bc ;
+
     # Check if the current directory contains a benchmark we compiled
     if ! test -d $j ; then
       continue ;
