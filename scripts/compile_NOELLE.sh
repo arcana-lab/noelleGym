@@ -12,4 +12,5 @@ if test -d .gitTemp ; then
 fi
 if ! test -e enable ; then
   make ;
+  make clean ;
 fi
