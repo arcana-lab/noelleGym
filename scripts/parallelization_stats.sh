@@ -1,15 +1,18 @@
 #!/bin/bash
 
 # Fetch the inputs
-if test $# -lt 1 ; then
-  echo "USAGE: `basename $0` DIR" ;
+if test $# -lt 2 ; then
+  echo "USAGE: `basename $0` IR_DIR OUTPUT_DIR" ;
   exit 1;
 fi
 IRDir="$1" ;
+outDir="$2" ;
 echo "Analyze IRs stored in \"$IRDir\"" ;
+echo "Results will be stored in \"$outDir\"" ;
 
 # Clean from previous runs
-rm -f DOALL.txt HELIX.txt DSWP.txt ;
+mkdir -p ${outDir} ;
+rm -f ${outDir}/DOALL.txt ${outDir}/HELIX.txt ${outDir}/DSWP.txt ;
 
 # Analyze all IRs parallelized
 for irFile in `find $IRDir -iname baseline_parallelized*.bc` ; do
@@ -23,7 +26,8 @@ for irFile in `find $IRDir -iname baseline_parallelized*.bc` ; do
   llvm-dis $irFile ;
   DOALLNums=`grep call $irFile ${benchDir}/*.ll  | grep @NOELLE_DOALLDispatcher | wc -l | awk '{print $1}'` ;
   HELIXNums=`grep call $irFile ${benchDir}/*.ll  | grep @NOELLE_HELIX_dispatcher | wc -l | awk '{print $1}'` ;
+  DSWPNums=`grep call $irFile ${benchDir}/*.ll  | grep @NOELLE_DSWPDispatcher | wc -l | awk '{print $1}'` ;
 
   # Dump
-  echo "$benchName $DOALLNums $HELIXNums 0" >> ${parallelizationName}.txt ;
+  echo "$benchName $DOALLNums $HELIXNums $DSWPNums" >> ${outDir}/${parallelizationName}.txt ;
 done
