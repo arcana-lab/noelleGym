@@ -7,7 +7,7 @@ OPT_LEVEL=-O3
 # Arguments
 BENCHMARK=
 PARALLELIZATION_OPTIONS=-noelle-disable-dswp
-DISABLE_ENABLERS=-noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-loop-invariant-code-motion
+DISABLE_ENABLERS=-noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier
 NOELLE_OPTIONS=-noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 $(DISABLE_ENABLERS)
 
 # Front-end
