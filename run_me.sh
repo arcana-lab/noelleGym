@@ -75,5 +75,7 @@ if test "${run_HELIX_DSWP}" == "1" ; then
     echo "${prefixString}   All NOELLE DSWP binaries have run" ;
 fi
 
-# Compute the speedups
+# Compute the parallelization statistics
+echo "${prefixString} Compute the impact of the parallelization techniques" ;
+./scripts/parallelization_stats.sh "./results/current_machine/IR" "./results/current_machine/parallelization" >> output.txt 2>&1 ;
 ./scripts/compute_speedups.sh >> output.txt 2>&1 ;
