@@ -1,6 +1,7 @@
 # NOELLE Gym
 
-This repository includes the evaluation materials for the NOELLE CGO 2022 paper: "NOELLE Offers Empowering LLVM Extensions".
+This repository is designed to test NOELLE and its transformations to well established benchmark suites.
+This repository also includes the evaluation materials for the NOELLE CGO 2022 paper: "NOELLE Offers Empowering LLVM Extensions".
 
 ## Artifact
 
