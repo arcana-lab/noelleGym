@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-prefixString="###" ;
+prefixString="### NOELLE GYM ###" ;
 echo "${prefixString} This is the artifact evaluation of the NOELLE paper of CGO 2022" ;
 echo "${prefixString} We would like to thank you for volunteering for the artifact evaluation, we appreciate it!" ;
 echo "${prefixString} All benchmarks from all benchmark suites will be compiled, run, and statistics will be collected" ;
@@ -79,3 +79,7 @@ fi
 echo "${prefixString} Compute the impact of the parallelization techniques" ;
 ./scripts/parallelization_stats.sh "./results/current_machine/IR" "./results/current_machine/parallelization" >> output.txt 2>&1 ;
 ./scripts/compute_speedups.sh >> output.txt 2>&1 ;
+
+# Clean
+echo "${prefixString} Clean" ;
+./scripts/clean.sh >> output.txt 2>&1 ;
