@@ -21,13 +21,13 @@ The artifact is available as a docker image and can be downloaded at
 ```
 http://www.cs.northwestern.edu/~simonec/files/Software/Artifacts/noelle.tar
 ```
-The artifact will generate the results when invoking the script ```./run_me.sh```.
+The artifact will generate the results when invoking the script ```./bin/compileAndRun```.
 The results set that is generated depends on the envionment variables set (see below).
 
 We open sourced NOELLE, VIRGIL, and the SCAF alias analysis framework more than a year ago.
 We also open sourced the infrastructure we built to evaluate NOELLE on several benchmark suites (e.g., PARSEC, MiBench, SPEC CPU2017, PolyBench).
 We decided to only include NOELLE in the artifact, everything else will be downloaded automatically.
-This means the script ``run_me.sh`` will clone the open sourced git repositories (from GitHub) that are not included within the docker image.
+This means the script ``bin/compileAndRun`` will clone the open sourced git repositories (from GitHub) that are not included within the docker image.
 So please make sure to have a network connection when you run the artifact.
 
 ### Experiments and results
@@ -89,7 +89,7 @@ To generate the MINIMAL results, do the following:
 cd ~ ;
 unset NOELLE_SUBMISSION ;
 unset NOELLE_FINAL ;
-./run_me.sh
+./bin/compileAndRun
 ```
 
 Please look at the output of the script to know how to check the current state.
@@ -107,7 +107,7 @@ To generate the SUBMISSION results, first generate MINIMAL, and then do the foll
 cd ~ ;
 unset NOELLE_FINAL ;
 export NOELLE_SUBMISSION=1;
-./run_me.sh ;
+./bin/compileAndRun ;
 ```
 
 
@@ -123,7 +123,7 @@ To generate the FINAL results, first generate MINIMAL, and then do the following
 cd ~ ; 
 unset NOELLE_SUBMISSION ;
 export NOELLE_FINAL=1 ;
-./run_me.sh ;
+./bin/compileAndRun ;
 ```
 
 
