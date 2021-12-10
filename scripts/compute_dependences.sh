@@ -38,7 +38,7 @@ function generate_dependence_results {
     mkdir -p ${currentDepsResult}/llvm ;
     if ! test -e ${currentDepsResult}/llvm/${j}.txt ; then
       noelle-meta-pdg-clean baseline_with_metadata.bc baseline_with_metadata_llvm.bc ;
-      noelle-meta-pdg-embed -noelle-disable-pdg-allocaa -noelle-disable-pdg-svf -noelle-disable-pdg-reaching-analysis baseline_with_metadata_llvm.bc -o baseline_with_metadata_llvm.bc ;
+      noelle-meta-pdg-embed -noelle-disable-pdg-allocaa -noelle-disable-pdg-svf -noelle-disable-pdg-reaching-analysis -noelle-disable-loop-aware-dependence-analyses baseline_with_metadata_llvm.bc -o baseline_with_metadata_llvm.bc ;
       noelle-pdg-stats baseline_with_metadata_llvm.bc &> ${currentDepsResult}/llvm/${j}.txt ;
     fi
 
