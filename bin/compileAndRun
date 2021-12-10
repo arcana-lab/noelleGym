@@ -28,19 +28,27 @@ echo "${prefixString} Start generating statistics about loops (this one should t
 echo "${prefixString}   All loop statistics are generated" ;
 
 # Generate statistics about dependences
-echo "${prefixString} Start generating statistics about dependences (1 hour)" ;
+echo "${prefixString} Start generating statistics about dependences" ;
 ./scripts/compute_dependences.sh >> output.txt 2>&1 ;
 echo "${prefixString}   Dependences statistics are generated" ;
 
 # Generate times of baseline binaries for all benchmarks
-echo "${prefixString} Start running baseline binaries (this will take a few hours)";
+echo "${prefixString} Start running baseline binaries";
 ./scripts/generate_baseline_binaries.sh >> output.txt 2>&1 ;
 echo "${prefixString}   Binaries for baseline are generated" ;
 ./scripts/run_baseline.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All baseline binaries are run" ;
 
+# Generate times for parallelization enablers
+echo "${prefixString} Start running NOELLE enablers binaries";
+./scripts/copy_NOELLE_enablers.sh >> output.txt 2>&1 ;
+./scripts/generate_NOELLE_binaries.sh "NONE" >> output.txt 2>&1 ;
+echo "${prefixString}   Binaries are generated" ;
+./scripts/run_NOELLE_binaries.sh "NONE" >> output.txt 2>&1 ;
+echo "${prefixString}   Binaries have run" ;
+
 # Generate times of DOALL parallelized binaries for all benchmarks
-echo "${prefixString} Start running NOELLE DOALL binaries (this will take a few hours)";
+echo "${prefixString} Start running NOELLE DOALL binaries";
 ./scripts/generate_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
 echo "${prefixString}   NOELLE DOALL binaries are generated" ;
 ./scripts/run_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
