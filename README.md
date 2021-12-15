@@ -12,37 +12,26 @@ Adding SPEC CPU2017 to each set of results is optional (see the section "Experim
 
 - SUBMISSION: HELIX and DSWP are included. Also, if SPEC CPU2017 is enabled, this data will also include the few benchmarks from SPEC CPU2017 that requires several days each (extra 12 days). 
 
-- FINAL: New results that were not included in the submitted version of the paper, but will be added to the final version of the paper (extra 5 days). Also, HELIX and DSWP are included in this experiment.
+- FINAL: New results that were not included in the submitted version of the paper (extra 5 days). Also, HELIX and DSWP are included in this experiment.
 
 Next you can find the instructions to reproduce all the above results.
 
 ### Prerequisites 
 
-The artifact is available as a docker image and can be downloaded at
-```
-http://www.cs.northwestern.edu/~simonec/files/Software/Artifacts/noelle.tar
-```
+The artifact is available as a docker image.
 The artifact will generate the results when invoking the script ```./bin/compileAndRun```.
 The results set that is generated depends on the envionment variables set (see below).
 
-We open sourced NOELLE, VIRGIL, and the SCAF alias analysis framework more than a year ago.
+We open sourced NOELLE, VIRGIL, and the SCAF alias analysis framework in 2020.
 We also open sourced the infrastructure we built to evaluate NOELLE on several benchmark suites (e.g., PARSEC, MiBench, SPEC CPU2017, PolyBench).
-We decided to only include NOELLE in the artifact, everything else will be downloaded automatically.
+Hence, this artifact will download everything is needed by cloning the open-sourced repositories.
 This means the script ``bin/compileAndRun`` will clone the open sourced git repositories (from GitHub) that are not included within the docker image.
 So please make sure to have a network connection when you run the artifact.
 
 ### Experiments and results
 
 Next we describe the three set of experiments and results that can be generated with this artifact.
-
-Some results might differ slighlty from the plots shown in the submitted paper (the claims made in the paper are still valid).
-Changes are created because we found a few minor bugs in one of the alias analyses NOELLE relies on (they are not part of NOELLE).
-We fixed these bugs and we noticed two consequences:
-- a few more dependences now exist in the PDG of a few benchmarks. These dependences do not actually exist, but the current alias analyses aren't able to prove it because of our conservative fix. These dependences have reduced the speedups obtained for a few benchmarks like streamcluster of PARSEC.
-- a few dependences have been removed from the PDG. This allows NOELLE to have higher speedups than the submitted version of the paper in a few benchmarks like blackscholes of PARSEC.
-
-The above changes to dependences had a minor impact to the number of loop invariants and dependences in the PDG.
-Finally, all these changes are minimal and do not change the claims made in the paper.
+Timing-based results might differ slighlty from the plots shown in the submitted paper (the claims made in the paper are still valid).
 
 #### SPEC CPU2017
 
@@ -70,7 +59,7 @@ and then generate one of the three set of results (see below).
 If you do not set ```NOELLE_RUNS```, then each time-sensitive result is generated 5 times.
 
 Execution times might vary depending on the platform.
-We tuned the parallelization techniques for our platform, the one described in the NOELLE paper submitted in September.
+We tuned the parallelization techniques for our platform, the one described in the NOELLE paper.
 We noticed exeution times vary significantly for HELIX depending on the core-to-core latencies.
 Also, execution times vary significantly for DSWP depending on the core-to-core bandwidth.
 
@@ -78,7 +67,7 @@ Results need to be generated in an equivalent platform as the one described in t
 Turbo boost and hypter-threading needs to be disabled (they only impact the execution times).
 Furthermore, because of HELIX and DSWP are sensitive to either latency or bandwidth between cores, it is important to keep all threads running on the same NUMA zone.
 Also, all the experiments need to be contained within the same CPU socket.
-Finally, the Intel-based multicore needs to have at least 8 physical cores in the same CPU where the experiments run.
+Finally, the Intel-based multicore needs to have at least 12 physical cores in the same CPU where the experiments run.
 
 #### MINIMAL
 This set of experiments and results are about all benchmarks included in the submitted version of the paper with the only exception of five SPEC CPU2017 benchmarks (omnetpp_r, perlbench_r, x264_r, blender_r, parest_r).
@@ -117,7 +106,6 @@ Since NOELLE is an ongoing project, we did not stop working on it after submissi
 We improved NOELLE after submission to the point that we can now target more benchmarks, and we can perform more evaluations compared to when we submitted the paper.
 This artifact also includes the capability to generate these extra evaluations and benchmarks.
 Also, DSWP and HELIX are enabled.
-Finally, these new evaluations and benchmarks will be included in the final version of the paper.
 
 To generate the FINAL results, first generate MINIMAL, and then do the following:
 ```
@@ -192,7 +180,20 @@ The first column is the name of the benchmark.
 The second column is about NOELLE.
 The third column is about LLVM.
 
-### (Optional) Induction variables
+
+### Loops parallelized
+This artifact reports the number of loops parallelized with each technique.
+This information can be found in the directory `results/current_machine/parallelization`.
+Here, each configuration has one text file reporting the number of loops parallelized with each technique.
+
+Each file in the directory `results/current_machine/parallelization` has the same structure, which is the following.
+The first column is the name of the benchmark.
+The second column is the number of loops parallelized using DOALL.
+The third column is the number of loops parallelized using HELIX.
+The forth column is the number of loops parallelized using DSWP.
+
+
+### Induction variables
 The induction variables of all loops of all benchmarks of a benchmark suite can be found in `results/current_machine/loops/BENCHMARK_SUITE/induction_variables.txt`.
 For example, the induction variables of PARSEC benchmarks can be found in the file `results/current_machine/loops/PARSEC3/induction_variables.txt`.
 
