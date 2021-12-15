@@ -1,43 +1,103 @@
-noelle-load -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/LoopStats.so -LoopStats baseline_with_metadata.bc -disable-output
-opt -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/Loops.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/Noelle.so -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/CGO_2022_artifact_evaluation2/NOELLE/install/lib/LoopStats.so -LoopStats baseline_with_metadata.bc -disable-output
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/LoopStats.so -LoopStats baseline_with_metadata.bc -disable-output
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/Loops.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/Noelle.so -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/1/NOELLE/install/lib/LoopStats.so -LoopStats baseline_with_metadata.bc -disable-output
 Per loop statistics
  Noelle:
-  Loop: 19
+  Loop: 48
     Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 0
+      Number of IVs: 1
+      Number of dynamic IVs: 21
       Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 21
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 345
+ LLVM:
+  Loop: 48
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 21
+      Number of loop governing IVs: 0
       Number of dynamic loop governing IVs: 0
     Invariants
       Number of invariants: 0
       Number of dynamic invariants: 0
     Dependences
-      Number of nodes in SCCDAG: 4
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 2
+      Number of dynamic instructions executed in sequential SCCs: 428
+ Noelle:
+  Loop: 26
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 8621631245
+      Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 8621631245
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 6
+      Number of SCCs: 1
+      Number of sequential SCCs: 0
       Number of dynamic instructions executed in sequential SCCs: 0
  LLVM:
-  Loop: 19
+  Loop: 26
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 8621631245
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 6
+      Number of SCCs: 1
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 33979370199
+ Noelle:
+  Loop: 15
+    Induction variables (IVs):
+      Number of IVs: 2
+      Number of dynamic IVs: 1022233856
+      Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 511116928
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 59
+      Number of SCCs: 11
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 799275935576
+ LLVM:
+  Loop: 15
     Induction variables (IVs):
       Number of IVs: 0
-      Number of dynamic IVs: 0
+      Number of dynamic IVs: 511116928
       Number of loop governing IVs: 0
       Number of dynamic loop governing IVs: 0
     Invariants
       Number of invariants: 0
       Number of dynamic invariants: 0
     Dependences
-      Number of nodes in SCCDAG: 4
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 0
+      Number of nodes in SCCDAG: 59
+      Number of SCCs: 11
+      Number of sequential SCCs: 11
+      Number of dynamic instructions executed in sequential SCCs: 1162414607292
  Noelle:
-  Loop: 17
+  Loop: 32
     Induction variables (IVs):
       Number of IVs: 1
-      Number of dynamic IVs: 0
+      Number of dynamic IVs: 10650250411
       Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
+      Number of dynamic loop governing IVs: 10650250411
     Invariants
       Number of invariants: 0
       Number of dynamic invariants: 0
@@ -45,12 +105,12 @@ Per loop statistics
       Number of nodes in SCCDAG: 5
       Number of SCCs: 2
       Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
+      Number of dynamic instructions executed in sequential SCCs: 174968399615
  LLVM:
-  Loop: 17
+  Loop: 32
     Induction variables (IVs):
       Number of IVs: 1
-      Number of dynamic IVs: 0
+      Number of dynamic IVs: 10650250411
       Number of loop governing IVs: 0
       Number of dynamic loop governing IVs: 0
     Invariants
@@ -60,104 +120,14 @@ Per loop statistics
       Number of nodes in SCCDAG: 5
       Number of SCCs: 2
       Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 0
+      Number of dynamic instructions executed in sequential SCCs: 217062246478
  Noelle:
-  Loop: 15
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 5
-      Number of SCCs: 2
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 15
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 5
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 13
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 5
-      Number of SCCs: 2
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 13
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 5
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 3
+  Loop: 24
     Induction variables (IVs):
       Number of IVs: 2
-      Number of dynamic IVs: 4
+      Number of dynamic IVs: 9128786066
       Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 2
-    Invariants
-      Number of invariants: 2
-      Number of dynamic invariants: 2
-    Dependences
-      Number of nodes in SCCDAG: 7
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 7
- LLVM:
-  Loop: 3
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 2
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 7
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 18
- Noelle:
-  Loop: 1
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
+      Number of dynamic loop governing IVs: 4564393033
     Invariants
       Number of invariants: 0
       Number of dynamic invariants: 0
@@ -165,12 +135,12 @@ Per loop statistics
       Number of nodes in SCCDAG: 8
       Number of SCCs: 4
       Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 0
+      Number of dynamic instructions executed in sequential SCCs: 32457906016
  LLVM:
-  Loop: 1
+  Loop: 24
     Induction variables (IVs):
       Number of IVs: 1
-      Number of dynamic IVs: 0
+      Number of dynamic IVs: 4564393033
       Number of loop governing IVs: 0
       Number of dynamic loop governing IVs: 0
     Invariants
@@ -180,74 +150,14 @@ Per loop statistics
       Number of nodes in SCCDAG: 8
       Number of SCCs: 4
       Number of sequential SCCs: 4
-      Number of dynamic instructions executed in sequential SCCs: 0
+      Number of dynamic instructions executed in sequential SCCs: 58829954652
  Noelle:
-  Loop: 5
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 2
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 5
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 2
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 7
+  Loop: 28
     Induction variables (IVs):
       Number of IVs: 1
-      Number of dynamic IVs: 0
+      Number of dynamic IVs: 32965060734
       Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 6
-      Number of SCCs: 1
-      Number of sequential SCCs: 0
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 7
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 6
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 9
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
+      Number of dynamic loop governing IVs: 32965060734
     Invariants
       Number of invariants: 0
       Number of dynamic invariants: 0
@@ -257,10 +167,10 @@ Per loop statistics
       Number of sequential SCCs: 0
       Number of dynamic instructions executed in sequential SCCs: 0
  LLVM:
-  Loop: 9
+  Loop: 28
     Induction variables (IVs):
       Number of IVs: 1
-      Number of dynamic IVs: 0
+      Number of dynamic IVs: 32965060734
       Number of loop governing IVs: 0
       Number of dynamic loop governing IVs: 0
     Invariants
@@ -270,14 +180,14 @@ Per loop statistics
       Number of nodes in SCCDAG: 19
       Number of SCCs: 1
       Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
+      Number of dynamic instructions executed in sequential SCCs: 131353088155
  Noelle:
-  Loop: 11
+  Loop: 30
     Induction variables (IVs):
       Number of IVs: 1
-      Number of dynamic IVs: 0
+      Number of dynamic IVs: 10650250411
       Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
+      Number of dynamic loop governing IVs: 10650250411
     Invariants
       Number of invariants: 0
       Number of dynamic invariants: 0
@@ -285,12 +195,12 @@ Per loop statistics
       Number of nodes in SCCDAG: 5
       Number of SCCs: 2
       Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
+      Number of dynamic instructions executed in sequential SCCs: 195254590875
  LLVM:
-  Loop: 11
+  Loop: 30
     Induction variables (IVs):
       Number of IVs: 1
-      Number of dynamic IVs: 0
+      Number of dynamic IVs: 10650250411
       Number of loop governing IVs: 0
       Number of dynamic loop governing IVs: 0
     Invariants
@@ -300,27 +210,146 @@ Per loop statistics
       Number of nodes in SCCDAG: 5
       Number of SCCs: 2
       Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 0
-Total statistics
+      Number of dynamic instructions executed in sequential SCCs: 237348437738
  Noelle:
+  Loop: 34
     Induction variables (IVs):
-      Number of IVs: 12
+      Number of IVs: 1
+      Number of dynamic IVs: 10650250411
+      Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 10650250411
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 195254590875
+ LLVM:
+  Loop: 34
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 10650250411
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 2
+      Number of dynamic instructions executed in sequential SCCs: 237348437738
+ Noelle:
+  Loop: 36
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 10650250411
+      Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 10650250411
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 174968399615
+ LLVM:
+  Loop: 36
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 10650250411
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 2
+      Number of dynamic instructions executed in sequential SCCs: 217062246478
+ Noelle:
+  Loop: 1
+    Induction variables (IVs):
+      Number of IVs: 2
+      Number of dynamic IVs: 18
+      Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 9
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 8
+      Number of SCCs: 4
+      Number of sequential SCCs: 2
+      Number of dynamic instructions executed in sequential SCCs: 64
+ LLVM:
+  Loop: 1
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 9
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 8
+      Number of SCCs: 4
+      Number of sequential SCCs: 4
+      Number of dynamic instructions executed in sequential SCCs: 116
+ Noelle:
+  Loop: 38
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 17
+      Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 17
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 6
+      Number of SCCs: 1
+      Number of sequential SCCs: 0
+      Number of dynamic instructions executed in sequential SCCs: 0
+ LLVM:
+  Loop: 38
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 17
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 6
+      Number of SCCs: 1
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 67
+ Noelle:
+  Loop: 3
+    Induction variables (IVs):
+      Number of IVs: 2
       Number of dynamic IVs: 4
-      Number of loop governing IVs: 9
+      Number of loop governing IVs: 1
       Number of dynamic loop governing IVs: 2
     Invariants
-      Number of invariants: 2
+      Number of invariants: 3
       Number of dynamic invariants: 2
     Dependences
-      Number of nodes in SCCDAG: 66
-      Number of SCCs: 21
-      Number of sequential SCCs: 9
-      Number of dynamic instructions executed in sequential SCCs: 7
-      Average number of dynamic instructions of sequential SCCs: 7.000000e-01
-      Average coverage of sequential SCCs: 1.995837e-05 %
+      Number of nodes in SCCDAG: 7
+      Number of SCCs: 3
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 1922227564080
  LLVM:
+  Loop: 3
     Induction variables (IVs):
-      Number of IVs: 8
+      Number of IVs: 1
       Number of dynamic IVs: 2
       Number of loop governing IVs: 0
       Number of dynamic loop governing IVs: 0
@@ -328,9 +357,190 @@ Total statistics
       Number of invariants: 0
       Number of dynamic invariants: 0
     Dependences
-      Number of nodes in SCCDAG: 66
-      Number of SCCs: 21
-      Number of sequential SCCs: 21
-      Number of dynamic instructions executed in sequential SCCs: 18
-      Average number of dynamic instructions of sequential SCCs: 1.800000e+00
-      Average coverage of sequential SCCs: 5.132153e-05 %
+      Number of nodes in SCCDAG: 7
+      Number of SCCs: 3
+      Number of sequential SCCs: 3
+      Number of dynamic instructions executed in sequential SCCs: 1922227564091
+ Noelle:
+  Loop: 40
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 65
+      Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 65
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 19
+      Number of SCCs: 1
+      Number of sequential SCCs: 0
+      Number of dynamic instructions executed in sequential SCCs: 0
+ LLVM:
+  Loop: 40
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 65
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 19
+      Number of SCCs: 1
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 259
+ Noelle:
+  Loop: 5
+    Induction variables (IVs):
+      Number of IVs: 0
+      Number of dynamic IVs: 0
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 32
+      Number of SCCs: 3
+      Number of sequential SCCs: 3
+      Number of dynamic instructions executed in sequential SCCs: 1815689396962
+ LLVM:
+  Loop: 5
+    Induction variables (IVs):
+      Number of IVs: 0
+      Number of dynamic IVs: 0
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 32
+      Number of SCCs: 3
+      Number of sequential SCCs: 3
+      Number of dynamic instructions executed in sequential SCCs: 1815689396962
+ Noelle:
+  Loop: 42
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 21
+      Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 21
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 385
+ LLVM:
+  Loop: 42
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 21
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 2
+      Number of dynamic instructions executed in sequential SCCs: 468
+ Noelle:
+  Loop: 44
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 21
+      Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 21
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 345
+ LLVM:
+  Loop: 44
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 21
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 2
+      Number of dynamic instructions executed in sequential SCCs: 428
+ Noelle:
+  Loop: 46
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 21
+      Number of loop governing IVs: 1
+      Number of dynamic loop governing IVs: 21
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 1
+      Number of dynamic instructions executed in sequential SCCs: 385
+ LLVM:
+  Loop: 46
+    Induction variables (IVs):
+      Number of IVs: 1
+      Number of dynamic IVs: 21
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 5
+      Number of SCCs: 2
+      Number of sequential SCCs: 2
+      Number of dynamic instructions executed in sequential SCCs: 468
+Total statistics
+ Noelle:
+    Induction variables (IVs):
+      Number of IVs: 20
+      Number of dynamic IVs: 94338713733
+      Number of loop governing IVs: 16
+      Number of dynamic loop governing IVs: 89263203761
+    Invariants
+      Number of invariants: 3
+      Number of dynamic invariants: 2
+    Dependences
+      Number of nodes in SCCDAG: 204
+      Number of SCCs: 45
+      Number of sequential SCCs: 17
+      Number of dynamic instructions executed in sequential SCCs: 5310096785138
+      Average number of dynamic instructions of sequential SCCs: 6.844064e+10
+      Average coverage of sequential SCCs: 3.560486e-02 %
+ LLVM:
+    Induction variables (IVs):
+      Number of IVs: 15
+      Number of dynamic IVs: 89263203761
+      Number of loop governing IVs: 0
+      Number of dynamic loop governing IVs: 0
+    Invariants
+      Number of invariants: 0
+      Number of dynamic invariants: 0
+    Dependences
+      Number of nodes in SCCDAG: 204
+      Number of SCCs: 45
+      Number of sequential SCCs: 45
+      Number of dynamic instructions executed in sequential SCCs: 6033315352017
+      Average number of dynamic instructions of sequential SCCs: 7.488844e+10
+      Average coverage of sequential SCCs: 3.895920e-02 %
