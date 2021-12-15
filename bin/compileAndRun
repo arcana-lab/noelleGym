@@ -3,8 +3,9 @@
 prefixString="### NOELLE Gym ###" ;
 echo "${prefixString} This is the artifact evaluation of the NOELLE paper of CGO 2022" ;
 echo "${prefixString} All benchmarks from all benchmark suites will be compiled, run, and statistics will be collected" ;
-echo "${prefixString} Results will be stored in `pwd`/results" ;
-echo "${prefixString} The output of each step will be stored in `pwd`/output.txt (you can run \"tail -f output.txt\" to see the current state)" ;
+echo "${prefixString} Results will be stored in `pwd`/results/current_machine" ;
+echo "${prefixString} The output of each step will be stored in `pwd`/output.txt" ;
+echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current state at finer granularity)" ;
 echo "" ;
 
 # Compile NOELLE
@@ -17,7 +18,7 @@ source NOELLE/enable ;
 export NOELLE_CORES=8 ;
 
 # Compile all benchmarks
-echo "${prefixString} Start compiling all benchmarks for all configurations (WARNING: this will take several hours)";
+echo "${prefixString} Start compiling all benchmarks for all configurations";
 ./scripts/compile_benchmarks.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All benchmarks have been compiled for all configurations" ;
 
