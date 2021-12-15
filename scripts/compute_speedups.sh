@@ -81,7 +81,7 @@ for currentDirectory in `ls` ; do
   echo "Benchmark suite $currentDirectory" ;
 
   # Consider all optimizations
-  for optimizationName in DOALL HELIX DSWP ; do
+  for optimizationName in DOALL HELIX DSWP NONE ; do
     echo "  Optimization $optimizationName" ;
 
     # Clean previous files
