@@ -22,11 +22,12 @@ function compute_median {
 
   return ;
 }
+
 function analyze_results {
   local benchSuite="$1" ;
 
   # Check if the benchmark suite has been compiled
-  if ! test -d ${benchSuite}/benchmarks ; then
+  if ! test -d ${benchSuite}/baseline ; then
     return ;
   fi
 
@@ -34,16 +35,16 @@ function analyze_results {
   pushd ./ ;
   cd ${benchSuite} ;
   local bench;
-  for bench in `ls benchmarks` ; do
+  for bench in `ls baseline` ; do
 
     # Check if the benchmark run
-    outputFile="${currentResults}/${bench}.txt" ;
+    outputFile="${currentResults}/${bench}" ;
     if ! test -e $outputFile ; then
       continue ;
     fi
 
     # Fetch the baseline time
-    baselineResults="${dirResult}/${currentDirectory}/baseline/${bench}.txt" ;
+    baselineResults="baseline/${bench}" ;
     if ! test -f $baselineResults ; then
       continue ;
     fi
@@ -64,16 +65,27 @@ function analyze_results {
   return ;
 }
 
-# Define the directory where we are going to dump the results
-origDir=`pwd` ;
-dirResult="${origDir}/results/current_machine/time"; 
+# Fetch the input
+if test $# -lt 1 ; then
+  echo "USAGE: `basename $0` TIME_DIR" ;
+  exit 1;
+fi
+dirResult="$1" ;
+
+# Check the results
+if ! test -d $dirResult ; then
+  echo "The directory \"${dirResult}\" does not exist" ;
+  exit 1;
+fi
+echo $dirResult ;
 
 # Create a temporary file
+origDir=`pwd` ;
 tempFile=`mktemp` ;
 
 # Generate the results for all benchmarks in all benchmark suites
 pushd ./ ;
-cd all_benchmark_suites/build ;
+cd $dirResult ; 
 for currentDirectory in `ls` ; do
   if ! test -d $currentDirectory ; then
     continue ;
@@ -82,7 +94,6 @@ for currentDirectory in `ls` ; do
 
   # Consider all optimizations
   for optimizationName in DOALL HELIX DSWP NONE ; do
-    echo "  Optimization $optimizationName" ;
 
     # Clean previous files
     rm -f "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
@@ -94,6 +105,7 @@ for currentDirectory in `ls` ; do
     fi
 
     # Analyze the results
+    echo "  Optimization $optimizationName" ;
     analyze_results $currentDirectory ;
   done
 
