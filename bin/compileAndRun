@@ -23,7 +23,7 @@ echo "${prefixString} Start compiling all benchmarks for all configurations";
 echo "${prefixString}   All benchmarks have been compiled for all configurations" ;
 
 # Generate statistics about loops
-echo "${prefixString} Start generating statistics about loops (this one should take less than 30 minutes)" ;
+echo "${prefixString} Start generating statistics about loops" ;
 ./scripts/loops.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All loop statistics are generated" ;
 
@@ -65,7 +65,7 @@ fi
 if test "${run_HELIX_DSWP}" == "1" ; then
 
     # Generate times of HELIX parallelized binaries for all benchmarks
-    echo "${prefixString} Start running NOELLE HELIX binaries (this will take a few hours)";
+    echo "${prefixString} Start running NOELLE HELIX binaries";
     ./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
     echo "${prefixString}   NOELLE HELIX IR files are generated" ;
     ./scripts/generate_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
@@ -74,7 +74,7 @@ if test "${run_HELIX_DSWP}" == "1" ; then
     echo "${prefixString}   All NOELLE HELIX binaries have run" ;
 
     # Generate times of DSWP parallelized binaries for all benchmarks
-    echo "${prefixString} Start running NOELLE DSWP binaries (this will take a few hours)";
+    echo "${prefixString} Start running NOELLE DSWP binaries";
     ./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
     echo "${prefixString}   NOELLE DSWP IR files are generated" ;
     ./scripts/generate_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
