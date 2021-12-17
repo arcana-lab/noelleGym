@@ -69,12 +69,13 @@ def process(pathToFiles):
   dataAll = {"LLVM" : [], "NOELLE" : []}
   for bsuite in bsuites:
     for elem in data[bsuite]:
-      dataAll["LLVM"].append(elem[1])
-      dataAll["NOELLE"].append(elem[2]-elem[1]) # it's relative
+      dataAll["LLVM"].append(elem[1] - elem[2]) # it's relative
+      dataAll["NOELLE"].append(elem[2])
 
   return dataAll, bsuites, benchmarks, benchmarksPerBsuite
 
 def plot(data, bsuites, benchmarks, benchmarksPerBsuite):
+  compilers = ["NOELLE", "LLVM" ]
   colorsMap = {"LLVM" : "black", "NOELLE" : "red"}
 
   # Create plot
@@ -86,7 +87,7 @@ def plot(data, bsuites, benchmarks, benchmarksPerBsuite):
   xTicks = range(len(benchmarks))
   rects = []
   acc = [0]*len(benchmarks)
-  for compiler in data:
+  for compiler in compilers:
     rects.append(ax.bar(xTicks, data[compiler], barWidth, color = colorsMap[compiler], label = compiler, bottom = acc))
     acc = np.add(acc, data[compiler]).tolist()
 
