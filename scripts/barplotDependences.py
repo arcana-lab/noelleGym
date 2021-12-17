@@ -99,13 +99,13 @@ def plot(data, bsuites, benchmarks, benchmarksPerBsuite):
   matplotlib.rcParams.update({'font.size': fontSize})
 
   # Set y label
-  ax.set_ylabel('Dependences [%]', fontsize = fontSize)
+  ax.set_ylabel('Dep [%]', fontsize = fontSize)
 
   # Set y values
   ymin = 0
   ymax = 100
   ystep = 20
-  ygap = 30
+  ygap = 0
 
   # Set plot ticks
   plt.xticks(x, benchmarks, fontsize = fontSize, rotation = 45, ha = 'right')
@@ -140,14 +140,14 @@ def plot(data, bsuites, benchmarks, benchmarksPerBsuite):
   ax.set_axisbelow(True)
 
   # Legend
-  ax.legend(fontsize = fontSize, fancybox = False, framealpha = 1, ncol = len(data), loc = 'upper right', borderpad = 0.3)
+  ax.legend(fontsize = fontSize, fancybox = False, framealpha = 1, ncol = len(data), loc = 'center', borderpad = 0.3)
 
   # Change font type (useful for papers)
   matplotlib.rcParams['pdf.fonttype'] = 42
   matplotlib.rcParams['ps.fonttype'] = 42
 
   # Set aspect
-  ax.set_aspect(0.04)
+  ax.set_aspect(0.03)
   plt.tight_layout()
 
   # Save figure
