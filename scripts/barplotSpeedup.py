@@ -138,7 +138,7 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
     x.append(np.median([elem[i] for elem in xTicksAcc]))
 
   ymin = 0
-  ymax = 14
+  ymax = 12
   ystep = 2
 
   plt.xticks(x, benchmarks, fontsize = 5, rotation = 45, ha = 'right')
@@ -152,8 +152,8 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
   ax.set_ylim(ymin = ymin, ymax = ymax + 1)
 
   # Lines
-  ax.plot([xmin, xmax], [1, 1], '-', color = 'red', linewidth = lineWidth, zorder = 0)
-  ax.plot([xmin, xmax], [ymax, ymax], '-', color = 'red', linewidth = lineWidth, zorder = 1)
+  ax.plot([xmin, xmax], [1, 1], '-', color = 'red', linewidth = lineWidth + 0.1, zorder = 0)
+  ax.plot([xmin, xmax], [ymax, ymax], '-', color = 'red', linewidth = lineWidth + 0.1, zorder = 1)
   numOfBenchmarks = 0
   for bsuite in benchmarksPerBsuite:
     numOfBenchmarks += len(benchmarksPerBsuite[bsuite])
@@ -170,9 +170,9 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
   ax.annotate('Performance\nobtained by\nthe parallelization\ndone by\na NOELLE custom tool', fontsize=fontSizeAnnotation, xy=(x[6] + (x[7] - x[6])/2, ymin + 4.6), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
   ax.annotate('', xy=(x[10] + (x[11] - x[10])/2, ymax), xytext=(x[10] + (x[11] - x[10])/2, ymin + 1), arrowprops = dict(arrowstyle='<->', lw = lineWidth))
   ax.annotate('icc did not extract parallelism', fontsize=fontSizeAnnotation, xy=(x[15], ymin + 6.3), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('', xy=(x[19] + 3*barWidth, ymin + 6.3), xytext=(x[19] + 3*barWidth, ymin + 1), arrowprops = dict(arrowstyle='<-', lw =lineWidth ))
-  ax.annotate('gcc did not extract parallelism', fontsize=fontSizeAnnotation, xy=(x[20], ymin + 8.3), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('', xy=(x[24] + barWidth/2, ymin + 8.3), xytext=(x[24] + barWidth/2, ymin + 3.2), arrowprops = dict(arrowstyle='<-', lw = lineWidth))
+  ax.annotate('', xy=(x[19] + 3*barWidth, ymin + 6.3), xytext=(x[19] + 3*barWidth, ymin + 0.8), arrowprops = dict(arrowstyle='<-', lw =lineWidth ))
+  ax.annotate('gcc did not extract parallelism', fontsize=fontSizeAnnotation, xy=(x[23] - barWidth, ymin + 6.3), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
+  ax.annotate('', xy=(x[24] + barWidth/2, ymin + 6.3), xytext=(x[24] + barWidth/2, ymin + 3.2), arrowprops = dict(arrowstyle='<-', lw = lineWidth))
 
   ax.yaxis.grid(True, color = 'gray', ls = '--', lw = lineWidth)
   ax.set_axisbelow(True)
