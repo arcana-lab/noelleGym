@@ -1,7 +1,7 @@
 # NOELLE Gym
 
 This repository is designed to test NOELLE and its transformations to well established benchmark suites.
-The open-sourced version of this repository is [here](https://github.com/scampanoni/NOELLEGym).
+The open-sourced version of this repository is [here](https://github.com/scampanoni/noelleGym).
 
 This repository also includes the evaluation materials for the NOELLE CGO 2022 paper: "NOELLE Offers Empowering LLVM Extensions" that can be found [here](http://www.cs.northwestern.edu/~simonec).
 
