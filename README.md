@@ -10,7 +10,7 @@ This repository also includes the evaluation materials for the NOELLE CGO 2022 p
 
 
 ## Table of Contents
-- [Artifact](/README.md#artifactdescription)
+- [Artifact](/README.md#artifact)
 - [Data organization](/README.md#data-organization)
 
 
