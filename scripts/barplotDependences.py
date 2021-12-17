@@ -99,7 +99,7 @@ def plot(data, bsuites, benchmarks, benchmarksPerBsuite):
   matplotlib.rcParams.update({'font.size': fontSize})
 
   # Set y label
-  ax.set_ylabel('Dep [%]', fontsize = fontSize)
+  ax.set_ylabel('Deps [%]', fontsize = fontSize)
 
   # Set y values
   ymin = 0
