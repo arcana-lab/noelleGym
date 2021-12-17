@@ -141,7 +141,7 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
   ymax = 14
   ystep = 2
 
-  plt.xticks(x, benchmarks, fontsize = fontSize, rotation = 45, ha = 'right')
+  plt.xticks(x, benchmarks, fontsize = 5, rotation = 45, ha = 'right')
   plt.yticks(range(ymin, ymax + 1, ystep), fontsize = fontSize)
 
   mul = 50
