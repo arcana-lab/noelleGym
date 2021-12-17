@@ -111,7 +111,7 @@ def plot(data, bsuites, benchmarks, benchmarksPerBsuite):
   ymin = 0
   ymax = 100
   ystep = 20
-  ygap = 30
+  ygap = 0
 
   # Set plot ticks
   plt.xticks(x, benchmarks, fontsize = fontSize, rotation = 45, ha = 'right')
