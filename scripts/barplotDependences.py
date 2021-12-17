@@ -95,7 +95,8 @@ def plot(data, bsuites, benchmarks, benchmarksPerBsuite):
   x = xTicks
 
   # Set font size for the whole plot
-  fontSize = 6
+  lineWidth = 0.5
+  fontSize = 5
   matplotlib.rcParams.update({'font.size': fontSize})
 
   # Set y label
@@ -133,21 +134,21 @@ def plot(data, bsuites, benchmarks, benchmarksPerBsuite):
     xLine0 = x[numOfBenchmarks - 1]
     xLine1 = x[numOfBenchmarks]
     xLine = xLine0 + (xLine1 - xLine0)/2.0
-    ax.plot([xLine, xLine], [ymin, ymax + ygap], '--', color = 'gray', linewidth = 1.0, zorder = 0)
+    ax.plot([xLine, xLine], [ymin, ymax + ygap], '--', color = 'gray', linewidth = lineWidth, zorder = 0)
 
   # Grid
-  ax.yaxis.grid(True, color = 'gray', ls = '--', linewidth = 1.0)
+  ax.yaxis.grid(True, color = 'gray', ls = '--', linewidth = lineWidth)
   ax.set_axisbelow(True)
 
   # Legend
-  ax.legend(fontsize = fontSize, fancybox = False, framealpha = 1, ncol = len(data), loc = 'center', borderpad = 0.2)
+  ax.legend(fontsize = fontSize, fancybox = False, framealpha = 1, ncol = len(data), loc = 'center left', borderpad = 0.2)
 
   # Change font type (useful for papers)
   matplotlib.rcParams['pdf.fonttype'] = 42
   matplotlib.rcParams['ps.fonttype'] = 42
 
   # Set aspect
-  ax.set_aspect(0.02)
+  ax.set_aspect(0.03)
   plt.tight_layout()
 
   # Save figure

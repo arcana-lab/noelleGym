@@ -107,6 +107,7 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
     benchmarks.append(bsuite)
   benchmarks.append("Overall")
 
+  lineWidth = 0.5
   fontSize = 6
 
   fig = plt.figure()
@@ -151,29 +152,29 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
   ax.set_ylim(ymin = ymin, ymax = ymax + 1)
 
   # Lines
-  ax.plot([xmin, xmax], [1, 1], '-', color = 'red', linewidth = 1.0, zorder = 0)
-  ax.plot([xmin, xmax], [ymax, ymax], '-', color = 'red', linewidth = 1.0, zorder = 1)
+  ax.plot([xmin, xmax], [1, 1], '-', color = 'red', linewidth = lineWidth, zorder = 0)
+  ax.plot([xmin, xmax], [ymax, ymax], '-', color = 'red', linewidth = lineWidth, zorder = 1)
   numOfBenchmarks = 0
   for bsuite in benchmarksPerBsuite:
     numOfBenchmarks += len(benchmarksPerBsuite[bsuite])
     xLine0 = x[numOfBenchmarks - 1]
     xLine1 = x[numOfBenchmarks]
     xLine = xLine0 + (xLine1 - xLine0)/2.0
-    ax.plot([xLine, xLine], [ymin, ymax + 1], '--', color = 'gray', linewidth = 1.0, zorder = 0)
+    ax.plot([xLine, xLine], [ymin, ymax + 1], '--', color = 'gray', linewidth = lineWidth, zorder = 0)
 
   # Annotations and arrows
   fontSizeAnnotation = fontSize - 1.5
   ax.annotate('Number of cores', fontsize=fontSizeAnnotation, xy=(x[0], ymax - 1), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
   ax.annotate('clang -O3 -march=native', fontsize=fontSizeAnnotation, xy=(x[1], ymin + 6.3), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('', xy=(x[1] + (x[2] - x[1])/2, ymin + 6.3), xytext=(x[1] + (x[2] - x[1])/2, ymin + 1), arrowprops = dict(arrowstyle='<-', lw = 1.0))
+  ax.annotate('', xy=(x[1] + (x[2] - x[1])/2, ymin + 6.3), xytext=(x[1] + (x[2] - x[1])/2, ymin + 1), arrowprops = dict(arrowstyle='<-', lw = lineWidth))
   ax.annotate('Performance\nobtained by\nthe parallelization\ndone by\na NOELLE custom tool', fontsize=fontSizeAnnotation, xy=(x[6] + (x[7] - x[6])/2, ymin + 4.6), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('', xy=(x[10] + (x[11] - x[10])/2, ymax), xytext=(x[10] + (x[11] - x[10])/2, ymin + 1), arrowprops = dict(arrowstyle='<->', lw = 1.0))
+  ax.annotate('', xy=(x[10] + (x[11] - x[10])/2, ymax), xytext=(x[10] + (x[11] - x[10])/2, ymin + 1), arrowprops = dict(arrowstyle='<->', lw = lineWidth))
   ax.annotate('icc did not extract parallelism', fontsize=fontSizeAnnotation, xy=(x[15], ymin + 6.3), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('', xy=(x[19] + 3*barWidth, ymin + 6.3), xytext=(x[19] + 3*barWidth, ymin + 1), arrowprops = dict(arrowstyle='<-', lw = 1.0))
+  ax.annotate('', xy=(x[19] + 3*barWidth, ymin + 6.3), xytext=(x[19] + 3*barWidth, ymin + 1), arrowprops = dict(arrowstyle='<-', lw =lineWidth ))
   ax.annotate('gcc did not extract parallelism', fontsize=fontSizeAnnotation, xy=(x[20], ymin + 8.3), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('', xy=(x[24] + barWidth/2, ymin + 8.3), xytext=(x[24] + barWidth/2, ymin + 3.2), arrowprops = dict(arrowstyle='<-', lw = 1.0))
+  ax.annotate('', xy=(x[24] + barWidth/2, ymin + 8.3), xytext=(x[24] + barWidth/2, ymin + 3.2), arrowprops = dict(arrowstyle='<-', lw = lineWidth))
 
-  ax.yaxis.grid(True, color = 'gray', ls = '--')
+  ax.yaxis.grid(True, color = 'gray', ls = '--', lw = lineWidth)
   ax.set_axisbelow(True)
 
   ax.tick_params(axis = 'x', direction = 'out', top = False)
@@ -185,6 +186,8 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
 
   ax.set_aspect(0.3)
 
+  #plt.margins(x=0, y=0)
+  #plt.setp(ax.xaxis.get_majorticklabels(), ha='right')
   plt.tight_layout()
   plt.savefig('./barplotSpeedup.pdf', format = 'pdf')
 
