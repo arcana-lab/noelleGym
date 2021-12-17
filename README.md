@@ -1,10 +1,7 @@
 # NOELLE Gym
 
 This repository is designed to test NOELLE and its transformations to well established benchmark suites.
-The open-sourced version of this repository is
-```
-https://github.com/scampanoni/NOELLEGym
-```
+The open-sourced version of this repository is [here](https://github.com/scampanoni/NOELLEGym).
 
 This repository also includes the evaluation materials for the NOELLE CGO 2022 paper: "NOELLE Offers Empowering LLVM Extensions" that can be found [here](http://www.cs.northwestern.edu/~simonec).
 
@@ -33,8 +30,8 @@ The artifact is available as a docker image.
 The artifact will generate the results when invoking the script ```./bin/compileAndRun```.
 The results set that is generated depends on the envionment variables set (see below).
 
-We open sourced NOELLE, VIRGIL, and the SCAF alias analysis framework in 2020.
-We also open sourced the infrastructure we built to evaluate NOELLE on several benchmark suites (e.g., PARSEC, MiBench, SPEC CPU2017, PolyBench).
+We open sourced [NOELLE](https://github.com/scampanoni/noelle), [VIRGIL](https://github.com/scampanoni/virgil), and the [SCAF](https://github.com/PrincetonUniversity/SCAF) alias analysis framework in 2020.
+We also open sourced the [infrastructure](https://github.com/scampanoni/wholeprogram_benchmarks) we built to evaluate NOELLE on several benchmark suites (e.g., PARSEC, MiBench, SPEC CPU2017, PolyBench).
 Hence, this artifact will download everything is needed by cloning the open-sourced repositories.
 This means the script ``bin/compileAndRun`` will clone the open sourced git repositories (from GitHub) that are not included within the docker image.
 So please make sure to have a network connection when you run the artifact.
