@@ -1,13 +1,22 @@
+DOCKER := $(shell command -v docker 2> /dev/null)
+PODMAN := $(shell command -v podman 2> /dev/null)
+
+ifdef PODMAN
+	d := podman
+else
+	d := docker
+endif
+
 all: noelle.tar
 
 noelle.tar:
-	cd .. && docker build -t noelle --progress=plain -f ./docker/CGO_NOELLE_dockerfile .
-	docker image save -o noelle.tar noelle
+	cd .. && $(d) build -t noelle --progress=plain -f ./docker/CGO_NOELLE_dockerfile .
+	$(d) image save -o noelle.tar noelle
 
 open:
-	docker load < noelle.tar
-	docker run --rm -it noelle /bin/bash
+	$(d) load < noelle.tar
+	$(d) run --rm -it noelle /bin/bash
 
 clean:
 	rm -f noelle.tar
-	docker image rmi noelle
+	$(d) image rmi noelle
