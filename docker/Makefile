@@ -19,4 +19,4 @@ open:
 
 clean:
 	rm -f noelle.tar
-	$(d) image rmi noelle
+	$(d) image rm -f noelle
