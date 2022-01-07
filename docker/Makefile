@@ -10,7 +10,7 @@ endif
 all: noelle.tar
 
 noelle.tar:
-	cd .. && $(d) build -t noelle --progress=plain -f ./docker/CGO_NOELLE_dockerfile .
+	cd .. && $(d) build -t noelle -f ./docker/CGO_NOELLE_dockerfile .
 	$(d) image save -o noelle.tar noelle
 
 open:
