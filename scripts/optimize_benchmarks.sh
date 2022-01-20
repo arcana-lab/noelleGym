@@ -67,13 +67,11 @@ source NOELLE/enable ;
 
 # Compile all benchmark suites
 cd all_benchmark_suites/build ;
+compile_suite "PolyBench" ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
 if ! test -z ${NOELLE_SPEC} ; then
   compile_suite "SPEC2017" ;
-fi
-if ! test -z ${NOELLE_FINAL} ; then
-  compile_suite "PolyBench" ;
 fi
 
 # Cache the bitcode files
