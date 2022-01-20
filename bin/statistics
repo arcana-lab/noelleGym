@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+prefixString="### NOELLE Gym ###" ;
+
+# Generate statistics
+echo "${prefixString} Start generating statistics" ;
+./scripts/loops.sh >> output.txt 2>&1 ;
+echo "${prefixString}   All loop statistics are generated" ;
+./scripts/compute_dependences.sh >> output.txt 2>&1 ;
+echo "${prefixString}   Dependences statistics are generated" ;
+./scripts/parallelization_stats.sh "./results/current_machine/IR" "./results/current_machine/parallelization" >> output.txt 2>&1 ;
+echo "${prefixString}   Statistics about parallelizations are generated" ;
