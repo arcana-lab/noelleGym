@@ -13,60 +13,8 @@ echo "" ;
 # Compute statistics
 ./bin/statistics ;
 
-# Configure NOELLE
-source NOELLE/enable ;
-export NOELLE_CORES=8 ;
-
 # Run the binaries
-echo "${prefixString} Start running baseline binaries";
-./scripts/generate_baseline_binaries.sh >> output.txt 2>&1 ;
-echo "${prefixString}   Binaries for baseline are generated" ;
-./scripts/run_baseline.sh >> output.txt 2>&1 ;
-echo "${prefixString}   All baseline binaries are run" ;
-
-# Generate times for parallelization enablers
-echo "${prefixString} Start running NOELLE enablers binaries";
-./scripts/copy_NOELLE_enablers.sh >> output.txt 2>&1 ;
-./scripts/generate_NOELLE_binaries.sh "NONE" >> output.txt 2>&1 ;
-echo "${prefixString}   Binaries are generated" ;
-./scripts/run_NOELLE_binaries.sh "NONE" >> output.txt 2>&1 ;
-echo "${prefixString}   Binaries have run" ;
-
-# Generate times of DOALL parallelized binaries for all benchmarks
-echo "${prefixString} Start running NOELLE DOALL binaries";
-./scripts/generate_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
-echo "${prefixString}   NOELLE DOALL binaries are generated" ;
-./scripts/run_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
-echo "${prefixString}   All NOELLE DOALL binaries have run" ;
-
-# Check if we need to run HELIX and DSWP
-run_HELIX_DSWP="0";
-if ! test -z ${NOELLE_SUBMISSION} ; then
-  run_HELIX_DSWP="1";
-fi
-if ! test -z ${NOELLE_FINAL} ; then
-  run_HELIX_DSWP="1";
-fi
-if test "${run_HELIX_DSWP}" == "1" ; then
-
-    # Generate times of HELIX parallelized binaries for all benchmarks
-    echo "${prefixString} Start running NOELLE HELIX binaries";
-    ./scripts/generate_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
-    echo "${prefixString}   NOELLE HELIX binaries are generated" ;
-    ./scripts/run_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
-    echo "${prefixString}   All NOELLE HELIX binaries have run" ;
-
-    # Generate times of DSWP parallelized binaries for all benchmarks
-    echo "${prefixString} Start running NOELLE DSWP binaries";
-    ./scripts/generate_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
-    echo "${prefixString}   NOELLE DSWP binaries are generated" ;
-    ./scripts/run_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
-    echo "${prefixString}   All NOELLE DSWP binaries have run" ;
-fi
-
-# Compute the parallelization statistics
-echo "${prefixString} Compute the impact of the parallelization techniques" ;
-./scripts/compute_speedups.sh "`pwd`/results/current_machine/time" >> output.txt 2>&1 ;
+./bin/run ;
 
 # Clean
 echo "${prefixString} Clean" ;
