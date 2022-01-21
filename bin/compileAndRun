@@ -8,31 +8,17 @@ echo "${prefixString} The output of each step will be stored in `pwd`/output.txt
 echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current state at finer granularity)" ;
 echo "" ;
 
-# Compile NOELLE
-echo "${prefixString} Start compiling NOELLE" ;
-./scripts/compile_NOELLE.sh >> output.txt 2>&1 ;
-echo "${prefixString}   NOELLE has been compiled succesfully" ;
+# Compile the system and the benchmarks
+./bin/compile ;
+
+# Compute statistics
+./bin/statistics ;
 
 # Configure NOELLE
 source NOELLE/enable ;
 export NOELLE_CORES=8 ;
 
-# Compile all benchmarks
-echo "${prefixString} Start compiling all benchmarks for all configurations";
-./scripts/compile_benchmarks.sh >> output.txt 2>&1 ;
-echo "${prefixString}   All benchmarks have been compiled for all configurations" ;
-
-# Generate statistics about loops
-echo "${prefixString} Start generating statistics about loops" ;
-./scripts/loops.sh >> output.txt 2>&1 ;
-echo "${prefixString}   All loop statistics are generated" ;
-
-# Generate statistics about dependences
-echo "${prefixString} Start generating statistics about dependences" ;
-./scripts/compute_dependences.sh >> output.txt 2>&1 ;
-echo "${prefixString}   Dependences statistics are generated" ;
-
-# Generate times of baseline binaries for all benchmarks
+# Run the binaries
 echo "${prefixString} Start running baseline binaries";
 ./scripts/generate_baseline_binaries.sh >> output.txt 2>&1 ;
 echo "${prefixString}   Binaries for baseline are generated" ;
@@ -66,8 +52,6 @@ if test "${run_HELIX_DSWP}" == "1" ; then
 
     # Generate times of HELIX parallelized binaries for all benchmarks
     echo "${prefixString} Start running NOELLE HELIX binaries";
-    ./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
-    echo "${prefixString}   NOELLE HELIX IR files are generated" ;
     ./scripts/generate_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
     echo "${prefixString}   NOELLE HELIX binaries are generated" ;
     ./scripts/run_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
@@ -75,8 +59,6 @@ if test "${run_HELIX_DSWP}" == "1" ; then
 
     # Generate times of DSWP parallelized binaries for all benchmarks
     echo "${prefixString} Start running NOELLE DSWP binaries";
-    ./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
-    echo "${prefixString}   NOELLE DSWP IR files are generated" ;
     ./scripts/generate_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
     echo "${prefixString}   NOELLE DSWP binaries are generated" ;
     ./scripts/run_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
@@ -85,7 +67,6 @@ fi
 
 # Compute the parallelization statistics
 echo "${prefixString} Compute the impact of the parallelization techniques" ;
-./scripts/parallelization_stats.sh "./results/current_machine/IR" "./results/current_machine/parallelization" >> output.txt 2>&1 ;
 ./scripts/compute_speedups.sh "`pwd`/results/current_machine/time" >> output.txt 2>&1 ;
 
 # Clean
