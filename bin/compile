@@ -20,24 +20,15 @@ export NOELLE_CORES=8 ;
 echo "${prefixString} Start compiling all benchmarks for all configurations";
 ./scripts/compile_benchmarks.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All benchmarks have been compiled for enablers-only and DOALL" ;
-run_HELIX_DSWP="0";
-if ! test -z ${NOELLE_SUBMISSION} ; then
-  run_HELIX_DSWP="1";
-fi
-if ! test -z ${NOELLE_FINAL} ; then
-  run_HELIX_DSWP="1";
-fi
-if test "${run_HELIX_DSWP}" == "1" ; then
 
-  # Generate times of HELIX parallelized binaries for all benchmarks
-  echo "${prefixString} Start running NOELLE HELIX binaries";
-  ./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
-  echo "${prefixString}   All benchmarks have been compiled for HELIX" ;
+# Generate times of HELIX parallelized binaries for all benchmarks
+echo "${prefixString} Start running NOELLE HELIX binaries";
+./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
+echo "${prefixString}   All benchmarks have been compiled for HELIX" ;
 
-  # Generate times of DSWP parallelized binaries for all benchmarks
-  ./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
-  echo "${prefixString}   All benchmarks have been compiled for DSWP" ;
-fi
+# Generate times of DSWP parallelized binaries for all benchmarks
+./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
+echo "${prefixString}   All benchmarks have been compiled for DSWP" ;
 
 # Clean
 echo "${prefixString} Clean" ;

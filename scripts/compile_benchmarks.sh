@@ -20,7 +20,7 @@ function compile_benchmark {
       return ;
     fi
   fi
-  if test -z ${NOELLE_SUBMISSION} ; then
+  if test -z ${NOELLE_FINAL} ; then
     if test $benchToOptimize == "omnetpp_r" ; then
       return ;
     fi
