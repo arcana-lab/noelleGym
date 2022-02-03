@@ -11,12 +11,8 @@ echo "" ;
 source NOELLE/enable ;
 export NOELLE_CORES=8 ;
 
-# Run the binaries
-echo "${prefixString} Start running baseline binaries";
-./scripts/generate_baseline_binaries.sh >> output.txt 2>&1 ;
-echo "${prefixString}   Binaries for baseline are generated" ;
-./scripts/run_baseline.sh >> output.txt 2>&1 ;
-echo "${prefixString}   All baseline binaries are run" ;
+# Generate and run the baseline binaries
+./bin/runBaseline
 
 # Generate times for parallelization enablers
 echo "${prefixString} Start running NOELLE enablers binaries";

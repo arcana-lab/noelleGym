@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+prefixString="### NOELLE Gym: Run baseline ###" ;
+echo "${prefixString} All benchmarks from all benchmark suites will run" ;
+echo "${prefixString} Results will be stored in `pwd`/results/current_machine" ;
+echo "${prefixString} The output of each step will be stored in `pwd`/output.txt" ;
+echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current state at finer granularity)" ;
+echo "" ;
+
+# Configure NOELLE
+source NOELLE/enable ;
+export NOELLE_CORES=8 ;
+
+# Run the binaries
+echo "${prefixString} Start running baseline binaries";
+./scripts/generate_baseline_binaries.sh >> output.txt 2>&1 ;
+echo "${prefixString}   Binaries for baseline are generated" ;
+./scripts/run_baseline.sh >> output.txt 2>&1 ;
+echo "${prefixString}   All baseline binaries are run" ;
