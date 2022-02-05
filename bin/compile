@@ -7,22 +7,25 @@ echo "${prefixString} The output of each step will be stored in `pwd`/output.txt
 echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current state at finer granularity)" ;
 echo "" ;
 
-# Compile NOELLE
-echo "${prefixString} Start compiling NOELLE" ;
-./scripts/compile_NOELLE.sh >> output.txt 2>&1 ;
-echo "${prefixString}   NOELLE has been compiled succesfully" ;
-
 # Configure NOELLE
 source NOELLE/enable ;
 export NOELLE_CORES=8 ;
+
+# Setup
+echo "${prefixString} Setup" ;
+./bin/setup >> output.txt 2>&1 ;
 
 # Compile all benchmarks
 echo "${prefixString} Start compiling all benchmarks for all configurations";
 ./scripts/compile_benchmarks.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All benchmarks have been compiled for enablers-only and DOALL" ;
 
-# Generate times of HELIX parallelized binaries for all benchmarks
+# Compile using DOALL 
 echo "${prefixString} Start generating parallelized binaries";
+./scripts/optimize_benchmarks.sh "DOALL" >> output.txt 2>&1 ;
+echo "${prefixString}   All benchmarks have been compiled for DOALL" ;
+
+# Generate times of HELIX parallelized binaries for all benchmarks
 ./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
 echo "${prefixString}   All benchmarks have been compiled for HELIX" ;
 

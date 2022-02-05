@@ -5,9 +5,10 @@ function compile_benchmark {
   local benchToOptimize=$2 ;
 
   # Check if the benchmark has been optimized already
-  if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_DOALL.bc ; then
+  if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc ; then
     return ;
   fi
+  cp ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc benchmarks/${benchToOptimize}/ ;
 
   # Check if we should generate extra data
   if test -z ${NOELLE_FINAL} ; then
@@ -44,7 +45,7 @@ function compile_benchmark {
   fi
 
   # Copy the optimization-specific makefile
-  cp ${origDir}/makefiles/${suite}/DOALL/Makefile makefiles/ ;
+  cp ${origDir}/makefiles/${suite}/NONE/Makefile makefiles/ ;
 
   # The benchmark needs to be optimized
   echo "    Compile the benchmark $benchToOptimize" ;
@@ -58,41 +59,15 @@ function compile_suite {
 
   pushd ./ ;
   cd $suite ;
-  echo "Compile the benchmark suite $suite" ;
+  echo "Considering the benchmark suite $suite" ;
 
-  # Generate the single bitcode file for all benchmarks of the suite
+  # Check if the benchmark suite has the baseline IR
   if ! test -d benchmarks ; then
 
-    # Fetch the file name of the archive
-    if test "$suite" == "PARSEC3" ; then
-      benchmarkSuiteArchive="${origDir}/benchmarkSuites/parsec-3.0.tar.gz"; 
-      wget --no-check-certificate http://parsec.cs.princeton.edu/download/3.0/parsec-3.0.tar.gz -O "${benchmarkSuiteArchive}" ;
-
-    elif test "$suite" == "MiBench" ; then
-      benchmarkSuiteArchive="${origDir}/benchmarkSuites/mibench-master.tar.bz2"; 
-
-    elif test "$suite" == "PolyBench" ; then
-      benchmarkSuiteArchive="${origDir}/benchmarkSuites/polybench-3.1.tar.gz"; 
-
-    else
-      benchmarkSuiteArchive="${origDir}/benchmarkSuites/SPEC2017.tar.gz" ;
-    fi
-    
-    # Check if the file exists
-    if ! test -e "${benchmarkSuiteArchive}" ; then
-      echo "ERROR = The file ${benchmarkSuiteArchive} does not exist" ;
-      popd ;
-      return ;
-    fi
-
-    # Copy the archive and generate a whole-IR file for each benchmark
-    echo "  Benchmarks need to be translated into a single-IR file" ;
-    make TAR="${benchmarkSuiteArchive}"; 
-
-  else
-    echo "  Copy the single-IR files of benchmarks" ;
-    make clean ; 
-    make bitcode_copy ;
+    # The benchmark suite does not have the baseline IR
+    echo "  The benchmark suite doesn't have the baseline IR. Skip this suite." ;
+    popd ;
+    return ;
   fi
 
   # Fetch the benchmarks that might need to be optimized
@@ -110,19 +85,11 @@ origDir="`pwd`" ;
 # Enable NOELLE
 source NOELLE/enable ;
 
-# Download the git repository
-if ! test -d all_benchmark_suites ; then
-  git clone https://github.com/scampanoni/wholeprogram_benchmarks.git all_benchmark_suites
-fi
-
-# Setup the git repository
-cd all_benchmark_suites ;
-if ! test -e install ; then
-  make ;
-fi
+# Copy the baseline IR files
+./scripts/copy_baseline_IRs.sh ;
 
 # Compile all benchmark suites
-cd build ;
+cd ${origDir}/all_benchmark_suites/build ;
 compile_suite "PolyBench" ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
@@ -132,13 +99,11 @@ fi
 
 # Cache the bitcode files
 outputDir="${origDir}/results/current_machine" ;
-for i in `ls */benchmarks/*/baseline_parallelized.bc` ; do
+for i in `ls */benchmarks/*/baseline_with_metadata.bc` ; do
   echo $i ;
 
   dirName="`dirname $i`" ;
   echo $dirName
   mkdir -p ${outputDir}/IR/${dirName} ;
-  cp ${dirName}/NOELLE_input.bc ${outputDir}/IR/${dirName} ;
   cp ${dirName}/baseline_with_metadata.bc ${outputDir}/IR/${dirName} ;
-  cp ${dirName}/baseline_parallelized.bc ${outputDir}/IR/${dirName}/baseline_parallelized_DOALL.bc ;
 done

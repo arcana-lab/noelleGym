@@ -5,9 +5,10 @@ function compile_benchmark {
   local benchToOptimize=$2 ;
 
   # Check if the baseline IR has been generated
-  if ! test -f ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/NOELLE_input.bc ; then
+  if ! test -f ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc ; then
     return ;
   fi
+  cp ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc benchmarks/${benchToOptimize}/ ;
 
   # Check if the benchmark has been optimized already
   if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_${optimizationName}.bc ; then
@@ -16,11 +17,11 @@ function compile_benchmark {
 
   # Check if there is a benchmark-specific makefile
   if test -f ${origDir}/makefiles/${suite}/${optimizationName}/${benchToOptimize}/Makefile ; then
-    cp ${origDir}/makefiles/${suite}/${optimizationName}/${benchToOptimize}/Makefile makefiles/ ;
+    cp ${origDir}/makefiles/${suite}/${optimizationName}/${benchToOptimize}/* makefiles/ ;
   else
 
     # Copy the optimization-specific makefile
-    cp ${origDir}/makefiles/${suite}/${optimizationName}/Makefile makefiles/ ;
+    cp ${origDir}/makefiles/${suite}/${optimizationName}/* makefiles/ ;
   fi
 
   # The benchmark needs to be optimized
@@ -67,9 +68,9 @@ source NOELLE/enable ;
 
 # Compile all benchmark suites
 cd all_benchmark_suites/build ;
-compile_suite "PolyBench" ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
+compile_suite "PolyBench" ;
 if ! test -z ${NOELLE_SPEC} ; then
   compile_suite "SPEC2017" ;
 fi
