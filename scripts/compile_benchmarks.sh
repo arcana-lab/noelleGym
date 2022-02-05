@@ -74,6 +74,10 @@ function compile_suite {
     elif test "$suite" == "PolyBench" ; then
       benchmarkSuiteArchive="${origDir}/benchmarkSuites/polybench-3.1.tar.gz"; 
 
+    elif test "$suite" == "NAS" ; then
+      benchmarkSuiteArchive="${origDir}/benchmarkSuites/NAS.tgz"; 
+      wget https://github.com/benchmark-subsetting/NPB3.0-omp-C/tarball/master -O "${benchmarkSuiteArchive}" ;
+
     else
       benchmarkSuiteArchive="${origDir}/benchmarkSuites/SPEC2017.tar.gz" ;
     fi
@@ -126,6 +130,7 @@ cd build ;
 compile_suite "PolyBench" ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
+compile_suite "NAS" ;
 if ! test -z ${NOELLE_SPEC} ; then
   compile_suite "SPEC2017" ;
 fi

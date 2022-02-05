@@ -23,11 +23,11 @@ RUNTIME_CFLAGS="-DNDEBUG"
 RUNTIME=Parallelizer_utils
 
 # Libraries
-LIBS=-lm -lstdc++ -lpthread -L/usr/lib64 -L/usr/lib
+LIBS=-lm -lstdc++ -lpthread
 
 all: baseline_parallelized.bc
 
-baseline.bc: all.bc $(RUNTIME).bc
+baseline.bc: $(BENCHMARK).bc $(RUNTIME).bc
 	llvm-link $^ -o $@
 	noelle-norm $@ -o $@
 	mv $< NOELLE_input.bc
@@ -59,7 +59,7 @@ baseline_with_metadata.bc: default.profraw baseline_pre.bc
 baseline_parallelized.bc: baseline_with_metadata.bc
 	noelle-parallelizer $^ -o $@ $(NOELLE_OPTIONS) $(PARALLELIZATION_OPTIONS)
 	llvm-dis $@
-	cp $@ all.bc
+	cp $@ $(BENCHMARK).bc
 
 $(RUNTIME).bc: $(RUNTIME).cpp download
 	$(CPP) $(RUNTIME_CFLAGS) $(INCLUDES) -std=c++17 -emit-llvm $(OPT_LEVEL) -c $< -o $@
