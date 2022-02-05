@@ -7,13 +7,13 @@ echo "${prefixString} The output of each step will be stored in `pwd`/output.txt
 echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current state at finer granularity)" ;
 echo "" ;
 
-# Configure NOELLE
-source NOELLE/enable ;
-export NOELLE_CORES=8 ;
-
 # Setup
 echo "${prefixString} Setup" ;
 ./bin/setup >> output.txt 2>&1 ;
+
+# Configure NOELLE
+source NOELLE/enable ;
+export NOELLE_CORES=8 ;
 
 # Compile all benchmarks
 echo "${prefixString} Start compiling all benchmarks for all configurations";
