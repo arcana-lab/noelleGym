@@ -8,7 +8,6 @@ function compile_benchmark {
   if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc ; then
     return ;
   fi
-  cp ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc benchmarks/${benchToOptimize}/ ;
 
   # Check if we should generate extra data
   if test -z ${NOELLE_FINAL} ; then
@@ -45,7 +44,7 @@ function compile_benchmark {
   fi
 
   # Copy the optimization-specific makefile
-  cp ${origDir}/makefiles/${suite}/NONE/Makefile makefiles/ ;
+  cp ${origDir}/makefiles/${suite}/NONE/* makefiles/ ;
 
   # The benchmark needs to be optimized
   echo "    Compile the benchmark $benchToOptimize" ;
