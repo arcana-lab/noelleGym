@@ -1,15 +1,19 @@
 #!/bin/bash -e
 
-# Libraries
-LIBS="-lm -lstdc++ -lpthread -ltermcap" ;
-
 # Fetch the inputs
-if test $# -lt 1 ; then
-  echo "USAGE: `basename $0` BENCHMARK" ;
+if test $# -lt 2 ; then
+  echo "USAGE: `basename $0` BENCHMARK \"LINKER_OPTIONS\"" ;
   exit 1;
 fi
 bench="$1" ;
-NOELLE_OPTIONS="${@:2}" ;
+LIBS=$2 ;
+NOELLE_OPTIONS="${@:3}" ;
+
+# Correctness checks
+if ! test -e ${bench}.bc ; then
+  echo "ERROR: the IR file ${bench} does not exist" ;
+  exit 1;
+fi
 
 # Check if we have already run the enablers
 if test -e baseline_with_metadata.bc ; then

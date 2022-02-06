@@ -1,1 +1,1 @@
-../runEnablers.sh
+../../runEnablers.sh

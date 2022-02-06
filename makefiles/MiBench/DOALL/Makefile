@@ -7,11 +7,12 @@ BENCHMARK=
 PARALLELIZATION_OPTIONS=-noelle-disable-helix -noelle-disable-dswp
 DISABLE_ENABLERS=-noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier
 NOELLE_OPTIONS=-noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=12 $(DISABLE_ENABLERS)
+LIBS=-lm -lstdc++ -lpthread -ltermcap
 
 all: baseline_parallelized.bc
 
 baseline_with_metadata.bc: 
-	./runEnablers.sh $(BENCHMARK) $(NOELLE_OPTIONS)
+	./runEnablers.sh $(BENCHMARK) "$(LIBS)" $(NOELLE_OPTIONS)
 
 baseline_parallelized.bc: baseline_with_metadata.bc
 	noelle-parallelizer $^ -o $@ $(NOELLE_OPTIONS) $(PARALLELIZATION_OPTIONS)
