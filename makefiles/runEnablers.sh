@@ -17,6 +17,7 @@ fi
 
 # Check if we have already run the enablers
 if test -e baseline_with_metadata.bc ; then
+  echo "The IR has already been transformed for enabling parallelization" ;
   exit 0;
 fi
 
