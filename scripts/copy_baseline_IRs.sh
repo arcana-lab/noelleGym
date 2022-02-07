@@ -21,6 +21,10 @@ function compile_suite {
     elif test "$suite" == "PolyBench" ; then
       benchmarkSuiteArchive="${origDir}/benchmarkSuites/polybench-3.1.tar.gz"; 
 
+    elif test "$suite" == "NAS" ; then
+      benchmarkSuiteArchive="${origDir}/benchmarkSuites/NAS.tgz"; 
+      wget https://github.com/benchmark-subsetting/NPB3.0-omp-C/tarball/master -O "${benchmarkSuiteArchive}" ;
+
     else
       benchmarkSuiteArchive="${origDir}/benchmarkSuites/SPEC2017.tar.gz" ;
     fi

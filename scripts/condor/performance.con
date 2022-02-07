@@ -1,0 +1,43 @@
+# Set the universe
+Universe = vanilla
+
+# Describe the target machine
+Requirements = (Machine == "piraat.cs.northwestern.edu")
+
+Rank = TARGET.Mips
+Copy_To_Spool = False
+
+# Notification
+Notification = error
+
+# Notification email
+Notify_User = simonec@eecs.northwestern.edu
+
+# Set the environment
+Getenv = True
+
+# Set the repository
+RepoPath = /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/
+
+# Define the output directories
+LogDir = $(RepoPath)/log/condor
+Output = $(LogDir)/condor.out
+Error = $(LogDir)/condor.err
+Log = $(LogDir)/condor.log
+
+# Each job requires access to the whole machine
++IsWholeMachineJob      = true
++IsSuspensionJob        = false
+
+# Set the priority
+priority = 0
+
+# Set the directories for the execution
+InitialDir = $(RepoPath)
+Executable = $(RepoPath)/scripts/condor/run.sh
+
+# Arguments of the executable
+Arguments = "$(InitialDir)"
+
+# List the tests
+Queue
