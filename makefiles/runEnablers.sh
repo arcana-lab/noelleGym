@@ -1,17 +1,18 @@
 #!/bin/bash -e
 
 # Fetch the inputs
-if test $# -lt 2 ; then
-  echo "USAGE: `basename $0` BENCHMARK \"LINKER_OPTIONS\"" ;
+if test $# -lt 3 ; then
+  echo "USAGE: `basename $0` BENCHMARK IR_FILE \"LINKER_OPTIONS\"" ;
   exit 1;
 fi
 bench="$1" ;
-LIBS=$2 ;
-NOELLE_OPTIONS="${@:3}" ;
+irFile=$2 ;
+LIBS=$3 ;
+NOELLE_OPTIONS="${@:4}" ;
 
 # Correctness checks
-if ! test -e ${bench}.bc ; then
-  echo "ERROR: the IR file ${bench} does not exist" ;
+if ! test -e ${irFile} ; then
+  echo "ERROR: the IR file ${irFile} does not exist" ;
   exit 1;
 fi
 
@@ -39,8 +40,8 @@ if ! test -e Parallelizer_utils.bc ; then
 fi
 
 # Link
-llvm-link ${bench}.bc Parallelizer_utils.bc -o baseline.bc ;
-mv ${bench}.bc NOELLE_input.bc ;
+llvm-link ${irFile} Parallelizer_utils.bc -o baseline.bc ;
+mv ${irFile} NOELLE_input.bc ;
 
 # Normalize
 noelle-norm baseline.bc -o baseline.bc ;
