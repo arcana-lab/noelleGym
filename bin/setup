@@ -1,0 +1,23 @@
+#!/bin/bash -e
+
+prefixString="### NOELLE Gym: Setup ###" ;
+echo "${prefixString} All benchmarks from all benchmark suites will be compiled" ;
+echo "${prefixString} Results will be stored in `pwd`/results/current_machine" ;
+echo "${prefixString} The output of each step will be stored in `pwd`/output.txt" ;
+echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current state at finer granularity)" ;
+echo "" ;
+
+# Compile NOELLE
+echo "${prefixString} Start compiling NOELLE" ;
+./scripts/compile_NOELLE.sh >> output.txt 2>&1 ;
+echo "${prefixString}   NOELLE has been compiled succesfully" ;
+
+# Download the git repository
+echo "${prefixString} Setup the benchmark suites" ;
+if ! test -d all_benchmark_suites ; then
+  git clone https://github.com/scampanoni/wholeprogram_benchmarks.git all_benchmark_suites
+fi
+cd all_benchmark_suites ;
+if ! test -e install ; then
+  make ;
+fi
