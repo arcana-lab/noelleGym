@@ -21,9 +21,9 @@ RepoPath = /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/
 
 # Define the output directories
 LogDir = $(RepoPath)/log/condor
-Output = $(LogDir)/condor.out
-Error = $(LogDir)/condor.err
-Log = $(LogDir)/condor.log
+Output = $(LogDir)/condor_$(Cluster)_$(Process).out
+Error = $(LogDir)/condor_$(Cluster)_$(Process).err
+Log = $(LogDir)/condor_$(Cluster)_$(Process).log
 
 # Each job requires access to the whole machine
 +IsWholeMachineJob      = true
