@@ -12,11 +12,14 @@ echo "Results will be stored in \"$outDir\"" ;
 
 # Clean from previous runs
 mkdir -p ${outDir} ;
-rm -f ${outDir}/DOALL.txt ${outDir}/HELIX.txt ${outDir}/DSWP.txt ;
+rm -f ${outDir}/*/DOALL.txt ${outDir}/*/HELIX.txt ${outDir}/*/DSWP.txt ;
 
 # Analyze all IRs parallelized
 for irFile in `find $IRDir -iname baseline_parallelized*.bc` ; do
   benchDir="`dirname $irFile`" ;
+  benchSuiteDir="`dirname $benchDir`" ;
+  benchSuiteDir="`dirname $benchSuiteDir`" ;
+  benchSuiteDir="`basename $benchSuiteDir`" ;
   benchName="`basename $benchDir`" ;
   parallelizationName=`echo $irFile | sed 's/.*parallelized_//' | sed 's/\.bc//'`
   echo "  Benchmark $benchName with $parallelizationName" ;
@@ -29,5 +32,6 @@ for irFile in `find $IRDir -iname baseline_parallelized*.bc` ; do
   DSWPNums=`grep call $irFile ${benchDir}/*.ll  | grep @NOELLE_DSWPDispatcher | wc -l | awk '{print $1}'` ;
 
   # Dump
-  echo "$benchName $DOALLNums $HELIXNums $DSWPNums" >> ${outDir}/${parallelizationName}.txt ;
+  mkdir -p ${outDir}/${benchSuiteDir} ;
+  echo "$benchName $DOALLNums $HELIXNums $DSWPNums" >> ${outDir}/${benchSuiteDir}/${parallelizationName}.txt ;
 done
