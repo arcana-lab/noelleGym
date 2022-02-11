@@ -23,18 +23,6 @@ function generate_results {
       continue ;
     fi
 
-    # Check if we should run the benchmark
-    if test -z ${NOELLE_FINAL} ; then
-
-      # Check if the benchcmark is part of the list of extra ones
-      if test $bench == "lame" ; then
-        continue ;
-      fi
-      if test $bench == "lout" ; then
-        continue ;
-      fi
-    fi
-
     # Check if the benchmark already run
     outputFile="${currentResults}/${bench}.txt" ;
     if test -e $outputFile ; then

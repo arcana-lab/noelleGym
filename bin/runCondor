@@ -1,0 +1,25 @@
+#!/bin/bash -e
+
+# Get the inputs
+if test $# -lt 1 ; then
+  echo "USAGE: `basename $0` MACHINE" ;
+  exit 1;
+fi
+machineName=$1 ;
+
+awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v machineName="$machineName" '{
+    if ($1 == "RepoPath"){
+      printf("%s = %s\n", $1, repoDir);
+
+    } else if ($1 == "Notify_User"){
+      printf("%s = %s@eecs.northwestern.edu\n", $1, myUsername);
+
+    } else if ($1 == "Requirements"){
+      printf("%s = (Machine == \"%s.cs.northwestern.edu\")\n", $1, machineName);
+
+    } else {
+      print ;
+    }
+  }' scripts/condor/performance.con > performance.con ;
+
+condor_submit performance.con ;
