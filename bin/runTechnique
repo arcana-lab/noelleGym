@@ -1,0 +1,33 @@
+#!/bin/bash -e
+
+# Globals
+prefixString="### NOELLE Gym: Run technique ###" ;
+
+# Fetch the inputs
+if test $# -lt 1 ; then
+  echo "USAGE: `basename $0` TECHNIQUE" ;
+  exit 1;
+fi
+tech=$1 ;
+
+echo "${prefixString} All benchmarks from all benchmark suites will run" ;
+echo "${prefixString} Results will be stored in `pwd`/results/current_machine" ;
+echo "${prefixString} The output of each step will be stored in `pwd`/output.txt" ;
+echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current state at finer granularity)" ;
+echo "" ;
+
+# Configure NOELLE
+source NOELLE/enable ;
+export NOELLE_CORES=8 ;
+
+# Copy IR
+echo "${prefixString} Copy IR" ;
+./scripts/copy_NOELLE_enablers.sh >> output.txt 2>&1 ;
+
+# Generate binaries
+echo "${prefixString} Generate binaries for $tech" ;
+./scripts/generate_NOELLE_binaries.sh "$tech" >> output.txt 2>&1 ;
+
+# Run
+echo "${prefixString} Run the binaries for $tech" ;
+./scripts/run_NOELLE_binaries.sh "$tech" >> output.txt 2>&1 ;

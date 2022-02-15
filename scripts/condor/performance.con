@@ -36,8 +36,22 @@ priority = 0
 InitialDir = $(RepoPath)
 Executable = $(RepoPath)/scripts/condor/run.sh
 
-# Arguments of the executable
-Arguments = "$(InitialDir)"
+# Run the baseline
+Arguments = "$(InitialDir) baseline"
+Queue
 
-# List the tests
+# Run the enablers
+Arguments = "$(InitialDir) NONE"
+Queue
+
+# Run DOALL
+Arguments = "$(InitialDir) DOALL"
+Queue
+
+# Run HELIX
+Arguments = "$(InitialDir) HELIX"
+Queue
+
+# Run DSWP
+Arguments = "$(InitialDir) DSWP"
 Queue
