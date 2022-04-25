@@ -43,11 +43,8 @@ function generate_results {
           break ;
         fi
 
-        # Collect the time (assumes that /usr/bin/time was used)
-        rawTime=`cat ${tempFile} | grep CPU | awk '{ print $3 }' | sed 's/elapsed//g'`
-        minutes=$(cut -d":" -f1 <<< $rawTime)
-        seconds=$(cut -d":" -f2 <<< $rawTime)
-        baselineTime=$(echo "($minutes * 60) + $seconds" | bc)
+        # Collect the time (assumes that /usr/bin/time -p was used)
+        baselineTime=`cat ${tempFile} | grep real | awk '{ print $2 }'`
 
         # Append the time
         echo "$baselineTime" >> ${outputFile} ;
