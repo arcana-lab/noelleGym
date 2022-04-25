@@ -16,11 +16,9 @@ This repository also includes the evaluation materials for the NOELLE CGO 2022 p
 This artifact generates three sets of results.
 Adding SPEC CPU2017 to each set of results is optional (see the section "Experiments and results" for more details).
 
-- MINIMAL: Data that supports the version of the paper that was submitted in September excluding the few benchmarks from SPEC CPU2017 that requires several days each (6 days when SPEC CPU2017 is included while excluding the five benchmarks mentioned, 2 days otherwise). This experiment does not include HELIX and DSWP, which both take a significant amount of time to transform each benchmark.
+- MINIMAL: Data that supports the version of the paper that was submitted in September excluding the few benchmarks from SPEC CPU2017 that requires several days each (6 days when SPEC CPU2017 is included while excluding the five benchmarks mentioned, 2 days otherwise). 
 
-- SUBMISSION: HELIX and DSWP are included. Also, if SPEC CPU2017 is enabled, this data will also include the few benchmarks from SPEC CPU2017 that requires several days each (extra 12 days). 
-
-- FINAL: New results that were not included in the submitted version of the paper (extra 5 days). Also, HELIX and DSWP are included in this experiment.
+- FINAL: New results that were not included in the submitted version of the paper (extra 5 days). 
 
 Next you can find the instructions to reproduce all the above results.
 
@@ -79,13 +77,12 @@ Finally, the Intel-based multicore needs to have at least 12 physical cores in t
 
 #### MINIMAL
 This set of experiments and results are about all benchmarks included in the submitted version of the paper with the only exception of five SPEC CPU2017 benchmarks (omnetpp_r, perlbench_r, x264_r, blender_r, parest_r).
-This is because these five benchmarks require a significant amount of time so we decided to keep them separate from the minimal set; these benchmarks are included in the SUBMISSION set.
+This is because these five benchmarks require a significant amount of time so we decided to keep them separate from the minimal set; these benchmarks are included in the FINAL set.
 Also, DSWP and HELIX are disabled as they take a significant amount of time.
 
 To generate the MINIMAL results, do the following:
 ```
 cd ~ ;
-unset NOELLE_SUBMISSION ;
 unset NOELLE_FINAL ;
 ./bin/compileAndRun
 ```
@@ -94,31 +91,10 @@ Please look at the output of the script to know how to check the current state.
 Finally, results will be stored in ```results/current_machine```.
 
 
-#### SUBMISSION
-
-A few SPEC CPU2017 benchmarks are evaluated for this set of experiments/results (omnetpp_r, perlbench_r, x264_r, blender_r, parest_r).
-Warning: each of these benchmarks will take several days to compile and run for all configurations required by the NOELLE paper (total of 12 days).
-Also, DSWP and HELIX are enabled.
-
-To generate the SUBMISSION results, first generate MINIMAL, and then do the following:
-```
-cd ~ ;
-unset NOELLE_FINAL ;
-export NOELLE_SUBMISSION=1;
-./bin/compileAndRun ;
-```
-
-
 #### FINAL
-Since NOELLE is an ongoing project, we did not stop working on it after submission.
-We improved NOELLE after submission to the point that we can now target more benchmarks, and we can perform more evaluations compared to when we submitted the paper.
-This artifact also includes the capability to generate these extra evaluations and benchmarks.
-Also, DSWP and HELIX are enabled.
-
 To generate the FINAL results, first generate MINIMAL, and then do the following:
 ```
 cd ~ ; 
-unset NOELLE_SUBMISSION ;
 export NOELLE_FINAL=1 ;
 ./bin/compileAndRun ;
 ```
