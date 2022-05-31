@@ -51,7 +51,11 @@ function generate_results {
         fi
 
         # Collect the time (assumes that /usr/bin/time -p was used)
-        baselineTime=`cat ${tempFile} | grep real | awk '{ print $2 }'`
+        if [ ${benchSuite} == "NAS" ] ; then
+          baselineTime=`cat ${tempFile} | grep "Time in seconds" | awk '{ print $5 }'`
+        else
+          baselineTime=`cat ${tempFile} | grep real | awk '{ print $2 }'`
+        fi
 
         # Append the time
         echo "$baselineTime" >> ${outputFile} ;
