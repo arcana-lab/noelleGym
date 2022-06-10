@@ -81,7 +81,10 @@ function analyze_results {
 
     # Dump the speedup
     echo "${bench} ${speedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
-    echo "${bench} ${optimizationName} ${speedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt" ;
+
+    if [ ${speedup} != "" ] ; then
+      echo "${bench} ${optimizationName} ${speedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt" ;
+    fi
   done
   popd ;
 
