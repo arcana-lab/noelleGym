@@ -106,7 +106,7 @@ echo $dirResult ;
 origDir=`pwd` ;
 tempFile=`mktemp` ;
 
-optimizations=( DOALL HELIX DSWP NONE ) ;
+optimizations=( NONE DOALL HELIX DSWP ) ;
 # Generate the results for all benchmarks in all benchmark suites
 pushd ./ ;
 cd $dirResult ; 
@@ -140,8 +140,11 @@ for currentDirectory in `ls` ; do
   cp ${dirResult}/${currentDirectory}/NONE_tmp.txt ${combinedFile} ;
   tmp=`mktemp` ;
   for optimizationName in ${optimizations[@]:1} ; do
-      join -a1 ${combinedFile} ${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt > ${tmp};
+    tmpResultsFile=${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt ;
+    if test -f ${tmpResultsFile} ; then
+      join -a1 ${combinedFile} ${tmpResultsFile} > ${tmp};
       cp ${tmp} ${combinedFile} ;
+    fi
   done
   rm -f ${tmp} ;
 
