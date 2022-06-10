@@ -23,6 +23,28 @@ function compute_median {
   return ;
 }
 
+function compute_max {
+  local inputFile=$1 ;
+    
+  awk '
+    {
+      # find maximum value
+      max_val = $3;
+      max_idx = 3;
+      for (i = 5; i <= NF; i += 2) {
+        if ($i > max_val) {
+          max_val = $i;
+          max_idx = i;
+        }
+      }
+      # print benchmark
+      #   benchmark opt speedup
+      printf "%s %s %s\n", $1, max_val, $(max_idx-1);
+    }' ${inputFile}
+
+  return;
+}
+
 function analyze_results {
   local benchSuite="$1" ;
 
@@ -59,6 +81,7 @@ function analyze_results {
 
     # Dump the speedup
     echo "${bench} ${speedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
+    echo "${bench} ${optimizationName} ${speedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt" ;
   done
   popd ;
 
@@ -70,7 +93,7 @@ if test $# -lt 1 ; then
   echo "USAGE: `basename $0` TIME_DIR" ;
   exit 1;
 fi
-dirResult="$1" ;
+dirResult=`realpath "$1"` ;
 
 # Check the results
 if ! test -d $dirResult ; then
@@ -83,20 +106,23 @@ echo $dirResult ;
 origDir=`pwd` ;
 tempFile=`mktemp` ;
 
+optimizations=( DOALL HELIX DSWP NONE ) ;
 # Generate the results for all benchmarks in all benchmark suites
 pushd ./ ;
 cd $dirResult ; 
 for currentDirectory in `ls` ; do
   if ! test -d $currentDirectory ; then
+    echo "$currentDirectory not found" ;
     continue ;
   fi
   echo "Benchmark suite $currentDirectory" ;
 
   # Consider all optimizations
-  for optimizationName in DOALL HELIX DSWP NONE ; do
+  for optimizationName in ${optimizations[@]} ; do
 
     # Clean previous files
-    rm -f "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
+      rm -f "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
+      rm -f "${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt" ;
 
     # Check if we have results for the current benchmark suite
     currentResults="${dirResult}/${currentDirectory}/${optimizationName}" ;
@@ -109,6 +135,24 @@ for currentDirectory in `ls` ; do
     analyze_results $currentDirectory ;
   done
 
+  combinedFile=${dirResult}/${currentDirectory}/NOELLE_ALL.txt ;
+  rm -f ${combinedFile} ;
+  cp ${dirResult}/${currentDirectory}/NONE_tmp.txt ${combinedFile} ;
+  tmp=`mktemp` ;
+  for optimizationName in ${optimizations[@]:1} ; do
+      join -a1 ${combinedFile} ${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt > ${tmp};
+      cp ${tmp} ${combinedFile} ;
+  done
+  rm -f ${tmp} ;
+
+  noelleFile=${dirResult}/${currentDirectory}/NOELLE.txt ;
+  compute_max ${combinedFile} > ${noelleFile};
+
+  rm -f ${combinedFile} ;
+  for optimizationName in ${optimizations[@]} ; do
+    rm -f ${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt;
+  done
+  
   echo "" ;
 done
 popd ;
