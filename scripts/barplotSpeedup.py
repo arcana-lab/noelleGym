@@ -1,111 +1,75 @@
 import sys
+import os
 import numpy as np
 import math
 import matplotlib
 import matplotlib.pyplot as plt
-from scipy import stats as scistats
 
 def getArgs():
-  args = {}
-  numOfArgs = 1
-
-  lenArgv = len(sys.argv)
-  if (lenArgv <= numOfArgs):
-    print('USAGE: $ python ' + sys.argv[0] + ' [path/to/file.txt]+')
+  argLength = len(sys.argv)
+  if (argLength <= 2):
+    print('USAGE: $ python3 ' + sys.argv[0] + ' path/to/time/directory path/to/plots/directory techniques(i.e, "DOALL DSWP HELIX")')
     sys.exit(1)
+  elif (argLength == 3):
+    return sys.argv[1], sys.argv[2], ['all']
+  else:
+    return sys.argv[1], sys.argv[2], sys.argv[3:]
 
-  args['pathToFiles'] = sys.argv[1:]
+def collectBenchmarkSuites(pathToTimeDir):
+  benchSuites = []
+  for benchSuite in os.listdir(pathToTimeDir):
+    benchSuites.append(benchSuite)
 
-  return args
+  return benchSuites
 
-def readData(pathToFile):
-  data = []
-  benchmarkNames = []
-  with open(pathToFile, 'r') as f:
-    for line in f:
-      lineAsList = line.split()
-      benchmarkName = str(lineAsList[0])
-      speedup = 0.0
-      if (len(lineAsList) >= 2):
-        speedup = float(lineAsList[1])
+def collectTechniques(pathToTimeDir, benchSuite):
+  techniques = []
+  for file in os.listdir(pathToTimeDir + '/' + benchSuite):
+    if file.endswith('.txt'):
+      techniques.append(file[:-4])
+  
+  return techniques
 
-      if (benchmarkName.endswith(".txt")):
-        benchmarkName = benchmarkName[:-4]
-
-      if (benchmarkName in benchmarkNames):
-        print('Benchmark ' + benchmarkName + ' is already in data. Cleanup duplicates first, I don\'t know which value to use. Abort.')
-        sys.exit(1)
-
-      benchmarkNames.append(benchmarkName)
-      data.append((benchmarkName, speedup))
-
-  return sorted(data), sorted(benchmarkNames)
-
-def process(pathToFiles):
-  data = {}
-  compilers = []
-  bsuites = []
+def collectBenchmarks(pathToTimeDir, benchSuite, referenceFile):
   benchmarks = []
-  benchmarksPerBsuite = {}
-  for pathToFile in pathToFiles:
-    compiler = pathToFile.split("/")[-1].strip(".txt")
-    if (compiler not in compilers):
-      compilers.append(compiler)
+  with open(pathToTimeDir + '/' + benchSuite + '/' + referenceFile, 'r') as file:
+    lines = file.readlines()
+    for line in lines:
+      benchmarks.append(line.split(' ')[0].strip('.txt'))
 
-    bsuite = pathToFile.split("/")[-2]
-    if (bsuite not in bsuites):
-      bsuites.append(bsuite)
+  return benchmarks
 
-    if (bsuite not in data):
-      data[bsuite] = {}
+def collectResults(pathToTimeDir, benchSuite, techniques, benchmarks):
+  results = {}
+  for technique in techniques:
+    resultsFile = pathToTimeDir + '/' + benchSuite + '/' + technique + '.txt'
+    results[technique] = []
 
-    if (compiler not in data[bsuite]):
-      data[bsuite][compiler] = []
+    # set the default value
+    for benchmark in benchmarks:
+      results[technique].append(0.0)
 
-    data[bsuite][compiler], benchmarkNames = readData(pathToFile)
+    if os.path.isfile(resultsFile):
+      with open(resultsFile, 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+          benchmarkAndSpeedUp = line.split(' ')
+          if benchmarkAndSpeedUp[1].strip('\n') != '' and benchmarkAndSpeedUp[1].strip('\n') != 'NONE': 
+            results[technique][benchmarks.index(benchmarkAndSpeedUp[0].strip('.txt'))] = float(benchmarkAndSpeedUp[1].strip('\n'))
 
-    if (bsuite not in benchmarksPerBsuite):
-      benchmarksPerBsuite[bsuite] = []
+  return results
 
-    for benchmarkName in benchmarkNames:
-      if (benchmarkName not in benchmarks):
-        benchmarks.append(benchmarkName)
-      if (benchmarkName not in benchmarksPerBsuite[bsuite]):
-        benchmarksPerBsuite[bsuite].append(benchmarkName)
-
-  return data, compilers, bsuites, benchmarks, benchmarksPerBsuite
-
-def getDataWithGeoMean(data, compilers, bsuites):
-  bars = {}
-  for compiler in compilers:
-    geomeans = []
-    if (compiler not in bars):
-      bars[compiler] = []
-    dataAllCompiler = []
-    for bsuite in bsuites:
-      dataAllCompilerForBsuite = []
-      for elem in data[bsuite][compiler]:
-        speedup = elem[1]
-        if speedup != 0.0:
-          dataAllCompiler.append(speedup)
-          dataAllCompilerForBsuite.append(speedup)
-        bars[compiler].append(speedup)
-      geoMeanAllCompilerForBsuite = scistats.mstats.gmean(dataAllCompilerForBsuite)
-      geomeans.append(geoMeanAllCompilerForBsuite)
-    geoMeanAllCompiler = scistats.mstats.gmean(dataAllCompiler)
-    geomeans.append(geoMeanAllCompiler)
-
-    for geomean in geomeans:
-      bars[compiler].append(geomean)
-    
-  return bars
-
-def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
-  colors = ["red", "black", "orange", "blue", "lightblue", "green", "lightgreen"]
-
-  for bsuite in bsuites:
-    benchmarks.append(bsuite)
-  benchmarks.append("Overall")
+def plot(benchSuite, techniques, benchmarks, results, pathToPlotsDir):
+  colors = {
+    "NONE": "black",
+    "DOALL": "green",
+    "HELIX": "orange",
+    "DSWP": "blue",
+    "NOELLE": "red",
+  }
+  # Backup colors if not predefined
+  # Available colors can be found: https://matplotlib.org/3.5.0/gallery/color/named_colors.html
+  back_up_colors = ["lightgrey", "lightcoral", "lightseagreen", "lightblue", "lightpink"]
 
   lineWidth = 0.5
   fontSize = 6
@@ -117,7 +81,7 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
   ax.set_ylabel('Program speedup', fontsize = fontSize)
 
   gap = 0.01
-  numBars = float(len(compilers))
+  numBars = float(len(techniques))
   barWidth = 0.5/(numBars + numBars*gap)
   barIncrement = barWidth + gap
   xTicks = range(len(benchmarks))
@@ -126,19 +90,23 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
   xTicksAcc.append(xTicksShifted)
   rects = []
   i = 0
-  for compiler in compilers:
-    rects.append(ax.bar(xTicks, bars[compiler], barWidth, color = colors[i], label = compiler))
+  for technique in techniques:
+    if technique in colors:
+      color = colors[technique]
+    else:
+      color = back_up_colors[i]
+      i += 1
+    rects.append(ax.bar(xTicks, results[technique], barWidth, color = color, label = technique))
     xTicks = [elem + barIncrement for elem in xTicks]
     xTicksShifted = [elem - barWidth/2 - gap/2 for elem in xTicks]
     xTicksAcc.append(xTicksShifted)
-    i += 1
 
   x = []
   for i in range(len(benchmarks)):
     x.append(np.median([elem[i] for elem in xTicksAcc]))
 
   ymin = 0
-  ymax = 12
+  ymax = 8
   ystep = 2
 
   plt.xticks(x, benchmarks, fontsize = 5, rotation = 45, ha = 'right')
@@ -154,32 +122,13 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
   # Lines
   ax.plot([xmin, xmax], [1, 1], '-', color = 'red', linewidth = lineWidth + 0.1, zorder = 0)
   ax.plot([xmin, xmax], [ymax, ymax], '-', color = 'red', linewidth = lineWidth + 0.1, zorder = 1)
-  numOfBenchmarks = 0
-  for bsuite in benchmarksPerBsuite:
-    numOfBenchmarks += len(benchmarksPerBsuite[bsuite])
-    xLine0 = x[numOfBenchmarks - 1]
-    xLine1 = x[numOfBenchmarks]
-    xLine = xLine0 + (xLine1 - xLine0)/2.0
-    ax.plot([xLine, xLine], [ymin, ymax + 1], '--', color = 'gray', linewidth = lineWidth, zorder = 0)
-
-  # Annotations and arrows
-  fontSizeAnnotation = fontSize - 1.5
-  ax.annotate('Number of cores', fontsize=fontSizeAnnotation, xy=(x[0], ymax - 1), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('clang -O3 -march=native', fontsize=fontSizeAnnotation, xy=(x[1], ymin + 6.3), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('', xy=(x[1] + (x[2] - x[1])/2, ymin + 6.3), xytext=(x[1] + (x[2] - x[1])/2, ymin + 1), arrowprops = dict(arrowstyle='<-', lw = lineWidth))
-  ax.annotate('Performance\nobtained by\nthe parallelization\ndone by\na NOELLE custom tool', fontsize=fontSizeAnnotation, xy=(x[6] + (x[7] - x[6])/2, ymin + 4.6), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('', xy=(x[10] + (x[11] - x[10])/2, ymax), xytext=(x[10] + (x[11] - x[10])/2, ymin + 1), arrowprops = dict(arrowstyle='<->', lw = lineWidth))
-  ax.annotate('icc did not extract parallelism', fontsize=fontSizeAnnotation, xy=(x[15], ymin + 6.3), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('', xy=(x[19] + 3*barWidth, ymin + 6.3), xytext=(x[19] + 3*barWidth, ymin + 0.8), arrowprops = dict(arrowstyle='<-', lw =lineWidth ))
-  ax.annotate('gcc did not extract parallelism', fontsize=fontSizeAnnotation, xy=(x[23] - barWidth, ymin + 6.3), color = 'black', bbox = dict(ec='none', fc = 'none', alpha = 1))
-  ax.annotate('', xy=(x[24] + barWidth/2, ymin + 6.3), xytext=(x[24] + barWidth/2, ymin + 3.2), arrowprops = dict(arrowstyle='<-', lw = lineWidth))
 
   ax.yaxis.grid(True, color = 'gray', ls = '--', lw = lineWidth)
   ax.set_axisbelow(True)
 
   ax.tick_params(axis = 'x', direction = 'out', top = False)
 
-  ax.legend(fontsize = fontSizeAnnotation, fancybox = False, framealpha = 1, ncol = int(math.ceil(len(compilers)/3)), loc = 'upper right', borderpad = 0.2)
+  ax.legend(fontsize = fontSize - 1.5, fancybox = False, framealpha = 1, ncol = int(math.ceil(len(techniques)/3)), loc = 'upper right', borderpad = 0.2)
 
   matplotlib.rcParams['pdf.fonttype'] = 42
   matplotlib.rcParams['ps.fonttype'] = 42
@@ -189,13 +138,29 @@ def plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite):
   #plt.margins(x=0, y=0)
   #plt.setp(ax.xaxis.get_majorticklabels(), ha='right')
   plt.tight_layout()
-  plt.savefig('./barplotSpeedup.pdf', format = 'pdf')
+  plt.savefig(pathToPlotsDir + '/' + benchSuite + '.pdf', format = 'pdf')
 
   return
 
 
-args = getArgs()
-data, compilers, bsuites, benchmarks, benchmarksPerBsuite = process(args['pathToFiles'])
-bars = getDataWithGeoMean(data, compilers, bsuites)
-plot(bars, compilers, bsuites, benchmarks, benchmarksPerBsuite)
+# Step 1: determine time directory and techniques to plot
+pathToTimeDir, pathToPlotsDir, techniques = getArgs()
 
+# Step 2: collect all benchark suites
+benchSuites = collectBenchmarkSuites(pathToTimeDir)
+
+# Step 3: plot time result per benchmark suite
+for benchSuite in benchSuites:
+  # collect all available techniques
+  if techniques[0] == 'all':
+    techniques = collectTechniques(pathToTimeDir, benchSuite)
+
+  # collect all benchmarks in the suite
+  # assuming NONE.txt is available
+  benchmarks = collectBenchmarks(pathToTimeDir, benchSuite, 'NONE.txt')
+
+  # collect speedup results per benchmark per technique in the suite
+  results = collectResults(pathToTimeDir, benchSuite, techniques, benchmarks)
+
+  # plot and save the speedup results
+  plot(benchSuite, techniques, benchmarks, results, pathToPlotsDir)

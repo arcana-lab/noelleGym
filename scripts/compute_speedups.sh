@@ -92,8 +92,8 @@ function analyze_results {
 }
 
 # Fetch the input
-if test $# -lt 1 ; then
-  echo "USAGE: `basename $0` TIME_DIR" ;
+if test $# -lt 2 ; then
+  echo "USAGE: `basename $0` TIME_DIR PLOTS_DIR" ;
   exit 1;
 fi
 dirResult=`realpath "$1"` ;
@@ -167,3 +167,11 @@ find ./results -empty -delete;
 
 # Clean
 rm $tempFile ;
+
+# Prepare the plots directory
+plotsDir=`realpath "$2"` ;
+echo $plotsDir ;
+mkdir -p $plotsDir ;
+
+# Generate plots per benchmark suite
+./scripts/barplotSpeedup.sh $dirResult $plotsDir ;
