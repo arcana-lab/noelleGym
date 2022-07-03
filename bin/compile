@@ -25,13 +25,17 @@ echo "${prefixString} Start generating parallelized binaries";
 ./scripts/optimize_benchmarks.sh "DOALL" >> output.txt 2>&1 ;
 echo "${prefixString}   All benchmarks have been compiled for DOALL" ;
 
-# Generate times of HELIX parallelized binaries for all benchmarks
+# Compile using HELIX
 ./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
 echo "${prefixString}   All benchmarks have been compiled for HELIX" ;
 
-# Generate times of DSWP parallelized binaries for all benchmarks
+# Compile using DSWP
 ./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
 echo "${prefixString}   All benchmarks have been compiled for DSWP" ;
+
+# Compile using enablers
+./scripts/optimize_benchmarks.sh "NONE" >> output.txt 2>&1 ;
+echo "${prefixString}   All benchmarks have been compiled for NONE" ;
 
 # Clean
 echo "${prefixString} Clean" ;
