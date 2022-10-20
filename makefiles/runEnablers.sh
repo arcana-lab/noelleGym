@@ -39,12 +39,11 @@ if ! test -e Parallelizer_utils.bc ; then
 	clang++ -DNDEBUG -Iinclude/threadpool/include -emit-llvm -O3 -c Parallelizer_utils.cpp -o Parallelizer_utils.bc ;
 fi
 
-# Link
-llvm-link ${irFile} Parallelizer_utils.bc -o baseline.bc ;
-mv ${irFile} NOELLE_input.bc ;
+# Save the original file
+cp ${irFile} NOELLE_input.bc ;
 
 # Normalize
-noelle-norm baseline.bc -o baseline.bc ;
+noelle-simplification ${irFile} -o baseline.bc ;
 
 # Profile the code
 noelle-prof-coverage baseline.bc baseline_prof ${LIBS}
@@ -57,7 +56,6 @@ noelle-meta-prof-embed pre.profraw baseline.bc -o baseline_pre.bc ;
 # Run the enablers
 noelle-pre baseline_pre.bc ${NOELLE_OPTIONS} ;
 noelle-meta-clean baseline_pre.bc baseline_pre.bc ;
-llvm-dis baseline_pre.bc ;
 
 # Profile the code
 noelle-prof-coverage baseline_pre.bc baseline_pre_prof ${LIBS}
@@ -66,4 +64,3 @@ noelle-prof-coverage baseline_pre.bc baseline_pre_prof ${LIBS}
 # Embed the profile into the code
 noelle-meta-prof-embed default.profraw baseline_pre.bc -o baseline_with_metadata.bc ;
 noelle-meta-pdg-embed baseline_with_metadata.bc -o baseline_with_metadata.bc ;
-llvm-dis baseline_with_metadata.bc ;
