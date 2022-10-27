@@ -12,7 +12,7 @@ echo "Results will be stored in \"$outDir\"" ;
 
 # Clean from previous runs
 mkdir -p ${outDir} ;
-rm -f ${outDir}/*/DOALL.txt ${outDir}/*/HELIX.txt ${outDir}/*/DSWP.txt ;
+rm -f ${outDir}/*/DOALL.txt ${outDir}/*/HELIX.txt ${outDir}/*/DSWP.txt ${outDir}/*/NONE.txt ;
 
 # Analyze all IRs parallelized
 for irFile in `find $IRDir -iname baseline_parallelized*.bc` ; do
