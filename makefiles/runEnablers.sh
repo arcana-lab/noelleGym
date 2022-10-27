@@ -16,12 +16,6 @@ if ! test -e ${irFile} ; then
   exit 1;
 fi
 
-# Check if we have already run the enablers
-if test -e baseline_with_metadata.bc ; then
-  echo "The IR has already been transformed for enabling parallelization" ;
-  exit 0;
-fi
-
 # Fetch the runtime
 if ! test -d include ; then
   pushd ./ ;
@@ -37,6 +31,12 @@ if ! test -e Parallelizer_utils.cpp ; then
 fi
 if ! test -e Parallelizer_utils.bc ; then
 	clang++ -DNDEBUG -Iinclude/threadpool/include -emit-llvm -O3 -c Parallelizer_utils.cpp -o Parallelizer_utils.bc ;
+fi
+
+# Check if we have already run the enablers
+if test -e baseline_with_metadata.bc ; then
+  echo "The IR has already been transformed for enabling parallelization" ;
+  exit 0;
 fi
 
 # Save the original file

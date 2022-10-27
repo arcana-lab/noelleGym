@@ -13,12 +13,9 @@ LIBS=-lm -lstdc++ -lpthread -ltermcap
 
 all: baseline_parallelized.bc
 
-baseline_with_metadata.bc:
+baseline_parallelized.bc:
 	./runEnablers.sh $(BENCHMARK) $(BENCHMARK).bc "$(LIBS)" $(NOELLE_OPTIONS)
-
-baseline_parallelized.bc: baseline_with_metadata.bc
-	noelle-parallelizer $^ -o $@ $(NOELLE_OPTIONS) $(PARALLELIZATION_OPTIONS)
-	llvm-dis $@
+	noelle-parallelizer baseline_with_metadata.bc -o $@ $(NOELLE_OPTIONS) $(PARALLELIZATION_OPTIONS)
 	cp $@ $(BENCHMARK).bc
 
 clean:
