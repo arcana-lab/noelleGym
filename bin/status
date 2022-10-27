@@ -11,18 +11,22 @@ resultDir="`pwd`" ;
 # Check the IR
 echo "=== IR";
 pushd ./ &> /dev/null ;
+if ! test -d IR ; then
+  echo "  Not available" ;
+  exit 0;
+fi
 cd IR ;
 for i in `ls` ; do
   if ! test -d $i ; then
     continue ;
   fi
 
-  numberOfBenchmarks="`ls -l ${i}/benchmarks/*/NOELLE_input.bc | wc -l`" ;
-  numberOfBaselines="`ls -l ${i}/benchmarks/*/baseline_with_metadata.bc | wc -l`" ;
-  numberOfNONE="`ls -l ${i}/benchmarks/*/baseline_parallelized_NONE.bc | wc -l`" ;
-  numberOfDOALL="`ls -l ${i}/benchmarks/*/baseline_parallelized_DOALL.bc | wc -l`" ;
-  numberOfDSWP="`ls -l ${i}/benchmarks/*/baseline_parallelized_DSWP.bc | wc -l`" ;
-  numberOfHELIX="`ls -l ${i}/benchmarks/*/baseline_parallelized_HELIX.bc | wc -l`" ;
+  numberOfBenchmarks="`ls -l ${i}/benchmarks/*/NOELLE_input.bc 2> /dev/null | wc -l`" ;
+  numberOfBaselines="`ls -l ${i}/benchmarks/*/baseline_with_metadata.bc 2> /dev/null | wc -l`" ;
+  numberOfNONE="`ls -l ${i}/benchmarks/*/baseline_parallelized_NONE.bc 2> /dev/null | wc -l`" ;
+  numberOfDOALL="`ls -l ${i}/benchmarks/*/baseline_parallelized_DOALL.bc 2> /dev/null | wc -l`" ;
+  numberOfDSWP="`ls -l ${i}/benchmarks/*/baseline_parallelized_DSWP.bc 2> /dev/null | wc -l`" ;
+  numberOfHELIX="`ls -l ${i}/benchmarks/*/baseline_parallelized_HELIX.bc 2> /dev/null | wc -l`" ;
   if test "$numberOfBenchmarks" != "$numberOfBaselines" ; then
     echo "The suite \"$i\" has only $numberOfBaselines baselines over $numberOfBenchmarks benchmarks" ;
   fi
@@ -51,9 +55,9 @@ for i in `ls` ; do
     continue ;
   fi
 
-  numberOfBenchmarks="`ls -l ${resultDir}/IR/${i}/benchmarks/*/NOELLE_input.bc | wc -l`" ;
-  numberOfNOELLE="`ls -l ${i}/noelle/*.txt | wc -l`" ;
-  numberOfLLVM="`ls -l ${i}/llvm/*.txt | wc -l`" ;
+  numberOfBenchmarks="`ls -l ${resultDir}/IR/${i}/benchmarks/*/NOELLE_input.bc 2> /dev/null | wc -l`" ;
+  numberOfNOELLE="`ls -l ${i}/noelle/*.txt 2> /dev/null | wc -l`" ;
+  numberOfLLVM="`ls -l ${i}/llvm/*.txt 2> /dev/null | wc -l`" ;
   if test "$numberOfBenchmarks" != "$numberOfLLVM" ; then
     echo "The suite \"$i\" has only $numberOfLLVM benchmarks with LLVM dependence information (over $numberOfBenchmarks benchmarks)" ;
   fi
@@ -66,44 +70,48 @@ echo "" ;
 
 # Check the time
 echo "=== Execution time";
-pushd ./ &> /dev/null ;
-cd time ;
-for i in `ls` ; do
-  if ! test -d $i ; then
-    continue ;
-  fi
+if test -d time ; then
+  pushd ./ &> /dev/null ;
+  cd time ;
+  for i in `ls` ; do
+    if ! test -d $i ; then
+      continue ;
+    fi
 
-  numberOfBenchmarks="`ls -l ${resultDir}/IR/${i}/benchmarks/*/NOELLE_input.bc | wc -l`" ;
-  numberOfBaselines="`ls -l ${i}/baseline/*.txt | wc -l`" ;
-  numberOfNONE="`ls -l ${i}/NONE/*.txt | wc -l`" ;
-  numberOfDOALL="`ls -l ${i}/DOALL/*.txt | wc -l`" ;
-  if test -d ${i}/HELIX ; then
-    numberOfHELIX="`ls -l ${i}/HELIX/*.txt | wc -l`" ;
-  else
-    numberOfHELIX="0" ;
-  fi
-  if test -d ${i}/DSWP ; then
-    numberOfDSWP="`ls -l ${i}/DSWP/*.txt | wc -l`" ;
-  else
-    numberOfDSWP="0" ;
-  fi
-  if test "$numberOfBenchmarks" != "$numberOfBaselines" ; then
-    echo "The suite \"$i\" has only $numberOfBaselines baselines with execution times (over $numberOfBenchmarks benchmarks)" ;
-  fi
-  if test "$numberOfBenchmarks" != "$numberOfNONE" ; then
-    echo "The suite \"$i\" has only $numberOfNONE benchmarks parallelized with NONE with execution times (over $numberOfBenchmarks benchmarks)" ;
-  fi
-  if test "$numberOfBenchmarks" != "$numberOfDOALL" ; then
-    echo "The suite \"$i\" has only $numberOfDOALL benchmarks parallelized with DOALL with execution times (over $numberOfBenchmarks benchmarks)" ;
-  fi
-  if test "$numberOfBenchmarks" != "$numberOfHELIX" ; then
-    echo "The suite \"$i\" has only $numberOfHELIX benchmarks parallelized with HELIX with execution times (over $numberOfBenchmarks benchmarks)" ;
-  fi
-  if test "$numberOfBenchmarks" != "$numberOfDSWP" ; then
-    echo "The suite \"$i\" has only $numberOfDSWP benchmarks parallelized with DSWP with execution times (over $numberOfBenchmarks benchmarks)" ;
-  fi
-done
-popd &> /dev/null ;
+    numberOfBenchmarks="`ls -l ${resultDir}/IR/${i}/benchmarks/*/NOELLE_input.bc 2> /dev/null | wc -l`" ;
+    numberOfBaselines="`ls -l ${i}/baseline/*.txt 2> /dev/null | wc -l`" ;
+    numberOfNONE="`ls -l ${i}/NONE/*.txt 2> /dev/null | wc -l`" ;
+    numberOfDOALL="`ls -l ${i}/DOALL/*.txt 2> /dev/null | wc -l`" ;
+    if test -d ${i}/HELIX ; then
+      numberOfHELIX="`ls -l ${i}/HELIX/*.txt 2> /dev/null | wc -l`" ;
+    else
+      numberOfHELIX="0" ;
+    fi
+    if test -d ${i}/DSWP ; then
+      numberOfDSWP="`ls -l ${i}/DSWP/*.txt 2> /dev/null | wc -l`" ;
+    else
+      numberOfDSWP="0" ;
+    fi
+    if test "$numberOfBenchmarks" != "$numberOfBaselines" ; then
+      echo "The suite \"$i\" has only $numberOfBaselines baselines with execution times (over $numberOfBenchmarks benchmarks)" ;
+    fi
+    if test "$numberOfBenchmarks" != "$numberOfNONE" ; then
+      echo "The suite \"$i\" has only $numberOfNONE benchmarks parallelized with NONE with execution times (over $numberOfBenchmarks benchmarks)" ;
+    fi
+    if test "$numberOfBenchmarks" != "$numberOfDOALL" ; then
+      echo "The suite \"$i\" has only $numberOfDOALL benchmarks parallelized with DOALL with execution times (over $numberOfBenchmarks benchmarks)" ;
+    fi
+    if test "$numberOfBenchmarks" != "$numberOfHELIX" ; then
+      echo "The suite \"$i\" has only $numberOfHELIX benchmarks parallelized with HELIX with execution times (over $numberOfBenchmarks benchmarks)" ;
+    fi
+    if test "$numberOfBenchmarks" != "$numberOfDSWP" ; then
+      echo "The suite \"$i\" has only $numberOfDSWP benchmarks parallelized with DSWP with execution times (over $numberOfBenchmarks benchmarks)" ;
+    fi
+  done
+  popd &> /dev/null ;
+else
+  echo "  Not available";
+fi
 echo "" ;
 
 
