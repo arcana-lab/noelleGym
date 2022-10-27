@@ -1,0 +1,109 @@
+#!/bin/bash
+
+# Check the existance of the results
+if ! test -d results/current_machine ; then
+  echo "There is no results (results/current_machine)" ;
+  exit ;
+fi
+cd results/current_machine ;
+resultDir="`pwd`" ;
+
+# Check the IR
+echo "=== IR";
+pushd ./ &> /dev/null ;
+cd IR ;
+for i in `ls` ; do
+  if ! test -d $i ; then
+    continue ;
+  fi
+
+  numberOfBenchmarks="`ls -l ${i}/benchmarks/*/NOELLE_input.bc | wc -l`" ;
+  numberOfBaselines="`ls -l ${i}/benchmarks/*/baseline_with_metadata.bc | wc -l`" ;
+  numberOfNONE="`ls -l ${i}/benchmarks/*/baseline_parallelized_NONE.bc | wc -l`" ;
+  numberOfDOALL="`ls -l ${i}/benchmarks/*/baseline_parallelized_DOALL.bc | wc -l`" ;
+  numberOfDSWP="`ls -l ${i}/benchmarks/*/baseline_parallelized_DSWP.bc | wc -l`" ;
+  numberOfHELIX="`ls -l ${i}/benchmarks/*/baseline_parallelized_HELIX.bc | wc -l`" ;
+  if test "$numberOfBenchmarks" != "$numberOfBaselines" ; then
+    echo "The suite \"$i\" has only $numberOfBaselines baselines over $numberOfBenchmarks benchmarks" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfNONE" ; then
+    echo "The suite \"$i\" has only $numberOfNONE benchmarks parallelized with NONE over $numberOfBenchmarks benchmarks" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfDOALL" ; then
+    echo "The suite \"$i\" has only $numberOfDOALL benchmarks parallelized with DOALL over $numberOfBenchmarks benchmarks" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfHELIX" ; then
+    echo "The suite \"$i\" has only $numberOfHELIX benchmarks parallelized with HELIX over $numberOfBenchmarks benchmarks" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfDSWP" ; then
+    echo "The suite \"$i\" has only $numberOfDSWP benchmarks parallelized with DSWP over $numberOfBenchmarks benchmarks" ;
+  fi
+done
+popd &> /dev/null ;
+echo "" ;
+
+# Check the dependences
+echo "=== Dependences";
+pushd ./ &> /dev/null ;
+cd dependences ;
+for i in `ls` ; do
+  if ! test -d $i ; then
+    continue ;
+  fi
+
+  numberOfBenchmarks="`ls -l ${resultDir}/IR/${i}/benchmarks/*/NOELLE_input.bc | wc -l`" ;
+  numberOfNOELLE="`ls -l ${i}/noelle/*.txt | wc -l`" ;
+  numberOfLLVM="`ls -l ${i}/llvm/*.txt | wc -l`" ;
+  if test "$numberOfBenchmarks" != "$numberOfLLVM" ; then
+    echo "The suite \"$i\" has only $numberOfLLVM benchmarks with LLVM dependence information (over $numberOfBenchmarks benchmarks)" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfNOELLE" ; then
+    echo "The suite \"$i\" has only $numberOfNOELLE benchmarks with NOELLE dependence information (over $numberOfBenchmarks benchmarks)" ;
+  fi
+done
+popd &> /dev/null ;
+echo "" ;
+
+# Check the time
+echo "=== Execution time";
+pushd ./ &> /dev/null ;
+cd time ;
+for i in `ls` ; do
+  if ! test -d $i ; then
+    continue ;
+  fi
+
+  numberOfBenchmarks="`ls -l ${resultDir}/IR/${i}/benchmarks/*/NOELLE_input.bc | wc -l`" ;
+  numberOfBaselines="`ls -l ${i}/baseline/*.txt | wc -l`" ;
+  numberOfNONE="`ls -l ${i}/NONE/*.txt | wc -l`" ;
+  numberOfDOALL="`ls -l ${i}/DOALL/*.txt | wc -l`" ;
+  if test -d ${i}/HELIX ; then
+    numberOfHELIX="`ls -l ${i}/HELIX/*.txt | wc -l`" ;
+  else
+    numberOfHELIX="0" ;
+  fi
+  if test -d ${i}/DSWP ; then
+    numberOfDSWP="`ls -l ${i}/DSWP/*.txt | wc -l`" ;
+  else
+    numberOfDSWP="0" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfBaselines" ; then
+    echo "The suite \"$i\" has only $numberOfBaselines baselines with execution times (over $numberOfBenchmarks benchmarks)" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfNONE" ; then
+    echo "The suite \"$i\" has only $numberOfNONE benchmarks parallelized with NONE with execution times (over $numberOfBenchmarks benchmarks)" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfDOALL" ; then
+    echo "The suite \"$i\" has only $numberOfDOALL benchmarks parallelized with DOALL with execution times (over $numberOfBenchmarks benchmarks)" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfHELIX" ; then
+    echo "The suite \"$i\" has only $numberOfHELIX benchmarks parallelized with HELIX with execution times (over $numberOfBenchmarks benchmarks)" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfDSWP" ; then
+    echo "The suite \"$i\" has only $numberOfDSWP benchmarks parallelized with DSWP with execution times (over $numberOfBenchmarks benchmarks)" ;
+  fi
+done
+popd &> /dev/null ;
+echo "" ;
+
+
