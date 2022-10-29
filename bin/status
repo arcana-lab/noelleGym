@@ -48,30 +48,66 @@ echo "" ;
 
 # Check the dependences
 echo "=== Dependences";
-pushd ./ &> /dev/null ;
-cd dependences ;
-for i in `ls` ; do
-  if ! test -d $i ; then
-    continue ;
-  fi
+if test -d dependences ; then
+  pushd ./ &> /dev/null ;
 
-  numberOfBenchmarks="`ls -l ${resultDir}/IR/${i}/benchmarks/*/NOELLE_input.bc 2> /dev/null | wc -l`" ;
-  numberOfNOELLE="`ls -l ${i}/noelle/*.txt 2> /dev/null | wc -l`" ;
-  numberOfLLVM="`ls -l ${i}/llvm/*.txt 2> /dev/null | wc -l`" ;
-  if test "$numberOfBenchmarks" != "$numberOfLLVM" ; then
-    echo "The suite \"$i\" has only $numberOfLLVM benchmarks with LLVM dependence information (over $numberOfBenchmarks benchmarks)" ;
-  fi
-  if test "$numberOfBenchmarks" != "$numberOfNOELLE" ; then
-    echo "The suite \"$i\" has only $numberOfNOELLE benchmarks with NOELLE dependence information (over $numberOfBenchmarks benchmarks)" ;
-  fi
-done
-popd &> /dev/null ;
+  cd dependences ;
+  for i in `ls` ; do
+    if ! test -d $i ; then
+      continue ;
+    fi
+
+    numberOfBenchmarks="`ls -l ${resultDir}/IR/${i}/benchmarks/*/NOELLE_input.bc 2> /dev/null | wc -l`" ;
+    numberOfNOELLE="`ls -l ${i}/noelle/*.txt 2> /dev/null | wc -l`" ;
+    numberOfLLVM="`ls -l ${i}/llvm/*.txt 2> /dev/null | wc -l`" ;
+    if test "$numberOfBenchmarks" != "$numberOfLLVM" ; then
+      echo "The suite \"$i\" has only $numberOfLLVM benchmarks with LLVM dependence information (over $numberOfBenchmarks benchmarks)" ;
+    fi
+    if test "$numberOfBenchmarks" != "$numberOfNOELLE" ; then
+      echo "The suite \"$i\" has only $numberOfNOELLE benchmarks with NOELLE dependence information (over $numberOfBenchmarks benchmarks)" ;
+    fi
+  done
+
+  popd &> /dev/null ;
+
+else
+  echo "  Not available" ;
+fi
 echo "" ;
+
+# Check the dependences
+echo "=== Parallelization";
+if test -d parallelization ; then
+  pushd ./ &> /dev/null ;
+
+  cd parallelization ;
+  for i in `ls` ; do
+    if ! test -d $i ; then
+      continue ;
+    fi
+
+    numberOfBenchmarks="`ls -l ${resultDir}/IR/${i}/benchmarks/*/NOELLE_input.bc 2> /dev/null | wc -l`" ;
+    for j in `ls $i` ; do
+      numberOfParallelizations="`wc -l ${i}/${j} | awk '{print $1}'`" ;
+      if test "$numberOfBenchmarks" != "$numberOfParallelizations" ; then
+        echo "The suite \"$i\" has only $numberOfParallelizations benchmarks with parallelization statistics (over $numberOfBenchmarks benchmarks)" ;
+      fi
+    done
+  done
+
+  popd &> /dev/null ;
+
+else
+  echo "  Not available" ;
+fi
+echo "" ;
+
 
 # Check the time
 echo "=== Execution time";
 if test -d time ; then
   pushd ./ &> /dev/null ;
+
   cd time ;
   for i in `ls` ; do
     if ! test -d $i ; then
@@ -109,6 +145,7 @@ if test -d time ; then
     fi
   done
   popd &> /dev/null ;
+
 else
   echo "  Not available";
 fi
