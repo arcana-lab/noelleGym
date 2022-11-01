@@ -83,6 +83,13 @@ for i in `ls */benchmarks/*/baseline_parallelized.bc` ; do
 
   dirName="`dirname $i`" ;
   echo $dirName
+
+  # Copy the optimized IR file
   mkdir -p ${outputDir}/IR/${dirName} ;
   cp ${dirName}/baseline_parallelized.bc ${outputDir}/IR/${dirName}/baseline_parallelized_${optimizationName}.bc ;
+
+  # Copy the NOELLE output if it exists 
+  if test -f ${dirName}/noelle_output.txt ; then
+    cp ${dirName}/noelle_output.txt ${outputDir}/IR/${dirName}/baseline_parallelized_${optimizationName}_noelle_output.txt ;
+  fi
 done
