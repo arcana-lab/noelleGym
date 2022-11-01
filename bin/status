@@ -90,7 +90,8 @@ if test -d parallelization ; then
     for j in `ls $i` ; do
       numberOfParallelizations="`wc -l ${i}/${j} | awk '{print $1}'`" ;
       if test "$numberOfBenchmarks" != "$numberOfParallelizations" ; then
-        echo "The suite \"$i\" has only $numberOfParallelizations benchmarks with parallelization statistics (over $numberOfBenchmarks benchmarks)" ;
+        technique="`echo $j |sed 's/\.txt//g'`" ;
+        echo "The suite \"$i\" has only $numberOfParallelizations benchmarks with parallelization statistics for $technique (over $numberOfBenchmarks benchmarks)" ;
       fi
     done
   done
