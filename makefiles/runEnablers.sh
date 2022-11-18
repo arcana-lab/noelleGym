@@ -1,14 +1,15 @@
 #!/bin/bash -e
 
 # Fetch the inputs
-if test $# -lt 3 ; then
-  echo "USAGE: `basename $0` BENCHMARK IR_FILE \"LINKER_OPTIONS\"" ;
+if test $# -lt 4 ; then
+  echo "USAGE: `basename $0` BENCHMARK IR_FILE PROFILE_INPUT \"LINKER_OPTIONS\"" ;
   exit 1;
 fi
 bench="$1" ;
 irFile=$2 ;
-LIBS=$3 ;
-NOELLE_OPTIONS="${@:4}" ;
+profileInput=$3 ;
+LIBS=$4 ;
+NOELLE_OPTIONS="${@:5}" ;
 
 # Correctness checks
 if ! test -e ${irFile} ; then
@@ -47,7 +48,7 @@ noelle-simplification ${irFile} -o baseline.bc ;
 
 # Profile the code
 noelle-prof-coverage baseline.bc baseline_prof ${LIBS}
-./run.sh $bench baseline_prof ;
+./run.sh $bench baseline_prof $profileInput ;
 mv default.profraw pre.profraw ;
 
 # Embed the profile into the code
@@ -59,7 +60,7 @@ noelle-meta-clean baseline_pre.bc baseline_pre.bc ;
 
 # Profile the code
 noelle-prof-coverage baseline_pre.bc baseline_pre_prof ${LIBS}
-./run.sh $bench baseline_pre_prof ;
+./run.sh $bench baseline_pre_prof $profileInput ;
 
 # Embed the profile into the code
 noelle-meta-prof-embed default.profraw baseline_pre.bc -o baseline_with_metadata.bc ;
