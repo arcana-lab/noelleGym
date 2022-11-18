@@ -35,7 +35,7 @@ def collectBenchmarks(pathToTimeDir, benchSuite, referenceFile):
   with open(pathToTimeDir + '/' + benchSuite + '/' + referenceFile, 'r') as file:
     lines = file.readlines()
     for line in lines:
-      benchmarks.append(line.split(' ')[0].strip('.txt'))
+      benchmarks.append(line.split(' ')[0].split('.')[0])
 
   return benchmarks
 
@@ -55,7 +55,7 @@ def collectResults(pathToTimeDir, benchSuite, techniques, benchmarks):
         for line in lines:
           benchmarkAndSpeedUp = line.split(' ')
           if benchmarkAndSpeedUp[1].strip('\n') != '' and benchmarkAndSpeedUp[1].strip('\n') != 'NONE': 
-            results[technique][benchmarks.index(benchmarkAndSpeedUp[0].strip('.txt'))] = float(benchmarkAndSpeedUp[1].strip('\n'))
+            results[technique][benchmarks.index(benchmarkAndSpeedUp[0].split('.')[0])] = float(benchmarkAndSpeedUp[1].strip('\n'))
 
   # Sort the speedup result if only interested in NOELLE's result
   if len(techniques) == 1 and techniques[0] == 'NOELLE':
