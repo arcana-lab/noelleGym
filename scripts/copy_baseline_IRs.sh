@@ -27,11 +27,16 @@ function compile_suite {
 
     else
       benchmarkSuiteArchive="${origDir}/benchmarkSuites/SPEC2017.tar.gz" ;
+      if ! test -f $benchmarkSuiteArchive ; then
+        if test -f /project/benchmarks/SPEC2017.tar.gz ; then
+          cp /project/benchmarks/SPEC2017.tar.gz $benchmarkSuiteArchive ;
+        fi
+      fi
     fi
     
     # Check if the file exists
     if ! test -e "${benchmarkSuiteArchive}" ; then
-      echo "ERROR = The file ${benchmarkSuiteArchive} does not exist" ;
+      echo "ERROR = The file ${benchmarkSuiteArchive} does not exist. " ;
       popd ;
       return ;
     fi
