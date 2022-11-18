@@ -10,11 +10,12 @@ PARALLELIZATION_OPTIONS=-noelle-disable-helix -noelle-disable-dswp -noelle-disab
 DISABLE_ENABLERS=-noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier
 NOELLE_OPTIONS=-noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=$(NOELLE_CORES) $(DISABLE_ENABLERS)
 LIBS=-lm -lstdc++ -lpthread -L/usr/lib64 -L/usr/lib
+PROFILE_INPUT=large
 
 all: baseline_parallelized.bc
 
 baseline_parallelized.bc:
-	./runEnablers.sh $(BENCHMARK) all.bc "$(LIBS)" $(NOELLE_OPTIONS)
+	./runEnablers.sh $(BENCHMARK) all.bc $(PROFILE_INPUT) "$(LIBS)" $(NOELLE_OPTIONS)
 	noelle-parallelizer baseline_with_metadata.bc -o $@ $(NOELLE_OPTIONS) $(PARALLELIZATION_OPTIONS)
 	cp $@ all.bc
 
