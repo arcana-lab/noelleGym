@@ -18,7 +18,7 @@ function compute_median {
         exit ;
       }
       l++;
-    }' $inputFile ;
+    }' $tempFile ;
 
   return ;
 }
@@ -31,15 +31,19 @@ function compute_max {
       # find maximum value
       max_val = $3;
       max_idx = 3;
+      min_val = $3;
       for (i = 5; i <= NF; i += 2) {
         if ($i > max_val) {
           max_val = $i;
           max_idx = i;
         }
+        if ($i < min_val && $i > 0) {
+          min_val = $i;
+        }
       }
       # print benchmark
       #   benchmark opt speedup
-      printf "%s %s %s\n", $1, max_val, $(max_idx-1);
+      printf "%s %s %s %s %s\n", $1, max_val, min_val, max_val, $(max_idx-1);
     }' ${inputFile}
 
   return;
@@ -79,8 +83,14 @@ function analyze_results {
     # Compute the speedup
     speedup=`echo "scale=3; $baselineTime / $optTime" | bc`;
 
+    sorted=`sort -g $outputFile`
+    min=`echo $sorted | cut --delimiter " " --fields 1`
+    minSpeedup=`echo "scale=3; $baselineTime / $min" | bc`;
+    max=`echo $sorted | cut --delimiter " " --fields 5`
+    maxSpeedup=`echo "scale=3; $baselineTime / $max" | bc`;
+
     # Dump the speedup
-    echo "${bench} ${speedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
+    echo "${bench} ${speedup} ${minSpeedup} ${maxSpeedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
 
     if [ "${speedup}" != "" ] ; then
       echo "${bench} ${optimizationName} ${speedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt" ;

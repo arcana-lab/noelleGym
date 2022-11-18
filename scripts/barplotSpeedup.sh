@@ -18,4 +18,4 @@ source ${repoPath}/scripts/setup_python_virtual_environment.sh ;
 python3 ${repoPath}/scripts/barplotSpeedup.py ${timeDir} ${plotsDir} ${@:3} ;
 
 # Run the python script to generate plots with the maximum speedup of NOELLE per benchmark suite
-python3 ${repoPath}/scripts/barplotSpeedup.py ${timeDir} ${plotsDir} NOELLE ;
+# python3 ${repoPath}/scripts/barplotSpeedup.py ${timeDir} ${plotsDir} NOELLE ;

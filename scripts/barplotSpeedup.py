@@ -35,19 +35,25 @@ def collectBenchmarks(pathToTimeDir, benchSuite, referenceFile):
   with open(pathToTimeDir + '/' + benchSuite + '/' + referenceFile, 'r') as file:
     lines = file.readlines()
     for line in lines:
-      benchmarks.append(line.split(' ')[0].split('.')[0])
+      benchmarks.append(line.split(' ')[0].strip('.txt'))
 
   return benchmarks
 
 def collectResults(pathToTimeDir, benchSuite, techniques, benchmarks):
   results = {}
+  mins = {}
+  maxs = {}
   for technique in techniques:
     resultsFile = pathToTimeDir + '/' + benchSuite + '/' + technique + '.txt'
     results[technique] = []
+    mins[technique] = []
+    maxs[technique] = []
 
     # set the default value
     for benchmark in benchmarks:
       results[technique].append(0.0)
+      mins[technique].append(0.0)
+      maxs[technique].append(0.0)
 
     if os.path.isfile(resultsFile):
       with open(resultsFile, 'r') as file:
@@ -55,20 +61,20 @@ def collectResults(pathToTimeDir, benchSuite, techniques, benchmarks):
         for line in lines:
           benchmarkAndSpeedUp = line.split(' ')
           if benchmarkAndSpeedUp[1].strip('\n') != '' and benchmarkAndSpeedUp[1].strip('\n') != 'NONE': 
-            results[technique][benchmarks.index(benchmarkAndSpeedUp[0].split('.')[0])] = float(benchmarkAndSpeedUp[1].strip('\n'))
+            results[technique][benchmarks.index(benchmarkAndSpeedUp[0].strip('.txt'))] = float(benchmarkAndSpeedUp[1].strip('\n'))
+          if benchmarkAndSpeedUp[2].strip('\n') != '' and benchmarkAndSpeedUp[2].strip('\n') != 'NONE':
+            mins[technique][benchmarks.index(benchmarkAndSpeedUp[0].strip('.txt'))] = float(benchmarkAndSpeedUp[2].strip('\n'))
+          if benchmarkAndSpeedUp[3].strip('\n') != '' and benchmarkAndSpeedUp[3].strip('\n') != 'NONE':
+            maxs[technique][benchmarks.index(benchmarkAndSpeedUp[0].strip('.txt'))] = float(benchmarkAndSpeedUp[3].strip('\n'))
 
-  # Sort the speedup result if only interested in NOELLE's result
-  if len(techniques) == 1 and techniques[0] == 'NOELLE':
-    results['NOELLE'], benchmarks = (list(bench) for bench in zip(*sorted(zip(results['NOELLE'], benchmarks), reverse=True)))
+  return results, mins, maxs
 
-  return results, benchmarks
-
-def plot(benchSuite, techniques, benchmarks, results, pathToPlotsDir):
+def plot(benchSuite, techniques, benchmarks, results, mins, maxs, pathToPlotsDir):
   colors = {
-    "NONE": "black",
+    "NONE": "grey",
     "DOALL": "green",
     "HELIX": "orange",
-    "DSWP": "blue",
+    "DSWP": "cyan",
     "NOELLE": "red",
   }
   # Backup colors if not predefined
@@ -100,7 +106,9 @@ def plot(benchSuite, techniques, benchmarks, results, pathToPlotsDir):
     else:
       color = back_up_colors[i]
       i += 1
-    rects.append(ax.bar(xTicks, results[technique], barWidth, color = color, label = technique))
+    err = [np.subtract(results[technique], mins[technique]), np.subtract(maxs[technique], results[technique])]
+    rects.append(ax.bar(xTicks, results[technique], barWidth, yerr=err, \
+                error_kw=dict(lw=15/(len(techniques) * len(benchmarks)), capsize=30/(len(techniques) * len(benchmarks)), capthick=5/(len(techniques) * len(benchmarks))), color = color, label = technique))
     xTicks = [elem + barIncrement for elem in xTicks]
     xTicksShifted = [elem - barWidth/2 - gap/2 for elem in xTicks]
     xTicksAcc.append(xTicksShifted)
@@ -139,11 +147,10 @@ def plot(benchSuite, techniques, benchmarks, results, pathToPlotsDir):
 
   ax.set_aspect(0.3)
 
+  #plt.margins(x=0, y=0)
+  #plt.setp(ax.xaxis.get_majorticklabels(), ha='right')
   plt.tight_layout()
-  if len(techniques) == 1 and techniques[0] == 'NOELLE':
-    plt.savefig(pathToPlotsDir + '/' + benchSuite + '_' + techniques[0] + '.pdf', format = 'pdf')
-  else:
-    plt.savefig(pathToPlotsDir + '/' + benchSuite + '.pdf', format = 'pdf')
+  plt.savefig(pathToPlotsDir + '/' + benchSuite + '.pdf', format = 'pdf')
 
   return
 
@@ -165,7 +172,7 @@ for benchSuite in benchSuites:
   benchmarks = collectBenchmarks(pathToTimeDir, benchSuite, 'NONE.txt')
 
   # collect speedup results per benchmark per technique in the suite
-  results, benchmarks = collectResults(pathToTimeDir, benchSuite, techniques, benchmarks)
+  results, mins, maxs = collectResults(pathToTimeDir, benchSuite, techniques, benchmarks)
 
   # plot and save the speedup results
-  plot(benchSuite, techniques, benchmarks, results, pathToPlotsDir)
+  plot(benchSuite, techniques, benchmarks, results, mins, maxs, pathToPlotsDir)
