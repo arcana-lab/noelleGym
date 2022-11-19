@@ -23,7 +23,22 @@ RUNTIME=Parallelizer_utils
 # Libraries
 LIBS=-lm -lstdc++ -lpthread
 
-all: baseline_parallelized.bc
+all: baseline_parallelized.bc O3_with_metadata.bc
+
+O3.bc: all.bc
+	opt -O3 $< -o $@
+
+O3_prof: O3.bc
+	noelle-prof-coverage $< $@ $(LIBS)
+
+O3.profraw: O3_prof
+	cd train ; ./../$< `tail -n 1 ../run_train.sh | awk -F$(BENCHMARK) '{print $$2}'`; mv $@ ../ ;
+
+O3_with_metadata.bc: O3.profraw O3.bc
+	noelle-meta-prof-embed $^ -o $@
+	noelle-meta-loop-embed $@ -o $@
+	llvm-dis $@
+
 
 baseline.bc: $(BENCHMARK).bc $(RUNTIME).bc
 	llvm-link $^ -o $@
