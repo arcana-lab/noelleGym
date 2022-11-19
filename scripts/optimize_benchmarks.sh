@@ -6,12 +6,14 @@ function compile_benchmark {
 
   # Check if the baseline IR has been generated
   if ! test -f ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc ; then
+    echo "WARNING: Baseline IR has not been generated" ;
     return ;
   fi
   cp ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc benchmarks/${benchToOptimize}/ ;
 
   # Check if the benchmark has been optimized already
   if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_${optimizationName}.bc ; then
+      echo "WARNING: Benchmark has already been optimized" ;
     return ;
   fi
 
