@@ -16,20 +16,28 @@ rm -f ${outDir}/*/DOALL.txt ${outDir}/*/HELIX.txt ${outDir}/*/DSWP.txt ${outDir}
 
 # Analyze all IRs parallelized
 for irFile in `find $IRDir -iname baseline_parallelized*.bc` ; do
+
+  # Fetch the names
   benchDir="`dirname $irFile`" ;
   benchSuiteDir="`dirname $benchDir`" ;
   benchSuiteDir="`dirname $benchSuiteDir`" ;
   benchSuiteDir="`basename $benchSuiteDir`" ;
   benchName="`basename $benchDir`" ;
+  relativeIRFile="`basename $irFile`" ;
+  outputFileName="`echo $relativeIRFile | sed 's/\.bc//g'`";
+  outputFileName="${outputFileName}_noelle_output.txt" ;
+  if ! test -f ${benchDir}/$outputFileName ; then
+    echo "ERROR: output file for $irFile does not exist" ;
+    echo "The file should have been ${benchDir}/${outputFileName}" ;
+    exit 1;
+  fi
   parallelizationName=`echo $irFile | sed 's/.*parallelized_//' | sed 's/\.bc//'`
   echo "  Benchmark $benchName with $parallelizationName" ;
 
   # Compute the statistics
-  rm -f ${benchDir}/*.ll ;
-  llvm-dis $irFile ;
-  DOALLNums=`grep call $irFile ${benchDir}/*.ll  | grep @NOELLE_DOALLDispatcher | wc -l | awk '{print $1}'` ;
-  HELIXNums=`grep call $irFile ${benchDir}/*.ll  | grep @NOELLE_HELIX_dispatcher | wc -l | awk '{print $1}'` ;
-  DSWPNums=`grep call $irFile ${benchDir}/*.ll  | grep @NOELLE_DSWPDispatcher | wc -l | awk '{print $1}'` ;
+  DOALLNums=`grep "The loop has been parallelized with DOALL" ${benchDir}/${outputFileName} | grep "Parallelizer: parallelizerLoop" | wc -l | awk '{print $1}'` ;
+  HELIXNums=`grep "The loop has been parallelized with HELIX" ${benchDir}/${outputFileName} | grep "Parallelizer: parallelizerLoop" | wc -l | awk '{print $1}'` ;
+  DSWPNums=`grep "The loop has been parallelized with DSWP" ${benchDir}/${outputFileName} | grep "Parallelizer: parallelizerLoop" | wc -l | awk '{print $1}'` ;
 
   # Dump
   mkdir -p ${outDir}/${benchSuiteDir} ;
