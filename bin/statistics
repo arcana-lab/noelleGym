@@ -13,6 +13,8 @@ export NOELLE_CORES=8 ;
 
 # Generate statistics
 echo "${prefixString} Start generating statistics" ;
+./scripts/time_saved.sh >> output.txt 2>&1 ;
+echo "${prefixString}   Potential speedup statistics are generated" ;
 ./scripts/loops.sh >> output.txt 2>&1 ;
 echo "${prefixString}   All loop statistics are generated" ;
 ./scripts/compute_dependences.sh >> output.txt 2>&1 ;
