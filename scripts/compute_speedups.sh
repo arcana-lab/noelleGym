@@ -31,19 +31,15 @@ function compute_max {
       # find maximum value
       max_val = $3;
       max_idx = 3;
-      min_val = $3;
-      for (i = 5; i <= NF; i += 2) {
+      for (i = 7; i <= NF; i += 4) {
         if ($i > max_val) {
           max_val = $i;
           max_idx = i;
         }
-        if ($i < min_val && $i > 0) {
-          min_val = $i;
-        }
       }
       # print benchmark
       #   benchmark opt speedup
-      printf "%s %s %s %s %s\n", $1, max_val, min_val, max_val, $(max_idx-1);
+      printf "%s %s %s %s %s\n", $1, max_val, $(max_idx+2), $(max_idx+1), $(max_idx-1);
     }' ${inputFile}
 
   return;
@@ -93,7 +89,7 @@ function analyze_results {
     echo "${bench} ${speedup} ${minSpeedup} ${maxSpeedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
 
     if [ "${speedup}" != "" ] ; then
-      echo "${bench} ${optimizationName} ${speedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt" ;
+      echo "${bench} ${optimizationName} ${speedup} ${minSpeedup} ${maxSpeedup}" >> "${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt" ;
     fi
   done
   popd ;
