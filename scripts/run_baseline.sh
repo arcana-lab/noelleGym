@@ -36,15 +36,20 @@ function generate_results {
     echo "    Benchmark $bench ($numRuns runs)" ;
     for i in `seq 1 $numRuns` ; do
 
+        inputToUse="native" ;
+        if [ "${benchSuite}" == "SPEC2017" ] ; then
+          inputToUse="ref" ;
+        fi
+
         # Run
-        make run BENCHMARK=$bench INPUT=native &> ${tempFile} ;
+        make run BENCHMARK=$bench INPUT=${inputToUse} &> ${tempFile} ;
         if test $? -ne 0 ; then
           echo "$b Error during execution" >> ${outputFile} ;
           break ;
         fi
 
         # Collect the time (assumes that /usr/bin/time -p was used)
-        if [ ${benchSuite} == "NAS" ] ; then
+        if [ "${benchSuite}" == "NAS" ] ; then
           baselineTime=`cat ${tempFile} | grep "Time in seconds" | awk '{ print $5 }'`
         else
           baselineTime=`cat ${tempFile} | grep real | awk '{ print $2 }'`
