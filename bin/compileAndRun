@@ -5,6 +5,7 @@ echo "${prefixString} All benchmarks from all benchmark suites will be compiled,
 echo "${prefixString} Results will be stored in `pwd`/results/current_machine" ;
 echo "${prefixString} The output of each step will be stored in `pwd`/output.txt" ;
 echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current state at finer granularity)" ;
+echo "${prefixString}     (if the execution ends and you don't see \"Exit\" printed, then an error occured. Please check the tail of output.txt for the error message" ;
 echo "" ;
 
 # Setup
@@ -26,3 +27,5 @@ echo "${prefixString} Run binaries" ;
 # Clean
 echo "${prefixString} Clean" ;
 ./scripts/clean.sh >> output.txt 2>&1 ;
+
+echo "${prefixString} Exit" ;

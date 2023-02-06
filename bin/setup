@@ -11,8 +11,8 @@ origDir="`pwd`" ;
 
 # Test the environment
 if ! command -v go &> /dev/null; then
-  echo "\"go\" cannot be found. Please enable a go installation. If you are in Zythos, run the following command:" ;
-  echo "  source /project/go/go_1.13.7/enable" ;
+  echo "${prefixString} ERROR: \"go\" cannot be found. Please enable a go installation. If you are in Zythos, run the following command:" ;
+  echo "${prefixString}  \"source /project/go/go_1.13.7/enable\"" ;
   exit 1;
 fi
 
