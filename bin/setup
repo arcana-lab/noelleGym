@@ -9,6 +9,13 @@ echo "" ;
 
 origDir="`pwd`" ;
 
+# Test the environment
+if ! command -v go &> /dev/null; then
+  echo "\"go\" cannot be found. Please enable a go installation. If you are in Zythos, run the following command:" ;
+  echo "  source /project/go/go_1.13.7/enable" ;
+  exit 1;
+fi
+
 # Compile NOELLE
 echo "${prefixString} Start compiling NOELLE" ;
 ./scripts/compile_NOELLE.sh >> ${origDir}/output.txt 2>&1 ;
