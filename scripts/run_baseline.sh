@@ -15,7 +15,7 @@ function generate_results {
   fi
 
   # Collect the data
-  pushd ./ ;
+  pushd ./ &>/dev/null ;
   cd ${benchSuite} ;
   local bench;
   for bench in `ls benchmarks` ; do
@@ -60,7 +60,7 @@ function generate_results {
 
     done
   done
-  popd ;
+  popd &>/dev/null ;
 
   return ;
 }
@@ -74,7 +74,7 @@ mkdir -p $dirResult ;
 tempFile=`mktemp` ;
 
 # Generate the results for all benchmarks in all benchmark suites
-pushd ./ ;
+pushd ./ &>/dev/null ;
 cd all_benchmark_suites/build ;
 for currentDirectory in `ls` ; do
   if ! test -d $currentDirectory ; then
@@ -90,7 +90,7 @@ for currentDirectory in `ls` ; do
   generate_results $currentDirectory ;
 
 done
-popd ;
+popd &>/dev/null ;
 
 # Clean
 rm $tempFile ;

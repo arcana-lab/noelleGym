@@ -3,7 +3,7 @@
 function compile_suite {
   local suite=$1 ;
 
-  pushd ./ ;
+  pushd ./ &>/dev/null ;
   cd $suite ;
   echo "Compile the benchmark suite $suite" ;
 
@@ -37,7 +37,7 @@ function compile_suite {
     # Check if the file exists
     if ! test -e "${benchmarkSuiteArchive}" ; then
       echo "ERROR = The file ${benchmarkSuiteArchive} does not exist. " ;
-      popd ;
+      popd &>/dev/null ;
       return ;
     fi
 
@@ -47,11 +47,11 @@ function compile_suite {
 
   else
     echo "  Copy the single-IR files of benchmarks" ;
-    make clean ; 
+    make clean &> /dev/null ; 
     make bitcode_copy ;
   fi
 
-  popd ;
+  popd &>/dev/null ;
   return ;
 }
 

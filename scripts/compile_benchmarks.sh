@@ -56,7 +56,7 @@ function compile_benchmark {
 function compile_suite {
   local suite=$1 ;
 
-  pushd ./ ;
+  pushd ./ &>/dev/null ;
   cd $suite ;
   echo "Considering the benchmark suite $suite" ;
 
@@ -65,7 +65,7 @@ function compile_suite {
 
     # The benchmark suite does not have the baseline IR
     echo "  The benchmark suite doesn't have the baseline IR. Skip this suite." ;
-    popd ;
+    popd &>/dev/null ;
     return ;
   fi
 
@@ -75,7 +75,7 @@ function compile_suite {
     compile_benchmark $suite $bench ;
   done
 
-  popd ;
+  popd &>/dev/null ;
   return ;
 }
 

@@ -10,17 +10,17 @@ rm -f *.con ;
 find ./results/ -empty -delete ;
 
 if test -d all_benchmark_suites ; then
-  pushd ./ ;
+  pushd ./ &>/dev/null ;
   cd all_benchmark_suites ;
   cd build ;
   for i in `ls` ; do
     if ! test -d $i ; then
       continue ;
     fi
-    pushd ./ ;
+    pushd ./ &>/dev/null ;
     cd $i ;
     make clean &> /dev/null ;
-    popd ;
+    popd &>/dev/null ;
   done
-  popd ;
+  popd &>/dev/null ;
 fi
