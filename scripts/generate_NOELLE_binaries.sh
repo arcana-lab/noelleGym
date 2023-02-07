@@ -12,12 +12,12 @@ function generate_binaries {
   fi
 
   # Clean the state of the suite
-  pushd ./ ;
+  pushd ./ &>/dev/null ;
   cd ${benchSuite} ;
-  make clean ;
+  make clean &> /dev/null ;
 
   # Copy the IR files
-  pushd ./ ;
+  pushd ./ &>/dev/null ;
   cd ${origDir}/results/current_machine/IR/${benchSuite}/benchmarks ;
   for j in `ls` ; do
 
@@ -39,12 +39,12 @@ function generate_binaries {
     echo "    Benchmark $j" ;
     cp ${j}/baseline_parallelized_${optimizationName}.bc ${origDir}/all_benchmark_suites/build/${benchSuite}/benchmarks/${j}/${j}.bc ;
   done
-  popd ;
+  popd &>/dev/null ;
 
   # Generate the binaries
   make binary ;
 
-  popd ;
+  popd &>/dev/null ;
   return ;
 }
 
@@ -60,7 +60,7 @@ echo "Generate NOELLE binaries for $optimizationName" ;
 origDir=`pwd` ;
 
 # Generate the results for all benchmarks in all benchmark suites
-pushd ./ ;
+pushd ./ &>/dev/null ;
 cd all_benchmark_suites/build ;
 for i in `ls` ; do
   if ! test -d $i ; then
@@ -72,6 +72,6 @@ for i in `ls` ; do
   generate_binaries $i ;
 
 done
-popd ;
+popd &>/dev/null ;
 
 echo "" ;
