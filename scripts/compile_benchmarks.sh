@@ -99,7 +99,7 @@ fi
 
 # Cache the bitcode files
 outputDir="${origDir}/results/current_machine" ;
-for i in `ls */benchmarks/*/baseline_with_metadata.bc` ; do
+for i in `ls */benchmarks/*/noelle_output.txt` ; do
   echo $i ;
 
   dirName="`dirname $i`" ;
@@ -107,10 +107,10 @@ for i in `ls */benchmarks/*/baseline_with_metadata.bc` ; do
 
   # Copy the optimized IR file
   mkdir -p ${outputDir}/IR/${dirName} ;
-  cp ${dirName}/baseline_with_metadata.bc ${outputDir}/IR/${dirName} ;
+  if test -f ${dirName}/baseline_with_metadata.bc ; then
+    cp ${dirName}/baseline_with_metadata.bc ${outputDir}/IR/${dirName} ;
+  fi
 
   # Copy the NOELLE output if it exists 
-  if test -f ${dirName}/noelle_output.txt ; then
-    cp ${dirName}/noelle_output.txt ${outputDir}/IR/${dirName}/baseline_with_metadata_noelle_output.txt ;
-  fi
+  cp ${dirName}/noelle_output.txt ${outputDir}/IR/${dirName}/baseline_with_metadata_noelle_output.txt ;
 done

@@ -90,10 +90,10 @@ for i in `ls */benchmarks/*/noelle_output.txt` ; do
 
   # Copy the optimized IR file
   mkdir -p ${outputDir}/IR/${dirName} ;
-  cp ${dirName}/baseline_parallelized.bc ${outputDir}/IR/${dirName}/baseline_parallelized_${optimizationName}.bc ;
+  if test -f ${dirName}/baseline_parallelized.bc ; then
+    cp ${dirName}/baseline_parallelized.bc ${outputDir}/IR/${dirName}/baseline_parallelized_${optimizationName}.bc ;
+  fi
 
   # Copy the NOELLE output if it exists 
-  if test -f ${dirName}/noelle_output.txt ; then
-    cp ${dirName}/noelle_output.txt ${outputDir}/IR/${dirName}/baseline_parallelized_${optimizationName}_noelle_output.txt ;
-  fi
+  cp ${dirName}/noelle_output.txt ${outputDir}/IR/${dirName}/baseline_parallelized_${optimizationName}_noelle_output.txt ;
 done
