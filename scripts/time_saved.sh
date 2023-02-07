@@ -13,7 +13,7 @@ function generate_time_saved_results {
   mkdir -p $currentTimeSavedResult ;
 
   # Collect the data
-  pushd ./ ;
+  pushd ./ &> /dev/null ;
   cd ${benchSuite}/benchmarks ;
   for j in `ls` ; do
     if ! test -d $j ; then
@@ -24,7 +24,7 @@ function generate_time_saved_results {
     fi
     echo "${prefixString}     Benchmark $j" ;
 
-    pushd ./ ;
+    pushd ./ &> /dev/null ;
     cd $j ;
     mkdir -p ${currentTimeSavedResult}/raw ;
     if ! test -e ${currentTimeSavedResult}/raw/${j}.txt ; then
@@ -32,9 +32,9 @@ function generate_time_saved_results {
       noelle-time-saved tmp.bc &> ${currentTimeSavedResult}/raw/${j}.txt
       rm tmp.bc
     fi
-    popd ;
+    popd &> /dev/null ;
   done
-  popd ;
+  popd &> /dev/null ;
 
   return ;
 }
@@ -49,10 +49,10 @@ function analyze_results {
   fi
 
   # Analyze the data
-  pushd ./ ;
+  pushd ./ &> /dev/null ;
   cd ${currentTimeSavedResult}/raw ;
   ${origDir}/scripts/extract_time_saved.sh > ../time_saved.txt ;
-  popd ;
+  popd &> /dev/null ;
 
   return ;
 }
@@ -73,7 +73,7 @@ if ! test -d ${origDir}/results/current_machine/IR ; then
 fi
 
 # Generate the results for all benchmarks in all benchmark suites
-pushd ./ ;
+pushd ./ &> /dev/null ;
 cd ${origDir}/results/current_machine/IR ;
 for i in `ls` ; do
   if ! test -d $i ; then
@@ -89,7 +89,7 @@ for i in `ls` ; do
 
   echo "${prefixString}";
 done
-popd ;
+popd &> /dev/null ;
 
 # Exit
 echo "${prefixString} End";

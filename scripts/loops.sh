@@ -13,7 +13,7 @@ function generate_loop_results {
   mkdir -p $currentIVResult ;
 
   # Collect the data
-  pushd ./ ;
+  pushd ./ &>/dev/null ;
   cd ${benchSuite}/benchmarks ;
   for j in `ls` ; do
     if ! test -d $j ; then
@@ -24,15 +24,15 @@ function generate_loop_results {
     fi
     echo "${prefixString}     Benchmark $j" ;
 
-    pushd ./ ;
+    pushd ./ &>/dev/null ;
     cd $j ;
     mkdir -p ${currentIVResult}/raw ;
     if ! test -e ${currentIVResult}/raw/${j}.txt ; then
       noelle-loop-stats baseline_with_metadata.bc &> ${currentIVResult}/raw/${j}.txt
     fi
-    popd ;
+    popd &>/dev/null ;
   done
-  popd ;
+  popd &>/dev/null ;
 
   return ;
 }
@@ -47,7 +47,7 @@ function analyze_results {
   fi
 
   # Analyze the data
-  pushd ./ ;
+  pushd ./ &>/dev/null ;
   cd ${currentIVResult}/raw ; 
   if ! test -e ../induction_variables.txt ; then
     ${origDir}/scripts/extract_IV.sh > ../induction_variables.txt
@@ -55,7 +55,7 @@ function analyze_results {
   if ! test -e ../invariants.txt ; then
     ${origDir}/scripts/extract_invariants.sh > ../invariants.txt
   fi
-  popd ;
+  popd &>/dev/null ;
 
   return ;
 }
@@ -76,7 +76,7 @@ if ! test -d ${origDir}/results/current_machine/IR ; then
 fi
 
 # Generate the results for all benchmarks in all benchmark suites
-pushd ./ ;
+pushd ./ &>/dev/null ;
 cd ${origDir}/results/current_machine/IR ;
 for i in `ls` ; do
   if ! test -d $i ; then
@@ -92,7 +92,7 @@ for i in `ls` ; do
 
   echo "${prefixString}";
 done
-popd ;
+popd &>/dev/null ;
 
 # Exit
 echo "${prefixString} End";

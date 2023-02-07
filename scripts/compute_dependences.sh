@@ -14,7 +14,7 @@ function generate_dependence_results {
   mkdir -p $currentDepsResult ;
 
   # Collect the data
-  pushd ./ ;
+  pushd ./ &>/dev/null ;
   cd ${benchSuite}/benchmarks ;
   for j in `ls` ; do
     if ! test -d $j ; then
@@ -25,7 +25,7 @@ function generate_dependence_results {
     fi
     echo "  Benchmark $j" ;
 
-    pushd ./ ;
+    pushd ./ &>/dev/null ;
     cd $j ;
 
     # NOELLE
@@ -42,9 +42,9 @@ function generate_dependence_results {
       noelle-pdg-stats baseline_with_metadata_llvm.bc &> ${currentDepsResult}/llvm/${j}.txt ;
     fi
 
-    popd ;
+    popd &>/dev/null ;
   done
-  popd ;
+  popd &>/dev/null ;
 
   return ;
 }
@@ -59,7 +59,7 @@ function analyze_results {
   fi
 
   # Analyze the data
-  pushd ./ ;
+  pushd ./ &>/dev/null ;
   cd ${currentDepsResult}/noelle ; 
   if ! test -e ../benchmarks.txt ; then
     touch ../benchmarks.txt ;
@@ -92,7 +92,7 @@ function analyze_results {
   # Clean
   rm ../max.txt ../noelle.txt ../llvm.txt ../benchmarks.txt ;
 
-  popd ;
+  popd &>/dev/null ;
   return ;
 }
 
@@ -101,7 +101,7 @@ origDir=`pwd` ;
 ivResult="${origDir}/results/current_machine/dependences"; 
 
 # Generate the results for all benchmarks in all benchmark suites
-pushd ./ ;
+pushd ./ &>/dev/null ;
 cd results/current_machine/IR ;
 for i in `ls` ; do
   if ! test -d $i ; then
@@ -115,4 +115,4 @@ for i in `ls` ; do
   analyze_results $i ;
 
 done
-popd ;
+popd &>/dev/null ;

@@ -19,7 +19,7 @@ if test -d all_benchmark_suites ; then
     fi
     pushd ./ ;
     cd $i ;
-    make clean ;
+    make clean &> /dev/null ;
     popd ;
   done
   popd ;
