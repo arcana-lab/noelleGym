@@ -17,17 +17,19 @@ if ! command -v go &> /dev/null; then
 fi
 
 # Compile NOELLE
-echo "${prefixString} Start compiling NOELLE" ;
+echo "${prefixString}   Start compiling NOELLE" ;
 ./scripts/compile_NOELLE.sh >> ${origDir}/output.txt 2>&1 ;
-echo "${prefixString}   NOELLE has been compiled succesfully" ;
+echo "${prefixString}     NOELLE has been compiled succesfully" ;
 
 # Download the git repository
-echo "${prefixString} Setup the benchmark suites" ;
+echo "${prefixString}   Setup the benchmark suites" ;
 if ! test -d all_benchmark_suites ; then
   git clone https://github.com/scampanoni/wholeprogram_benchmarks.git all_benchmark_suites >> ${origDir}/output.txt 2>&1 ;
 fi
 cd all_benchmark_suites ;
 if ! test -e install ; then
-  echo "${prefixString}   Compile" ;
+  echo "${prefixString}     Compile" ;
   make >> ${origDir}/output.txt 2>&1 ;
 fi
+
+echo "${prefixString} Exit" ;

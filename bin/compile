@@ -8,7 +8,7 @@ echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current
 echo "" ;
 
 # Setup
-echo "${prefixString} Setup" ;
+echo "${prefixString}   Setup" ;
 ./bin/setup >> output.txt 2>&1 ;
 
 # Configure NOELLE
@@ -16,27 +16,29 @@ source NOELLE/enable ;
 export NOELLE_CORES=8 ;
 
 # Compile all benchmarks
-echo "${prefixString} Start compiling all benchmarks for all configurations";
+echo "${prefixString}   Start compiling all benchmarks for all configurations";
 ./scripts/compile_benchmarks.sh >> output.txt 2>&1 ;
-echo "${prefixString}   All benchmarks have been compiled for enablers-only and DOALL" ;
+echo "${prefixString}     All benchmarks have been compiled for enablers-only and DOALL" ;
 
 # Compile using DOALL 
-echo "${prefixString} Start generating parallelized binaries";
+echo "${prefixString}   Start generating parallelized binaries";
 ./scripts/optimize_benchmarks.sh "DOALL" >> output.txt 2>&1 ;
-echo "${prefixString}   All benchmarks have been compiled for DOALL" ;
+echo "${prefixString}     All benchmarks have been compiled for DOALL" ;
 
 # Compile using HELIX
 ./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
-echo "${prefixString}   All benchmarks have been compiled for HELIX" ;
+echo "${prefixString}     All benchmarks have been compiled for HELIX" ;
 
 # Compile using DSWP
 ./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
-echo "${prefixString}   All benchmarks have been compiled for DSWP" ;
+echo "${prefixString}     All benchmarks have been compiled for DSWP" ;
 
 # Compile using enablers
 ./scripts/optimize_benchmarks.sh "NONE" >> output.txt 2>&1 ;
-echo "${prefixString}   All benchmarks have been compiled for NONE" ;
+echo "${prefixString}     All benchmarks have been compiled for NONE" ;
 
 # Clean
-echo "${prefixString} Clean" ;
+echo "${prefixString}   Clean" ;
 ./scripts/clean.sh >> output.txt 2>&1 ;
+
+echo "${prefixString} Exit" ;
