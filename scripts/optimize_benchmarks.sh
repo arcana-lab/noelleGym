@@ -8,12 +8,16 @@ function compile_benchmark {
   if ! test -f ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc ; then
     return ;
   fi
-  cp ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc benchmarks/${benchToOptimize}/ ;
 
   # Check if the benchmark has been optimized already
   if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_${optimizationName}.bc ; then
     return ;
   fi
+  echo "Optimizing $benchToOptimize using ${optimizationName}" ;
+  echo "  File that will be generated = ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_${optimizationName}.bc";
+
+  # Copy the code to parallelize
+  cp ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc benchmarks/${benchToOptimize}/ ;
 
   # Check if there is a benchmark-specific makefile
   if test -f ${origDir}/makefiles/${suite}/${optimizationName}/${benchToOptimize}/Makefile ; then
@@ -33,17 +37,17 @@ function compile_benchmark {
 function compile_suite {
   local suite=$1 ;
 
-  pushd ./ ;
+  pushd ./ &> /dev/null ;
   cd $suite ;
 
   # Check if the benchmark suite has been compiled
   if ! test -d benchmarks ; then
-    popd ;
+    popd &> /dev/null ;
     return ;
   fi
 
   # Copy the baseline IR 
-  make clean ; 
+  make clean &> /dev/null ; 
   make bitcode_copy ;
 
   # Fetch the benchmarks that might need to be optimized
