@@ -1,5 +1,21 @@
 #!/bin/bash -e
 
+function run_with_technique {
+  local technique=$1 ;
+
+  local haveAllRun=$(are_all_benchmarks_run_for_all_suites $technique);
+  if test "$haveAllRun" == "0" ; then
+    aBenchmarkRun="1" ;
+    echo "${prefixString}   Start running $technique binaries";
+    ./scripts/generate_NOELLE_binaries.sh $technique >> output.txt 2>&1 ;
+    echo "${prefixString}     Binaries are generated" ;
+    ./scripts/run_NOELLE_binaries.sh $technique >> output.txt 2>&1 ;
+  fi
+  echo "${prefixString}     Binaries succesfully generated with $technique have run" ;
+
+  return ;
+}
+
 prefixString="### NOELLE Gym: Run ###" ;
 echo "${prefixString} All benchmarks from all benchmark suites will run" ;
 echo "${prefixString} Results will be stored in `pwd`/results/current_machine" ;
@@ -11,40 +27,30 @@ echo "" ;
 source NOELLE/enable ;
 export NOELLE_CORES=8 ;
 
+# Include bash functions
+source scripts/misc.sh
+
 # Generate and run the baseline binaries
 ./bin/runBaseline
 
 # Generate times for parallelization enablers
-echo "${prefixString}   Start running NOELLE enablers binaries";
 ./scripts/copy_NOELLE_enablers.sh >> output.txt 2>&1 ;
-./scripts/generate_NOELLE_binaries.sh "NONE" >> output.txt 2>&1 ;
-echo "${prefixString}     Binaries are generated" ;
-./scripts/run_NOELLE_binaries.sh "NONE" >> output.txt 2>&1 ;
-echo "${prefixString}     Binaries have run" ;
+aBenchmarkRun="0" ;
+run_with_technique "NONE" ;
 
 # Generate times of DOALL parallelized binaries for all benchmarks
-echo "${prefixString}   Start running NOELLE DOALL binaries";
-./scripts/generate_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
-echo "${prefixString}     NOELLE DOALL binaries are generated" ;
-./scripts/run_NOELLE_binaries.sh "DOALL" >> output.txt 2>&1 ;
-echo "${prefixString}     All NOELLE DOALL binaries have run" ;
+run_with_technique "DOALL" ;
 
 # Generate times of HELIX parallelized binaries for all benchmarks
-echo "${prefixString}   Start running NOELLE HELIX binaries";
-./scripts/generate_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
-echo "${prefixString}     NOELLE HELIX binaries are generated" ;
-./scripts/run_NOELLE_binaries.sh "HELIX" >> output.txt 2>&1 ;
-echo "${prefixString}     All NOELLE HELIX binaries have run" ;
+run_with_technique "HELIX" ;
 
 # Generate times of DSWP parallelized binaries for all benchmarks
-echo "${prefixString}   Start running NOELLE DSWP binaries";
-./scripts/generate_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
-echo "${prefixString}     NOELLE DSWP binaries are generated" ;
-./scripts/run_NOELLE_binaries.sh "DSWP" >> output.txt 2>&1 ;
-echo "${prefixString}     All NOELLE DSWP binaries have run" ;
+run_with_technique "DSWP" ;
 
 # Compute the parallelization statistics
-echo "${prefixString}   Compute the impact of the parallelization techniques" ;
-./scripts/compute_speedups.sh "`pwd`/results/current_machine/time" "`pwd`/results/current_machine/plots" >> output.txt 2>&1 ;
+if test $aBenchmarkRun != "0" ; then
+  echo "${prefixString}   Compute the impact of the parallelization techniques" ;
+  ./scripts/compute_speedups.sh "`pwd`/results/current_machine/time" "`pwd`/results/current_machine/plots" >> output.txt 2>&1 ;
+fi
 
 echo "${prefixString} Exit" ;
