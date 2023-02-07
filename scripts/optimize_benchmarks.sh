@@ -82,7 +82,7 @@ fi
 
 # Cache the bitcode files
 outputDir="${origDir}/results/current_machine" ;
-for i in `ls */benchmarks/*/baseline_parallelized.bc` ; do
+for i in `ls */benchmarks/*/noelle_output.txt` ; do
   echo $i ;
 
   dirName="`dirname $i`" ;
