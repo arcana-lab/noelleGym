@@ -1,7 +1,7 @@
 all: baseline_parallelized.bc
 
 baseline_parallelized.bc:
-	./runEnablers.sh $(BENCHMARK) $(BENCHMARK).bc "$(LIBS)" $(NOELLE_OPTIONS)
+	./runEnablers.sh $(BENCHMARK) $(BENCHMARK).bc $(PROFILE_INPUT) "$(LIBS)" $(NOELLE_OPTIONS)
 	noelle-parallelizer baseline_with_metadata.bc -o $@ $(NOELLE_OPTIONS) $(PARALLELIZATION_OPTIONS)
 	cp $@ $(BENCHMARK).bc
 
