@@ -1,0 +1,1099 @@
+make[1]: Entering directory '/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/djpeg'
+./runEnablers.sh djpeg djpeg.bc large "-lm -lstdc++ -lpthread -ltermcap" -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier
+/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/djpeg /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/djpeg
+Cloning https://github.com/scampanoni/virgil.git
+Cloning into 'threadpool'...
+/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/djpeg
+The IR has already been transformed for enabling parallelization
+noelle-parallelizer baseline_with_metadata.bc -o baseline_parallelized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp -noelle-disable-doall
+noelle-meta-loop-embed baseline_with_metadata.bc -o afterLoopMetadata.bc
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopMetadata.so -LoopMetadata baseline_with_metadata.bc -o afterLoopMetadata.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopMetadata.so -LoopMetadata baseline_with_metadata.bc -o afterLoopMetadata.bc
+noelle-parallelization-planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp -noelle-disable-doall
+noelle-parallel-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp -noelle-disable-doall
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp -noelle-disable-doall
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp -noelle-disable-doall
+Planner: Start
+Planner:  Fetching the program loops
+Noelle: Filter out cold code
+Noelle:  Function "main"
+Noelle:     Loop "  %103 = load i8**, i8*** %92, align 8, !tbaa !2847, !noelle.pdg.inst.id !363" (8.362432e+01%)
+Noelle:  Function "decode_mcu_AC_refine"
+Noelle:     Loop "  %41 = getelementptr inbounds %struct.phuff_entropy_decoder, %struct.phuff_entropy_decoder* %7, i64 0, i32 2, i32 1, i64 %40, !noelle.pdg.inst.id !507" (0.000000e+00%)
+Noelle:  Disable loop "1" as cold code
+Noelle:     Loop "  %87 = icmp slt i32 %85, 8, !noelle.pdg.inst.id !564" (8.269956e-01%)
+Noelle:     Loop "  %172 = getelementptr inbounds [80 x i32], [80 x i32]* @jpeg_natural_order, i64 0, i64 %167, !noelle.pdg.inst.id !688" (4.825221e-01%)
+Noelle:     Loop "  %255 = getelementptr inbounds [80 x i32], [80 x i32]* @jpeg_natural_order, i64 0, i64 %252, !noelle.pdg.inst.id !802" (3.419604e+00%)
+Noelle:     Loop "  %312 = add nsw i64 %310, -1, !noelle.pdg.inst.id !895" (0.000000e+00%)
+Noelle:  Disable loop "5" as cold code
+Noelle:     Loop "  %322 = add nsw i64 %321, -1, !noelle.pdg.inst.id !915" (0.000000e+00%)
+Noelle:  Disable loop "6" as cold code
+Noelle:  Function "ycc_rgb_convert"
+Noelle:     Loop "  %34 = load i8**, i8*** %1, align 8, !tbaa !88, !noelle.pdg.inst.id !89" (3.460737e+00%)
+Noelle:     Loop "  %47 = getelementptr inbounds i8, i8* %37, i64 %45, !noelle.pdg.inst.id !104" (3.460585e+00%)
+Noelle:  Function "jpeg_idct_islow"
+Noelle:     Loop "  %21 = getelementptr inbounds i16, i16* %20, i64 8, !noelle.pdg.inst.id !247" (1.444324e+00%)
+Noelle:     Loop "  %177 = getelementptr inbounds i8*, i8** %3, i64 %175, !noelle.pdg.inst.id !410" (1.787002e+00%)
+Noelle:  Function "h2v2_fancy_upsample"
+Noelle:     Loop "  %13 = getelementptr inbounds i8*, i8** %2, i64 %11, !noelle.pdg.inst.id !55" (2.517421e+00%)
+Noelle:     Loop "  %63 = getelementptr inbounds i8, i8* %62, i64 1, !noelle.pdg.inst.id !114" (1.258199e+00%)
+Noelle:     Loop "  %142 = getelementptr inbounds i8, i8* %141, i64 1, !noelle.pdg.inst.id !212" (1.258199e+00%)
+Noelle:  Function "decode_mcu_AC_first"
+Noelle:     Loop "  %37 = getelementptr inbounds %struct.phuff_entropy_decoder, %struct.phuff_entropy_decoder* %6, i64 0, i32 2, i32 1, i64 %36, !noelle.pdg.inst.id !271" (0.000000e+00%)
+Noelle:  Disable loop "14" as cold code
+Noelle:     Loop "  %79 = icmp slt i32 %76, 8, !noelle.pdg.inst.id !340" (1.456225e+00%)
+Noelle:  Function "jpeg_fill_bit_buffer"
+Noelle:     Loop "  %18 = load i32, i32* %11, align 8, !tbaa !212, !noelle.pdg.inst.id !62" (4.586948e-01%)
+Noelle:     Loop "  %47 = icmp eq i64 %46, 0, !noelle.pdg.inst.id !254" (2.035310e-03%)
+Noelle:  Disable loop "17" as cold code
+Noelle:  Function "consume_data"
+Noelle:     Loop "  %15 = getelementptr inbounds %struct.jpeg_decompress_struct.380, %struct.jpeg_decompress_struct.380* %0, i64 0, i32 63, i64 %14, !noelle.pdg.inst.id !208" (1.555093e-04%)
+Noelle:  Disable loop "18" as cold code
+Noelle:     Loop "  %52 = icmp ult i32 %50, %49, !noelle.pdg.inst.id !255" (5.914686e-01%)
+Noelle:     Loop "  %54 = load i32, i32* %7, align 8, !tbaa !198, !noelle.pdg.inst.id !104" (5.913532e-01%)
+Noelle:     Loop "  %60 = getelementptr inbounds %struct.jpeg_decompress_struct.380, %struct.jpeg_decompress_struct.380* %0, i64 0, i32 63, i64 %58, !noelle.pdg.inst.id !271" (4.695188e-01%)
+Noelle:     Loop "  %129 = add nsw i64 %127, %51, !noelle.pdg.inst.id !371" (7.355448e-08%)
+Noelle:  Disable loop "22" as cold code
+Noelle:     Loop "  %135 = add i64 %134, %133, !noelle.pdg.inst.id !378" (4.975744e-08%)
+Noelle:  Disable loop "23" as cold code
+Noelle:     Loop "  %158 = getelementptr inbounds [64 x i16], [64 x i16]* %156, i64 1, !noelle.pdg.inst.id !405" (2.379704e-08%)
+Noelle:  Disable loop "24" as cold code
+Noelle:     Loop "  %101 = add nsw i64 %99, %51, !noelle.pdg.inst.id !335" (4.975744e-08%)
+Noelle:  Disable loop "25" as cold code
+Noelle:     Loop "  %107 = add i64 %106, %105, !noelle.pdg.inst.id !342" (4.975744e-08%)
+Noelle:  Disable loop "26" as cold code
+Noelle:     Loop "  %83 = sext i32 %82 to i64, !noelle.pdg.inst.id !301" (2.122987e-01%)
+Noelle:     Loop "  %91 = getelementptr inbounds [64 x i16], [64 x i16]* %89, i64 1, !noelle.pdg.inst.id !310" (9.968811e-02%)
+Noelle:  Disable loop "28" as cold code
+Noelle:  Function "decode_mcu_DC_first"
+Noelle:     Loop "  %37 = getelementptr inbounds %struct.phuff_entropy_decoder, %struct.phuff_entropy_decoder* %7, i64 0, i32 2, i32 1, i64 %36, !noelle.pdg.inst.id !430" (0.000000e+00%)
+Noelle:  Disable loop "29" as cold code
+Noelle:     Loop "  %72 = getelementptr inbounds [64 x i16]*, [64 x i16]** %1, i64 %69, !noelle.pdg.inst.id !477" (1.782945e-01%)
+Noelle:  Function "decode_mcu_DC_refine"
+Noelle:  Disable "decode_mcu_DC_refine" as cold function
+Noelle:  Function "decompress_data"
+Noelle:  Disable "decompress_data" as cold function
+Noelle:  Function "jpeg_huff_decode"
+Noelle:  Disable "jpeg_huff_decode" as cold function
+Noelle:  Function "sep_upsample"
+Noelle:  Disable "sep_upsample" as cold function
+Noelle:  Function "access_virt_barray"
+Noelle:  Disable "access_virt_barray" as cold function
+Noelle:  Function "process_data_context_main"
+Noelle:  Disable "process_data_context_main" as cold function
+Noelle:  Function "jpeg_start_decompress"
+Noelle:  Disable "jpeg_start_decompress" as cold function
+Noelle:  Function "fill_input_buffer"
+Noelle:  Disable "fill_input_buffer" as cold function
+Noelle:  Function "put_pixel_rows"
+Noelle:  Disable "put_pixel_rows" as cold function
+Noelle:  Function "start_pass_phuff_decoder"
+Noelle:  Disable "start_pass_phuff_decoder" as cold function
+Noelle:  Function "jpeg_make_d_derived_tbl"
+Noelle:  Disable "jpeg_make_d_derived_tbl" as cold function
+Noelle:  Function "read_markers"
+Noelle:  Disable "read_markers" as cold function
+Noelle:  Function "realize_virt_arrays"
+Noelle:  Disable "realize_virt_arrays" as cold function
+Noelle:  Function "jinit_master_decompress"
+Noelle:  Disable "jinit_master_decompress" as cold function
+Noelle:  Function "fullsize_upsample"
+Noelle:  Disable "fullsize_upsample" as cold function
+Noelle:  Function "jinit_color_deconverter"
+Noelle:  Disable "jinit_color_deconverter" as cold function
+Noelle:  Function "parse_switches"
+Noelle:  Disable "parse_switches" as cold function
+Noelle:  Function "keymatch"
+Noelle:  Disable "keymatch" as cold function
+Noelle:  Function "jzero_far"
+Noelle:  Disable "jzero_far" as cold function
+Noelle:  Function "alloc_small"
+Noelle:  Disable "alloc_small" as cold function
+Noelle:  Function "consume_markers"
+Noelle:  Disable "consume_markers" as cold function
+Noelle:  Function "start_input_pass"
+Noelle:  Disable "start_input_pass" as cold function
+Noelle:  Function "alloc_sarray"
+Noelle:  Disable "alloc_sarray" as cold function
+Noelle:  Function "next_marker"
+Noelle:  Disable "next_marker" as cold function
+Noelle:  Function "start_pass_main"
+Noelle:  Disable "start_pass_main" as cold function
+Noelle:  Function "emit_message"
+Noelle:  Disable "emit_message" as cold function
+Noelle:  Function "start_pass"
+Noelle:  Disable "start_pass" as cold function
+Noelle:  Function "jpeg_calc_output_dimensions"
+Noelle:  Disable "jpeg_calc_output_dimensions" as cold function
+Noelle:  Function "get_sof"
+Noelle:  Disable "get_sof" as cold function
+Noelle:  Function "free_pool"
+Noelle:  Disable "free_pool" as cold function
+Noelle:  Function "get_app0"
+Noelle:  Disable "get_app0" as cold function
+Noelle:  Function "start_output_pass"
+Noelle:  Disable "start_output_pass" as cold function
+Noelle:  Function "jinit_write_ppm"
+Noelle:  Disable "jinit_write_ppm" as cold function
+Noelle:  Function "self_destruct"
+Noelle:  Disable "self_destruct" as cold function
+Noelle:  Function "jinit_d_main_controller"
+Noelle:  Disable "jinit_d_main_controller" as cold function
+Noelle:  Function "start_input_pass.105"
+Noelle:  Disable "start_input_pass.105" as cold function
+Noelle:  Function "request_virt_barray"
+Noelle:  Disable "request_virt_barray" as cold function
+Noelle:  Function "jinit_upsampler"
+Noelle:  Disable "jinit_upsampler" as cold function
+Noelle:  Function "alloc_large"
+Noelle:  Disable "alloc_large" as cold function
+Noelle:  Function "jpeg_CreateDecompress"
+Noelle:  Disable "jpeg_CreateDecompress" as cold function
+Noelle:  Function "jinit_d_coef_controller"
+Noelle:  Disable "jinit_d_coef_controller" as cold function
+Noelle:  Function "jdiv_round_up"
+Noelle:  Disable "jdiv_round_up" as cold function
+Noelle:  Function "jpeg_read_header"
+Noelle:  Disable "jpeg_read_header" as cold function
+Noelle:  Function "jinit_marker_reader"
+Noelle:  Disable "jinit_marker_reader" as cold function
+Noelle:  Function "jinit_inverse_dct"
+Noelle:  Disable "jinit_inverse_dct" as cold function
+Noelle:  Function "jpeg_consume_input"
+Noelle:  Disable "jpeg_consume_input" as cold function
+Noelle:  Function "prepare_for_output_pass"
+Noelle:  Disable "prepare_for_output_pass" as cold function
+Noelle:  Function "jinit_memory_mgr"
+Noelle:  Disable "jinit_memory_mgr" as cold function
+Noelle:  Function "jinit_phuff_decoder"
+Noelle:  Disable "jinit_phuff_decoder" as cold function
+Noelle:  Function "jpeg_finish_decompress"
+Noelle:  Disable "jpeg_finish_decompress" as cold function
+Noelle:  Function "finish_input_pass"
+Noelle:  Disable "finish_input_pass" as cold function
+Noelle:  Function "jpeg_alloc_huff_table"
+Noelle:  Disable "jpeg_alloc_huff_table" as cold function
+Noelle:  Function "jround_up"
+Noelle:  Disable "jround_up" as cold function
+Noelle:  Function "jpeg_stdio_src"
+Noelle:  Disable "jpeg_stdio_src" as cold function
+Noelle:  Function "output_pass_setup"
+Noelle:  Disable "output_pass_setup" as cold function
+Noelle:  Function "jinit_input_controller"
+Noelle:  Disable "jinit_input_controller" as cold function
+Noelle:  Function "start_pass_dpost"
+Noelle:  Disable "start_pass_dpost" as cold function
+Noelle:  Function "reset_input_controller"
+Noelle:  Disable "reset_input_controller" as cold function
+Noelle:  Function "jpeg_std_error"
+Noelle:  Disable "jpeg_std_error" as cold function
+Noelle:  Function "jinit_d_post_controller"
+Noelle:  Disable "jinit_d_post_controller" as cold function
+Noelle:  Function "jpeg_alloc_quant_table"
+Noelle:  Disable "jpeg_alloc_quant_table" as cold function
+Noelle:  Function "start_output_ppm"
+Noelle:  Disable "start_output_ppm" as cold function
+Noelle:  Function "jpeg_get_large"
+Noelle:  Disable "jpeg_get_large" as cold function
+Noelle:  Function "jpeg_free_large"
+Noelle:  Disable "jpeg_free_large" as cold function
+Noelle:  Function "jpeg_destroy_decompress"
+Noelle:  Disable "jpeg_destroy_decompress" as cold function
+Noelle:  Function "reset_marker_reader"
+Noelle:  Disable "reset_marker_reader" as cold function
+Noelle:  Function "jpeg_destroy"
+Noelle:  Disable "jpeg_destroy" as cold function
+Noelle:  Function "finish_output_pass"
+Noelle:  Disable "finish_output_pass" as cold function
+Noelle:  Function "jpeg_abort"
+Noelle:  Disable "jpeg_abort" as cold function
+Noelle:  Function "start_pass_upsample"
+Noelle:  Disable "start_pass_upsample" as cold function
+Noelle:  Function "jpeg_free_small"
+Noelle:  Disable "jpeg_free_small" as cold function
+Noelle:  Function "jpeg_get_small"
+Noelle:  Disable "jpeg_get_small" as cold function
+Noelle:  Function "finish_output_ppm"
+Noelle:  Disable "finish_output_ppm" as cold function
+Noelle:  Function "jpeg_set_marker_processor"
+Noelle:  Disable "jpeg_set_marker_processor" as cold function
+Noelle:  Function "reset_error_mgr"
+Noelle:  Disable "reset_error_mgr" as cold function
+Noelle:  Function "init_source"
+Noelle:  Disable "init_source" as cold function
+Noelle:  Function "term_source"
+Noelle:  Disable "term_source" as cold function
+Noelle:  Function "start_pass_dcolor"
+Noelle:  Disable "start_pass_dcolor" as cold function
+Noelle:  Function "jpeg_mem_available"
+Noelle:  Disable "jpeg_mem_available" as cold function
+Noelle:  Function "jpeg_mem_term"
+Noelle:  Disable "jpeg_mem_term" as cold function
+Noelle:  Function "get_app14"
+Noelle:  Disable "get_app14" as cold function
+Noelle:  Function "skip_variable"
+Noelle:  Disable "skip_variable" as cold function
+Noelle:  Function "read_restart_marker"
+Noelle:  Disable "read_restart_marker" as cold function
+Noelle:  Function "jpeg_mem_init"
+Noelle:  Disable "jpeg_mem_init" as cold function
+Noelle:  Function "jcopy_sample_rows"
+Noelle:  Disable "jcopy_sample_rows" as cold function
+Noelle:  Function "jcopy_block_row"
+Noelle:  Disable "jcopy_block_row" as cold function
+Noelle:  Function "jpeg_resync_to_restart"
+Noelle:  Disable "jpeg_resync_to_restart" as cold function
+Noelle:  Function "error_exit"
+Noelle:  Disable "error_exit" as cold function
+Noelle:  Function "output_message"
+Noelle:  Disable "output_message" as cold function
+Noelle:  Function "format_message"
+Noelle:  Disable "format_message" as cold function
+Noelle:  Function "jpeg_idct_float"
+Noelle:  Disable "jpeg_idct_float" as cold function
+Noelle:  Function "jpeg_open_backing_store"
+Noelle:  Disable "jpeg_open_backing_store" as cold function
+Noelle:  Function "process_data_simple_main"
+Noelle:  Disable "process_data_simple_main" as cold function
+Noelle:  Function "access_virt_sarray"
+Noelle:  Disable "access_virt_sarray" as cold function
+Noelle:  Function "process_data_crank_post"
+Noelle:  Disable "process_data_crank_post" as cold function
+Noelle:  Function "request_virt_sarray"
+Noelle:  Disable "request_virt_sarray" as cold function
+Noelle:  Function "dummy_consume_data"
+Noelle:  Disable "dummy_consume_data" as cold function
+Noelle:  Function "alloc_barray"
+Noelle:  Disable "alloc_barray" as cold function
+Noelle:  Function "start_pass_huff_decoder"
+Noelle:  Disable "start_pass_huff_decoder" as cold function
+Noelle:  Function "jinit_huff_decoder"
+Noelle:  Disable "jinit_huff_decoder" as cold function
+Noelle:  Function "jpeg_idct_ifast"
+Noelle:  Disable "jpeg_idct_ifast" as cold function
+Noelle:  Function "h2v1_merged_upsample"
+Noelle:  Disable "h2v1_merged_upsample" as cold function
+Noelle:  Function "prescan_quantize"
+Noelle:  Disable "prescan_quantize" as cold function
+Noelle:  Function "finish_pass1"
+Noelle:  Disable "finish_pass1" as cold function
+Noelle:  Function "pass2_fs_dither"
+Noelle:  Disable "pass2_fs_dither" as cold function
+Noelle:  Function "pass2_no_dither"
+Noelle:  Disable "pass2_no_dither" as cold function
+Noelle:  Function "finish_pass2"
+Noelle:  Disable "finish_pass2" as cold function
+Noelle:  Function "fill_inverse_cmap"
+Noelle:  Disable "fill_inverse_cmap" as cold function
+Noelle:  Function "update_box"
+Noelle:  Disable "update_box" as cold function
+Noelle:  Function "jinit_merged_upsampler"
+Noelle:  Disable "jinit_merged_upsampler" as cold function
+Noelle:  Function "start_pass_merged_upsample"
+Noelle:  Disable "start_pass_merged_upsample" as cold function
+Noelle:  Function "merged_2v_upsample"
+Noelle:  Disable "merged_2v_upsample" as cold function
+Noelle:  Function "h2v2_merged_upsample"
+Noelle:  Disable "h2v2_merged_upsample" as cold function
+Noelle:  Function "merged_1v_upsample"
+Noelle:  Disable "merged_1v_upsample" as cold function
+Noelle:  Function "jpeg_idct_2x2"
+Noelle:  Disable "jpeg_idct_2x2" as cold function
+Noelle:  Function "jinit_2pass_quantizer"
+Noelle:  Disable "jinit_2pass_quantizer" as cold function
+Noelle:  Function "start_pass_2_quant"
+Noelle:  Disable "start_pass_2_quant" as cold function
+Noelle:  Function "new_color_map_2_quant"
+Noelle:  Disable "new_color_map_2_quant" as cold function
+Noelle:  Function "init_error_limit"
+Noelle:  Disable "init_error_limit" as cold function
+Noelle:  Function "jpeg_idct_4x4"
+Noelle:  Disable "jpeg_idct_4x4" as cold function
+Noelle:  Function "quantize_fs_dither"
+Noelle:  Disable "quantize_fs_dither" as cold function
+Noelle:  Function "jpeg_idct_1x1"
+Noelle:  Disable "jpeg_idct_1x1" as cold function
+Noelle:  Function "noop_upsample"
+Noelle:  Disable "noop_upsample" as cold function
+Noelle:  Function "h2v1_fancy_upsample"
+Noelle:  Disable "h2v1_fancy_upsample" as cold function
+Noelle:  Function "h2v1_upsample"
+Noelle:  Disable "h2v1_upsample" as cold function
+Noelle:  Function "h2v2_upsample"
+Noelle:  Disable "h2v2_upsample" as cold function
+Noelle:  Function "int_upsample"
+Noelle:  Disable "int_upsample" as cold function
+Noelle:  Function "grayscale_convert"
+Noelle:  Disable "grayscale_convert" as cold function
+Noelle:  Function "start_output_tga"
+Noelle:  Disable "start_output_tga" as cold function
+Noelle:  Function "put_demapped_rgb"
+Noelle:  Disable "put_demapped_rgb" as cold function
+Noelle:  Function "ycck_cmyk_convert"
+Noelle:  Disable "ycck_cmyk_convert" as cold function
+Noelle:  Function "COM_handler"
+Noelle:  Disable "COM_handler" as cold function
+Noelle:  Function "usage"
+Noelle:  Disable "usage" as cold function
+Noelle:  Function "copy_pixel_rows"
+Noelle:  Disable "copy_pixel_rows" as cold function
+Noelle:  Function "put_demapped_gray"
+Noelle:  Disable "put_demapped_gray" as cold function
+Noelle:  Function "null_convert"
+Noelle:  Disable "null_convert" as cold function
+Noelle:  Function "jinit_1pass_quantizer"
+Noelle:  Disable "jinit_1pass_quantizer" as cold function
+Noelle:  Function "start_pass_1_quant"
+Noelle:  Disable "start_pass_1_quant" as cold function
+Noelle:  Function "finish_pass_1_quant"
+Noelle:  Disable "finish_pass_1_quant" as cold function
+Noelle:  Function "new_color_map_1_quant"
+Noelle:  Disable "new_color_map_1_quant" as cold function
+Noelle:  Function "create_colorindex"
+Noelle:  Disable "create_colorindex" as cold function
+Noelle:  Function "color_quantize3"
+Noelle:  Disable "color_quantize3" as cold function
+Noelle:  Function "color_quantize"
+Noelle:  Disable "color_quantize" as cold function
+Noelle:  Function "quantize3_ord_dither"
+Noelle:  Disable "quantize3_ord_dither" as cold function
+Noelle:  Function "quantize_ord_dither"
+Noelle:  Disable "quantize_ord_dither" as cold function
+Noelle:  Function "jpeg_start_output"
+Noelle:  Disable "jpeg_start_output" as cold function
+Noelle:  Function "read_pbm_integer"
+Noelle:  Disable "read_pbm_integer" as cold function
+Noelle:  Function "read_stdin"
+Noelle:  Disable "read_stdin" as cold function
+Noelle:  Function "decode_mcu"
+Noelle:  Disable "decode_mcu" as cold function
+Noelle:  Function "write_stdout"
+Noelle:  Disable "write_stdout" as cold function
+Noelle:  Function "jpeg_abort_decompress"
+Noelle:  Disable "jpeg_abort_decompress" as cold function
+Noelle:  Function "jpeg_input_complete"
+Noelle:  Disable "jpeg_input_complete" as cold function
+Noelle:  Function "jpeg_has_multiple_scans"
+Noelle:  Disable "jpeg_has_multiple_scans" as cold function
+Noelle:  Function "jpeg_read_scanlines"
+Noelle:  Disable "jpeg_read_scanlines" as cold function
+Noelle:  Function "jpeg_read_raw_data"
+Noelle:  Disable "jpeg_read_raw_data" as cold function
+Noelle:  Function "jpeg_finish_output"
+Noelle:  Disable "jpeg_finish_output" as cold function
+Noelle:  Function "decompress_onepass"
+Noelle:  Disable "decompress_onepass" as cold function
+Noelle:  Function "decompress_smooth_data"
+Noelle:  Disable "decompress_smooth_data" as cold function
+Noelle:  Function "post_process_1pass"
+Noelle:  Disable "post_process_1pass" as cold function
+Noelle:  Function "post_process_prepass"
+Noelle:  Disable "post_process_prepass" as cold function
+Noelle:  Function "post_process_2pass"
+Noelle:  Disable "post_process_2pass" as cold function
+Noelle:  Function "skip_input_data"
+Noelle:  Disable "skip_input_data" as cold function
+Noelle:  Function "jpeg_new_colormap"
+Noelle:  Disable "jpeg_new_colormap" as cold function
+Noelle:  Function "put_demapped_gray.55"
+Noelle:  Disable "put_demapped_gray.55" as cold function
+Noelle:  Function "jinit_write_gif"
+Noelle:  Disable "jinit_write_gif" as cold function
+Noelle:  Function "start_output_gif"
+Noelle:  Disable "start_output_gif" as cold function
+Noelle:  Function "put_pixel_rows.52"
+Noelle:  Disable "put_pixel_rows.52" as cold function
+Noelle:  Function "finish_output_gif"
+Noelle:  Disable "finish_output_gif" as cold function
+Noelle:  Function "emit_header"
+Noelle:  Disable "emit_header" as cold function
+Noelle:  Function "jinit_write_targa"
+Noelle:  Disable "jinit_write_targa" as cold function
+Noelle:  Function "finish_output_tga"
+Noelle:  Disable "finish_output_tga" as cold function
+Noelle:  Function "put_gray_rows"
+Noelle:  Disable "put_gray_rows" as cold function
+Noelle:  Function "put_pixel_rows.56"
+Noelle:  Disable "put_pixel_rows.56" as cold function
+Noelle:  Function "jinit_write_bmp"
+Noelle:  Disable "jinit_write_bmp" as cold function
+Noelle:  Function "start_output_bmp"
+Noelle:  Disable "start_output_bmp" as cold function
+Noelle:  Function "finish_output_bmp"
+Noelle:  Disable "finish_output_bmp" as cold function
+Noelle:  Function "put_gray_rows.59"
+Noelle:  Disable "put_gray_rows.59" as cold function
+Noelle:  Function "put_pixel_rows.60"
+Noelle:  Disable "put_pixel_rows.60" as cold function
+Noelle:  Function "write_colormap"
+Noelle:  Disable "write_colormap" as cold function
+Noelle:  Function "read_color_map"
+Noelle:  Disable "read_color_map" as cold function
+Planner:    There are 18 loops in the program we are going to consider
+Planner:  Filter out loops not worth considering
+Planner:    Loop 152 has 5.794812e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 124 has 8.900101e+01 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 226 has 1.000000e+00 number of iterations on average per loop invocation
+Planner:      It is too low. The threshold is 12
+Planner:    Loop 180 has 1.400000e+00 number of iterations on average per loop invocation
+Planner:      It is too low. The threshold is 12
+Planner:    Loop 182 has 6.936366e+01 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 188 has 2.653846e+01 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 154 has 5.691577e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 158 has 8.221001e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 159 has 1.807380e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 215 has 9.680000e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 160 has 1.111535e+03 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 246 has 9.998581e-01 number of iterations on average per loop invocation
+Planner:      It is too low. The threshold is 12
+Planner:    Loop 214 has 7.823750e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:  There are 5 loop nesting trees in the program
+Planner:    ID: 247 (1)
+Planner:      Function: "ycc_rgb_convert"
+Planner:      Loop: "  %47 = getelementptr inbounds i8, i8* %37, i64 %45, !noelle.pdg.inst.id !104"
+Planner:      Loop nesting level: 2
+Planner:      Hotness = 3.460585e+00 %
+Planner:      Average instructions per invocation = 4.538598e+05 %
+Planner:      Average iterations per invocation = 1.031502e+04 %
+Planner:    
+Planner:    ID: 181 (1)
+Planner:      Function: "consume_data"
+Planner:      Loop: "  %54 = load i32, i32* %7, align 8, !tbaa !198, !noelle.pdg.inst.id !104"
+Planner:      Loop nesting level: 2
+Planner:      Hotness = 5.913532e-01 %
+Planner:      Average instructions per invocation = 8.854826e+04 %
+Planner:      Average iterations per invocation = 1.013571e+03 %
+Planner:    
+Planner:    ID: 228 (1)
+Planner:      Function: "h2v2_fancy_upsample"
+Planner:      Loop: "  %142 = getelementptr inbounds i8, i8* %141, i64 1, !noelle.pdg.inst.id !212"
+Planner:      Loop nesting level: 2
+Planner:      Hotness = 1.258199e+00 %
+Planner:      Average instructions per invocation = 1.649910e+05 %
+Planner:      Average iterations per invocation = 5.155998e+03 %
+Planner:    
+Planner:    ID: 227 (1)
+Planner:      Function: "h2v2_fancy_upsample"
+Planner:      Loop: "  %63 = getelementptr inbounds i8, i8* %62, i64 1, !noelle.pdg.inst.id !114"
+Planner:      Loop nesting level: 2
+Planner:      Hotness = 1.258199e+00 %
+Planner:      Average instructions per invocation = 1.649910e+05 %
+Planner:      Average iterations per invocation = 5.155998e+03 %
+Planner:    
+Planner:    ID: 0 (1)
+Planner:      Function: "main"
+Planner:      Loop: "  %103 = load i8**, i8*** %92, align 8, !tbaa !2847, !noelle.pdg.inst.id !363"
+Planner:      Loop nesting level: 1
+Planner:      Hotness = 8.362432e+01 %
+Planner:      Average instructions per invocation = 7.730941e+10 %
+Planner:      Average iterations per invocation = 2.147484e+09 %
+Planner:    
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector: Start
+Planner: LoopSelector:   Order of loops and their maximum savings
+Planner: LoopSelector:    Loop 247
+Planner: LoopSelector:      Function: "ycc_rgb_convert"
+Planner: LoopSelector:      Loop nesting level: 2
+Planner: LoopSelector:      "  %47 = getelementptr inbounds i8, i8* %37, i64 %45, !noelle.pdg.inst.id !104"
+Planner: LoopSelector:      Coverage: 3.460585e+00%
+Planner: LoopSelector:      Whole-program savings = 3.460585e+00%
+Planner: LoopSelector:      Loop savings = 1.000000e+02%
+Planner: LoopSelector: End
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca [4 x [64 x i16]**], align 16, !noelle.pdg.inst.id !184
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca [4 x [64 x i16]**], align 16, !noelle.pdg.inst.id !184
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector:  Loop 181 saves only 4.799131e-02 when parallelized. Skip it
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector:  Loop 228 saves only 1.218880e+00 when parallelized. Skip it
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector:  Loop 227 saves only 1.218880e+00 when parallelized. Skip it
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %struct.jpeg_error_mgr, align 8, !noelle.pdg.inst.id !2726
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i32, align 4, !noelle.pdg.inst.id !2724
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca i32, align 4, !noelle.pdg.inst.id !2724 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.jpeg_decompress_struct, align 8, !noelle.pdg.inst.id !2725
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %struct.jpeg_error_mgr, align 8, !noelle.pdg.inst.id !2726
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i32, align 4, !noelle.pdg.inst.id !2724
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca i32, align 4, !noelle.pdg.inst.id !2724 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.jpeg_decompress_struct, align 8, !noelle.pdg.inst.id !2725
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector: Start
+Planner: LoopSelector:   Order of loops and their maximum savings
+Planner: LoopSelector:    Loop 0
+Planner: LoopSelector:      Function: "main"
+Planner: LoopSelector:      Loop nesting level: 1
+Planner: LoopSelector:      "  %103 = load i8**, i8*** %92, align 8, !tbaa !2847, !noelle.pdg.inst.id !363"
+Planner: LoopSelector:      Coverage: 8.362432e+01%
+Planner: LoopSelector:      Whole-program savings = 2.090608e+01%
+Planner: LoopSelector:      Loop savings = 2.500000e+01%
+Planner: LoopSelector: End
+Planner:   Maximum time saved = 2.436666e+01% (22526610560)
+Planner:   Maximum time saved with DOALL only = 3.460585e+00% (3199257766)
+Planner: Exit
+noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+NOELLE: DeadFunctions: Start
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/RemoveFunction.so -noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/RemoveFunction.so -noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+RemoveFunction: Start
+RemoveFunction:   Check if function "SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION" exists
+RemoveFunction:     The function exists
+RemoveFunction:   Remove the function
+RemoveFunction: Exit
+NOELLE: DeadFunctions: Exit
+noelle-parallelizer-loop code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp -noelle-disable-doall
+noelle-parallel-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp -noelle-disable-doall
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp -noelle-disable-doall
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp -noelle-disable-doall
+Parallelizer: Start
+Parallelizer:  Analyzing the module code_to_parallelize.bc
+Parallelizer:  Fetching the program loops
+Noelle: Filter out cold code
+Noelle:  Function "main"
+Noelle:     Loop "  %103 = load i8**, i8*** %92, align 8, !tbaa !2849, !noelle.pdg.inst.id !365" (8.362432e+01%)
+Noelle:  Function "decode_mcu_AC_refine"
+Noelle:     Loop "  %41 = getelementptr inbounds %struct.phuff_entropy_decoder, %struct.phuff_entropy_decoder* %7, i64 0, i32 2, i32 1, i64 %40, !noelle.pdg.inst.id !509" (0.000000e+00%)
+Noelle:  Disable loop "1" as cold code
+Noelle:     Loop "  %87 = icmp slt i32 %85, 8, !noelle.pdg.inst.id !566" (8.269956e-01%)
+Noelle:     Loop "  %172 = getelementptr inbounds [80 x i32], [80 x i32]* @jpeg_natural_order, i64 0, i64 %167, !noelle.pdg.inst.id !690" (4.825221e-01%)
+Noelle:     Loop "  %255 = getelementptr inbounds [80 x i32], [80 x i32]* @jpeg_natural_order, i64 0, i64 %252, !noelle.pdg.inst.id !804" (3.419604e+00%)
+Noelle:     Loop "  %312 = add nsw i64 %310, -1, !noelle.pdg.inst.id !897" (0.000000e+00%)
+Noelle:  Disable loop "5" as cold code
+Noelle:     Loop "  %322 = add nsw i64 %321, -1, !noelle.pdg.inst.id !917" (0.000000e+00%)
+Noelle:  Disable loop "6" as cold code
+Noelle:  Function "ycc_rgb_convert"
+Noelle:     Loop "  %34 = load i8**, i8*** %1, align 8, !tbaa !90, !noelle.pdg.inst.id !91" (3.460737e+00%)
+Noelle:     Loop "  %47 = getelementptr inbounds i8, i8* %37, i64 %45, !noelle.pdg.inst.id !106" (3.460585e+00%)
+Noelle:  Function "jpeg_idct_islow"
+Noelle:     Loop "  %21 = getelementptr inbounds i16, i16* %20, i64 8, !noelle.pdg.inst.id !249" (1.444324e+00%)
+Noelle:     Loop "  %177 = getelementptr inbounds i8*, i8** %3, i64 %175, !noelle.pdg.inst.id !412" (1.787002e+00%)
+Noelle:  Function "h2v2_fancy_upsample"
+Noelle:     Loop "  %13 = getelementptr inbounds i8*, i8** %2, i64 %11, !noelle.pdg.inst.id !57" (2.517421e+00%)
+Noelle:     Loop "  %63 = getelementptr inbounds i8, i8* %62, i64 1, !noelle.pdg.inst.id !116" (1.258199e+00%)
+Noelle:     Loop "  %142 = getelementptr inbounds i8, i8* %141, i64 1, !noelle.pdg.inst.id !214" (1.258199e+00%)
+Noelle:  Function "decode_mcu_AC_first"
+Noelle:     Loop "  %37 = getelementptr inbounds %struct.phuff_entropy_decoder, %struct.phuff_entropy_decoder* %6, i64 0, i32 2, i32 1, i64 %36, !noelle.pdg.inst.id !273" (0.000000e+00%)
+Noelle:  Disable loop "14" as cold code
+Noelle:     Loop "  %79 = icmp slt i32 %76, 8, !noelle.pdg.inst.id !342" (1.456225e+00%)
+Noelle:  Function "jpeg_fill_bit_buffer"
+Noelle:     Loop "  %18 = load i32, i32* %11, align 8, !tbaa !214, !noelle.pdg.inst.id !64" (4.586948e-01%)
+Noelle:     Loop "  %47 = icmp eq i64 %46, 0, !noelle.pdg.inst.id !256" (2.035310e-03%)
+Noelle:  Disable loop "17" as cold code
+Noelle:  Function "consume_data"
+Noelle:     Loop "  %15 = getelementptr inbounds %struct.jpeg_decompress_struct.380, %struct.jpeg_decompress_struct.380* %0, i64 0, i32 63, i64 %14, !noelle.pdg.inst.id !210" (1.555093e-04%)
+Noelle:  Disable loop "18" as cold code
+Noelle:     Loop "  %52 = icmp ult i32 %50, %49, !noelle.pdg.inst.id !257" (5.914686e-01%)
+Noelle:     Loop "  %54 = load i32, i32* %7, align 8, !tbaa !200, !noelle.pdg.inst.id !106" (5.913532e-01%)
+Noelle:     Loop "  %60 = getelementptr inbounds %struct.jpeg_decompress_struct.380, %struct.jpeg_decompress_struct.380* %0, i64 0, i32 63, i64 %58, !noelle.pdg.inst.id !273" (4.695188e-01%)
+Noelle:     Loop "  %129 = add nsw i64 %127, %51, !noelle.pdg.inst.id !373" (7.355448e-08%)
+Noelle:  Disable loop "22" as cold code
+Noelle:     Loop "  %135 = add i64 %134, %133, !noelle.pdg.inst.id !380" (4.975744e-08%)
+Noelle:  Disable loop "23" as cold code
+Noelle:     Loop "  %158 = getelementptr inbounds [64 x i16], [64 x i16]* %156, i64 1, !noelle.pdg.inst.id !407" (2.379704e-08%)
+Noelle:  Disable loop "24" as cold code
+Noelle:     Loop "  %101 = add nsw i64 %99, %51, !noelle.pdg.inst.id !337" (4.975744e-08%)
+Noelle:  Disable loop "25" as cold code
+Noelle:     Loop "  %107 = add i64 %106, %105, !noelle.pdg.inst.id !344" (4.975744e-08%)
+Noelle:  Disable loop "26" as cold code
+Noelle:     Loop "  %83 = sext i32 %82 to i64, !noelle.pdg.inst.id !303" (2.122987e-01%)
+Noelle:     Loop "  %91 = getelementptr inbounds [64 x i16], [64 x i16]* %89, i64 1, !noelle.pdg.inst.id !312" (9.968811e-02%)
+Noelle:  Disable loop "28" as cold code
+Noelle:  Function "decode_mcu_DC_first"
+Noelle:     Loop "  %37 = getelementptr inbounds %struct.phuff_entropy_decoder, %struct.phuff_entropy_decoder* %7, i64 0, i32 2, i32 1, i64 %36, !noelle.pdg.inst.id !432" (0.000000e+00%)
+Noelle:  Disable loop "29" as cold code
+Noelle:     Loop "  %72 = getelementptr inbounds [64 x i16]*, [64 x i16]** %1, i64 %69, !noelle.pdg.inst.id !479" (1.782945e-01%)
+Noelle:  Function "decode_mcu_DC_refine"
+Noelle:  Disable "decode_mcu_DC_refine" as cold function
+Noelle:  Function "decompress_data"
+Noelle:  Disable "decompress_data" as cold function
+Noelle:  Function "jpeg_huff_decode"
+Noelle:  Disable "jpeg_huff_decode" as cold function
+Noelle:  Function "sep_upsample"
+Noelle:  Disable "sep_upsample" as cold function
+Noelle:  Function "access_virt_barray"
+Noelle:  Disable "access_virt_barray" as cold function
+Noelle:  Function "process_data_context_main"
+Noelle:  Disable "process_data_context_main" as cold function
+Noelle:  Function "jpeg_start_decompress"
+Noelle:  Disable "jpeg_start_decompress" as cold function
+Noelle:  Function "fill_input_buffer"
+Noelle:  Disable "fill_input_buffer" as cold function
+Noelle:  Function "put_pixel_rows"
+Noelle:  Disable "put_pixel_rows" as cold function
+Noelle:  Function "start_pass_phuff_decoder"
+Noelle:  Disable "start_pass_phuff_decoder" as cold function
+Noelle:  Function "jpeg_make_d_derived_tbl"
+Noelle:  Disable "jpeg_make_d_derived_tbl" as cold function
+Noelle:  Function "read_markers"
+Noelle:  Disable "read_markers" as cold function
+Noelle:  Function "realize_virt_arrays"
+Noelle:  Disable "realize_virt_arrays" as cold function
+Noelle:  Function "jinit_master_decompress"
+Noelle:  Disable "jinit_master_decompress" as cold function
+Noelle:  Function "fullsize_upsample"
+Noelle:  Disable "fullsize_upsample" as cold function
+Noelle:  Function "jinit_color_deconverter"
+Noelle:  Disable "jinit_color_deconverter" as cold function
+Noelle:  Function "parse_switches"
+Noelle:  Disable "parse_switches" as cold function
+Noelle:  Function "keymatch"
+Noelle:  Disable "keymatch" as cold function
+Noelle:  Function "jzero_far"
+Noelle:  Disable "jzero_far" as cold function
+Noelle:  Function "alloc_small"
+Noelle:  Disable "alloc_small" as cold function
+Noelle:  Function "consume_markers"
+Noelle:  Disable "consume_markers" as cold function
+Noelle:  Function "start_input_pass"
+Noelle:  Disable "start_input_pass" as cold function
+Noelle:  Function "alloc_sarray"
+Noelle:  Disable "alloc_sarray" as cold function
+Noelle:  Function "next_marker"
+Noelle:  Disable "next_marker" as cold function
+Noelle:  Function "start_pass_main"
+Noelle:  Disable "start_pass_main" as cold function
+Noelle:  Function "emit_message"
+Noelle:  Disable "emit_message" as cold function
+Noelle:  Function "start_pass"
+Noelle:  Disable "start_pass" as cold function
+Noelle:  Function "jpeg_calc_output_dimensions"
+Noelle:  Disable "jpeg_calc_output_dimensions" as cold function
+Noelle:  Function "get_sof"
+Noelle:  Disable "get_sof" as cold function
+Noelle:  Function "free_pool"
+Noelle:  Disable "free_pool" as cold function
+Noelle:  Function "get_app0"
+Noelle:  Disable "get_app0" as cold function
+Noelle:  Function "start_output_pass"
+Noelle:  Disable "start_output_pass" as cold function
+Noelle:  Function "jinit_write_ppm"
+Noelle:  Disable "jinit_write_ppm" as cold function
+Noelle:  Function "self_destruct"
+Noelle:  Disable "self_destruct" as cold function
+Noelle:  Function "jinit_d_main_controller"
+Noelle:  Disable "jinit_d_main_controller" as cold function
+Noelle:  Function "start_input_pass.105"
+Noelle:  Disable "start_input_pass.105" as cold function
+Noelle:  Function "request_virt_barray"
+Noelle:  Disable "request_virt_barray" as cold function
+Noelle:  Function "jinit_upsampler"
+Noelle:  Disable "jinit_upsampler" as cold function
+Noelle:  Function "alloc_large"
+Noelle:  Disable "alloc_large" as cold function
+Noelle:  Function "jpeg_CreateDecompress"
+Noelle:  Disable "jpeg_CreateDecompress" as cold function
+Noelle:  Function "jinit_d_coef_controller"
+Noelle:  Disable "jinit_d_coef_controller" as cold function
+Noelle:  Function "jdiv_round_up"
+Noelle:  Disable "jdiv_round_up" as cold function
+Noelle:  Function "jpeg_read_header"
+Noelle:  Disable "jpeg_read_header" as cold function
+Noelle:  Function "jinit_marker_reader"
+Noelle:  Disable "jinit_marker_reader" as cold function
+Noelle:  Function "jinit_inverse_dct"
+Noelle:  Disable "jinit_inverse_dct" as cold function
+Noelle:  Function "jpeg_consume_input"
+Noelle:  Disable "jpeg_consume_input" as cold function
+Noelle:  Function "prepare_for_output_pass"
+Noelle:  Disable "prepare_for_output_pass" as cold function
+Noelle:  Function "jinit_memory_mgr"
+Noelle:  Disable "jinit_memory_mgr" as cold function
+Noelle:  Function "jinit_phuff_decoder"
+Noelle:  Disable "jinit_phuff_decoder" as cold function
+Noelle:  Function "jpeg_finish_decompress"
+Noelle:  Disable "jpeg_finish_decompress" as cold function
+Noelle:  Function "finish_input_pass"
+Noelle:  Disable "finish_input_pass" as cold function
+Noelle:  Function "jpeg_alloc_huff_table"
+Noelle:  Disable "jpeg_alloc_huff_table" as cold function
+Noelle:  Function "jround_up"
+Noelle:  Disable "jround_up" as cold function
+Noelle:  Function "jpeg_stdio_src"
+Noelle:  Disable "jpeg_stdio_src" as cold function
+Noelle:  Function "output_pass_setup"
+Noelle:  Disable "output_pass_setup" as cold function
+Noelle:  Function "jinit_input_controller"
+Noelle:  Disable "jinit_input_controller" as cold function
+Noelle:  Function "reset_input_controller"
+Noelle:  Disable "reset_input_controller" as cold function
+Noelle:  Function "jpeg_std_error"
+Noelle:  Disable "jpeg_std_error" as cold function
+Noelle:  Function "start_pass_dpost"
+Noelle:  Disable "start_pass_dpost" as cold function
+Noelle:  Function "jinit_d_post_controller"
+Noelle:  Disable "jinit_d_post_controller" as cold function
+Noelle:  Function "jpeg_alloc_quant_table"
+Noelle:  Disable "jpeg_alloc_quant_table" as cold function
+Noelle:  Function "start_output_ppm"
+Noelle:  Disable "start_output_ppm" as cold function
+Noelle:  Function "jpeg_get_large"
+Noelle:  Disable "jpeg_get_large" as cold function
+Noelle:  Function "jpeg_destroy_decompress"
+Noelle:  Disable "jpeg_destroy_decompress" as cold function
+Noelle:  Function "jpeg_free_large"
+Noelle:  Disable "jpeg_free_large" as cold function
+Noelle:  Function "reset_marker_reader"
+Noelle:  Disable "reset_marker_reader" as cold function
+Noelle:  Function "finish_output_pass"
+Noelle:  Disable "finish_output_pass" as cold function
+Noelle:  Function "jpeg_destroy"
+Noelle:  Disable "jpeg_destroy" as cold function
+Noelle:  Function "start_pass_upsample"
+Noelle:  Disable "start_pass_upsample" as cold function
+Noelle:  Function "jpeg_get_small"
+Noelle:  Disable "jpeg_get_small" as cold function
+Noelle:  Function "jpeg_abort"
+Noelle:  Disable "jpeg_abort" as cold function
+Noelle:  Function "jpeg_free_small"
+Noelle:  Disable "jpeg_free_small" as cold function
+Noelle:  Function "finish_output_ppm"
+Noelle:  Disable "finish_output_ppm" as cold function
+Noelle:  Function "jpeg_set_marker_processor"
+Noelle:  Disable "jpeg_set_marker_processor" as cold function
+Noelle:  Function "reset_error_mgr"
+Noelle:  Disable "reset_error_mgr" as cold function
+Noelle:  Function "init_source"
+Noelle:  Disable "init_source" as cold function
+Noelle:  Function "term_source"
+Noelle:  Disable "term_source" as cold function
+Noelle:  Function "start_pass_dcolor"
+Noelle:  Disable "start_pass_dcolor" as cold function
+Noelle:  Function "jpeg_mem_available"
+Noelle:  Disable "jpeg_mem_available" as cold function
+Noelle:  Function "post_process_2pass"
+Noelle:  Disable "post_process_2pass" as cold function
+Noelle:  Function "skip_variable"
+Noelle:  Disable "skip_variable" as cold function
+Noelle:  Function "jpeg_has_multiple_scans"
+Noelle:  Disable "jpeg_has_multiple_scans" as cold function
+Noelle:  Function "read_restart_marker"
+Noelle:  Disable "read_restart_marker" as cold function
+Noelle:  Function "access_virt_sarray"
+Noelle:  Disable "access_virt_sarray" as cold function
+Noelle:  Function "jpeg_input_complete"
+Noelle:  Disable "jpeg_input_complete" as cold function
+Noelle:  Function "jpeg_mem_term"
+Noelle:  Disable "jpeg_mem_term" as cold function
+Noelle:  Function "jpeg_idct_ifast"
+Noelle:  Disable "jpeg_idct_ifast" as cold function
+Noelle:  Function "jpeg_idct_float"
+Noelle:  Disable "jpeg_idct_float" as cold function
+Noelle:  Function "error_exit"
+Noelle:  Disable "error_exit" as cold function
+Noelle:  Function "jpeg_mem_init"
+Noelle:  Disable "jpeg_mem_init" as cold function
+Noelle:  Function "jpeg_new_colormap"
+Noelle:  Disable "jpeg_new_colormap" as cold function
+Noelle:  Function "jpeg_finish_output"
+Noelle:  Disable "jpeg_finish_output" as cold function
+Noelle:  Function "jpeg_start_output"
+Noelle:  Disable "jpeg_start_output" as cold function
+Noelle:  Function "get_app14"
+Noelle:  Disable "get_app14" as cold function
+Noelle:  Function "jpeg_read_raw_data"
+Noelle:  Disable "jpeg_read_raw_data" as cold function
+Noelle:  Function "jpeg_read_scanlines"
+Noelle:  Disable "jpeg_read_scanlines" as cold function
+Noelle:  Function "post_process_1pass"
+Noelle:  Disable "post_process_1pass" as cold function
+Noelle:  Function "post_process_prepass"
+Noelle:  Disable "post_process_prepass" as cold function
+Noelle:  Function "alloc_barray"
+Noelle:  Disable "alloc_barray" as cold function
+Noelle:  Function "request_virt_sarray"
+Noelle:  Disable "request_virt_sarray" as cold function
+Noelle:  Function "output_message"
+Noelle:  Disable "output_message" as cold function
+Noelle:  Function "jpeg_resync_to_restart"
+Noelle:  Disable "jpeg_resync_to_restart" as cold function
+Noelle:  Function "finish_pass1"
+Noelle:  Disable "finish_pass1" as cold function
+Noelle:  Function "prescan_quantize"
+Noelle:  Disable "prescan_quantize" as cold function
+Noelle:  Function "init_error_limit"
+Noelle:  Disable "init_error_limit" as cold function
+Noelle:  Function "new_color_map_2_quant"
+Noelle:  Disable "new_color_map_2_quant" as cold function
+Noelle:  Function "start_pass_2_quant"
+Noelle:  Disable "start_pass_2_quant" as cold function
+Noelle:  Function "h2v1_merged_upsample"
+Noelle:  Disable "h2v1_merged_upsample" as cold function
+Noelle:  Function "decompress_onepass"
+Noelle:  Disable "decompress_onepass" as cold function
+Noelle:  Function "merged_1v_upsample"
+Noelle:  Disable "merged_1v_upsample" as cold function
+Noelle:  Function "h2v2_merged_upsample"
+Noelle:  Disable "h2v2_merged_upsample" as cold function
+Noelle:  Function "read_color_map"
+Noelle:  Disable "read_color_map" as cold function
+Noelle:  Function "merged_2v_upsample"
+Noelle:  Disable "merged_2v_upsample" as cold function
+Noelle:  Function "jpeg_abort_decompress"
+Noelle:  Disable "jpeg_abort_decompress" as cold function
+Noelle:  Function "start_pass_merged_upsample"
+Noelle:  Disable "start_pass_merged_upsample" as cold function
+Noelle:  Function "ycck_cmyk_convert"
+Noelle:  Disable "ycck_cmyk_convert" as cold function
+Noelle:  Function "null_convert"
+Noelle:  Disable "null_convert" as cold function
+Noelle:  Function "format_message"
+Noelle:  Disable "format_message" as cold function
+Noelle:  Function "grayscale_convert"
+Noelle:  Disable "grayscale_convert" as cold function
+Noelle:  Function "jpeg_open_backing_store"
+Noelle:  Disable "jpeg_open_backing_store" as cold function
+Noelle:  Function "read_pbm_integer"
+Noelle:  Disable "read_pbm_integer" as cold function
+Noelle:  Function "quantize_ord_dither"
+Noelle:  Disable "quantize_ord_dither" as cold function
+Noelle:  Function "write_colormap"
+Noelle:  Disable "write_colormap" as cold function
+Noelle:  Function "skip_input_data"
+Noelle:  Disable "skip_input_data" as cold function
+Noelle:  Function "color_quantize3"
+Noelle:  Disable "color_quantize3" as cold function
+Noelle:  Function "color_quantize"
+Noelle:  Disable "color_quantize" as cold function
+Noelle:  Function "quantize3_ord_dither"
+Noelle:  Disable "quantize3_ord_dither" as cold function
+Noelle:  Function "put_pixel_rows.60"
+Noelle:  Disable "put_pixel_rows.60" as cold function
+Noelle:  Function "quantize_fs_dither"
+Noelle:  Disable "quantize_fs_dither" as cold function
+Noelle:  Function "start_output_tga"
+Noelle:  Disable "start_output_tga" as cold function
+Noelle:  Function "finish_output_tga"
+Noelle:  Disable "finish_output_tga" as cold function
+Noelle:  Function "put_demapped_gray.55"
+Noelle:  Disable "put_demapped_gray.55" as cold function
+Noelle:  Function "put_gray_rows"
+Noelle:  Disable "put_gray_rows" as cold function
+Noelle:  Function "put_pixel_rows.56"
+Noelle:  Disable "put_pixel_rows.56" as cold function
+Noelle:  Function "COM_handler"
+Noelle:  Disable "COM_handler" as cold function
+Noelle:  Function "copy_pixel_rows"
+Noelle:  Disable "copy_pixel_rows" as cold function
+Noelle:  Function "put_demapped_gray"
+Noelle:  Disable "put_demapped_gray" as cold function
+Noelle:  Function "put_demapped_rgb"
+Noelle:  Disable "put_demapped_rgb" as cold function
+Noelle:  Function "start_output_gif"
+Noelle:  Disable "start_output_gif" as cold function
+Noelle:  Function "put_pixel_rows.52"
+Noelle:  Disable "put_pixel_rows.52" as cold function
+Noelle:  Function "finish_output_gif"
+Noelle:  Disable "finish_output_gif" as cold function
+Noelle:  Function "emit_header"
+Noelle:  Disable "emit_header" as cold function
+Noelle:  Function "start_output_bmp"
+Noelle:  Disable "start_output_bmp" as cold function
+Noelle:  Function "finish_output_bmp"
+Noelle:  Disable "finish_output_bmp" as cold function
+Noelle:  Function "put_gray_rows.59"
+Noelle:  Disable "put_gray_rows.59" as cold function
+Noelle:  Function "update_box"
+Noelle:  Disable "update_box" as cold function
+Noelle:  Function "jinit_merged_upsampler"
+Noelle:  Disable "jinit_merged_upsampler" as cold function
+Noelle:  Function "jinit_huff_decoder"
+Noelle:  Disable "jinit_huff_decoder" as cold function
+Noelle:  Function "process_data_simple_main"
+Noelle:  Disable "process_data_simple_main" as cold function
+Noelle:  Function "process_data_crank_post"
+Noelle:  Disable "process_data_crank_post" as cold function
+Noelle:  Function "dummy_consume_data"
+Noelle:  Disable "dummy_consume_data" as cold function
+Noelle:  Function "pass2_fs_dither"
+Noelle:  Disable "pass2_fs_dither" as cold function
+Noelle:  Function "pass2_no_dither"
+Noelle:  Disable "pass2_no_dither" as cold function
+Noelle:  Function "finish_pass2"
+Noelle:  Disable "finish_pass2" as cold function
+Noelle:  Function "fill_inverse_cmap"
+Noelle:  Disable "fill_inverse_cmap" as cold function
+Noelle:  Function "jinit_2pass_quantizer"
+Noelle:  Disable "jinit_2pass_quantizer" as cold function
+Noelle:  Function "start_pass_1_quant"
+Noelle:  Disable "start_pass_1_quant" as cold function
+Noelle:  Function "finish_pass_1_quant"
+Noelle:  Disable "finish_pass_1_quant" as cold function
+Noelle:  Function "new_color_map_1_quant"
+Noelle:  Disable "new_color_map_1_quant" as cold function
+Noelle:  Function "create_colorindex"
+Noelle:  Disable "create_colorindex" as cold function
+Noelle:  Function "decompress_smooth_data"
+Noelle:  Disable "decompress_smooth_data" as cold function
+Noelle:  Function "jcopy_block_row"
+Noelle:  Disable "jcopy_block_row" as cold function
+Noelle:  Function "start_pass_huff_decoder"
+Noelle:  Disable "start_pass_huff_decoder" as cold function
+Noelle:  Function "decode_mcu"
+Noelle:  Disable "decode_mcu" as cold function
+Noelle:  Function "jpeg_idct_4x4"
+Noelle:  Disable "jpeg_idct_4x4" as cold function
+Noelle:  Function "jpeg_idct_2x2"
+Noelle:  Disable "jpeg_idct_2x2" as cold function
+Noelle:  Function "usage"
+Noelle:  Disable "usage" as cold function
+Noelle:  Function "read_stdin"
+Noelle:  Disable "read_stdin" as cold function
+Noelle:  Function "write_stdout"
+Noelle:  Disable "write_stdout" as cold function
+Noelle:  Function "jinit_write_bmp"
+Noelle:  Disable "jinit_write_bmp" as cold function
+Noelle:  Function "jinit_write_gif"
+Noelle:  Disable "jinit_write_gif" as cold function
+Noelle:  Function "jinit_write_targa"
+Noelle:  Disable "jinit_write_targa" as cold function
+Noelle:  Function "jpeg_idct_1x1"
+Noelle:  Disable "jpeg_idct_1x1" as cold function
+Noelle:  Function "noop_upsample"
+Noelle:  Disable "noop_upsample" as cold function
+Noelle:  Function "h2v1_fancy_upsample"
+Noelle:  Disable "h2v1_fancy_upsample" as cold function
+Noelle:  Function "h2v1_upsample"
+Noelle:  Disable "h2v1_upsample" as cold function
+Noelle:  Function "h2v2_upsample"
+Noelle:  Disable "h2v2_upsample" as cold function
+Noelle:  Function "int_upsample"
+Noelle:  Disable "int_upsample" as cold function
+Noelle:  Function "jcopy_sample_rows"
+Noelle:  Disable "jcopy_sample_rows" as cold function
+Noelle:  Function "jinit_1pass_quantizer"
+Noelle:  Disable "jinit_1pass_quantizer" as cold function
+Parallelizer:    There are 18 loops in the program we are going to consider
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %struct.jpeg_error_mgr, align 8, !noelle.pdg.inst.id !2728
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i32, align 4, !noelle.pdg.inst.id !2726
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca i32, align 4, !noelle.pdg.inst.id !2726 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.jpeg_decompress_struct, align 8, !noelle.pdg.inst.id !2727
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %struct.jpeg_error_mgr, align 8, !noelle.pdg.inst.id !2728
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i32, align 4, !noelle.pdg.inst.id !2726
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca i32, align 4, !noelle.pdg.inst.id !2726 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.jpeg_decompress_struct, align 8, !noelle.pdg.inst.id !2727
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+Parallelizer: parallelizerLoop: Start
+Parallelizer: parallelizerLoop:   Function = "ycc_rgb_convert"
+Parallelizer: parallelizerLoop:   Loop 247 = "  %47 = getelementptr inbounds i8, i8* %37, i64 %45, !noelle.pdg.inst.id !106"
+Parallelizer: parallelizerLoop:   Nesting level = 2
+Parallelizer: parallelizerLoop:   Number of threads to extract = 8
+Parallelizer: parallelizerLoop:   Environment: live-in and live-out values
+Parallelizer: parallelizerLoop:   Environment:   Live-in 0 =   %12 = load i8*, i8** %11, align 8, !tbaa !53, !noelle.pdg.inst.id !54
+Parallelizer: parallelizerLoop:   Environment:   Live-in 1 =   %14 = load i32*, i32** %13, align 8, !tbaa !56, !noelle.pdg.inst.id !59
+Parallelizer: parallelizerLoop:   Environment:   Live-in 2 =   %16 = load i32*, i32** %15, align 8, !tbaa !61, !noelle.pdg.inst.id !62
+Parallelizer: parallelizerLoop:   Environment:   Live-in 3 =   %18 = load i64*, i64** %17, align 8, !tbaa !64, !noelle.pdg.inst.id !65
+Parallelizer: parallelizerLoop:   Environment:   Live-in 4 =   %20 = load i64*, i64** %19, align 8, !tbaa !67, !noelle.pdg.inst.id !68
+Parallelizer: parallelizerLoop:   Environment:   Live-in 5 =   %26 = zext i32 %10 to i64, !noelle.pdg.inst.id !76
+Parallelizer: parallelizerLoop:   Environment:   Live-in 6 =   %37 = load i8*, i8** %36, align 8, !tbaa !90, !noelle.pdg.inst.id !94
+Parallelizer: parallelizerLoop:   Environment:   Live-in 7 =   %40 = load i8*, i8** %39, align 8, !tbaa !90, !noelle.pdg.inst.id !97
+Parallelizer: parallelizerLoop:   Environment:   Live-in 8 =   %43 = load i8*, i8** %42, align 8, !tbaa !90, !noelle.pdg.inst.id !100
+Parallelizer: parallelizerLoop:   Environment:   Live-in 9 =   %44 = load i8*, i8** %33, align 8, !tbaa !90, !noelle.pdg.inst.id !101
+Parallelizer: parallelizerLoop:   The loop has not been parallelized
+Parallelizer: parallelizerLoop: Exit
+Parallelizer: parallelizerLoop: Start
+Parallelizer: parallelizerLoop:   Function = "main"
+Parallelizer: parallelizerLoop:   Loop 0 = "  %103 = load i8**, i8*** %92, align 8, !tbaa !2849, !noelle.pdg.inst.id !365"
+Parallelizer: parallelizerLoop:   Nesting level = 1
+Parallelizer: parallelizerLoop:   Number of threads to extract = 8
+Parallelizer: parallelizerLoop:   Environment: live-in and live-out values
+Parallelizer: parallelizerLoop:   Environment:   Live-in 0 =   %4 = alloca %struct.jpeg_decompress_struct, align 8, !noelle.pdg.inst.id !2727
+Parallelizer: parallelizerLoop:   Environment:   Live-in 1 =   %15 = getelementptr inbounds %struct.jpeg_decompress_struct, %struct.jpeg_decompress_struct* %4, i64 0, i32 0, !noelle.pdg.inst.id !2748
+Parallelizer: parallelizerLoop:   Environment:   Live-in 2 =   %80 = phi %struct.djpeg_dest_struct* [ null, %NewDefault ], [ %73, %72 ], [ %71, %70 ], [ %69, %68 ], [ %67, %66 ], [ %65, %64 ], !noelle.pdg.inst.id !2822
+Parallelizer: parallelizerLoop:   Environment:   Live-in 3 =   %82 = bitcast %struct.jpeg_decompress_struct* %4 to %struct.jpeg_decompress_struct.188*, !noelle.pdg.inst.id !2826
+Parallelizer: parallelizerLoop:   Environment:   Live-in 4 =   %86 = getelementptr inbounds %struct.jpeg_decompress_struct, %struct.jpeg_decompress_struct* %4, i64 0, i32 33, !noelle.pdg.inst.id !2830
+Parallelizer: parallelizerLoop:   Environment:   Live-in 5 =   %87 = load i32, i32* %86, align 8, !tbaa !2831, !noelle.pdg.inst.id !361
+Parallelizer: parallelizerLoop:   Environment:   Live-in 6 =   %88 = getelementptr inbounds %struct.jpeg_decompress_struct, %struct.jpeg_decompress_struct* %4, i64 0, i32 27, !noelle.pdg.inst.id !2832
+Parallelizer: parallelizerLoop:   Environment:   Live-in 7 =   %89 = load i32, i32* %88, align 4, !tbaa !2833, !noelle.pdg.inst.id !363
+Parallelizer: parallelizerLoop:   Environment:   Live-in 8 =   %92 = getelementptr inbounds %struct.djpeg_dest_struct, %struct.djpeg_dest_struct* %80, i64 0, i32 4, !noelle.pdg.inst.id !2837
+Parallelizer: parallelizerLoop:   Environment:   Live-in 9 =   %93 = getelementptr inbounds %struct.djpeg_dest_struct, %struct.djpeg_dest_struct* %80, i64 0, i32 5, !noelle.pdg.inst.id !2838
+Parallelizer: parallelizerLoop:   Environment:   Live-in 10 =   %94 = getelementptr inbounds %struct.djpeg_dest_struct, %struct.djpeg_dest_struct* %80, i64 0, i32 1, !noelle.pdg.inst.id !2839
+Parallelizer: parallelizerLoop:   Environment:   Live-in 11 =   %95 = bitcast i32* %3 to i8*, !noelle.pdg.inst.id !2840
+Parallelizer: parallelizerLoop:   Environment:   Live-in 12 =   %96 = getelementptr inbounds %struct.jpeg_decompress_struct, %struct.jpeg_decompress_struct* %4, i64 0, i32 4, !noelle.pdg.inst.id !2841
+Parallelizer: parallelizerLoop:   Environment:   Live-in 13 =   %97 = bitcast %struct.jpeg_decompress_struct* %4 to %struct.jpeg_common_struct*, !noelle.pdg.inst.id !2842
+Parallelizer: parallelizerLoop:   Environment:   Live-in 14 =   %98 = getelementptr inbounds %struct.jpeg_decompress_struct, %struct.jpeg_decompress_struct* %4, i64 0, i32 2, !noelle.pdg.inst.id !2843
+Parallelizer: parallelizerLoop:   Environment:   Live-in 15 =   %100 = bitcast %struct.jpeg_d_main_controller** %99 to %struct.jpeg_d_main_controller.178**, !noelle.pdg.inst.id !2845
+Parallelizer: parallelizerLoop:   The loop has not been parallelized
+Parallelizer: parallelizerLoop: Exit
+Parallelizer: Exit
+noelle-meta-clean parallelized_unoptimized.bc parallelized_unoptimized.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CleanMetadata.so -CleanMetadata -clean-loop-metadata=true -clean-prof-metadata=true -clean-pdg-metadata=true parallelized_unoptimized.bc -o parallelized_unoptimized.bc
+noelle/core/Clean Loop Metadata
+noelle/core/Clean PDG Metadata
+noelle/core/Clean profiler metadata
+opt --strip-named-metadata parallelized_unoptimized.bc -o parallelized_unoptimized.bc
+clang -O3 -c -emit-llvm parallelized_unoptimized.bc -o baseline_parallelized.bc
+clang -O3 -c -emit-llvm baseline_parallelized.bc -o baseline_parallelized.bc
+cp baseline_parallelized.bc djpeg.bc
+make[1]: Leaving directory '/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/djpeg'

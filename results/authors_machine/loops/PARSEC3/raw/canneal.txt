@@ -1,1356 +1,443 @@
 noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStats.so -LoopStats baseline_with_metadata.bc -disable-output
-opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Loops.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStats.so -LoopStats baseline_with_metadata.bc -disable-output
-Per loop statistics
- Noelle:
-  Loop: 126
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 8
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 4
- LLVM:
-  Loop: 126
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 1
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 8
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 4
- Noelle:
-  Loop: 122
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 5780576
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 2890288
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 5
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 141610001
- LLVM:
-  Loop: 122
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 2890288
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 5
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 158951727
- Noelle:
-  Loop: 120
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 3402
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 1701
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 5
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 290701
- LLVM:
-  Loop: 120
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 1701
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 5
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 300905
- Noelle:
-  Loop: 118
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 2
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 2
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 31
- LLVM:
-  Loop: 118
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 2
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 2
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 31
- Noelle:
-  Loop: 65
-    Induction variables (IVs):
-      Number of IVs: 3
-      Number of dynamic IVs: 1872
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 624
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 0
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 65
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 624
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 4989
- Noelle:
-  Loop: 63
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 109507790
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 54753895
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 382311825
- LLVM:
-  Loop: 63
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 54753895
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 710697275
- Noelle:
-  Loop: 100
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 1699
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 3
-      Number of dynamic invariants: 2889558
-    Dependences
-      Number of nodes in SCCDAG: 6
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 189662691
- LLVM:
-  Loop: 100
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 1699
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 6
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 189662691
- Noelle:
-  Loop: 61
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 62891126
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 31445563
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 219153508
- LLVM:
-  Loop: 61
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 31445563
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 407551048
- Noelle:
-  Loop: 98
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 14999875
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 14999875
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 15
-      Number of SCCs: 2
-      Number of sequential SCCs: 0
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 98
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 14999875
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 15
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 97499185
- Noelle:
-  Loop: 59
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 479294655
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 479294655
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 22
-      Number of SCCs: 3
-      Number of sequential SCCs: 0
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 59
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 479294655
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 22
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 4342946110
- Noelle:
-  Loop: 124
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 1
-      Number of dynamic invariants: 400312546
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 18528127135
- LLVM:
-  Loop: 124
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 417812548
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 18528127135
- Noelle:
-  Loop: 45
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 8
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 814
- LLVM:
-  Loop: 45
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 37
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 8
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 814
- Noelle:
-  Loop: 130
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 3402
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 1701
-    Invariants
-      Number of invariants: 1
-      Number of dynamic invariants: 1700
-    Dependences
-      Number of nodes in SCCDAG: 6
-      Number of SCCs: 2
-      Number of sequential SCCs: 0
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 130
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 1701
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 6
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 10204
- Noelle:
-  Loop: 51
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 51
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 88
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 88
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 96
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 14999875
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 14999875
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 15
-      Number of SCCs: 2
-      Number of sequential SCCs: 0
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 96
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 14999875
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 15
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 97499185
- Noelle:
-  Loop: 17
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 90006088
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 90006088
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 76
-      Number of SCCs: 4
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 82529015166
- LLVM:
-  Loop: 17
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 90006088
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 76
-      Number of SCCs: 4
-      Number of sequential SCCs: 4
-      Number of dynamic instructions executed in sequential SCCs: 83254642291
- Noelle:
-  Loop: 55
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 479294661
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 479294661
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 22
-      Number of SCCs: 3
-      Number of sequential SCCs: 0
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 55
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 479294661
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 22
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 4342946170
- Noelle:
-  Loop: 92
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 53
-      Number of SCCs: 6
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 9999923
- LLVM:
-  Loop: 92
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 2499981
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 53
-      Number of SCCs: 6
-      Number of sequential SCCs: 6
-      Number of dynamic instructions executed in sequential SCCs: 209998254
- Noelle:
-  Loop: 38
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 166198644
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 83099322
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 580230028
- LLVM:
-  Loop: 38
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 83099322
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 1078616642
- Noelle:
-  Loop: 1
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 6001
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 55
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 85159910856
- LLVM:
-  Loop: 1
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 6001
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 55
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 85159910856
- Noelle:
-  Loop: 75
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 75
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 112
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 1702
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 4
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 78207
- LLVM:
-  Loop: 112
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 1702
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 4
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 78207
- Noelle:
-  Loop: 132
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 3
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 132
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 3
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 53
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 479283674
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 479283674
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 22
-      Number of SCCs: 3
-      Number of sequential SCCs: 0
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 53
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 479283674
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 22
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 4342836300
- Noelle:
-  Loop: 90
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 90
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 36
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 95449100
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 47724550
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 332606624
- LLVM:
-  Loop: 36
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 47724550
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 618535288
- Noelle:
-  Loop: 110
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 2890288
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 4
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 256072666
- LLVM:
-  Loop: 110
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 2890288
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 4
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 256072666
- Noelle:
-  Loop: 128
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 4
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 387509616
- LLVM:
-  Loop: 128
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 5000004
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 4
-      Number of SCCs: 2
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 387509616
- Noelle:
-  Loop: 49
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 49
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 32
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 8
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 5486841446
- LLVM:
-  Loop: 32
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 130613808
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 8
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 5486841446
- Noelle:
-  Loop: 69
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 794
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 397
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 2772
- LLVM:
-  Loop: 69
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 397
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 5153
- Noelle:
-  Loop: 57
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 479283674
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 479283674
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 22
-      Number of SCCs: 3
-      Number of sequential SCCs: 0
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 57
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 479283674
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 22
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 4342836300
- Noelle:
-  Loop: 40
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 12
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 270001338
- LLVM:
-  Loop: 40
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 90000114
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 12
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 270001338
- Noelle:
-  Loop: 77
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 77
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 114
-    Induction variables (IVs):
-      Number of IVs: 3
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 6
-      Number of SCCs: 4
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 114
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 6
-      Number of SCCs: 4
-      Number of sequential SCCs: 4
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 67
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 456
-      Number of loop governing IVs: 1
-      Number of dynamic loop governing IVs: 228
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 1589
- LLVM:
-  Loop: 67
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 228
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 11
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 2955
- Noelle:
-  Loop: 71
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 8
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 66
- LLVM:
-  Loop: 71
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 3
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 8
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 66
- Noelle:
-  Loop: 108
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 2
-      Number of dynamic invariants: 23608126
-    Dependences
-      Number of nodes in SCCDAG: 14
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 29124636489
- LLVM:
-  Loop: 108
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 14
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 29124636489
- Noelle:
-  Loop: 79
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 12
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 6
- LLVM:
-  Loop: 79
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 2
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 12
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 6
- Noelle:
-  Loop: 116
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 2
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 5
-      Number of SCCs: 3
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 3
- LLVM:
-  Loop: 116
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 1
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 5
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 4
- Noelle:
-  Loop: 84
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 8
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- LLVM:
-  Loop: 84
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 0
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 8
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 0
- Noelle:
-  Loop: 103
-    Induction variables (IVs):
-      Number of IVs: 2
-      Number of dynamic IVs: 5775716
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 5
-      Number of dynamic invariants: 14434196
-    Dependences
-      Number of nodes in SCCDAG: 9
-      Number of SCCs: 3
-      Number of sequential SCCs: 2
-      Number of dynamic instructions executed in sequential SCCs: 166541064
- LLVM:
-  Loop: 103
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 2887858
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 9
-      Number of SCCs: 3
-      Number of sequential SCCs: 3
-      Number of dynamic instructions executed in sequential SCCs: 172315082
- Noelle:
-  Loop: 105
-    Induction variables (IVs):
-      Number of IVs: 1
-      Number of dynamic IVs: 2496661
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 4
-      Number of dynamic invariants: 23608176
-    Dependences
-      Number of nodes in SCCDAG: 28
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 33678258681
- LLVM:
-  Loop: 105
-    Induction variables (IVs):
-      Number of IVs: 0
-      Number of dynamic IVs: 2496661
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 28
-      Number of SCCs: 1
-      Number of sequential SCCs: 1
-      Number of dynamic instructions executed in sequential SCCs: 33678258681
-Total statistics
- Noelle:
-    Induction variables (IVs):
-      Number of IVs: 54
-      Number of dynamic IVs: 2488171735
-      Number of loop governing IVs: 24
-      Number of dynamic loop governing IVs: 2257080771
-    Invariants
-      Number of invariants: 16
-      Number of dynamic invariants: 464854302
-    Dependences
-      Number of nodes in SCCDAG: 621
-      Number of SCCs: 105
-      Number of sequential SCCs: 43
-      Number of dynamic instructions executed in sequential SCCs: 257442863250
-      Average number of dynamic instructions of sequential SCCs: 1.144604e+09
-      Average coverage of sequential SCCs: 8.456774e-03 %
- LLVM:
-    Induction variables (IVs):
-      Number of IVs: 26
-      Number of dynamic IVs: 2911291481
-      Number of loop governing IVs: 0
-      Number of dynamic loop governing IVs: 0
-    Invariants
-      Number of invariants: 0
-      Number of dynamic invariants: 0
-    Dependences
-      Number of nodes in SCCDAG: 621
-      Number of SCCs: 105
-      Number of sequential SCCs: 105
-      Number of dynamic instructions executed in sequential SCCs: 277259295113
-      Average number of dynamic instructions of sequential SCCs: 1.168410e+09
-      Average coverage of sequential SCCs: 8.632657e-03 %
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStats.so -LoopStats baseline_with_metadata.bc -disable-output
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i64, align 8, !noelle.pdg.inst.id !686
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i64, align 8, !noelle.pdg.inst.id !685
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.Rng, align 8, !noelle.pdg.inst.id !684
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i64, align 8, !noelle.pdg.inst.id !682
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i64, align 8, !noelle.pdg.inst.id !683
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i64, align 8, !noelle.pdg.inst.id !686
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i64, align 8, !noelle.pdg.inst.id !685
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.Rng, align 8, !noelle.pdg.inst.id !684
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i64, align 8, !noelle.pdg.inst.id !682
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i64, align 8, !noelle.pdg.inst.id !683
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i64, align 8, !noelle.pdg.inst.id !686
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i64, align 8, !noelle.pdg.inst.id !685
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.Rng, align 8, !noelle.pdg.inst.id !684
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i64, align 8, !noelle.pdg.inst.id !682
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i64, align 8, !noelle.pdg.inst.id !683
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i64, align 8, !noelle.pdg.inst.id !686
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i64, align 8, !noelle.pdg.inst.id !685
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.Rng, align 8, !noelle.pdg.inst.id !684
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i64, align 8, !noelle.pdg.inst.id !682
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i64, align 8, !noelle.pdg.inst.id !683
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i64, align 8, !noelle.pdg.inst.id !686
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i64, align 8, !noelle.pdg.inst.id !685
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.Rng, align 8, !noelle.pdg.inst.id !684
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i64, align 8, !noelle.pdg.inst.id !682
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i64, align 8, !noelle.pdg.inst.id !683
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i64, align 8, !noelle.pdg.inst.id !686
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i64, align 8, !noelle.pdg.inst.id !685
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.Rng, align 8, !noelle.pdg.inst.id !684
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i64, align 8, !noelle.pdg.inst.id !682
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i64, align 8, !noelle.pdg.inst.id !683
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"struct.std::_Rb_tree_iterator", align 8, !noelle.pdg.inst.id !111
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca %"struct.std::_Rb_tree_iterator", align 8, !noelle.pdg.inst.id !111 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca %"struct.std::_Rb_tree_iterator", align 8, !noelle.pdg.inst.id !110
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %2 = alloca %"struct.std::_Rb_tree_iterator", align 8, !noelle.pdg.inst.id !110 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"struct.std::_Rb_tree_node_base"*, align 8, !noelle.pdg.inst.id !244
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"struct.std::_Rb_tree_iterator", align 8, !noelle.pdg.inst.id !243
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"struct.std::_Rb_tree_iterator", align 8, !noelle.pdg.inst.id !242
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"struct.std::_Rb_tree_node_base"*, align 8, !noelle.pdg.inst.id !241
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"struct.std::pair.23", align 8, !noelle.pdg.inst.id !239
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"struct.std::_Rb_tree_node"*, align 8, !noelle.pdg.inst.id !240
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i64, align 8, !noelle.pdg.inst.id !68
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca i64, align 8, !noelle.pdg.inst.id !68 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"struct.std::_Rb_tree_iterator", align 8, !noelle.pdg.inst.id !115
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i64, align 8, !noelle.pdg.inst.id !113
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca i64, align 8, !noelle.pdg.inst.id !113 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i64, align 8, !noelle.pdg.inst.id !114
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %6 = alloca i64, align 8, !noelle.pdg.inst.id !114 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5373
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %12 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5373 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !5372
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !5371
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5370
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5365
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5365 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5364
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5364 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !5366
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"class.std::vector.13", align 8, !noelle.pdg.inst.id !5367
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"class.std::ios_base::Init", align 1, !noelle.pdg.inst.id !5368
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !5369
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5373
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %12 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5373 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !5372
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !5372 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !5371
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %10 = alloca i32, align 4, !noelle.pdg.inst.id !5371 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5370
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %9 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5370 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5365
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5365 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5364
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5364 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !5366
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"class.std::vector.13", align 8, !noelle.pdg.inst.id !5367
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"class.std::ios_base::Init", align 1, !noelle.pdg.inst.id !5368
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !5369
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !5369 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5373
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !5372
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !5371
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5370
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5365
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5364
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !5366
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"class.std::vector.13", align 8, !noelle.pdg.inst.id !5367
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"class.std::ios_base::Init", align 1, !noelle.pdg.inst.id !5368
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !5369
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5373
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !5372
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !5371
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.netlist_elem*, align 8, !noelle.pdg.inst.id !5370
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5365
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.__gnu_cxx::__normal_iterator.30", align 8, !noelle.pdg.inst.id !5364
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !5366
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"class.std::vector.13", align 8, !noelle.pdg.inst.id !5367
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"class.std::ios_base::Init", align 1, !noelle.pdg.inst.id !5368
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !5369
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.__gnu_cxx::__normal_iterator.27", align 8, !noelle.pdg.inst.id !77
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca %"class.__gnu_cxx::__normal_iterator.27", align 8, !noelle.pdg.inst.id !77 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.__gnu_cxx::__normal_iterator.27", align 8, !noelle.pdg.inst.id !76
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %"class.__gnu_cxx::__normal_iterator.27", align 8, !noelle.pdg.inst.id !76 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+opt: /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/src/tools/loop_stats/src/LoopStats_Loops.cpp:55: void llvm::noelle::LoopStats::collectStatsForLoop(llvm::noelle::Hot *, llvm::noelle::LoopDependenceInfo &, llvm::Loop &): Assertion `loopIDOpt' failed.
+Stack dump:
+0.	Program arguments: opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStats.so -LoopStats baseline_with_metadata.bc -disable-output 
+1.	Running pass 'Generate statistics output for loops using LDI' on module 'baseline_with_metadata.bc'.
+#0 0x000000000219868a llvm::sys::PrintStackTrace(llvm::raw_ostream&) (/project/extra/llvm/9.0.0/release/bin/opt+0x219868a)
+#1 0x0000000002196614 llvm::sys::RunSignalHandlers() (/project/extra/llvm/9.0.0/release/bin/opt+0x2196614)
+#2 0x0000000002196775 SignalHandler(int) (/project/extra/llvm/9.0.0/release/bin/opt+0x2196775)
+#3 0x00007f508b502cf0 __restore_rt (/lib64/libpthread.so.0+0x12cf0)
+#4 0x00007f5089ff8aff raise (/lib64/libc.so.6+0x4eaff)
+#5 0x00007f5089fcbea5 abort (/lib64/libc.so.6+0x21ea5)
+#6 0x00007f5089fcbd79 _nl_load_domain.cold.0 (/lib64/libc.so.6+0x21d79)
+#7 0x00007f5089ff1456 (/lib64/libc.so.6+0x47456)
+#8 0x00007f5084d1651a llvm::noelle::LoopStats::collectStatsForLoop(llvm::noelle::Hot*, llvm::noelle::LoopDependenceInfo&, llvm::Loop&) /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/src/tools/loop_stats/src/LoopStats_Loops.cpp:57:27
+/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/bin/noelle-load: line 50: 3810131 Aborted                 (core dumped) opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStats.so -LoopStats baseline_with_metadata.bc -disable-output

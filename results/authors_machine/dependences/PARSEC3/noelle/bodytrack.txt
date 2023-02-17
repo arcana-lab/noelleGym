@@ -1,11 +1,2593 @@
 noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGStats.so -PDGStats baseline_with_metadata.bc -disable-output
-opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Loops.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGStats.so -PDGStats baseline_with_metadata.bc -disable-output
-Number of Nodes: 48872
-Number of Edges (a.k.a. dependences): 286213
- Number of control dependences: 56527
- Number of data dependences: 229686
-   Number of variable dependences: 54937
-   Number of memory dependences: 174749
-     Number of memory must dependences: 2361
-     Number of memory may dependences: 172388
-     Number of potential memory dependences: 1717532
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGStats.so -PDGStats baseline_with_metadata.bc -disable-output
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !116
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !116
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !116
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2296
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2285
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2284
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !2283
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !2282
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !2280
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !2281
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2286
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2287
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2288
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2289
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2290
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2291
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2292
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2293
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2294
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2295
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2296
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2285
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2284
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !2283
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !2282
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !2280
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !2281
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2286
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2287
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2288
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2289
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2290
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2291
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2292
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2293
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2294
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2295
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2296
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2285
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2284
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !2283
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !2282
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !2280
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !2281
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2286
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2287
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2288
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2289
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2290
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2291
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2292
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2293
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2294
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2295
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2296
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2285
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2284
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !2283
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !2282
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !2280
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !2281
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2286
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2287
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2288
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2289
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2290
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2291
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2292
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2293
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2294
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2295
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2296
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2285
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2284
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !2283
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !2282
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !2280
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !2281
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2286
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2287
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2288
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2289
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2290
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2291
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2292
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2293
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2294
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2295
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2296
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2285
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2284
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !2283
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !2282
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !2280
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !2281
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2286
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2287
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2288
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2289
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2290
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2291
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2292
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2293
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2294
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2295
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2296
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2285
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2284
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !2283
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !2282
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !2280
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !2281
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2286
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2287
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2288
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2289
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2290
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2291
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2292
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2293
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2294
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2295
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2296
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2285
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2284
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !2283
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !2282
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !2280
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !2281
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2286
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2287
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2288
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2289
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2290
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2291
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2292
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2293
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2294
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2295
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2296
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2285
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2284
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !2283
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !2282
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !2280
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !2281
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2286
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2287
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2288
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2289
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2290
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2291
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2292
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2293
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2294
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2295
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2296
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2285
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2284
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !2283
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !2282
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !2280
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !2281
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2286
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2287
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2288
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2289
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2290
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [2 x %class.Vector3], align 16, !noelle.pdg.inst.id !2291
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2292
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2293
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2294
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !2295
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::move_iterator.3", align 8, !noelle.pdg.inst.id !173
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::move_iterator.3", align 8, !noelle.pdg.inst.id !172
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !134
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !270
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !270
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::basic_ifstream", align 8, !noelle.pdg.inst.id !270
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::move_iterator.85", align 8, !noelle.pdg.inst.id !173
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::move_iterator.85", align 8, !noelle.pdg.inst.id !172
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !236
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %class.Point, align 4, !noelle.pdg.inst.id !231
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !230
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !232
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i32, align 4, !noelle.pdg.inst.id !233
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %class.Point, align 4, !noelle.pdg.inst.id !234
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !235
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !236
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %class.Point, align 4, !noelle.pdg.inst.id !231
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !230
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !232
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i32, align 4, !noelle.pdg.inst.id !233
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %class.Point, align 4, !noelle.pdg.inst.id !234
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !235
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Point, align 4, !noelle.pdg.inst.id !339
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Point, align 4, !noelle.pdg.inst.id !338
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !337
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %class.Point, align 4, !noelle.pdg.inst.id !332
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %class.Point, align 4, !noelle.pdg.inst.id !331
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Point, align 4, !noelle.pdg.inst.id !333
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i32, align 4, !noelle.pdg.inst.id !334
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !335
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !336
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %class.Point, align 4, !noelle.pdg.inst.id !339
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Point, align 4, !noelle.pdg.inst.id !338
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !337
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %class.Point, align 4, !noelle.pdg.inst.id !332
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %class.Point, align 4, !noelle.pdg.inst.id !331
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Point, align 4, !noelle.pdg.inst.id !333
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i32, align 4, !noelle.pdg.inst.id !334
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !335
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !336
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca float, align 4, !noelle.pdg.inst.id !86
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !85
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca float, align 4, !noelle.pdg.inst.id !86
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !85
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !86
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !85
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !86
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !85
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !727
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !726
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !725
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !724
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !719
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !718
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !720
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %class.DMatrix, align 4, !noelle.pdg.inst.id !721
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !722
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [4 x %class.Vector3], align 16, !noelle.pdg.inst.id !723
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !727
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !726
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !725
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !724
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !719
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !718
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !720
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %class.DMatrix, align 4, !noelle.pdg.inst.id !721
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !722
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [4 x %class.Vector3], align 16, !noelle.pdg.inst.id !723
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !727
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !726
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !725
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !724
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !719
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !718
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !720
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %class.DMatrix, align 4, !noelle.pdg.inst.id !721
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !722
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [4 x %class.Vector3], align 16, !noelle.pdg.inst.id !723
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !727
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !726
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !725
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !724
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !719
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !718
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !720
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %class.DMatrix, align 4, !noelle.pdg.inst.id !721
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.Vector3, align 4, !noelle.pdg.inst.id !722
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [4 x %class.Vector3], align 16, !noelle.pdg.inst.id !723
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::move_iterator.117", align 8, !noelle.pdg.inst.id !173
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::move_iterator.117", align 8, !noelle.pdg.inst.id !172
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::move_iterator.117", align 8, !noelle.pdg.inst.id !77
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca %"class.std::move_iterator.117", align 8, !noelle.pdg.inst.id !77 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::move_iterator.117", align 8, !noelle.pdg.inst.id !76
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %"class.std::move_iterator.117", align 8, !noelle.pdg.inst.id !76 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %23 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !7086
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %22 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7085
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %21 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7084
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7083
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7082
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7071
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7070
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"class.std::allocator", align 1, !noelle.pdg.inst.id !7069
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::vector.68", align 8, !noelle.pdg.inst.id !7068
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::vector.68", align 8, !noelle.pdg.inst.id !7066
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::allocator", align 1, !noelle.pdg.inst.id !7067
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7072
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7073
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7074
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7075
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7076
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7077
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7078
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7079
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7080
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7081
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %23 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !7086
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %22 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7085
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %21 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7084
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7083
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7082
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7071
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7070
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"class.std::allocator", align 1, !noelle.pdg.inst.id !7069
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::vector.68", align 8, !noelle.pdg.inst.id !7068
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::vector.68", align 8, !noelle.pdg.inst.id !7066
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::allocator", align 1, !noelle.pdg.inst.id !7067
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7072
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7073
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7074
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7075
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7076
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7077
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7078
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7079
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7080
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !7081
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.__gnu_cxx::__normal_iterator.82", align 8, !noelle.pdg.inst.id !59
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca %"class.__gnu_cxx::__normal_iterator.82", align 8, !noelle.pdg.inst.id !59 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.__gnu_cxx::__normal_iterator.82", align 8, !noelle.pdg.inst.id !58
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %"class.__gnu_cxx::__normal_iterator.82", align 8, !noelle.pdg.inst.id !58 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.__gnu_cxx::__normal_iterator.80", align 8, !noelle.pdg.inst.id !162
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca %"class.__gnu_cxx::__normal_iterator.80", align 8, !noelle.pdg.inst.id !162 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.__gnu_cxx::__normal_iterator.80", align 8, !noelle.pdg.inst.id !161
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %"class.__gnu_cxx::__normal_iterator.80", align 8, !noelle.pdg.inst.id !161 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::move_iterator.3", align 8, !noelle.pdg.inst.id !77
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca %"class.std::move_iterator.3", align 8, !noelle.pdg.inst.id !77 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::move_iterator.3", align 8, !noelle.pdg.inst.id !76
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %"class.std::move_iterator.3", align 8, !noelle.pdg.inst.id !76 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.__gnu_cxx::__normal_iterator.78", align 8, !noelle.pdg.inst.id !77
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca %"class.__gnu_cxx::__normal_iterator.78", align 8, !noelle.pdg.inst.id !77 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.__gnu_cxx::__normal_iterator.78", align 8, !noelle.pdg.inst.id !76
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %"class.__gnu_cxx::__normal_iterator.78", align 8, !noelle.pdg.inst.id !76 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.__gnu_cxx::__normal_iterator.78", align 8, !noelle.pdg.inst.id !173
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.__gnu_cxx::__normal_iterator.78", align 8, !noelle.pdg.inst.id !172
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::move_iterator.175", align 8, !noelle.pdg.inst.id !173
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::move_iterator.175", align 8, !noelle.pdg.inst.id !172
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !1656
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !1655
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !1654
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !1653
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !1652
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"class.std::allocator", align 1, !noelle.pdg.inst.id !1647
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::vector.68", align 8, !noelle.pdg.inst.id !1646
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !1648
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !1649
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !1650
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !1651
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %25 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8571
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %24 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8570
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %23 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8569
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %22 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8568
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %21 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8567
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8566
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8555
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8554
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8553
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8552
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::vector.68", align 8, !noelle.pdg.inst.id !8550
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::allocator", align 1, !noelle.pdg.inst.id !8551
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8556
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8557
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8558
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8559
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca [3 x i8], align 1, !noelle.pdg.inst.id !8560
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [3 x i8], align 1, !noelle.pdg.inst.id !8561
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca [3 x i8], align 1, !noelle.pdg.inst.id !8562
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8563
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8564
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8565
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %25 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8571
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %24 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8570
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %23 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8569
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %22 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8568
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %21 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8567
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8566
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8555
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8554
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8553
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8552
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::vector.68", align 8, !noelle.pdg.inst.id !8550
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::allocator", align 1, !noelle.pdg.inst.id !8551
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8556
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8557
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8558
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8559
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca [3 x i8], align 1, !noelle.pdg.inst.id !8560
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [3 x i8], align 1, !noelle.pdg.inst.id !8561
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca [3 x i8], align 1, !noelle.pdg.inst.id !8562
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8563
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8564
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8565
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %25 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8571
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %24 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8570
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %23 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8569
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %22 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8568
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %21 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8567
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8566
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8555
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8554
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8553
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8552
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::vector.68", align 8, !noelle.pdg.inst.id !8550
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::allocator", align 1, !noelle.pdg.inst.id !8551
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8556
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8557
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8558
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !8559
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca [3 x i8], align 1, !noelle.pdg.inst.id !8560
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca [3 x i8], align 1, !noelle.pdg.inst.id !8561
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca [3 x i8], align 1, !noelle.pdg.inst.id !8562
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8563
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8564
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !8565
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !195
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %class.FlexImage, align 8, !noelle.pdg.inst.id !195
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.tagBITMAPINFOHDR, align 4, !noelle.pdg.inst.id !633
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %struct.tagBITMAPFILEHDR, align 4, !noelle.pdg.inst.id !632
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::vector", align 8, !noelle.pdg.inst.id !2448
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !2447
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %"class.std::basic_ofstream", align 8, !noelle.pdg.inst.id !2446
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %class.TrackingModel, align 8, !noelle.pdg.inst.id !2444
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.ParticleFilter, align 8, !noelle.pdg.inst.id !2445
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca %"class.std::vector", align 8, !noelle.pdg.inst.id !2448
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca %"class.std::__cxx11::basic_string", align 8, !noelle.pdg.inst.id !2447
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca %"class.std::basic_ofstream", align 8, !noelle.pdg.inst.id !2446
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca %class.TrackingModel, align 8, !noelle.pdg.inst.id !2444
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %class.ParticleFilter, align 8, !noelle.pdg.inst.id !2445
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::vector", align 8, !noelle.pdg.inst.id !821
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::vector", align 8, !noelle.pdg.inst.id !821
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::vector", align 8, !noelle.pdg.inst.id !821
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca float, align 4, !noelle.pdg.inst.id !96
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca float, align 4, !noelle.pdg.inst.id !96
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca float, align 4, !noelle.pdg.inst.id !595
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i8, align 1, !noelle.pdg.inst.id !594
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca float, align 4, !noelle.pdg.inst.id !595
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i8, align 1, !noelle.pdg.inst.id !594
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca float, align 4, !noelle.pdg.inst.id !243
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %class.RandomGenerator, align 8, !noelle.pdg.inst.id !242
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca float, align 4, !noelle.pdg.inst.id !243
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %class.RandomGenerator, align 8, !noelle.pdg.inst.id !242
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca float, align 4, !noelle.pdg.inst.id !243
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca %class.RandomGenerator, align 8, !noelle.pdg.inst.id !242
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::move_iterator.85", align 8, !noelle.pdg.inst.id !76
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %"class.std::move_iterator.85", align 8, !noelle.pdg.inst.id !76 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %"class.std::move_iterator.85", align 8, !noelle.pdg.inst.id !75
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca %"class.std::move_iterator.85", align 8, !noelle.pdg.inst.id !75 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::move_iterator.85", align 8, !noelle.pdg.inst.id !162
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca %"class.std::move_iterator.85", align 8, !noelle.pdg.inst.id !162 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::move_iterator.85", align 8, !noelle.pdg.inst.id !161
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject:   It requires initialization
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %"class.std::move_iterator.85", align 8, !noelle.pdg.inst.id !161 can be cloned
+MemoryCloningAnalysis:     The private copies need to be initialized with the original object.
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca %"class.std::move_iterator.76", align 8, !noelle.pdg.inst.id !173
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %"class.std::move_iterator.76", align 8, !noelle.pdg.inst.id !172
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [4 x i8], align 1, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [5 x i8], align 1, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [4 x i8], align 1, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [5 x i8], align 1, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [4 x i16], align 2, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [5 x i16], align 2, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [4 x i16], align 2, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [5 x i16], align 2, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [4 x i32], align 16, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [5 x i32], align 16, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [4 x i32], align 16, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [5 x i32], align 16, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [4 x float], align 16, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [5 x float], align 16, !noelle.pdg.inst.id !42
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8, align 1, !noelle.pdg.inst.id !262
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %6 = alloca i8, align 1, !noelle.pdg.inst.id !262 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca [4 x i8], align 1, !noelle.pdg.inst.id !261
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %struct.tagBITMAPFILEHDR, align 4, !noelle.pdg.inst.id !259
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.tagBITMAPINFOHDR, align 4, !noelle.pdg.inst.id !260
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8, align 1, !noelle.pdg.inst.id !262
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %6 = alloca i8, align 1, !noelle.pdg.inst.id !262 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca [4 x i8], align 1, !noelle.pdg.inst.id !261
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %struct.tagBITMAPFILEHDR, align 4, !noelle.pdg.inst.id !259
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.tagBITMAPINFOHDR, align 4, !noelle.pdg.inst.id !260
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8, align 1, !noelle.pdg.inst.id !262
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca [4 x i8], align 1, !noelle.pdg.inst.id !261
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca [4 x i8], align 1, !noelle.pdg.inst.id !261 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %struct.tagBITMAPFILEHDR, align 4, !noelle.pdg.inst.id !259
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.tagBITMAPINFOHDR, align 4, !noelle.pdg.inst.id !260
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8, align 1, !noelle.pdg.inst.id !262
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %6 = alloca i8, align 1, !noelle.pdg.inst.id !262 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca [4 x i8], align 1, !noelle.pdg.inst.id !261
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %struct.tagBITMAPFILEHDR, align 4, !noelle.pdg.inst.id !259
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.tagBITMAPINFOHDR, align 4, !noelle.pdg.inst.id !260
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8, align 1, !noelle.pdg.inst.id !262
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %6 = alloca i8, align 1, !noelle.pdg.inst.id !262 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca [4 x i8], align 1, !noelle.pdg.inst.id !261
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %struct.tagBITMAPFILEHDR, align 4, !noelle.pdg.inst.id !259
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.tagBITMAPINFOHDR, align 4, !noelle.pdg.inst.id !260
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8, align 1, !noelle.pdg.inst.id !262
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca [4 x i8], align 1, !noelle.pdg.inst.id !261
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca [4 x i8], align 1, !noelle.pdg.inst.id !261 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca %struct.tagBITMAPFILEHDR, align 4, !noelle.pdg.inst.id !259
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.tagBITMAPINFOHDR, align 4, !noelle.pdg.inst.id !260
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !118
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !117
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !115
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !116
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !118
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i32, align 4, !noelle.pdg.inst.id !117
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca i32, align 4, !noelle.pdg.inst.id !115
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i32, align 4, !noelle.pdg.inst.id !116
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+Number of Nodes: 36654
+Number of Edges (a.k.a. dependences): 206605
+ Number of control dependences: 37175
+ Number of data dependences: 169430
+   Number of variable dependences: 40168
+   Number of memory dependences: 129262
+     Number of memory must dependences: 0
+     Number of memory may dependences: 129262
+     Number of potential memory dependences: 1567924

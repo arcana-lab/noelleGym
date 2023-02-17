@@ -1,11 +1,286 @@
 noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGStats.so -PDGStats baseline_with_metadata_llvm.bc -disable-output
-opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Loops.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGStats.so -PDGStats baseline_with_metadata_llvm.bc -disable-output
-Number of Nodes: 12917
-Number of Edges (a.k.a. dependences): 171252
- Number of control dependences: 20277
- Number of data dependences: 150975
-   Number of variable dependences: 16008
-   Number of memory dependences: 134967
-     Number of memory must dependences: 4594
-     Number of memory may dependences: 130373
-     Number of potential memory dependences: 222638
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGStats.so -PDGStats baseline_with_metadata_llvm.bc -disable-output
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca i32, align 4, !noelle.pdg.inst.id !11331
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca i32, align 4, !noelle.pdg.inst.id !11330
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !11319
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i16*, align 8, !noelle.pdg.inst.id !11318
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !11317
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i32, align 4, !noelle.pdg.inst.id !11316
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %1 = alloca i16*, align 8, !noelle.pdg.inst.id !11314
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i8*, align 8, !noelle.pdg.inst.id !11315
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !11320
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !11321
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i32, align 4, !noelle.pdg.inst.id !11322
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !11323
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !11324
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !11325
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !11326
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !11327
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !11328
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !11329
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca i32, align 4, !noelle.pdg.inst.id !11331
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca i32, align 4, !noelle.pdg.inst.id !11330
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !11319
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !11319 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i16*, align 8, !noelle.pdg.inst.id !11318
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca i16*, align 8, !noelle.pdg.inst.id !11318 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !11317
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !11317 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i32, align 4, !noelle.pdg.inst.id !11316
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca i32, align 4, !noelle.pdg.inst.id !11316 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %1 = alloca i16*, align 8, !noelle.pdg.inst.id !11314
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %1 = alloca i16*, align 8, !noelle.pdg.inst.id !11314 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i8*, align 8, !noelle.pdg.inst.id !11315
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %2 = alloca i8*, align 8, !noelle.pdg.inst.id !11315 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !11320
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %7 = alloca i32, align 4, !noelle.pdg.inst.id !11320 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !11321
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %8 = alloca i32, align 4, !noelle.pdg.inst.id !11321 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i32, align 4, !noelle.pdg.inst.id !11322
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %9 = alloca i32, align 4, !noelle.pdg.inst.id !11322 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !11323
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %10 = alloca i32, align 4, !noelle.pdg.inst.id !11323 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !11324
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %11 = alloca i32, align 4, !noelle.pdg.inst.id !11324 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !11325
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %12 = alloca i32, align 4, !noelle.pdg.inst.id !11325 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !11326
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %13 = alloca i32, align 4, !noelle.pdg.inst.id !11326 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !11327
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %14 = alloca i32, align 4, !noelle.pdg.inst.id !11327 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !11328
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %15 = alloca i32, align 4, !noelle.pdg.inst.id !11328 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !11329
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %16 = alloca i32, align 4, !noelle.pdg.inst.id !11329 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca i32, align 4, !noelle.pdg.inst.id !8222
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca i32, align 4, !noelle.pdg.inst.id !8221
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca i32, align 4, !noelle.pdg.inst.id !8220
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca i32, align 4, !noelle.pdg.inst.id !8219
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !8218
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !8217
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !8216
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !8215
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !8214
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !8213
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !8208
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i16*, align 8, !noelle.pdg.inst.id !8207
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !8209
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !8210
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i16*, align 8, !noelle.pdg.inst.id !8211
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i8*, align 8, !noelle.pdg.inst.id !8212
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca i32, align 4, !noelle.pdg.inst.id !4555
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca i32, align 4, !noelle.pdg.inst.id !4554
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !4553
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !4552
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !4551
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !4550
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !4549
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !4548
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i16*, align 8, !noelle.pdg.inst.id !4543
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !4542
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !4544
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !4545
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i8*, align 8, !noelle.pdg.inst.id !4546
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i16*, align 8, !noelle.pdg.inst.id !4547
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+Number of Nodes: 767
+Number of Edges (a.k.a. dependences): 40496
+ Number of control dependences: 1426
+ Number of data dependences: 39070
+   Number of variable dependences: 1632
+   Number of memory dependences: 37438
+     Number of memory must dependences: 0
+     Number of memory may dependences: 37438
+     Number of potential memory dependences: 85504

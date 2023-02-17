@@ -1,0 +1,827 @@
+make[1]: Entering directory '/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/sha'
+./runEnablers.sh sha sha.bc large "-lm -lstdc++ -lpthread -ltermcap" -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier
+/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/sha /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/sha
+Cloning https://github.com/scampanoni/virgil.git
+Cloning into 'threadpool'...
+/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/sha
+The IR has already been transformed for enabling parallelization
+noelle-parallelizer baseline_with_metadata.bc -o baseline_parallelized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp
+noelle-meta-loop-embed baseline_with_metadata.bc -o afterLoopMetadata.bc
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopMetadata.so -LoopMetadata baseline_with_metadata.bc -o afterLoopMetadata.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopMetadata.so -LoopMetadata baseline_with_metadata.bc -o afterLoopMetadata.bc
+noelle-parallelization-planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp
+noelle-parallel-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp
+Planner: Start
+Planner:  Fetching the program loops
+Noelle: Filter out cold code
+Noelle:  Function "main"
+Noelle:     Loop "  %13 = add nsw i32 %.0, -1, !noelle.pdg.inst.id !201" (1.000000e+02%)
+Noelle:  Function "sha_stream"
+Noelle:     Loop "  %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #7, !noelle.pdg.inst.id !42" (1.000000e+02%)
+Noelle:     Loop "  %33 = icmp sgt i32 %.0.i, 63, !noelle.pdg.inst.id !982" (9.999505e+01%)
+Noelle:     Loop "  %exitcond.i.i = icmp eq i32 %.01.i.i, 8, !noelle.pdg.inst.id !989" (3.904788e+00%)
+Noelle:     Loop "  %exitcond38.i.i = icmp eq i64 %indvars.iv36.i.i, 16, !noelle.pdg.inst.id !1003" (3.878404e+00%)
+Noelle:     Loop "  %exitcond35.i.i = icmp eq i64 %indvars.iv33.i.i, 80, !noelle.pdg.inst.id !1014" (3.722740e+01%)
+Noelle:     Loop "  %exitcond32.i.i = icmp eq i64 %indvars.iv30.i.i, 20, !noelle.pdg.inst.id !1039" (1.393059e+01%)
+Noelle:     Loop "  %exitcond29.i.i = icmp eq i64 %indvars.iv27.i.i, 40, !noelle.pdg.inst.id !1072" (1.287525e+01%)
+Noelle:     Loop "  %exitcond26.i.i = icmp eq i64 %indvars.iv24.i.i, 60, !noelle.pdg.inst.id !1102" (1.393059e+01%)
+Noelle:     Loop "  %exitcond.i2.i = icmp eq i64 %indvars.iv.i.i, 80, !noelle.pdg.inst.id !1134" (1.287525e+01%)
+Noelle:  Function "sha_final"
+Noelle:  Disable "sha_final" as cold function
+Noelle:  Function "sha_transform"
+Noelle:  Disable "sha_transform" as cold function
+Noelle:  Function "byte_reverse"
+Noelle:  Disable "byte_reverse" as cold function
+Noelle:  Function "sha_init"
+Noelle:  Disable "sha_init" as cold function
+Noelle:  Function "sha_update"
+Noelle:  Disable "sha_update" as cold function
+Noelle:  Function "sha_print"
+Noelle:  Disable "sha_print" as cold function
+Planner:    There are 10 loops in the program we are going to consider
+Planner:  Filter out loops not worth considering
+Planner:    Loop 20 has 1.411000e+03 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 22 has 4.880000e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 24 has 4.880000e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 18 has 1.480000e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 21 has 5.280000e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 23 has 5.280000e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 19 has 1.470000e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 0 has 1.000000e+00 number of iterations on average per loop invocation
+Planner:      It is too low. The threshold is 12
+Planner:  There are 1 loop nesting trees in the program
+Planner:    ID: 16 (1)
+Planner:      Function: "sha_stream"
+Planner:      Loop: "  %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #7, !noelle.pdg.inst.id !42"
+Planner:      Loop nesting level: 1
+Planner:      Hotness = 1.000000e+02 %
+Planner:      Average instructions per invocation = 1.922228e+12 %
+Planner:      Average iterations per invocation = 3.962147e+06 %
+Planner:    
+Planner:      ID: 17 (2)
+Planner:        Function: "sha_stream"
+Planner:        Loop: "  %33 = icmp sgt i32 %.0.i, 63, !noelle.pdg.inst.id !982"
+Planner:        Loop nesting level: 2
+Planner:        Hotness = 9.999505e+01 %
+Planner:        Average instructions per invocation = 4.851240e+05 %
+Planner:        Average iterations per invocation = 1.290000e+02 %
+Planner:      
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !941
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !941 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !940
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !940 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !941
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !941 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !940
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !940 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !941
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !940
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !940 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !941
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !940
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !940 can be cloned
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector: Start
+Planner: LoopSelector:   Order of loops and their maximum savings
+Planner: LoopSelector:    Loop 17
+Planner: LoopSelector:      Function: "sha_stream"
+Planner: LoopSelector:      Loop nesting level: 2
+Planner: LoopSelector:      "  %33 = icmp sgt i32 %.0.i, 63, !noelle.pdg.inst.id !982"
+Planner: LoopSelector:      Coverage: 9.999505e+01%
+Planner: LoopSelector:      Whole-program savings = 5.841434e+01%
+Planner: LoopSelector:      Loop savings = 5.841723e+01%
+Planner: LoopSelector:    Loop 16
+Planner: LoopSelector:      Function: "sha_stream"
+Planner: LoopSelector:      Loop nesting level: 1
+Planner: LoopSelector:      "  %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #7, !noelle.pdg.inst.id !42"
+Planner: LoopSelector:      Coverage: 1.000000e+02%
+Planner: LoopSelector:      Whole-program savings = 5.541196e+00%
+Planner: LoopSelector:      Loop savings = 5.541196e+00%
+Planner: LoopSelector: End
+Planner:   Maximum time saved = 5.841434e+01% (1122856533104)
+Planner:   Maximum time saved with DOALL only = 0.000000e+00% (0)
+Planner: Exit
+noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+NOELLE: DeadFunctions: Start
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/RemoveFunction.so -noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/RemoveFunction.so -noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+RemoveFunction: Start
+RemoveFunction:   Check if function "SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION" exists
+RemoveFunction:     The function exists
+RemoveFunction:   Remove the function
+RemoveFunction: Exit
+NOELLE: DeadFunctions: Exit
+noelle-parallelizer-loop code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp
+noelle-parallel-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix -noelle-disable-dswp
+Parallelizer: Start
+Parallelizer:  Analyzing the module code_to_parallelize.bc
+Parallelizer:  Fetching the program loops
+Noelle: Filter out cold code
+Noelle:  Function "main"
+Noelle:     Loop "  %13 = add nsw i32 %.0, -1, !noelle.pdg.inst.id !203" (1.000000e+02%)
+Noelle:  Function "sha_stream"
+Noelle:     Loop "  %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44" (1.000000e+02%)
+Noelle:     Loop "  %33 = icmp sgt i32 %.0.i, 63, !noelle.pdg.inst.id !985" (9.999505e+01%)
+Noelle:     Loop "  %exitcond.i.i = icmp eq i32 %.01.i.i, 8, !noelle.pdg.inst.id !993" (3.904788e+00%)
+Noelle:     Loop "  %exitcond38.i.i = icmp eq i64 %indvars.iv36.i.i, 16, !noelle.pdg.inst.id !1007" (3.878404e+00%)
+Noelle:     Loop "  %exitcond35.i.i = icmp eq i64 %indvars.iv33.i.i, 80, !noelle.pdg.inst.id !1018" (3.722740e+01%)
+Noelle:     Loop "  %exitcond32.i.i = icmp eq i64 %indvars.iv30.i.i, 20, !noelle.pdg.inst.id !1043" (1.393059e+01%)
+Noelle:     Loop "  %exitcond29.i.i = icmp eq i64 %indvars.iv27.i.i, 40, !noelle.pdg.inst.id !1076" (1.287525e+01%)
+Noelle:     Loop "  %exitcond26.i.i = icmp eq i64 %indvars.iv24.i.i, 60, !noelle.pdg.inst.id !1106" (1.393059e+01%)
+Noelle:     Loop "  %exitcond.i2.i = icmp eq i64 %indvars.iv.i.i, 80, !noelle.pdg.inst.id !1138" (1.287525e+01%)
+Noelle:  Function "sha_final"
+Noelle:  Disable "sha_final" as cold function
+Noelle:  Function "sha_transform"
+Noelle:  Disable "sha_transform" as cold function
+Noelle:  Function "byte_reverse"
+Noelle:  Disable "byte_reverse" as cold function
+Noelle:  Function "sha_init"
+Noelle:  Disable "sha_init" as cold function
+Noelle:  Function "sha_update"
+Noelle:  Disable "sha_update" as cold function
+Noelle:  Function "sha_print"
+Noelle:  Disable "sha_print" as cold function
+Parallelizer:    There are 10 loops in the program we are going to consider
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !943
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !943 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !942
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !942 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !943
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !943 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !942
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !942 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !943
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !942
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !942 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8192 x i8], align 16, !noelle.pdg.inst.id !943
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !942
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [80 x i64], align 16, !noelle.pdg.inst.id !942 can be cloned
+MemoryCloningAnalysis: Exit
+Parallelizer: parallelizerLoop: Start
+Parallelizer: parallelizerLoop:   Function = "sha_stream"
+Parallelizer: parallelizerLoop:   Loop 17 = "  %33 = icmp sgt i32 %.0.i, 63, !noelle.pdg.inst.id !985"
+Parallelizer: parallelizerLoop:   Nesting level = 2
+Parallelizer: parallelizerLoop:   Number of threads to extract = 8
+Parallelizer: parallelizerLoop:   Environment: live-in and live-out values
+Parallelizer: parallelizerLoop:   Environment:   Live-in 0 = %struct.SHA_INFO* %0
+Parallelizer: parallelizerLoop:   Environment:   Live-in 1 =   %5 = getelementptr inbounds [8192 x i8], [8192 x i8]* %4, i64 0, i64 0, !noelle.pdg.inst.id !944
+Parallelizer: parallelizerLoop:   Environment:   Live-in 2 =   %9 = bitcast i64* %8 to i8*, !noelle.pdg.inst.id !949
+Parallelizer: parallelizerLoop:   Environment:   Live-in 3 =   %10 = bitcast [80 x i64]* %3 to i8*, !noelle.pdg.inst.id !950
+Parallelizer: parallelizerLoop:   Environment:   Live-in 4 =   %11 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 0, i64 0, !noelle.pdg.inst.id !951
+Parallelizer: parallelizerLoop:   Environment:   Live-in 5 =   %12 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 0, i64 1, !noelle.pdg.inst.id !952
+Parallelizer: parallelizerLoop:   Environment:   Live-in 6 =   %13 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 0, i64 2, !noelle.pdg.inst.id !953
+Parallelizer: parallelizerLoop:   Environment:   Live-in 7 =   %14 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 0, i64 3, !noelle.pdg.inst.id !954
+Parallelizer: parallelizerLoop:   Environment:   Live-in 8 =   %15 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 0, i64 4, !noelle.pdg.inst.id !955
+Parallelizer: parallelizerLoop:   Environment:   Live-in 9 =   %18 = trunc i64 %17 to i32, !noelle.pdg.inst.id !957
+Parallelizer: parallelizerLoop:   Environment:   Live-out 10 =   %.01.i = phi i8* [ %5, %._crit_edge.i ], [ %144, %sha_transform.exit.i ], !noelle.pdg.inst.id !983
+Parallelizer: parallelizerLoop:   Environment:   Live-out 11 =   %.0.i = phi i32 [ %18, %._crit_edge.i ], [ %145, %sha_transform.exit.i ], !noelle.pdg.inst.id !984
+DOALL: Checking if the loop is DOALL
+DOALL:   The next live-out variables are not reducable
+DOALL:     Live-out ID = 10
+DOALL:     Live-out ID = 11
+Parallelizer: parallelizerLoop:   The loop has not been parallelized
+Parallelizer: parallelizerLoop: Exit
+Parallelizer: parallelizerLoop: Start
+Parallelizer: parallelizerLoop:   Function = "sha_stream"
+Parallelizer: parallelizerLoop:   Loop 16 = "  %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44"
+Parallelizer: parallelizerLoop:   Nesting level = 1
+Parallelizer: parallelizerLoop:   Number of threads to extract = 8
+Parallelizer: parallelizerLoop:   Environment: live-in and live-out values
+Parallelizer: parallelizerLoop:   Environment:   Live-in 0 = %struct.SHA_INFO* %0
+Parallelizer: parallelizerLoop:   Environment:   Live-in 1 = %struct._IO_FILE* %1
+Parallelizer: parallelizerLoop:   Environment:   Live-in 2 =   %5 = getelementptr inbounds [8192 x i8], [8192 x i8]* %4, i64 0, i64 0, !noelle.pdg.inst.id !944
+Parallelizer: parallelizerLoop:   Environment:   Live-in 3 =   %6 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 1, !noelle.pdg.inst.id !946
+Parallelizer: parallelizerLoop:   Environment:   Live-in 4 =   %7 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 2, !noelle.pdg.inst.id !947
+Parallelizer: parallelizerLoop:   Environment:   Live-in 5 =   %9 = bitcast i64* %8 to i8*, !noelle.pdg.inst.id !949
+Parallelizer: parallelizerLoop:   Environment:   Live-in 6 =   %10 = bitcast [80 x i64]* %3 to i8*, !noelle.pdg.inst.id !950
+Parallelizer: parallelizerLoop:   Environment:   Live-in 7 =   %11 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 0, i64 0, !noelle.pdg.inst.id !951
+Parallelizer: parallelizerLoop:   Environment:   Live-in 8 =   %12 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 0, i64 1, !noelle.pdg.inst.id !952
+Parallelizer: parallelizerLoop:   Environment:   Live-in 9 =   %13 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 0, i64 2, !noelle.pdg.inst.id !953
+Parallelizer: parallelizerLoop:   Environment:   Live-in 10 =   %14 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 0, i64 3, !noelle.pdg.inst.id !954
+Parallelizer: parallelizerLoop:   Environment:   Live-in 11 =   %15 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 0, i64 4, !noelle.pdg.inst.id !955
+DOALL: Checking if the loop is DOALL
+DOALL:   We found an SCC of the loop that is non clonable and non commutative
+DOALL:     Internal nodes: 205
+DOALL:     	  %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44
+DOALL:     	  br i1 %exitcond38.i.i, label %.preheader23.i.i.preheader, label %47, !prof !1008, !noelle.loop.id !1009, !noelle.pdg.inst.id !1010
+DOALL:     	  %48 = getelementptr inbounds %struct.SHA_INFO, %struct.SHA_INFO* %0, i64 0, i32 3, i64 %indvars.iv36.i.i, !noelle.pdg.inst.id !1012
+DOALL:     	  %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98
+DOALL:     	  %indvars.iv.next37.i.i = add nuw nsw i64 %indvars.iv36.i.i, 1, !noelle.pdg.inst.id !1015
+DOALL:     	  %indvars.iv33.i.i = phi i64 [ %indvars.iv.next34.i.i, %51 ], [ 16, %.preheader23.i.i.preheader ], !noelle.pdg.inst.id !1017
+DOALL:     	  %exitcond35.i.i = icmp eq i64 %indvars.iv33.i.i, 80, !noelle.pdg.inst.id !1018
+DOALL:     	  br i1 %exitcond35.i.i, label %68, label %51, !prof !1019, !noelle.loop.id !1020, !noelle.pdg.inst.id !1021
+DOALL:     	  %52 = add nsw i64 %indvars.iv33.i.i, -3, !noelle.pdg.inst.id !1022
+DOALL:     	  %53 = getelementptr inbounds [80 x i64], [80 x i64]* %3, i64 0, i64 %52, !noelle.pdg.inst.id !1023
+DOALL:     	  %54 = load i64, i64* %53, align 8, !tbaa !1013, !noelle.pdg.inst.id !281
+DOALL:     	  %55 = add nsw i64 %indvars.iv33.i.i, -8, !noelle.pdg.inst.id !1024
+DOALL:     	  %56 = getelementptr inbounds [80 x i64], [80 x i64]* %3, i64 0, i64 %55, !noelle.pdg.inst.id !1025
+DOALL:     	  %57 = load i64, i64* %56, align 8, !tbaa !1013, !noelle.pdg.inst.id !283
+DOALL:     	  %58 = xor i64 %54, %57, !noelle.pdg.inst.id !1026
+DOALL:     	  %59 = add nsw i64 %indvars.iv33.i.i, -14, !noelle.pdg.inst.id !1027
+DOALL:     	  %60 = getelementptr inbounds [80 x i64], [80 x i64]* %3, i64 0, i64 %59, !noelle.pdg.inst.id !1028
+DOALL:     	  %61 = load i64, i64* %60, align 8, !tbaa !1013, !noelle.pdg.inst.id !285
+DOALL:     	  %62 = xor i64 %58, %61, !noelle.pdg.inst.id !1029
+DOALL:     	  %63 = add nsw i64 %indvars.iv33.i.i, -16, !noelle.pdg.inst.id !1030
+DOALL:     	  %64 = getelementptr inbounds [80 x i64], [80 x i64]* %3, i64 0, i64 %63, !noelle.pdg.inst.id !1031
+DOALL:     	  %65 = load i64, i64* %64, align 8, !tbaa !1013, !noelle.pdg.inst.id !287
+DOALL:     	  %66 = xor i64 %62, %65, !noelle.pdg.inst.id !1032
+DOALL:     	  %67 = getelementptr inbounds [80 x i64], [80 x i64]* %3, i64 0, i64 %indvars.iv33.i.i, !noelle.pdg.inst.id !1033
+DOALL:     	  store i64 %66, i64* %67, align 8, !tbaa !1013, !noelle.pdg.inst.id !50
+DOALL:     	  %indvars.iv.next34.i.i = add nuw nsw i64 %indvars.iv33.i.i, 1, !noelle.pdg.inst.id !1034
+DOALL:     	  %69 = load i64, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !100
+DOALL:     	  %70 = load i64, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !102
+DOALL:     	  %71 = load i64, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !104
+DOALL:     	  %72 = load i64, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !106
+DOALL:     	  %73 = load i64, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !108
+DOALL:     	  %indvars.iv30.i.i = phi i64 [ %indvars.iv.next31.i.i, %75 ], [ 0, %68 ], !noelle.pdg.inst.id !1037
+DOALL:     	  %.017.i.i = phi i64 [ %.013.i.i, %75 ], [ %72, %68 ], !noelle.pdg.inst.id !1038
+DOALL:     	  %.013.i.i = phi i64 [ %91, %75 ], [ %71, %68 ], !noelle.pdg.inst.id !1039
+DOALL:     	  %.09.i.i = phi i64 [ %.05.i.i, %75 ], [ %70, %68 ], !noelle.pdg.inst.id !1040
+DOALL:     	  %.05.i.i = phi i64 [ %88, %75 ], [ %69, %68 ], !noelle.pdg.inst.id !1041
+DOALL:     	  %.0.i1.i = phi i64 [ %.017.i.i, %75 ], [ %73, %68 ], !noelle.pdg.inst.id !1042
+DOALL:     	  %exitcond32.i.i = icmp eq i64 %indvars.iv30.i.i, 20, !noelle.pdg.inst.id !1043
+DOALL:     	  br i1 %exitcond32.i.i, label %.preheader22.i.i.preheader, label %75, !prof !1044, !noelle.loop.id !1045, !noelle.pdg.inst.id !1046
+DOALL:     	  %.017.i.i.lcssa = phi i64 [ %.017.i.i, %74 ], !noelle.pdg.inst.id !1047
+DOALL:     	  %.013.i.i.lcssa = phi i64 [ %.013.i.i, %74 ], !noelle.pdg.inst.id !1048
+DOALL:     	  %.09.i.i.lcssa = phi i64 [ %.09.i.i, %74 ], !noelle.pdg.inst.id !1049
+DOALL:     	  %.05.i.i.lcssa = phi i64 [ %.05.i.i, %74 ], !noelle.pdg.inst.id !1050
+DOALL:     	  %.0.i1.i.lcssa = phi i64 [ %.0.i1.i, %74 ], !noelle.pdg.inst.id !1051
+DOALL:     	  %76 = shl i64 %.05.i.i, 5, !noelle.pdg.inst.id !1053
+DOALL:     	  %77 = lshr i64 %.05.i.i, 27, !noelle.pdg.inst.id !1054
+DOALL:     	  %78 = or i64 %76, %77, !noelle.pdg.inst.id !1055
+DOALL:     	  %79 = and i64 %.09.i.i, %.013.i.i, !noelle.pdg.inst.id !1056
+DOALL:     	  %80 = xor i64 %.09.i.i, -1, !noelle.pdg.inst.id !1057
+DOALL:     	  %81 = and i64 %.017.i.i, %80, !noelle.pdg.inst.id !1058
+DOALL:     	  %82 = or i64 %79, %81, !noelle.pdg.inst.id !1059
+DOALL:     	  %83 = add i64 %78, %82, !noelle.pdg.inst.id !1060
+DOALL:     	  %84 = add i64 %83, %.0.i1.i, !noelle.pdg.inst.id !1061
+DOALL:     	  %85 = getelementptr inbounds [80 x i64], [80 x i64]* %3, i64 0, i64 %indvars.iv30.i.i, !noelle.pdg.inst.id !1062
+DOALL:     	  %86 = load i64, i64* %85, align 8, !tbaa !1013, !noelle.pdg.inst.id !296
+DOALL:     	  %87 = add i64 %84, %86, !noelle.pdg.inst.id !1063
+DOALL:     	  %88 = add i64 %87, 1518500249, !noelle.pdg.inst.id !1064
+DOALL:     	  %89 = shl i64 %.09.i.i, 30, !noelle.pdg.inst.id !1065
+DOALL:     	  %90 = lshr i64 %.09.i.i, 2, !noelle.pdg.inst.id !1066
+DOALL:     	  %91 = or i64 %89, %90, !noelle.pdg.inst.id !1067
+DOALL:     	  %indvars.iv27.i.i = phi i64 [ %indvars.iv.next28.i.i, %92 ], [ 20, %.preheader22.i.i.preheader ], !noelle.pdg.inst.id !1070
+DOALL:     	  %indvars.iv.next31.i.i = add nuw nsw i64 %indvars.iv30.i.i, 1, !noelle.pdg.inst.id !1068
+DOALL:     	  %.118.i.i = phi i64 [ %.114.i.i, %92 ], [ %.017.i.i.lcssa, %.preheader22.i.i.preheader ], !noelle.pdg.inst.id !1071
+DOALL:     	  %.114.i.i = phi i64 [ %106, %92 ], [ %.013.i.i.lcssa, %.preheader22.i.i.preheader ], !noelle.pdg.inst.id !1072
+DOALL:     	  %.110.i.i = phi i64 [ %.16.i.i, %92 ], [ %.09.i.i.lcssa, %.preheader22.i.i.preheader ], !noelle.pdg.inst.id !1073
+DOALL:     	  %.16.i.i = phi i64 [ %103, %92 ], [ %.05.i.i.lcssa, %.preheader22.i.i.preheader ], !noelle.pdg.inst.id !1074
+DOALL:     	  %.1.i.i = phi i64 [ %.118.i.i, %92 ], [ %.0.i1.i.lcssa, %.preheader22.i.i.preheader ], !noelle.pdg.inst.id !1075
+DOALL:     	  %exitcond29.i.i = icmp eq i64 %indvars.iv27.i.i, 40, !noelle.pdg.inst.id !1076
+DOALL:     	  br i1 %exitcond29.i.i, label %.preheader21.i.i.preheader, label %92, !prof !1044, !noelle.loop.id !1077, !noelle.pdg.inst.id !1078
+DOALL:     	  %.118.i.i.lcssa = phi i64 [ %.118.i.i, %.preheader22.i.i ], !noelle.pdg.inst.id !1079
+DOALL:     	  %.114.i.i.lcssa = phi i64 [ %.114.i.i, %.preheader22.i.i ], !noelle.pdg.inst.id !1080
+DOALL:     	  %.110.i.i.lcssa = phi i64 [ %.110.i.i, %.preheader22.i.i ], !noelle.pdg.inst.id !1081
+DOALL:     	  %.16.i.i.lcssa = phi i64 [ %.16.i.i, %.preheader22.i.i ], !noelle.pdg.inst.id !1082
+DOALL:     	  %.1.i.i.lcssa = phi i64 [ %.1.i.i, %.preheader22.i.i ], !noelle.pdg.inst.id !1083
+DOALL:     	  %93 = shl i64 %.16.i.i, 5, !noelle.pdg.inst.id !1085
+DOALL:     	  %94 = lshr i64 %.16.i.i, 27, !noelle.pdg.inst.id !1086
+DOALL:     	  %95 = or i64 %93, %94, !noelle.pdg.inst.id !1087
+DOALL:     	  %96 = xor i64 %.110.i.i, %.114.i.i, !noelle.pdg.inst.id !1088
+DOALL:     	  %97 = xor i64 %96, %.118.i.i, !noelle.pdg.inst.id !1089
+DOALL:     	  %98 = add i64 %95, %97, !noelle.pdg.inst.id !1090
+DOALL:     	  %99 = add i64 %98, %.1.i.i, !noelle.pdg.inst.id !1091
+DOALL:     	  %100 = getelementptr inbounds [80 x i64], [80 x i64]* %3, i64 0, i64 %indvars.iv27.i.i, !noelle.pdg.inst.id !1092
+DOALL:     	  %101 = load i64, i64* %100, align 8, !tbaa !1013, !noelle.pdg.inst.id !298
+DOALL:     	  %102 = add i64 %99, %101, !noelle.pdg.inst.id !1093
+DOALL:     	  %103 = add i64 %102, 1859775393, !noelle.pdg.inst.id !1094
+DOALL:     	  %104 = shl i64 %.110.i.i, 30, !noelle.pdg.inst.id !1095
+DOALL:     	  %105 = lshr i64 %.110.i.i, 2, !noelle.pdg.inst.id !1096
+DOALL:     	  %106 = or i64 %104, %105, !noelle.pdg.inst.id !1097
+DOALL:     	  %indvars.iv.next28.i.i = add nuw nsw i64 %indvars.iv27.i.i, 1, !noelle.pdg.inst.id !1098
+DOALL:     	  %indvars.iv24.i.i = phi i64 [ %indvars.iv.next25.i.i, %107 ], [ 40, %.preheader21.i.i.preheader ], !noelle.pdg.inst.id !1100
+DOALL:     	  %.219.i.i = phi i64 [ %.215.i.i, %107 ], [ %.118.i.i.lcssa, %.preheader21.i.i.preheader ], !noelle.pdg.inst.id !1101
+DOALL:     	  %.215.i.i = phi i64 [ %123, %107 ], [ %.114.i.i.lcssa, %.preheader21.i.i.preheader ], !noelle.pdg.inst.id !1102
+DOALL:     	  %.211.i.i = phi i64 [ %.27.i.i, %107 ], [ %.110.i.i.lcssa, %.preheader21.i.i.preheader ], !noelle.pdg.inst.id !1103
+DOALL:     	  %.27.i.i = phi i64 [ %120, %107 ], [ %.16.i.i.lcssa, %.preheader21.i.i.preheader ], !noelle.pdg.inst.id !1104
+DOALL:     	  %.2.i.i = phi i64 [ %.219.i.i, %107 ], [ %.1.i.i.lcssa, %.preheader21.i.i.preheader ], !noelle.pdg.inst.id !1105
+DOALL:     	  %exitcond26.i.i = icmp eq i64 %indvars.iv24.i.i, 60, !noelle.pdg.inst.id !1106
+DOALL:     	  br i1 %exitcond26.i.i, label %.preheader.i.i.preheader, label %107, !prof !1044, !noelle.loop.id !1107, !noelle.pdg.inst.id !1108
+DOALL:     	  %.219.i.i.lcssa = phi i64 [ %.219.i.i, %.preheader21.i.i ], !noelle.pdg.inst.id !1109
+DOALL:     	  %.215.i.i.lcssa = phi i64 [ %.215.i.i, %.preheader21.i.i ], !noelle.pdg.inst.id !1110
+DOALL:     	  %.211.i.i.lcssa = phi i64 [ %.211.i.i, %.preheader21.i.i ], !noelle.pdg.inst.id !1111
+DOALL:     	  %.27.i.i.lcssa = phi i64 [ %.27.i.i, %.preheader21.i.i ], !noelle.pdg.inst.id !1112
+DOALL:     	  %.2.i.i.lcssa = phi i64 [ %.2.i.i, %.preheader21.i.i ], !noelle.pdg.inst.id !1113
+DOALL:     	  %108 = shl i64 %.27.i.i, 5, !noelle.pdg.inst.id !1115
+DOALL:     	  %109 = lshr i64 %.27.i.i, 27, !noelle.pdg.inst.id !1116
+DOALL:     	  %110 = or i64 %108, %109, !noelle.pdg.inst.id !1117
+DOALL:     	  %111 = or i64 %.215.i.i, %.219.i.i, !noelle.pdg.inst.id !1118
+DOALL:     	  %112 = and i64 %.211.i.i, %111, !noelle.pdg.inst.id !1119
+DOALL:     	  %113 = and i64 %.215.i.i, %.219.i.i, !noelle.pdg.inst.id !1120
+DOALL:     	  %114 = or i64 %112, %113, !noelle.pdg.inst.id !1121
+DOALL:     	  %115 = add i64 %110, %114, !noelle.pdg.inst.id !1122
+DOALL:     	  %116 = add i64 %115, %.2.i.i, !noelle.pdg.inst.id !1123
+DOALL:     	  %117 = getelementptr inbounds [80 x i64], [80 x i64]* %3, i64 0, i64 %indvars.iv24.i.i, !noelle.pdg.inst.id !1124
+DOALL:     	  %118 = load i64, i64* %117, align 8, !tbaa !1013, !noelle.pdg.inst.id !300
+DOALL:     	  %119 = add i64 %116, %118, !noelle.pdg.inst.id !1125
+DOALL:     	  %120 = add i64 %119, 2400959708, !noelle.pdg.inst.id !1126
+DOALL:     	  %121 = shl i64 %.211.i.i, 30, !noelle.pdg.inst.id !1127
+DOALL:     	  %122 = lshr i64 %.211.i.i, 2, !noelle.pdg.inst.id !1128
+DOALL:     	  %indvars.iv.i.i = phi i64 [ %indvars.iv.next.i.i, %124 ], [ 60, %.preheader.i.i.preheader ], !noelle.pdg.inst.id !1132
+DOALL:     	  %29 = phi i64 [ %28, %27 ], [ %26, %.._crit_edge.i_crit_edge ], !noelle.pdg.inst.id !979
+DOALL:     	  br i1 %19, label %20, label %147, !prof !959, !noelle.loop.id !960, !noelle.pdg.inst.id !961, !noelle.parallelizer.looporder !962
+DOALL:     	  %18 = trunc i64 %17 to i32, !noelle.pdg.inst.id !957
+DOALL:     	  %19 = icmp sgt i32 %18, 0, !noelle.pdg.inst.id !958
+DOALL:     	  %21 = load i64, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !70
+DOALL:     	  %sext = shl i64 %17, 32, !noelle.pdg.inst.id !968
+DOALL:     	  %22 = ashr exact i64 %sext, 32, !noelle.pdg.inst.id !969
+DOALL:     	  %23 = ashr exact i64 %sext, 29, !noelle.pdg.inst.id !970
+DOALL:     	  %24 = add i64 %21, %23, !noelle.pdg.inst.id !971
+DOALL:     	  %25 = icmp ult i64 %24, %21, !noelle.pdg.inst.id !972
+DOALL:     	  %26 = load i64, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !72
+DOALL:     	  br i1 %25, label %27, label %.._crit_edge.i_crit_edge, !prof !974, !noelle.pdg.inst.id !975
+DOALL:     	  %28 = add i64 %26, 1, !noelle.pdg.inst.id !977
+DOALL:     	  store i64 %28, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !74
+DOALL:     	  store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76
+DOALL:     	  %30 = lshr i64 %22, 29, !noelle.pdg.inst.id !980
+DOALL:     	  %31 = add i64 %29, %30, !noelle.pdg.inst.id !981
+DOALL:     	  store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78
+DOALL:     	  %.01.i = phi i8* [ %5, %._crit_edge.i ], [ %144, %sha_transform.exit.i ], !noelle.pdg.inst.id !983
+DOALL:     	  %.0.i = phi i32 [ %18, %._crit_edge.i ], [ %145, %sha_transform.exit.i ], !noelle.pdg.inst.id !984
+DOALL:     	  %33 = icmp sgt i32 %.0.i, 63, !noelle.pdg.inst.id !985
+DOALL:     	  br i1 %33, label %34, label %sha_update.exit, !prof !986, !noelle.loop.id !987, !noelle.pdg.inst.id !988, !noelle.parallelizer.looporder !989
+DOALL:     	  call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46
+DOALL:     	  %.01.i.i = phi i32 [ 0, %34 ], [ %45, %36 ], !noelle.pdg.inst.id !991
+DOALL:     	  %.0.i.i = phi i8* [ %9, %34 ], [ %44, %36 ], !noelle.pdg.inst.id !992
+DOALL:     	  %exitcond.i.i = icmp eq i32 %.01.i.i, 8, !noelle.pdg.inst.id !993
+DOALL:     	  br i1 %exitcond.i.i, label %byte_reverse.exit.i, label %36, !prof !994, !noelle.loop.id !995, !noelle.pdg.inst.id !996
+DOALL:     	  %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82
+DOALL:     	  %38 = getelementptr inbounds i8, i8* %.0.i.i, i64 1, !noelle.pdg.inst.id !998
+DOALL:     	  %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84
+DOALL:     	  %40 = getelementptr inbounds i8, i8* %.0.i.i, i64 2, !noelle.pdg.inst.id !999
+DOALL:     	  %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86
+DOALL:     	  %42 = getelementptr inbounds i8, i8* %.0.i.i, i64 3, !noelle.pdg.inst.id !1000
+DOALL:     	  %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88
+DOALL:     	  store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90
+DOALL:     	  store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92
+DOALL:     	  store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94
+DOALL:     	  store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96
+DOALL:     	  %44 = getelementptr inbounds i8, i8* %.0.i.i, i64 8, !noelle.pdg.inst.id !1001
+DOALL:     	  %45 = add nuw nsw i32 %.01.i.i, 1, !noelle.pdg.inst.id !1002
+DOALL:     	  %indvars.iv36.i.i = phi i64 [ %indvars.iv.next37.i.i, %47 ], [ 0, %byte_reverse.exit.i ], !noelle.pdg.inst.id !1006
+DOALL:     	  %exitcond38.i.i = icmp eq i64 %indvars.iv36.i.i, 16, !noelle.pdg.inst.id !1007
+DOALL:     	  %123 = or i64 %121, %122, !noelle.pdg.inst.id !1129
+DOALL:     	  %indvars.iv.next25.i.i = add nuw nsw i64 %indvars.iv24.i.i, 1, !noelle.pdg.inst.id !1130
+DOALL:     	  %.320.i.i = phi i64 [ %.316.i.i, %124 ], [ %.219.i.i.lcssa, %.preheader.i.i.preheader ], !noelle.pdg.inst.id !1133
+DOALL:     	  %.316.i.i = phi i64 [ %138, %124 ], [ %.215.i.i.lcssa, %.preheader.i.i.preheader ], !noelle.pdg.inst.id !1134
+DOALL:     	  %.312.i.i = phi i64 [ %.38.i.i, %124 ], [ %.211.i.i.lcssa, %.preheader.i.i.preheader ], !noelle.pdg.inst.id !1135
+DOALL:     	  %.38.i.i = phi i64 [ %135, %124 ], [ %.27.i.i.lcssa, %.preheader.i.i.preheader ], !noelle.pdg.inst.id !1136
+DOALL:     	  %.3.i.i = phi i64 [ %.320.i.i, %124 ], [ %.2.i.i.lcssa, %.preheader.i.i.preheader ], !noelle.pdg.inst.id !1137
+DOALL:     	  %exitcond.i2.i = icmp eq i64 %indvars.iv.i.i, 80, !noelle.pdg.inst.id !1138
+DOALL:     	  br i1 %exitcond.i2.i, label %sha_transform.exit.i, label %124, !prof !1044, !noelle.loop.id !1139, !noelle.pdg.inst.id !1140
+DOALL:     	  %125 = shl i64 %.38.i.i, 5, !noelle.pdg.inst.id !1141
+DOALL:     	  %126 = lshr i64 %.38.i.i, 27, !noelle.pdg.inst.id !1142
+DOALL:     	  %127 = or i64 %125, %126, !noelle.pdg.inst.id !1143
+DOALL:     	  %128 = xor i64 %.312.i.i, %.316.i.i, !noelle.pdg.inst.id !1144
+DOALL:     	  %129 = xor i64 %128, %.320.i.i, !noelle.pdg.inst.id !1145
+DOALL:     	  %130 = add i64 %127, %129, !noelle.pdg.inst.id !1146
+DOALL:     	  %131 = add i64 %130, %.3.i.i, !noelle.pdg.inst.id !1147
+DOALL:     	  %132 = getelementptr inbounds [80 x i64], [80 x i64]* %3, i64 0, i64 %indvars.iv.i.i, !noelle.pdg.inst.id !1148
+DOALL:     	  %133 = load i64, i64* %132, align 8, !tbaa !1013, !noelle.pdg.inst.id !36
+DOALL:     	  %134 = add i64 %131, %133, !noelle.pdg.inst.id !1149
+DOALL:     	  %135 = add i64 %134, 3395469782, !noelle.pdg.inst.id !1150
+DOALL:     	  %136 = shl i64 %.312.i.i, 30, !noelle.pdg.inst.id !1151
+DOALL:     	  %137 = lshr i64 %.312.i.i, 2, !noelle.pdg.inst.id !1152
+DOALL:     	  %138 = or i64 %136, %137, !noelle.pdg.inst.id !1153
+DOALL:     	  %indvars.iv.next.i.i = add nuw nsw i64 %indvars.iv.i.i, 1, !noelle.pdg.inst.id !1154
+DOALL:     	  %.320.i.i.lcssa = phi i64 [ %.320.i.i, %.preheader.i.i ], !noelle.pdg.inst.id !1156
+DOALL:     	  %.316.i.i.lcssa = phi i64 [ %.316.i.i, %.preheader.i.i ], !noelle.pdg.inst.id !1157
+DOALL:     	  %.312.i.i.lcssa = phi i64 [ %.312.i.i, %.preheader.i.i ], !noelle.pdg.inst.id !1158
+DOALL:     	  %.38.i.i.lcssa = phi i64 [ %.38.i.i, %.preheader.i.i ], !noelle.pdg.inst.id !1159
+DOALL:     	  %.3.i.i.lcssa = phi i64 [ %.3.i.i, %.preheader.i.i ], !noelle.pdg.inst.id !1160
+DOALL:     	  %139 = add i64 %69, %.38.i.i.lcssa, !noelle.pdg.inst.id !1161
+DOALL:     	  store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52
+DOALL:     	  %140 = add i64 %70, %.312.i.i.lcssa, !noelle.pdg.inst.id !1162
+DOALL:     	  store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55
+DOALL:     	  %141 = add i64 %71, %.316.i.i.lcssa, !noelle.pdg.inst.id !1163
+DOALL:     	  store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57
+DOALL:     	  %142 = add i64 %72, %.320.i.i.lcssa, !noelle.pdg.inst.id !1164
+DOALL:     	  store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59
+DOALL:     	  %143 = add i64 %73, %.3.i.i.lcssa, !noelle.pdg.inst.id !1165
+DOALL:     	  store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61
+DOALL:     	  %144 = getelementptr inbounds i8, i8* %.01.i, i64 64, !noelle.pdg.inst.id !1167
+DOALL:     	  %145 = add nsw i32 %.0.i, -64, !noelle.pdg.inst.id !1168
+DOALL:     	  %.01.i.lcssa = phi i8* [ %.01.i, %32 ], !noelle.pdg.inst.id !1170
+DOALL:     	  %.0.i.lcssa = phi i32 [ %.0.i, %32 ], !noelle.pdg.inst.id !1171
+DOALL:     	  %146 = sext i32 %.0.i.lcssa to i64, !noelle.pdg.inst.id !1172
+DOALL:     	  call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37
+DOALL:     External nodes: 23
+DOALL:     	  br label %.preheader23.i.i, !noelle.pdg.inst.id !1011
+DOALL:     	  %50 = getelementptr inbounds [80 x i64], [80 x i64]* %3, i64 0, i64 %indvars.iv36.i.i, !noelle.pdg.inst.id !1014
+DOALL:     	  store i64 %49, i64* %50, align 8, !tbaa !1013, !noelle.pdg.inst.id !48
+DOALL:     	  br label %46, !noelle.pdg.inst.id !1016
+DOALL:     	  br label %.preheader23.i.i, !noelle.pdg.inst.id !1035
+DOALL:     	  br label %74, !noelle.pdg.inst.id !1036
+DOALL:     	  br label %.preheader22.i.i, !noelle.pdg.inst.id !1052
+DOALL:     	  br label %74, !noelle.pdg.inst.id !1069
+DOALL:     	  br label %.preheader21.i.i, !noelle.pdg.inst.id !1084
+DOALL:     	  br label %.preheader22.i.i, !noelle.pdg.inst.id !1099
+DOALL:     	  br label %.preheader.i.i, !noelle.pdg.inst.id !1114
+DOALL:     	  br label %._crit_edge.i, !noelle.pdg.inst.id !976
+DOALL:     	  br label %._crit_edge.i, !noelle.pdg.inst.id !978
+DOALL:     	  br label %32, !noelle.pdg.inst.id !982
+DOALL:     	  br label %35, !noelle.pdg.inst.id !990
+DOALL:     	  br label %35, !noelle.pdg.inst.id !1003
+DOALL:     	  call void @llvm.lifetime.start.p0i8(i64 640, i8* nonnull %10) #8, !noelle.pdg.inst.id !1004
+DOALL:     	  br label %46, !noelle.pdg.inst.id !1005
+DOALL:     	  br label %.preheader21.i.i, !noelle.pdg.inst.id !1131
+DOALL:     	  br label %.preheader.i.i, !noelle.pdg.inst.id !1155
+DOALL:     	  call void @llvm.lifetime.end.p0i8(i64 640, i8* nonnull %10) #8, !noelle.pdg.inst.id !1166
+DOALL:     	  br label %32, !noelle.pdg.inst.id !1169
+DOALL:     	  br label %16, !noelle.pdg.inst.id !1174
+DOALL:     Edges: 870
+DOALL:     Loop-carried data dependences
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   %69 = load i64, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !100 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   %70 = load i64, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !102 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   %73 = load i64, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !108 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %73 = load i64, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !108 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %72 = load i64, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !106 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %70 = load i64, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !102 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %21 = load i64, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !70 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %71 = load i64, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !104 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   %26 = load i64, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !72 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %28, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !74 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i64 %28, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !74 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   %26 = load i64, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !72 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   store i64 %28, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !74 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 via memory
+DOALL:         store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %73 = load i64, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !108 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %72 = load i64, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !106 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %71 = load i64, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !104 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %70 = load i64, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !102 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %28, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !74 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %21 = load i64, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !70 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %28, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !74 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %26 = load i64, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !72 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 --->   %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 via memory
+DOALL:         %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %73 = load i64, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !108 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %70 = load i64, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !102 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %69 = load i64, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !100 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %72 = load i64, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !106 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %71 = load i64, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !104 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %21 = load i64, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !70 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   %26 = load i64, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !72 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 --->   store i64 %28, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !74 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %73 = load i64, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !108 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %70 = load i64, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !102 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %69 = load i64, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !100 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %72 = load i64, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !106 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %26 = load i64, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !72 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %21 = load i64, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !70 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   store i64 %28, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !74 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   %71 = load i64, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !104 via memory
+DOALL:         store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %73 = load i64, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !108 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %72 = load i64, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !106 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %71 = load i64, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !104 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %70 = load i64, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !102 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %69 = load i64, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !100 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %21 = load i64, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !70 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   %26 = load i64, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !72 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   store i64 %28, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !74 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %72 = load i64, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !106 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %73 = load i64, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !108 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %71 = load i64, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !104 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %70 = load i64, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !102 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %69 = load i64, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !100 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %49 = load i64, i64* %48, align 8, !tbaa !1013, !noelle.pdg.inst.id !98 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   store i64 %143, i64* %15, align 8, !tbaa !1013, !noelle.pdg.inst.id !61 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   store i64 %139, i64* %11, align 8, !tbaa !1013, !noelle.pdg.inst.id !52 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   store i64 %28, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !74 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   store i64 %140, i64* %12, align 8, !tbaa !1013, !noelle.pdg.inst.id !55 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %26 = load i64, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !72 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   store i64 %31, i64* %7, align 8, !tbaa !973, !noelle.pdg.inst.id !78 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   %21 = load i64, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !70 via memory
+DOALL:         store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   %21 = load i64, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !70 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 --->   store i64 %24, i64* %6, align 8, !tbaa !963, !noelle.pdg.inst.id !76 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         %17 = call i64 @fread(i8* nonnull %5, i64 1, i64 8192, %struct._IO_FILE* %1) #8, !noelle.pdg.inst.id !44 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   %71 = load i64, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !104 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         store i64 %141, i64* %13, align 8, !tbaa !1013, !noelle.pdg.inst.id !57 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   %72 = load i64, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !106 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   store i8 %37, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !96 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   store i8 %41, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !92 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   %41 = load i8, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !86 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i.lcssa, i64 %146, i1 false) #8, !prof !1173, !noelle.pdg.inst.id !37 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   store i8 %39, i8* %40, align 1, !tbaa !997, !noelle.pdg.inst.id !94 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   %37 = load i8, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !82 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   %43 = load i8, i8* %42, align 1, !tbaa !997, !noelle.pdg.inst.id !88 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   store i8 %43, i8* %.0.i.i, align 1, !tbaa !997, !noelle.pdg.inst.id !90 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   %39 = load i8, i8* %38, align 1, !tbaa !997, !noelle.pdg.inst.id !84 via memory
+DOALL:         store i64 %142, i64* %14, align 8, !tbaa !1013, !noelle.pdg.inst.id !59 --->   call void @llvm.memcpy.p0i8.p0i8.i64(i8* nonnull align 8 %9, i8* align 1 %.01.i, i64 64, i1 false) #8, !noelle.pdg.inst.id !46 via memory
+Parallelizer: parallelizerLoop:   The loop has not been parallelized
+Parallelizer: parallelizerLoop: Exit
+Parallelizer: Exit
+noelle-meta-clean parallelized_unoptimized.bc parallelized_unoptimized.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CleanMetadata.so -CleanMetadata -clean-loop-metadata=true -clean-prof-metadata=true -clean-pdg-metadata=true parallelized_unoptimized.bc -o parallelized_unoptimized.bc
+noelle/core/Clean Loop Metadata
+noelle/core/Clean PDG Metadata
+noelle/core/Clean profiler metadata
+opt --strip-named-metadata parallelized_unoptimized.bc -o parallelized_unoptimized.bc
+clang -O3 -c -emit-llvm parallelized_unoptimized.bc -o baseline_parallelized.bc
+clang -O3 -c -emit-llvm baseline_parallelized.bc -o baseline_parallelized.bc
+cp baseline_parallelized.bc sha.bc
+make[1]: Leaving directory '/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/sha'

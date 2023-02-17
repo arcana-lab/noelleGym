@@ -1,0 +1,716 @@
+noelle-parallel-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TimeSaved.so -TimeSaved tmp.bc
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TimeSaved.so -TimeSaved tmp.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TimeSaved.so -TimeSaved tmp.bc
+TimeSaved: Start
+TimeSaved:  Fetching the program loops
+Noelle:  Function "main"
+Noelle:     Loop "  %46 = getelementptr [500 x i8], [500 x i8]* @abuf, i64 0, i64 0, !noelle.pdg.inst.id !1024" (1.000000e+02%)
+Noelle:     Loop "  %78 = icmp sgt i32 %77, 0, !noelle.pdg.inst.id !1061" (9.991728e+01%)
+Noelle:  Function "adpcm_coder"
+Noelle:     Loop "  %36 = load i32, i32* %7, align 4, !noelle.pdg.inst.id !46" (0.000000e+00%)
+Noelle:  Function "adpcm_decoder"
+Noelle:     Loop "  %34 = load i32, i32* %7, align 4, !noelle.pdg.inst.id !46" (0.000000e+00%)
+TimeSaved:    There are 4 loops in the program we are going to consider
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !994
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !993
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !992
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %14 = alloca i32, align 4, !noelle.pdg.inst.id !992 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !991
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %13 = alloca i32, align 4, !noelle.pdg.inst.id !991 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !990
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %12 = alloca i32, align 4, !noelle.pdg.inst.id !990 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !989
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %11 = alloca i32, align 4, !noelle.pdg.inst.id !989 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !988
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %10 = alloca i32, align 4, !noelle.pdg.inst.id !988 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i32, align 4, !noelle.pdg.inst.id !987
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %9 = alloca i32, align 4, !noelle.pdg.inst.id !987 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !986
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %8 = alloca i32, align 4, !noelle.pdg.inst.id !986 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !985
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %7 = alloca i32, align 4, !noelle.pdg.inst.id !985 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i16*, align 8, !noelle.pdg.inst.id !980
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %2 = alloca i16*, align 8, !noelle.pdg.inst.id !980 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %1 = alloca i8*, align 8, !noelle.pdg.inst.id !979
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %1 = alloca i8*, align 8, !noelle.pdg.inst.id !979 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i32, align 4, !noelle.pdg.inst.id !981
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca i32, align 4, !noelle.pdg.inst.id !981 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !982
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !982 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !983
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !983 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i16*, align 8, !noelle.pdg.inst.id !984
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %6 = alloca i16*, align 8, !noelle.pdg.inst.id !984 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !994
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !993
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !992
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %14 = alloca i32, align 4, !noelle.pdg.inst.id !992 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !991
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %13 = alloca i32, align 4, !noelle.pdg.inst.id !991 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !990
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %12 = alloca i32, align 4, !noelle.pdg.inst.id !990 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !989
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %11 = alloca i32, align 4, !noelle.pdg.inst.id !989 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !988
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %10 = alloca i32, align 4, !noelle.pdg.inst.id !988 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i32, align 4, !noelle.pdg.inst.id !987
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %9 = alloca i32, align 4, !noelle.pdg.inst.id !987 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !986
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %8 = alloca i32, align 4, !noelle.pdg.inst.id !986 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !985
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %7 = alloca i32, align 4, !noelle.pdg.inst.id !985 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i16*, align 8, !noelle.pdg.inst.id !980
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %2 = alloca i16*, align 8, !noelle.pdg.inst.id !980 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %1 = alloca i8*, align 8, !noelle.pdg.inst.id !979
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %1 = alloca i8*, align 8, !noelle.pdg.inst.id !979 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i32, align 4, !noelle.pdg.inst.id !981
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca i32, align 4, !noelle.pdg.inst.id !981 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !982
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !982 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !983
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !983 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i16*, align 8, !noelle.pdg.inst.id !984
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %6 = alloca i16*, align 8, !noelle.pdg.inst.id !984 can be cloned
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !994
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !993
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !992
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !991
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !990
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !989
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !988
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i32, align 4, !noelle.pdg.inst.id !987
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !986
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !985
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i16*, align 8, !noelle.pdg.inst.id !980
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %1 = alloca i8*, align 8, !noelle.pdg.inst.id !979
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i32, align 4, !noelle.pdg.inst.id !981
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !982
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !983
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i16*, align 8, !noelle.pdg.inst.id !984
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !994
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !993
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !992
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !991
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !990
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !989
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i32, align 4, !noelle.pdg.inst.id !988
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i32, align 4, !noelle.pdg.inst.id !987
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !986
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !985
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %2 = alloca i16*, align 8, !noelle.pdg.inst.id !980
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %1 = alloca i8*, align 8, !noelle.pdg.inst.id !979
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca i32, align 4, !noelle.pdg.inst.id !981
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !982
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !983
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i16*, align 8, !noelle.pdg.inst.id !984
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+TimeSaved: LoopSelector: Start
+TimeSaved: LoopSelector:   Order of loops and their maximum savings
+TimeSaved: LoopSelector:    Loop 1
+TimeSaved: LoopSelector:      Function: "main"
+TimeSaved: LoopSelector:      Loop nesting level: 2
+TimeSaved: LoopSelector:      "  %78 = icmp sgt i32 %77, 0, !noelle.pdg.inst.id !1061"
+TimeSaved: LoopSelector:      Coverage: 9.991728e+01%
+TimeSaved: LoopSelector:      Whole-program savings = 1.477228e+01%
+TimeSaved: LoopSelector:      Loop savings = 1.478452e+01%
+TimeSaved: LoopSelector:    Loop 0
+TimeSaved: LoopSelector:      Function: "main"
+TimeSaved: LoopSelector:      Loop nesting level: 1
+TimeSaved: LoopSelector:      "  %46 = getelementptr [500 x i8], [500 x i8]* @abuf, i64 0, i64 0, !noelle.pdg.inst.id !1024"
+TimeSaved: LoopSelector:      Coverage: 1.000000e+02%
+TimeSaved: LoopSelector:      Whole-program savings = 9.883643e+00%
+TimeSaved: LoopSelector:      Loop savings = 9.883643e+00%
+TimeSaved: LoopSelector: End
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca i32, align 4, !noelle.pdg.inst.id !399
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca i32, align 4, !noelle.pdg.inst.id !398
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !397
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !396
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %15 = alloca i32, align 4, !noelle.pdg.inst.id !396 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !395
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !394
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !393
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !392
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %11 = alloca i32, align 4, !noelle.pdg.inst.id !392 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i16*, align 8, !noelle.pdg.inst.id !387
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !386
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !388
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !389
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i8*, align 8, !noelle.pdg.inst.id !390
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i16*, align 8, !noelle.pdg.inst.id !391
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca i32, align 4, !noelle.pdg.inst.id !399
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca i32, align 4, !noelle.pdg.inst.id !398
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !397
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !396
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !395
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !394
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !393
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !392
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i16*, align 8, !noelle.pdg.inst.id !387
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !386
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !388
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !389
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i8*, align 8, !noelle.pdg.inst.id !390
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i16*, align 8, !noelle.pdg.inst.id !391
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+TimeSaved: LoopSelector: Start
+TimeSaved: LoopSelector:   Order of loops and their maximum savings
+TimeSaved: LoopSelector:    Loop 3
+TimeSaved: LoopSelector:      Function: "adpcm_decoder"
+TimeSaved: LoopSelector:      Loop nesting level: 1
+TimeSaved: LoopSelector:      "  %34 = load i32, i32* %7, align 4, !noelle.pdg.inst.id !46"
+TimeSaved: LoopSelector:      Coverage: 0.000000e+00%
+TimeSaved: LoopSelector:      Whole-program savings = 0.000000e+00%
+TimeSaved: LoopSelector:      Loop savings = nan%
+TimeSaved: LoopSelector: End
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca i32, align 4, !noelle.pdg.inst.id !631
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca i32, align 4, !noelle.pdg.inst.id !630
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca i32, align 4, !noelle.pdg.inst.id !629
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca i32, align 4, !noelle.pdg.inst.id !628
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %17 = alloca i32, align 4, !noelle.pdg.inst.id !628 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !627
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !626
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !625
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %14 = alloca i32, align 4, !noelle.pdg.inst.id !625 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !624
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %13 = alloca i32, align 4, !noelle.pdg.inst.id !624 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !623
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %12 = alloca i32, align 4, !noelle.pdg.inst.id !623 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !622
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %11 = alloca i32, align 4, !noelle.pdg.inst.id !622 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !617
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i16*, align 8, !noelle.pdg.inst.id !616
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !618
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !619
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i16*, align 8, !noelle.pdg.inst.id !620
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i8*, align 8, !noelle.pdg.inst.id !621
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %20 = alloca i32, align 4, !noelle.pdg.inst.id !631
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %19 = alloca i32, align 4, !noelle.pdg.inst.id !630
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %18 = alloca i32, align 4, !noelle.pdg.inst.id !629
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %17 = alloca i32, align 4, !noelle.pdg.inst.id !628
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %16 = alloca i32, align 4, !noelle.pdg.inst.id !627
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %15 = alloca i32, align 4, !noelle.pdg.inst.id !626
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %14 = alloca i32, align 4, !noelle.pdg.inst.id !625
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %13 = alloca i32, align 4, !noelle.pdg.inst.id !624
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %12 = alloca i32, align 4, !noelle.pdg.inst.id !623
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %11 = alloca i32, align 4, !noelle.pdg.inst.id !622
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !617
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i16*, align 8, !noelle.pdg.inst.id !616
+ClonableMemoryObject:   There is no need to clone it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !618
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca %struct.adpcm_state*, align 8, !noelle.pdg.inst.id !619
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca i16*, align 8, !noelle.pdg.inst.id !620
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %10 = alloca i8*, align 8, !noelle.pdg.inst.id !621
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+TimeSaved: LoopSelector: Start
+TimeSaved: LoopSelector:   Order of loops and their maximum savings
+TimeSaved: LoopSelector:    Loop 2
+TimeSaved: LoopSelector:      Function: "adpcm_coder"
+TimeSaved: LoopSelector:      Loop nesting level: 1
+TimeSaved: LoopSelector:      "  %36 = load i32, i32* %7, align 4, !noelle.pdg.inst.id !46"
+TimeSaved: LoopSelector:      Coverage: 0.000000e+00%
+TimeSaved: LoopSelector:      Whole-program savings = 0.000000e+00%
+TimeSaved: LoopSelector:      Loop savings = nan%
+TimeSaved: LoopSelector: End
+TimeSaved:   Maximum time saved = 1.477228e+01% (16106122026633)
+TimeSaved:   Maximum time saved with DOALL only = 0.000000e+00% (0)
+TimeSaved: Exit
+BCÀÞ5     b0$IY¾fïÓ>-D2    !  ^/  !       #‘AÈI29’„%‹b€EB’BÄ28K
+2bˆHpÄ!#D‡ŒA’dÈ± CFˆ É2b„*(*1|°\‘ ÆÈ   ‰   ?   2"ˆ	 d…#¤„#ã„¡LŒŒ„ÄLìÁ’ô sP¢Dœ$M%L>0<óK0H 2r dŽ ¸Hš"J˜ü_Dˆ"# ˆ!kŽ 2 8Iš"J˜ü_DÁ¡šÆ ŠŽ’¦ˆ&ÿÑßBâ€	# hJ
+àiŠ(aòý?±ôP§,Ë²,Ë²,ËÒ8Šò ´<å,R‘“ a™¥–
+q%PÈ«Bà@Ä…Æ"ˆ
+•uPœ…NJ!¦‹rZ
+qI•ƒØ2ˆÏBî@ -”’BÇ@%eQÈž#*¡(©B9  Q    V'øÿÿÿÿp 	( ˆqxy‡rz`‡|hyx‡zpr(rhrH{Hr(‡6˜‡xzhs€‡6h‡p t Ì!ØaÊ È!æ!ÄÊ¡è!ÒÚ`ÂØa sv˜‡r v(‡y˜‡6€y(‡qH‡y(‡60xh‡p ÀÂæ¡ ¢ÒÁÚ€ÊáÂÚÀÊaèáä¡î!ÈÐ€€p‡whs‡ph‡rhxx‡tpz(yhƒr`‡th€ä¡ÊÜáÚÀä!Ú¡Ú Þ!ÜÊAÚ Ø!Ú¡ÜáÜ¡Ø¡ÂÁ ÂÞ¡ÒÁÌaÚÀà¡Ú!è sv˜‡r wx‡6P‡zhxhzq`‡r˜ÀÂæ¡ ÂÞ¡Ü!ÜaÚÀà¡Ú!è sv˜‡r wx‡6˜‡t8w(rh}(yx‡yhs€‡6h‡p t Ì!ØaÊ ÜáÚ€ä!àÒÁÎ¡Ú!è sv˜‡r ˆy ‡p‡uhx‡w ‡rzxyhq¨s0‡r‡6˜‡tÐ‡r ð  è!äáÊÚ`à¡ |À;h; € ‡p‡s(zhs(‡p ‡z‡r˜`Æð€ÖÀðaäÖ ÚØ`æaÊÖ`æ¡ä€Ö ðà ¢ÜaÂÁÊ¡ÌÚ ÂÐ0‡p`‡y(€¨‡y(‡6˜‡w0zhs`‡wz Ì!ØaÊØ03ÂÿÿÿÿÄ8¼ƒ<ÈC9Œ=°C>´<¼C=¸9”9´9¤ƒ=¤9”CÌC<È=´9ÀC´C8Ð: æì0å äóâÀåÐôéÀm0áÀì0€9„;ÌC9 ;”Ã<ÌCÀƒ<”Ã8¤Ã<”C˜<´C8`áÀóP áïÐæ áÐåÐððéàôPòÐåÀéÐ =ÈC=”0¸Ã;´9ÈC8´C9´<¼C:¸=”ƒ<´A9°C:´C¸Ã;¸C°C9„ƒ9 „;¼C¤ƒ;˜Ã<´9ÀC´C8Ð: æì0å îðmàáàóÐæ mÐá@è ˜C8°Ã<”@¸Ã;´Á<¤Ã9¸C9CèC9ÈÃ;ÌC˜<´A;„= `áÀóP áïÐô á ðîpmÐá@è ˜C8°Ã<”@Ì=„Ã8¬CÀƒ<¼=”Ã8ÐÃ;ÈCˆC=˜ƒ9”ƒ<´Á<¤ƒ>”€ Aá çPôÐã õ àØAØ =„ƒ<œC9ÐC˜C9„=Ôƒ<”Ã< k0ø€l°æ€ó l°íÐøÀk0óPl°ó0å l°ø€w õàóæPm`ðÐíô€€9„;ÌC9 D=ÌC9´Á<¼ƒ9ÐC˜;¼C8Ð`áÀóPÀ†šþÿÿÿ "bÞAä¡ÆØ!Ú@Þ¡ÜÊÚ€ÒÁÒÊ¡æ!äÚÀà¡Ú!è sv˜‡r rH‡yq`‡rhz‡t`‡6‡p`v˜ÀÂæ¡ ‚Êaæ¡àAÊaÒaÊ¡ÌÚ!È0‡p`‡y(€p‡whs‡ph‡rhxx‡tpz(yhƒr`‡th€ä¡ÊÜáÚÀä!Ú¡Ú Þ!ÜÊAÚ Ø!Ú¡ÜáÜ¡Ø¡ÂÁ ÂÞ¡ÒÁÌaÚÀà¡Ú!è sv˜‡r wx‡6p‡pp‡yhs€‡6h‡p t Ì!ØaÊ ÜáÚ`ÒáÜ¡È¡ô¡äáæ¡ÌÚ ÂÐ0‡p`‡y(€p‡whz‡p€xHw8‡6h‡p t Ì!ØaÊ æÂaÖ¡àAÞÊaèáä¡Ä¡ÌÁÊAÚ`ÒAÊÀ€ ‡p‡s(zhƒq€‡z ðì ì€ ‚ÂAÎ¡è¡Ì¡ÂêAÊa€5|À6XsÀ‡y6Xƒvh|`ƒ5˜‡y(6Xƒy˜‡r6X|Àƒ; ˆzp‡ys(‡60xhƒvz@ÀÂæ¡ ¢æ¡Ú`ÞÁè¡ÌÞ!è0‡p`‡y(`Cëÿÿÿÿ? d 8€”Ä8¼ƒ<ÈC9Œ=°C>´<¼C=¸9”9´9¤ƒ=¤9”CÌC<È=´9ÀC´C8Ð: æì0å äóâÀåÐôéÀm0áÀì0€9„;ÌC9 ;”Ã<ÌCÀƒ<”Ã8¤Ã<”C˜<´C8`áÀóP ÑéàmÀåpáÀm`å0ôðòÐ÷ä@è À@¸Ã;´9ÈC8´C9´<¼C:¸=”ƒ<´A9°C:´@òPå îðm`òíPm ïî@å mPìíÐîðîÐìPá` áïÐéàæ0m`ðÐíô€€9„;ÌC9 „;¼C¨C=´<´=„ƒ8°C9Ì`áÀóP áïÐîî0m`ðÐíô€€9„;ÌC9 „;¼CÌC:œƒ;”9´>”ƒ<¼Ã<´9ÀC´C8Ð: æì0å îðm@òð éàçÐíô€€9„;ÌC9 Ä<ÐC8ŒÃ:´<ÈÃ;ÐC9Œ=¼ƒ<´8Ôƒ9˜C9ÈCÌC:èC9 x ôòpå@m0ðP >à´Ð@ÐC8ÈÃ9”=´9”C8ÐC=ÈC9Ì°ã€xÀk`ø0òÀkÐí€l°ó0åÀk0óPrÀk€xp Qî0á`åÐæ mÐá@è ˜C8°Ã<”@ÔÃ<”CÌÃ;˜=´9°Ã;„= æì0å lxâÿÿÿÿ€ p 	( ˆqxy‡rz`‡|hyx‡zpr(rhrH{Hr(‡6˜‡xzhs€‡6h‡p t Ì!ØaÊ È!æ!ÄÊ¡è!ÒÚ`ÂØa sv˜‡r v(‡y˜‡6€y(‡qH‡y(‡60xh‡p ÀÂæ¡ ¢ÒÁÚ€ÊáÂÚÀÊaèáä¡î!ÈÐ€€p‡whs‡ph‡rhxx‡tpz(yhƒr`‡th€ä¡ÊÜáÚÀä!Ú¡Ú Þ!ÜÊAÚ Ø!Ú¡ÜáÜ¡Ø¡ÂÁ ÂÞ¡ÒÁÌaÚÀà¡Ú!è sv˜‡r wx‡6P‡zhxhzq`‡r˜ÀÂæ¡ ÂÞ¡Ü!ÜaÚÀà¡Ú!è sv˜‡r wx‡6˜‡t8w(rh}(yx‡yhs€‡6h‡p t Ì!ØaÊ ÜáÚ€ä!àÒÁÎ¡Ú!è sv˜‡r ˆy ‡p‡uhx‡w ‡rzxyhq¨s0‡r‡6˜‡tÐ‡r ð  è!äáÊÚ`à¡ |À;h; € ‡p‡s(zhs(‡p ‡z‡r˜`Æð€ÖÀðaäÖ ÚØ`æaÊÖ`æ¡ä€Ö ðà ¢ÜaÂÁÊ¡ÌÚ ÂÐ0‡p`‡y(€¨‡y(‡6˜‡w0zhs`‡wz Ì!ØaÊØ`ÿÿÿÿ? m Hˆ# ø`À²Hþÿÿÿ "   I     ‚`B L†	1!(&ÆL    0|À;ø; ƒ6¨wXwx‡{p‡6`‡tp‡zÀ‡68w¨‡ePmÐzPmv@z`tÐæ€p q xÐî€zv s z`tÐ³r€J’B†Œ4B˜œ&l¶½Ýb§Ýë@Â„      ì‚(¤      `‡„†P!     @@ ;¤†@+	     Ø!E†#   €   Àé2°áJ    €€ vH]£ØP     °CR…²¡      `HE„ @        @ C*< À    @    € †T|`Œ   €     ©D(         R™B@        0¤Z…ã€         `H%‹  @      @ Àª6         €  €!•:`n €        @ C*‘°Ü          € $6{ È   %  2˜(LŒ	&GÆC
+F ˆ c€UÒnx2§ÙeÂt3¦Ýa6ÈfÃåe{¯DfÒnrß+‘¤•’(Ó8P4UWÆ}bPiÐrp| 
+© ¸ë`"ñ=Ñ~æÑ72'±2/8:îF¶$S´Åcì6zd¸d ¢ÁÈ0¬u`ë
+à)Œ®Ð×ìÿ9°ò ÷«'N¸gaâ­¼o”õa·H&ª©üæ²«Ì*7yïÈ-DŠ’¿Oñ^½!æºš8vÿÿ7ôÿÿÿÿÃÿÿÿÿÿÿÿÿ?üÿÿÿÿ òÿÿÿÿÃÿÿÿÿÿÿÿÿ?üÿÿÿÿ BJ	ÐS‚©Œì%jLPàÅT¤(g@k2`-F?“ :=%O	n*@J0a=Å¨
+9*@JàgRçVÑSÈþŠ£¤BR‡ÑSÐ£ˆ¢¤”B»·øþ=Eû+˜@J18;^ÁæçÑSèäš¤”CáêÑSÖÃJ¤D±#ê•?¢=%P …JP”åUjåHP`…IPœ%JPœ%*PªåPÀå(P’E)PÀ…>P°¥+PàeP´…8P¶%,PØe(PðÅ+PÈ…<PÀå,PÒe.Pêå/P‚å8P˜Å,PðPºe>PbWx¥P¨åP¤PÌÅ=P¢ÅP¶%>PìePÎ%=PªEPèEPE9Pšå9P¤¥:P®e;PÊå=PÆ%.Pú¥PÖÅP„ÅPî¥PðÅ(PÆE=0P
+…PÅPQEQ…QÅQ%R$eR(¥R,åR0%S4eS8¥S<åS@%TDeTH¥TNUREUV…UZÅUd¤Œ ö°=eVhÅVn%GJY+ÑSteWzÅW~P‚EP†…PŠÅPŽP’EP–…PœåP²…P¼%PÄåPÐ%@JaRƒÐSÔ…@J1ªBŽ
+ÐSÚåPâePì%Pô…PúåP€%(Pˆ¥(Pe)@J¡“k6ì{a.=…)Pšå)P E*@J/.2¨1=e*P¨Å*P®%+P¸å+PÄe,@JÑþ
+&9¥gï =…,PÊ-PÔe-PÚÅ-@J!û+Ž
+tuå¨ =å-PàE.PèÅ.Pî%/Pô¤ô(¢¨@!Ãb’
+ÐSö…/Pü8P„e8PŠ¤”é/ð§@ÉS‚›
+ÐSŒ%9P–Å9P %:P¦¤f@NƒÐS¨Å:P°¤”s@ÉFƒÐS²E;P¸¥;P¼å;PÂE<PÌ=PÖ…=PÚ>Pä¥>Pî%?Pôe?Pø¥?Püå?P€%HP„eHPˆ¥HPŒIP’eIPšåIP EJP¦¥JP¬åJP°%KP´eKPØENPÚNPÜ¥XPÆ¥|PÞ…NPò…~Pò%NP°E{PÚå}PæYP”OPžEkP¸åkPÂelPÌmPØE~PúÅOPî%oPôÅoP€…xPŒå~P„\PÈ%]PÚE^PèÅ^Pú%hPŒiP”%jP”eXP–¥{PÂå|PšÅYP¢EZP¶¥[PÆE]PØ¥^PühP’ÅZP®ÅjPÞå[PÐE_PøÅiP nPäenPœezPÄÅ]PàEhPˆEjP¨%kP¼%zPªe}P¸¥KP¼åKPÀ%LPÄeLPÈ¥LPÌåLPÐ%MPÔeMPêÅNPîEOPö…OPþXP‚…XPŒåXP’eYP˜ZP¦…ZPª[P²E[P¸Å[PÂ¥\PÌå\PÖå]Pâe^Pî_Pòe_PþehPŠåhP–…iPšåiP¦¥jP®kP¶¥kPÀElPÈ¥lPÎ%mPÔemPÚÅmPâ…nPêÅnPðeoPø¥oPþ%xP„exPŠåxP%yP˜¥yPžzP¤…zP¬åzP²e{P¸Å{P¾|PÄ…|PÌ}PÒE}PØÅ}Pà%~Pæ¥~PìPôePø¥PüåP€å‰PªŠP¦%ŠPÐe¬PÊ
+EŠP®…‹PÒ
+Å­P¨Å«PÀ
+ÅŠPä…ŽP¶E¨Pˆ
+å¨P’
+e©Pœ
+ªP¨
+…«PÎ
+ŒPÂÅ˜P	%™Pš	å™P¦	åªPØ
+¥ŒP¶	eœPÚ	ŸP¶
+ÅŒPÖ¥P‚	ÅPîŽPöE˜Pª	›P´	Å›PÐ	ežPðåšPü	¥›PÈ	ÅœPÞ	%žPô	…ŸP‚
+Å¨P‚EˆP†…ˆPŠÅˆPŽ‰P’E‰P–…‰PšÅ‰P°%‹P´¥‹P¼å‹PÄeŒPÈåŒPÒEPØ¥PÞ%ŽPæ¥ŽPì%Pô…PüåP€	e˜Pˆ	¥˜PŽ	E™P–	…™Pœ	šP¢	EšP¨	ÅšP²	…›P¾	œPÂ	EœPÊ	åœPÒ	EPÖ	…PÜ	žPä	…žPê	ÅžPî	%ŸPö	¥ŸPþ	¨P†
+¥¨P
+E©P˜
+¥©Pž
+%ªP¤
+eªPª
+ÅªP°
+%«P´
+¥«P¾
+%¬PÄ
+…¬PÌ
+­PÔ
+e­PÚ
+å­Pà
+%® ±  ©   3€Äáf=ˆC8„ÃŒB€yxs˜qæ íô€3BÂÁÎ¡f0=ˆC8„ƒÌ=ÈC=Œ=ÌxŒtp{yH‡ppzpvx‡p ‡Ììá0n0ãððP3ÄÞ!Ø!Âaf0‰;¼ƒ;ÐC9´<¼ƒ<„;Ìðv`{h7h‡rh7€‡p‡p`v(vøvx‡w€‡_‡q‡r˜‡y˜,îðîàõÀì0bÈ¡ä¡Ì¡ä¡ÜaÊ!ÄÊaÖC9ÈC9˜C9ÈC9¸Ã8”C8ˆ;”Ã/¼ƒ<ü‚;Ô;°ÃÇi‡pX‡rpƒthx`‡t‡t ‡ÎSî òPäã@á ìP3 (ÜÁÂAÒ!ÜÜàäáêfQ8°C:œƒ;ÌP$v`{h7`‡wxx˜QLôðP3jÊaè!ÞÁ~ä¡Ì!ðaT…ƒ8ÌÃ;°C=ÐC9üÂ<äC;ˆÃ;°ÃŒÅ
+‡y˜‡w‡tz(r˜\ãìÀåPó0#ÁÒAäáØáÞfH;°ƒ=´ƒ„Ã8ŒC9ÌÃ<¸Á9ÈÃ;Ô<ÌH´qv`q‡qX‡ÛÆì`íàð å0å öPnã0å0óàéàäPø0ãáÜáÊØ¡Ü€ÞáàÁÒfL;¼C9°;”ƒÀ9œƒ„ƒ<œÃ<¸A:ÃŒÈs‡w(v`‡rpx ‡spƒr ‡s(‡y˜1}îðåÀìPn äpnî0ôàé@30€…SxS¨wW‡v(  y   ®   rH Cˆ	r2H #Œ‘‘ÑD (d<12BŽ!£1lN“(%ÌCPÅ0ProfileSummaryProfileFormatInstrProfTotalCountMaxCountMaxInternalCountMaxFunctionCountNumCountsNumFunctionsDetailedSummarytruefunction_entry_countfalseRAWWAWWAR&¨      0‚ d#6‚ðl#7‚ðt#7‚ |#
+Œ (a0‚ ˆÁ‚2#Œ (e0‚ ˜ÁÂs#
+Œ (i0‚ ¨ÁÂ³#
+Œ (m0‚ð¸Á‚ò#
+Œ (q0‚ðÈÁ‚2#
+Œ (u0‚ðØÁ‚r#
+Œ <y0‚ èÁ‚²#
+Œ <<1ƒ 3„4ƒPL3Æ4ƒpP3H5ƒX3×Í0`S4ÃMÑƒ6E3×Í0xÌ0„Á3b0d0ÃPfp3h`g0Ãj°3l k0ÃÐnð3pr0Ã0q 3tr0Ô~ð 
+¢0
+¤P
+¦p
+¨
+ª°
+¬0ƒ ´ÂˆÜäì¸ÂC¼ÂÁ2CÐÌ83 3Ï4ƒÀÔÁÀqÇqœˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆÇqÇqb b b€n@t@t@t@t@°!ð€–eA–%#	ÊˆÍ®Í¥í¬Ž­ÌÅŒ-ìln”à2r{+cc+si{#«c+s#;%€   ©     
+r(‡w€zXp˜C=¸Ã8°C9ÐÃ‚æÆ¡èAÂÁæ!è!ÞÁ Ñ     Ì<¤ƒ;œ;”= ƒ<”C8Ã   a   ú  f     ¤úÝ¶a)åAxR°åÿ?P€5@ºmÈ   ñ0  {  "GÈQN  branch_weights01„§&Lž?˜ < 0AxBa‚ðˆÂá…	ÂC
+„§&)LžS˜ <¨0AxRa‚ð¨ÂáY…	ÂÃ
+„§&+LžW˜ <°0Axba‚ðÈÂá™…	ÂC„§&-Lž[˜ <¸0Axra‚ðèÂáÙ…	ÂÃ„§&/Lž_˜ <à0AxÂa‚ðˆÃá‡	ÂC„§&9Lžs˜ <è0AxÒa‚ð¨ÃáY‡	ÂÃ„§&;Lžw˜ <ð0Axâa‚ðÈÃá™‡	ÂC„§&=Lž{˜ <ø0Axòa‚ðèÃáÙ‡	ÂÃ„§&?Lž˜ < 1AxBb‚ðˆÄá‰	ÂC„§$&ILž“˜ <(1AxRb‚ð¨ÄáY‰	ÂÃ„§%&KLž—˜ <01Axbb‚ðÈÄá™‰	ÂC„§&&MLž›˜ <81Axrb‚ðèÄáÙ‰	ÂÓ„Ç'&ÏOL°˜ <a1AxÄb‚ðŒÅá!‹	ÂS„Ç,&ÏYL´˜ <i1AxÔb‚ð¬Åáa‹	ÂÓ„Ç-&Ï[L¸˜ <q1Axäb‚ðÌÅá¡‹	ÂS„Ç.&Ï]L¼˜ <y1Axôb‚ðìÅáá‹	ÂÓ„Ç/&Ï_LÐ˜ <¡1AxDc‚ðŒÆá!	ÂS„Ç4&ÏiLÔ˜ (©1AxTc‚ð¬Æáa	ÂÓ„Ç5&ÊkLØ˜ <±1Axdc‚ðÌÆá¡	ÂS„Ç6&ÏmLÜ˜ <¹1Axtc‚ðìÆáá	ÂÓ„Ç7&ÏoLð˜ <á1AxÄc‚ðŒÇá!	ÂS„Ç<&ÏyLô˜ <é1AxÔc‚ð¬ÇAa	ÂÓ„Ç=&Ê{Lø˜ <ñ1Axäc‚ðÌÇá¡	ÂS„Ç>&Ï}Lü˜ <ù1Axôc‚ðìÇáá	ÂÓ„Ç?&ÏL™ (!2AxDd‚ðŒÈá!‘	ÂS"„ÇD&Ê‰L™ <)2AxTd‚ð¬Èáa‘	ÂÓ"„ÇE&Ï‹L™ <12APdd‚ ÌÈá¡‘	ÂS#„ÇF&ÏL™ <92Axtd‚ ìÈAá‘	ÂÓ#„ÇG&ÏL0™ <a2AxÄd‚ðŒÉá!“	‚R&ÅL&Ï™L4™ <i2AxÔd‚ð¬Éáa“	ÂÓ&ÅM&Ê›L8™ <q2Axäd‚ðÌÉá¡“	ÂS'„ÇN&ÊL<™ <y2Axôd‚ðìÉAá“	‚Ò'„ÇO&ÏŸLP™ <¡2AxDe‚ðŒÊá!•	ÂS*„ÇT&Ï©LT™ <©2AxTe‚ð¬Êáa•	ÂÓ*„ÇU&Ï«LX™ <±2Axde‚ðÌÊá¡•	ÂS+„ÇV&Ï­L\™ <¹2Axte‚ðìÊáá•	ÂÓ+„ÇW&Ï¯Lp™ <á2AxÄe‚ðŒËá!—	ÂS.„Ç\&Ï¹l˜]ØðÂ† 6$&s2± ³ ² ´°!1™“‰Y¨YY …/lHLFebAfAdAhaCb2*²P² ²@‚_Ø˜LËÄ‚,Ì‚,È‚,ÐÂ†ÄdZ&d¡dAd6à°!1˜‰Y¨YY …‰ÉÀL,ÈÂ,È‚,È-lÂaC23'²`² ²@’™Q™X[YZØÌLËÄ‚,Ø‚,È‚,ÐÂ†@6$3s3± ¶ ² ´°!™˜‰Y°YY …Á8lHtædbAlAdAhaC@ž9™X[YZØ”Ã†ÄgN&dÁdAd6æ°!›“‰Y˜YY …	ØœL,ÈB-È‚,È-lHÀFebAfAdAhaC6*²P² ²@°›X…ZYZØœÃ†lÌ&dadAd6è°!´‰Y¨YY …	Ø´L,ÈB-È‚,È-lHÀ¦ebAfAdAhaC60²P² ²@°™X…YYZØ¤Ã†lÜ&d¡dAd6ê°!¸‰Y˜YY …Á:lHÀFnbAfAdAhaCÀ°¡›X…ZYZØ´Ã†lì&dadAd6î°!¼‰Y˜YY …Á;lHÀFobAfAdAhaCb6'²`² ²@³Q™X[YZØ˜ØÄ‚,Ø‚,È‚,ÐÂ†ÄlÐ&dÁdAd6$fÓ2± ¶ ² ´°!1˜‰Y°YY …‰Ù¸M,È‚-È‚,È-lHÌ†nbAlAdAhaC‚6'²0² ²@´9™X…ZYZØ ÊÄ‚,Ì‚,È‚,ÐÂ†mT&d¡dAd6$h6± µ ² ´°!A³‰Y˜YY …	Ú M,ÈB-È‚,È-lHÐ¦ebAfAdAhaC‚6-²P² ²@´™X…YYZØ ÌÄ‚,Ô‚,È‚,ÐÂ†mÜ&d¡dAd6$h7± ³ ² ´°!A¹‰Y˜YY …	ÚÐM,ÈB-È‚,È-lHÐÆnbAfAdAhaC‚6x²0² ²@´Ñ›X…YYZØÀÃ†ÄvN&dÁdAd6$¶£2± ¶ ² ´°!ˆ‡‰íäN,È‚-È‚,È-lHl§ebAlAdAhaCb;0²`² ²@yØØNïÄ‚,Ø‚,È‚,ÐÂ†`6$¶ó;± ¶ ² ´°! ‡IøœL,ÈB-È‚,È-lHÂçdbAfAdAhaC>*²P² ²@’ðQ™X…YYZØ„OøÄ‚,Ô‚,È‚,ÐÂ†$|Z&dadAd6$áÓ2± µ ² ´°!	˜‰Y¨YY …IøÀL,ÈÂ,È‚,È-lêaC>ë²0² ²@{Ø´ÏÉÄ‚,Ø‚,È‚,ÐÂ†¤}T&dÁdAd6$í“;± ¶ ² ´°!iŸ–‰Y°YY …IûÀL,È‚-È‚,È-lHÚ§wbAlAdAhaCÒ>¿²`² ²@’Ü9™X…ZYZØäÎÉÄ‚,Ì‚,È‚,ÐÂ†$wT&dadAd6$¹£2± µ ² ´°!ÉÛ‰Y˜YY …Iî´O,ÈÂ,È‚,È-lHr'wbAjAdAhaCp’ÜáŸX…YYZØàÃ†$wü'dadAd6$¹Ó2± ³ ² ´°!É–‰Y¨YY …IîÀL,ÈB-È‚,È-lHrfbAfAdAhaC’;½²P² ²@’ÜùX…ZYZØäÃ†$wL(dadAd6ú°!ÉŠY˜YY …Á>lHTèdbAlAdAhaC¢B*²`² ²@j™X[YZØ¨ÌÄ‚,Ø‚,È‚,ÐÂ†€6$*ôB± ¶ ² ´°!è‡‰
+ÅP,È‚-È‚,È-lüaC2C'²P² ²@’:™X…YYZØÌÊÄ‚,Ô‚,È‚,ÐÂ†d†T&dadAd6$34C± µ ² ´°!ø‡ÉåP,ÈÂ,È‚,È-l@bC2C;²P² ²@’j™X…ZYZØÌPËÄ‚,Ì‚,È‚,ÐÂ†d†`&d¡dAd6$33± ³ ² ´°!‰É…Q,ÈÂ,È‚,È-lDbC2Cc²P² ²@‚‘ØÌPÅ‚,Ì‚,È‚,ÐÂ†€$6$3tF± µ ² ´°!(‰É¥Q,ÈÂ,È‚,È-lLbC2Ck²0² ²@þ9™X[YZØðÊÄ‚,Ø‚,È‚,ÐÂ†„r'dÁdAd6$üÓ2± ¶ ² ´°!á˜‰Y°YY …	ÿôN,È‚-È‚,È-lHøçwbAlAdAhaCp::™X[YZØÐ‘ÊÄ‚,Ø‚,È‚,ÐÂ†„ŽZ&dÁdAd6$t3± ¶ ² ´°!¡£ŠY°YY …	ÅP,È‚-È‚,È-lHrèdbAlAdAhaC’C*²`² ²@’š¡X[YZØäÐÅ‚,Ø‚,È‚,ÐÂ†$‡Z&dÁdAd6$93± ¶ ² ´°!É¡1ŠY°YY …IQ,È‚-È‚,È-lHvèdbAjAdAhaC²C'²0² ²@’R™X…ZYZØìÊÄ‚,Ì‚,È‚,ÐÂ†d‡f(d¡dAd6$;”C± ³ ² ´°!Ù¡ŠY¨YY …ÉµL,ÈB-È‚,È-lHv¨ebAfAdAhaC²C0²P² ²@’‚™X…YYZØìPÅ‚,Ì‚,È‚,ÐÂ†d‡Æ(d¡dAd6$;TF± ³ ² ´°!Ù¡3ŠY¨YY …É¥Q,ÈÂ,È‚,È-lHvhbAfAdAhaCâ?'²`² ²@ÿQ™X[YZØøOîÄ‚,Ø‚,È‚,ÐÂ†ÄZ&dÁdAd6$þ3± ¶ ² ´°!ñŸÞ‰Y°YY …‰ÿüN,È‚-È‚,È-lPbC²K'²0² ²@’]:™X…ZYZØì’ÊÄ‚,Ì‚,È‚,ÐÂ†d—T&d¡dAd6$»Ä3± ³ ² ´°!Ù%Ÿ‰Y˜YY …É.íR,ÈB-È‚,È-lHv©ebAfAdAhaC²K-²P² ²@’]‚™X…YYZØìÌÄ‚,Ô‚,È‚,ÐÂ† %6$»tN± ³ ² ´°!P‰É.¥S,ÈÂ,È‚,È-lVbC²Kë²P² ²@’›9™X…YYZØÜÌÉÄ‚,Ô‚,È‚,ÐÂ†äff&dadAd6$7£2± ³ ² ´°!¹•‰Y¨YY …ÉÍ´L,ÈÂ,È‚,È-lHn¦ebAjAdAhaCr37²P² ²@–ØÜL=Å‚,Ì‚,È‚,ÐÂ†äf`&dadAd6$73± µ ² ´°!h‰ÉÍäS,ÈÂ,È‚,È-l\bCr3û²0² ²@’z:™X[YZØÔ“ÊÄ‚,Ø‚,È‚,ÐÂ†¤žZ&dÁdAd6$õt3± ¶ ² ´°!©'˜‰Y°YY …I>L,È‚-È‚,È-lHòIebAlAdAhaC’O-²`² ²@’|º™X[YZØäÌÄ‚,Ø‚,È‚,ÐÂ†dŸN&dÁdAd6$û¤2± ¶ ² ´°!Ù§–‰Y°YY …É>ÝL,È‚-È‚,È-lHö	fbAlAdAhaCð–:™X…ZYZØ°ÔÉÄ‚,Ì‚,È‚,ÐÂ†„¥T&d¡dAd6$,¥2± ³ ² ´°!a©–‰Y¨YY …	KµL,ÈÂ,È‚,È-lHX
+fbAjAdAhaCÂR0²0² ²@–b©X…ZYZØÀÄ†„¥l*dadAd61±!Á©“‰Y˜YY …	NL,ÈB-È‚,È-lHpJebAfAdAhaC‚S*²P² ²@œj™X…YYZØàTËÄ‚,Ô‚,È‚,ÐÂ†§`&d¡dAd6$83± ³ ² ´°!Á)œŠY¨YY …LlHpJ¬bAfAdAhaC0²:™X…YYZØÕÉÄ‚,Ô‚,È‚,ÐÂ†„¬T&dadAd6$d¥2± µ ² ´°!!«–‰Y˜YY …	YµL,ÈB-È‚,È-lHÈ
+fbAfAdAhaCBV0²P² ²@²"«X…ZYZØÐÄ†„¬Ü*dadAd65±!!+¸ŠY¨YY …MlHäêdbAjAdAhaC"W'²0² ²@¹R™X…YYZØÈ•ÊÄ‚,Ô‚,È‚,ÐÂ†D®Z&dadAd6$rÕ2± µ ² ´°!‘+˜‰Y˜YY …‰\ÁL,ÈB-È‚,È-lHäJ®bAjAdAhaCp¹â«X…YYZØàÄ†D®ü*dadAd69±!‘+ÐŠY˜YY …NlHäJ´bAfAdAhaC"V'²`² ²@±R™X[YZØˆUËÄ‚,Ø‚,È‚,ÐÂ†D¬`&dÁdAd6$b…S± ¶ ² ´°!Ø‰IjL,ÈB-È‚,È-lHRëdbAfAdAhaC’Z*²P² ²@’ÔR™X…YYZØ¤VËÄ‚,Ì‚,È‚,ÐÂ†$µZ&d¡dAd6$©3± ³ ² ´°!I-˜‰Y¨YY …Ij¥V,ÈB-È‚,È-lxbC’Z³²0² ²@‚žØ¤VmÅ‚,Ô‚,È‚,ÐÂ†Ä¦N&dÁdAd6$6¥2± ¶ ² ´°!±©–‰Y°YY …‰MÁL,È‚-È‚,È-lHlŠ¥bAlAdAhaCàÞ:™X…YYZØðÖÉÄ‚,Ô‚,È‚,ÐÂ†„·T&dadAd6$¼¥2± µ ² ´°!á­–‰Y¨YY …	oµL,ÈÂ,È‚,È-lHxfbAjAdAhaCÂ[0²0² ²@Þâ­X…ZYZØüÄ†„·Ì+dadAd6`±!á-ôŠY¨YY …	_L,È‚-È‚,È-lHøJebAlAdAhaCÂW-²`² ²@¾‚™X[YZØð•\Å‚,Ø‚,È‚,ÐÂ†äœN&dÁdAd6$ç¤2± ¶ ² ´°!9§]ŠY°YY …É9µL,È‚-È‚,È-lHÎ	fbAlAdAhaCrNë²`² ²@‚°ØÔ×ÉÄ‚,Ì‚,È‚,ÐÂ†¤¾N&d¡dAd6$õ¥2± ³ ² ´°!©/•‰Y¨YY …I}µL,ÈB-È‚,È-lHê«ebAfAdAhaCR_0²0² ²@’ú‚™X…ZYZØÔW}Å‚,Ô‚,È‚,ÐÂ†@,6$õõ_± ³ ² ´°!‹I}…X,ÈB-È‚,È-lÈbCR_#²0² ²@‚²ØÔW‰Å‚,Ô‚,È‚,ÐÂ†À,6$õub± ³ ² ´°!8‹I}¥X,ÈB-È‚,È-lÐbCR_+²0² ²@‚´ØÔW‹Å‚,Ô‚,È‚,ÐÂ†@-6$õõb± ³ ² ´°!X‹I}ÅX,ÈÂ,È‚,È-lHüêdbAlAdAhaCâW*²`² ²@¿j™X[YZØøÌÄ‚,Ø‚,È‚,ÐÂ†Ä¯ä*dÁdAd6$ét2± ¶ ² ´°!I'•‰Y°YY …I:íR,È‚-È‚,È-lHÒ©ebAlAdAhaC’N0²`² ²@’tZ§X[YZØ¸ÍÉÄ‚,Ì‚,È‚,ÐÂ†ÄmN&d¡dAd6$n£2± µ ² ´°!q•‰Y˜YY …‰Û€M,ÈB-È‚,È-lHÜÆlbAfAdAhaCâ6h²P² ²@·i™X…YYZØ¸MËÄ‚,Ô‚,È‚,ÐÂ†Äm`&dadAd6$n3± µ ² ´°!q·‰Y¨YY …‰ÛÀM,ÈÂ,È‚,È-lHÜFnbAfAdAhaCâ6t²P² ²@·±›X…YYZØ¸ÞÄ‚,Ì‚,È‚,ÐÂ†Ämô&dadAd6$ps2± ¶ ² ´°!•‰Y°YY …	Ü€M,È‚-È‚,È-lHàmbAlAdAhaC7-²`² ²@¸™X[YZØÀÛÄ‚,Ø‚,È‚,ÐÂ†nè&dÁdAd6l±!Á³“‰Y°YY …	ž©L,È‚-È‚,È-lHð¬ebAlAdAhaC‚g0²`² ²@’:™X…ZYZØ¼ÐÉÄ‚,Ì‚,È‚,ÐÂ†ä…T&d¡dAd6$/¤2± ³ ² ´°!y!ŠY˜YY …ÉÑQ,ÈÂ,È‚,È-lH^¨ebAjAdAhaCòB-²0² ²@’‚™X…ZYZØ¼ÌÄ‚,Ì‚,È‚,ÐÂ†ä…^(d¡dAd6m±!y!T‹Y˜YY …[lH^HÕbAfAdAhaCòB1²P² ²@‚·Ø´ÚÉÄ‚,Ì‚,È‚,ÐÂ†¤ÕN&d¡dAd6$­¦2± ³ ² ´°!i5•‰Y¨YY …I«µL,ÈÂ,È‚,È-lHZ­ebAjAdAhaCÒj0²0² ²@’Vƒ™X…ZYZØ´Z«Å‚,Ô‚,È‚,ÐÂ† .6$­vk± ³ ² ´°!ˆ‹I«åZ,ÈÂ,È‚,È-läbCÒj»²P² ²@·:™X[YZØ¸•ÊÄ‚,Ø‚,È‚,ÐÂ†Ä­Z&dÁdAd6$n3± ¶ ² ´°!q+²ŠY°YY …‰[ÁU,È‚-È‚,È-lHnídbAlAdAhaCrk*²`² ²@’[k™X[YZØÜÌÄ‚,Ø‚,È‚,ÐÂ†äÖZ-dÁdAd6$·¶k± ¶ ² ´°!˜‹IºL,È‚-È‚,È-lHÒMebAlAdAhaC’n-²`² ²@’tƒ™X[YZØÐÅ†$ÝÜ-dÁdAd6$½s2± µ ² ´°!é“‰Y˜YY …Iï¨L,ÈÂ,È‚,È-lHzGebAjAdAhaCÒ;¶²0² ²@’ÞiŸX…YYZØôNîÄ‚,Ô‚,È‚,ÐÂ†¤wø'dadAd6$½ã?± ³ ² ´°!é–‰Y˜YY …Iï´L,ÈB-È‚,È-lHzfbAfAdAhaCÒ;0²P² ²@’ÞéX…ZYZØôÎïÄ‚,Ô‚,È‚,ÐÂ†¤wL(dadAd6$½ƒB± ³ ² ´°!1¯“‰Y°YY …‰y©L,È‚-È‚,È-lHÌ«ebAlAdAhaCb^0²`² ²@óâ­X[YZØ˜zÅ‚,Ø‚,È‚,ÐÂ†½N&d¡dAd6$èu2± ³ ² ´°!A/•‰Y¨YY …	z©L,ÈÂ,È‚,È-lHÐ«ebAfAdAhaC‚^-²P² ²@ô‚™X…YYZØ ÌÄ‚,Ô‚,È‚,ÐÂ†½x+d¡dAd6$èe^± ³ ² ´°!A/ôŠY¨YY …A]lHdîdbAlAdAhaC"s*²`² ²@™k™X[YZØÈÌÄ‚,Ø‚,È‚,ÐÂ†ÄÝN&dadAd6$îv2± µ ² ´°!q7•‰Y˜YY …‰»©L,ÈB-È‚,È-lHÜ­ebAfAdAhaCân-²P² ²@wƒ™X…YYZØ¸ÌÄ‚,Ô‚,È‚,ÐÂ†ÄÝÒ-dadAd6$îæn± µ ² ´°!°‹‰»…],ÈÂ,È‚,È-lHÂîdbAlAdAhaCv*²`² ²@’°k™X[YZØ„ÌÄ‚,Ø‚,È‚,ÐÂ†$ìÜ-dÁdAd6$¿s2± µ ² ´°!ù“‰Y˜YY …Éï¨L,ÈB-È‚,È-lH~GebAfAdAhaCò;¶²0² ²@’ßiŸX…YYZØüNîÄ‚,Ô‚,È‚,ÐÂ†äwø'dadAd6$¿ã?± ³ ² ´°!ù–‰Y˜YY …Éï´L,ÈB-È‚,È-lH~fbAfAdAhaCò;0²P² ²@’ßéX…ZYZØüÎïÄ‚,Ô‚,È‚,ÐÂ†äwL(dadAd6$¿ƒB± ³ ² ´°!Éµ“‰Y°YY …I®©L,È‚-È‚,È-lHr­ebAlAdAhaC’k0²`² ²@’\kµX[YZØäÚ®Å‚,Ø‚,È‚,ÐÂ†d×N&dadAd6$»v2± µ ² ´°!Ù5•‰Y˜YY …É®©L,ÈB-È‚,È-lHv­ebAfAdAhaC²k-²P² ²@’]ƒ™X…YYZØìÌÄ‚,Ô‚,È‚,ÐÂ†d×Z-d¡dAd6$»vk± ³ ² ´°!Ùµ\‹Y˜YY …É®íZ,ÈB-È‚,È-lHLèdbAlAdAhaCbB*²`² ²@ÊX[YZØ˜PËÄ‚,Ø‚,È‚,ÐÂ†Ä„`&dÁdAd6$&Ô;± ¶ ² ´°!1¡ß‰Y°YY …Á]lHdïdbAlAdAhaC"{*²`² ²@Ùk™X[YZØÈÌÄ‚,Ø‚,È‚,ÐÂ†DnN&dÁdAd6$r£2± ¶ ² ´°!‘°‰Y°YY …‰Ü M,È‚-È‚,È-lHä¦ebAlAdAhaC"70²`² ²@¹q›X[YZØÈÝÄ‚,Ø‚,È‚,ÐÂ†„nN&d¡dAd6$ts2± ³ ² ´°!¡•‰Y˜YY …	Ý¨L,ÈB-È‚,È-lHèlbAjAdAhaCB7f²0² ²@ºA›X…ZYZØÐMËÄ‚,Ô‚,È‚,ÐÂ†„nZ&dadAd6$t3± ³ ² ´°!¡˜‰Y¨YY …	Ý¸M,ÈB-È‚,È-lHènbAfAdAhaCB7r²0² ²@º¡›X…ZYZØÐÝÄ‚,Ì‚,È‚,ÐÂ†„nð&dadAd6$t£7± ³ ² ´°!±›“‰Y°YY …‰Ý¨L,È‚-È‚,È-lHìlbAlAdAhaCb7h²`² ²@»i™X[YZØØÌÄ‚,Ø‚,È‚,ÐÂ†ÄnÜ&dÁdAd6$vC7± ¶ ² ´°!Aµ“‰Y°YY …	ª©L,È‚-È‚,È-lHP­ebAlAdAhaC‚j0²`² ²@T{¡X[YZØ ZÅ‚,Ø‚,È‚,ÐÂ†$ŒN&dÁdAd6$a¤2± ¶ ² ´°!	£ŠY°YY …IíP,È‚-È‚,È-lHÂ¨ebAlAdAhaCF0²`² ²@’0£X[YZØ„ÑÅ‚,Ø‚,È‚,ÐÂ†dŒN&d¡dAd6$ct2± ³ ² ´°!#•‰Y˜YY …É©L,ÈB-È‚,È-lHÆh†bAjAdAhaC2F9²0² ²@’1Ú¡X…ZYZØŒQËÄ‚,Ô‚,È‚,ÐÂ†dŒZ&dadAd6$c3± µ ² ´°!#˜‰Y˜YY …É…Q,ÈÂ,È‚,È-lHÆhŒbAjAdAhaC2Fe²0² ²@’1:£X…ZYZØŒQÅ‚,Ì‚,È‚,ÐÂ†dŒÖ(dadAd6$(t2± ¶ ² ´°!A!•‰Y°YY …	
+åN,È‚-È‚,È-lHP¨ebAlAdAhaC‚B0²`² ²@êX[YZØ ÐïÄ‚,Ø‚,È‚,ÐÂ†DÕN&dÁdAd6$ª¦2± ¶ ² ´°!Qµ–‰Y°YY …‰ªÁL,È‚-È‚,È-lHTí…bAlAdAhaC¢j1²`² ²@’2:™X[YZØ”‘ÊÄ‚,Ø‚,È‚,ÐÂ†¤Œf(dÁdAd6$e´C± ¶ ² ´°!)£–‰Y°YY …IÁL,È‚-È‚,È-lHÊhŒbAlAdAhaCRFg²`² ²@’3:™X…YYZØœÑÉÄ‚,Ô‚,È‚,ÐÂ†äŒT&dadAd6$g¤2± µ ² ´°!9£ŠY¨YY …ÉåP,ÈÂ,È‚,È-lHÎh‡bAjAdAhaCrF-²0² ²@’3j™X…ZYZØœÌÄ‚,Ì‚,È‚,ÐÂ†äŒ`&d¡dAd6$gF± ³ ² ´°!9£1ŠY¨YY …É•Q,ÈÂ,È‚,È-lHÎèŒbAjAdAhaCrFi²0² ²@’3Z£X…YYZØ¬ÏÉÄ‚,Ø‚,È‚,ÐÂ†d}T&dÁdAd6$ë>± ¶ ² ´°!YŸ–‰Y°YY …ÉúÀL,È‚-È‚,È-lHÒèdbAlAdAhaC’F*²`² ²@’4š¡X[YZØ¤ÑÅ‚,Ø‚,È‚,ÐÂ†$Z&dÁdAd6$i3± ¶ ² ´°!I£1ŠY°YY …IQ,È‚-È‚,È-lHþëdbAlAdAhaCò_*²`² ²@’ÿj™X[YZØüÌÄ‚,Ø‚,È‚,ÐÂ†ä¿ê+dÁdAd6$ÿb± ¶ ² ´°!ù¯‹Y°YY …É¥X,È‚-È‚,È-lHþ«ÅbAlAdAhaCb'²P² ²@’;™X…YYZØ„˜ÊÄ‚,Ô‚,È‚,ÐÂ†$ÄT&dadAd6$!Ö2± µ ² ´°!	±–‰Y˜YY …IˆÁL,ÈB-È‚,È-lHBfbAfAdAhaCbõ²P² ²@’û¯X…YYZØ„XˆÅ‚,Ô‚,È‚,ÐÂ†$ÄF,dadAd6$!Vb± µ ² ´°!	±‹Y˜YY …Iˆ¥X,ÈB-È‚,È-lHBlÅbAfAdAhaCb-²P² ²@’{±X…YYZØ„XŒÅ‚,Ì‚,È‚,ÐÂ†dN&dÁdAd6$k¤2± ¶ ² ´°!Y£ŠY°YY …ÉíP,È‚-È‚,È-lHÖ¨ebAlAdAhaC²F0²`² ²@’5£X[YZØ¬ÑÅ‚,Ø‚,È‚,ÐÂ†dÄN&dÁdAd6$#¦2± ¶ ² ´°!±–‰Y°YY …ÉˆÁL,È‚-È‚,È-lHF¬¾bAlAdAhaC2b!²`² ²@’+±X[YZØŒXŠÅ‚,Ø‚,È‚,ÐÂ†dÄZ,dÁdAd6$%v2± µ ² ´°!)±“‰Y˜YY …I‰©L,ÈÂ,È‚,È-lHJLebAjAdAhaCRb-²0² ²@’k™X…ZYZØ”ÌÄ‚,Ì‚,È‚,ÐÂ†¤Ä`&d¡dAd6$%V_± µ ² ´°!)±ÿŠY˜YY …I‰…X,ÈB-È‚,È-lHJlÄbAfAdAhaCRb%²P² ²@’;±X…YYZØ”XŠÅ‚,Ô‚,È‚,ÐÂ†¤ÄV,dadAd6$%Öb± µ ² ´°!)±‹Y˜YY …I‰ÅX,ÈÂ,È‚,È-lHNìdbAlAdAhaCrb*²`² ²@’k™X[YZØœÌÄ‚,Ø‚,È‚,ÐÂ†äÄê+dÁdAd6$'b± ¶ ² ´°!9±‹Y°YY …É‰¥X,È‚-È‚,È-lHN¬ÅbAlAdAhaC’b'²0² ²@’;™X…ZYZØ¤˜ÊÄ‚,Ì‚,È‚,ÐÂ†$ÅT&d¡dAd6$)Ö2± ³ ² ´°!I±–‰Y¨YY …IŠÁL,ÈB-È‚,È-lHRfbAfAdAhaC’bõ²P² ²@’û¯X…YYZØ¤XˆÅ‚,Ô‚,È‚,ÐÂ†$ÅF,dadAd6$)Vb± µ ² ´°!I±‹Y˜YY …IŠ¥X,ÈB-È‚,È-lHRlÅbAfAdAhaC’b-²P² ²@’{±X…YYZØ¤XŒÅ‚,Ì‚,È‚,ÐÂ†dÅN&dÁdAd6$+¦2± ¶ ² ´°!Y±–‰Y°YY …ÉŠÁL,È‚-È‚,È-lHV¬¾bAlAdAhaC²b!²`² ²@’+±X[YZØ¬XŠÅ‚,Ø‚,È‚,ÐÂ†dÅZ,dÁdAd6$-v2± ³ ² ´°!i±“‰Y¨YY …I‹©L,ÈB-È‚,È-lHZLebAfAdAhaCÒb-²P² ²@’k™X…YYZØ´ÌÄ‚,Ì‚,È‚,ÐÂ†¤Å`&d¡dAd6$-V_± µ ² ´°!i±ÿŠY˜YY …I‹…X,ÈB-È‚,È-lHZlÄbAfAdAhaCÒb%²P² ²@’;±X…YYZØ´XŠÅ‚,Ô‚,È‚,ÐÂ†¤ÅV,dadAd6$-Öb± µ ² ´°!i±‹Y˜YY …I‹ÅX,ÈÂ,È‚,È-lHðædbAlAdAhaC‚7*²`² ²@¼›X[YZØàÚÄ‚,Ø‚,È‚,ÐÂ†oZ&dÁdAd6$x3± ¶ ² ´°!Á·‰Y°YY …	ÞÐM,È‚-È‚,È-lðbC²šÁÉÄ‚,Ø‚,È‚,ÐÂ†d5•‰Y°YY …Éj-²`² ²@’Õ`&dÁdAd6$1t2± µ ² ´°!‰¡“‰Y˜YY …I©L,ÈB-È‚,È-lHbHebAfAdAhaCC*²0² ²@’¢£X…YYZØÄPËÄ‚,Ì‚,È‚,ÐÂ†$†Z&d¡dAd6$13± ³ ² ´°!‰!˜‰Y¨YY …I½P,ÈB-È‚,È-lHbÕbAfAdAhaCCª²0² ²@’Š¡X…ZYZØ¼ØÉÄ‚,Ø‚,È‚,ÐÂ†äÅT&dÁdAd6$/Ö2± ¶ ² ´°!y1˜‰Y°YY …É‹ÕW,È‚-È‚,È-lH^,ÄbAlAdAhaCòb%²`² ²@’K±X[YZØ¼X‹Å‚,Ø‚,È‚,ÐÂ†d¶N&dÁdAd6$³¥2± ¶ ² ´°!™­–‰Y°YY …ÉlÁL,È‚-È‚,È-lHf+µbAlAdAhaC2[µ²`² ²@’Ú:™X…YYZØÔÖÉÄ‚,Ô‚,È‚,ÐÂ†¤¶T&d¡dAd6$µ¥2± ³ ² ´°!©­–‰Y¨YY …ImµL,ÈÂ,È‚,È-lHjfbAfAdAhaCR[0²P² ²@’ÚJ­X…ZYZØÔÖlÅ‚,Ì‚,È‚,ÐÂ†¤¶j+d¡dAd6y±!ÁÏàdbAfAdAhaC‚ŸÁÉÄ‚,Ô‚,È‚,ÐÂ†?•‰Y¨YY …	~*²0² ²@üZ&dadAd6$ø´L,ÈB-È‚,È-lHð3€™X…YYZØàg 3± µ ² ´°!ÁÏ ?ƒX…ZYZØÀÕÉÄ‚,Ì‚,È‚,ÐÂ†®N&d¡dAd6$p¥2± ³ ² ´°!+•‰Y¨YY …	\µL,ÈÂ,È‚,È-lHàªebAjAdAhaCW0²P² ²@¸‚™X…YYZØÀYÅ‚,Ô‚,È‚,ÐÂ†®Ü*dadAd6$pW± µ ² ´°!‰±“‰Y°YY …IŒ©L,È‚-È‚,È-lHb¬ebAlAdAhaCc0²`² ²@’«¯X[YZØÄXˆÅ‚,Ø‚,È‚,ÐÂ†$ÆJ,dÁdAd6$1–b± ¶ ² ´°!‰±‹Y°YY …	hL,È‚-È‚,È-lH@KebAlAdAhaCZ-²`² ²@Ð‚™X[YZØ€–\Å‚,Ø‚,È‚,ÐÂ†dN&dadAd6$ët2± µ ² ´°!Y'•‰Y˜YY …É:©L,ÈB-È‚,È-lHÖ‰gbAfAdAhaC²N>²0² ²@’uÚ¥X…ZYZØ¬SËÄ‚,Ì‚,È‚,ÐÂ†dZ&d¡dAd6$ë3± ³ ² ´°!Y'˜‰Y¨YY …É:S,ÈÂ,È‚,È-lHÖ)bAfAdAhaC²Në²P² ²@½9™X[YZØèÊÄ‚,Ø‚,È‚,ÐÂ†DoÀ&dÁdAd6$zƒ6± ¶ ² ´°!Ñ›–‰Y°YY …‰ÞÀL,È‚-È‚,È-lHôÆmbAlAdAhaC¢7t²`² ²@Ñ:™X[YZØˆ–ÊÄ‚,Ø‚,È‚,ÐÂ†D´Z&dÁdAd6$¢3± ¶ ² ´°!-¹ŠY°YY …²†2)³2,ã2/32C35c38“3;Ó3?6b36dS6g“6j³6lÓ6o7sS7w“7{Ã7}ã7:¡#:£C:¥c:§ƒ:©£:«Ã:­ã:¯;±#;³C;µs;¸£;»Ã;¾>â3>äS>æs>è“>êÃ>îó>ð?ò3?ôS?ös?ø“?ú³?ýó? B"4B$TB'”B+ÄB-äB0$C4TC6tC8¤C<ÔC>ôC`$FddFh¤FlÔFnôFpGr4GudGw„Gy¤G{ÄG}äGJ¡$J£DJ¥dJ§„J©¤J«ÄJ­äJ¯K±$K³DKµdK·„K¹¤K¼ÔK¾ôKàNâ4NäTNæ„NêÄNíäNïOñ$OóDOötOø¤OüÔOþôO R"5R$UR&uR(•R*µR-åR/S1%S3ES5uS9¥S;ÅS=åS?Va5VeeVg…Vi¥VkÅVmõVq5WtUWvuWx•WzµW}õW¡5Z¤UZ¦uZ¨¥Z«ÅZ­åZ¯[±%[´e[·…[¹¥[»Õ[¾õ[à^â5^äU^ç•^êµ^ìÕ^îõ^ð_ò5_ôe_÷…_ù¥_ûÅ_ýå_ &b$fb(¦b,æb0&c3Fc5fc7†c9¦c;Æc=æc?fa&fcFfeffg†fi¦fkÆfmæfogq&gsFgufgw–gz¶g|Ög~ög j¢6j¤Vj¦vj©¶j¬æj¯k±&k³Fkµfk¸¦k¼Ök¾ökànâ6näVnævnè¦nëÆníönðoò6oôVoövoø–oú¶oüÖoþöo r"7r$Wr&wr(—r*·r,×r.÷r0s3Gs5gs7‡s9§s;Çs=çs?vb7vdWvfwvh—vj·vl×vn÷vpwr7wtWwvwwx—wz·w|×w~÷w z¢7z¤Wz¦wz¨—zª·z¬×z®÷z°{³G{µg{·‡{¹§{»Ç{½ç{¿~á'~ãG~åg~ç‡~é§~ëÇ~íç~ïñ'óGõg÷‡ù§ûÇýçÿ‚A"Œ`@‚A	&œ`€‚A
+*¬`À‚A.¼` ƒA2Ì`@ƒA6Ü`€ƒA:ì`ÀƒA>ü` †AbŒa@†Afœa€†Aj¬aÀ†An¼a ‡ArÌa@‡AvÜa€‡AzìaÀ‡A~üa ŠA(¢Œb@ŠA)¦œb€ŠA*ª¬bÀŠA+®¼b ‹A,²Ìb@‹A-¶Üb€‹A.ºìbÀ‹A/¾üb ŽA8âŒc@ŽA9æœc€ŽA:ê¬cÀŽA;î¼c A<òÌc@A=öÜc€A>úìcÀA?þüc ’AH"Œd@’AI&œd€’AJ*¬dÀ’AK.¼d “AL2Ìd@“AM6Üd€“AN:ìdÀ“AO>üd –AXbŒe@–AYfœe€–AZj¬eÀ–A[n¼e —A\rÌe@—A]vÜe€—A^zìeÀ—A_~üe šAh¢Œf@šAi¦œf€šAjª°fÐšk¯Àf›l³ÐfP›m·àf›n»ðfÐ›o¿€gžxãgPžyç gžzë°gÐž{ïÀgŸ|óÐgPŸ}÷äg ŸÁ~üôgàŸÁ „h ¢Áˆ$”h`¢Á‰(¤h ¢ÁŠ,´hà¢Á‹0Äh £ÁŒ4Ôh`£Á8äh £ÁŽ<ôhà£Á`„i ¦Á˜d”i`¦Á™h¤i ¦Ášl´ià¦Á›pÄi §ÁœtÔi°!¨ƒ^löbC`møbC°‚¾ØøÅ†à/6 ±!hlFcC@‚ÒØ˜Æ†à46¨±!HjlVcCÀ‚ÖØ¸Æ†à56°±!ˆllfcC@‚ÚØØÆ†à66¸±!ÈnlvcCPmxcCÐßØüÆ† <6á±!ÁxlÈcÃ€åa‚\ØœÇ† =6é±!PÁzlp!bA{lÜcCðøØÄÇ†@>6ó±! A}lìcCpüØäÇ†@?6û±!àAlücCðÙ„È†@D6#²! ‘A‰lLdCp"Ù0àBŠ°Ç†@6*²!X‘.°‹lZdCà"‚ÙÀÈ† F62²!˜‘ljdC`#‚ÙàÈ† G6:²!Ø‘lp¡G|dCð#0Ù„É†@L6c²aÀ2)“™lÎdC€&‚4Ù¨É†`M6l²!h“›lpáMàdC'9ÙÌÉ†€N6u²!°“ÁlpOòdC '‚=ÙðÉ† O6~²!ø“¨lBeÃ€¢2*RÙ”Ê†ÀT6§²!@•AªlTeÃ€«Â*‚VÙ¸Ê†àU6°²!ˆ•¬lfeÃ€´R+[ÙÜÊ† W6¸+º²!Ø•¯lzeCà+‚_Ù€Ë† \6â²!—¹lÊeC`.‚sÙ Ë† ]6ê²!X—»lÚeCà.‚wÙÀË† ^6ò²!˜—½lêeC`/‚{ÙàË† _6ú²!Ø—¿lúeCà/‚Ù€Ì† d6"³!™É 3‹’‘ÂLD()ÌD(J6
+3‡’‘ÂLÄ¢d¤0‘JF
+3Š’ÂL„¢d£0¡(Ù(ÌD(J6
+3Š’ÂL„¢d£0¡(Ù(ÌD(J6
+3Š’ÂL„¢d£0l@³4 	-›Ð²	-›Ð²	-›Ð²	-›Ð²	-›Ð²	-›Ð²	-›Ð²é-›Þ²é-›Þ²é-›Þ²é-›Þ²é-›Þ²é-›Þ²é-›Þ²³A†;Û©18 ;¨x
+ì`Ø€ø‚ OÃ<¡Á,ƒ0ðì§~jÄ  @Æ@Î‚ƒâ A0(ƒ8³Y‚2 1PÆpCPO`0Ë@Á,( A0p8ó©210 7€3Ÿ"ƒ A0p8«110 7€3Ÿƒ A0p8ó©010 7€3Ÿƒ A0p8«oÄÀ @Ü ÎÄÊ10 7€3±êF ÁÀàL¬¸ A0p8«mÄÀ @Ü ÎÄJ10 7€3±ÊF ÁÀàL¬° FVd5l@ØA@ @­¬ÊjØ€°ƒ€ †ˆ:`Ø€ P# ²ƒ”s áÁB†ˆ:€ìà Ý‚~ê'
+‘"Ã@zpnAHÁ€È@‘aÂ‚ ;PFtm@5¹
+(PÆ°ÑÁ x€R@£ €Yc B)1Šá†@¥Ì`–áƒ€ö@ÃK…Á,’äÊ¸@tØ€(…` f	B……t@þlØ€P…€ H BŠ¤ ‘‚2.€³¼ tØ€`…` f	”
+EK4„NAÃN…Á¼À(1l@¬B0 ÊÈà‘Î¾–ZÊ XP³ Í‚2†±BƒYf	f	ša¢Æj f	š
+Ec´…lAÃÁ9˜Á,Ãã³Ð°è0 ³Ð@…b<†C½ ŒìL‡p€~Aì™á ƒ2.`µ6 À! e\ j:Ü¼UÌ2HQ0K0Q9(ƒÈA 0l@˜C0 ³Ó@…¢IZDê ŒpM‡»
+ƒY†Š
+f	,be\pnIì 6 Ü!€Yk B*ˆ"yPÆì¦Ã_…Á,v³Ñƒ2.·$zPöÀ,A6P¡@tÑ>(c¸!(­0˜eÐ¶€òA´ÊÀ@a¢‚˜%àˆ”Aþ 6 @"€Yn B‘6I£PÆpCðf0ËÐyÁ°101 ³b@#¡Œá† &Ð`–¾`– †ˆ’ˆ‰˜%ƒ
+Eå›%ƒ
+E¦£’PFtm¸¹(PÆ°ÁÁ ÐJ(#ƒ(&RÒ!H¹ab&6 „A 0Ñ	˜%0³0†œ €bB@9qnx×°@3¡Œ  ž8H7†€¼fnØ€10 7à¹#‰ A0pž[±‘10 7à¹‰ A0pž[±10 7à¹‰ A0pž[±10 7à¹ó‡ A0pž{±~10 7à¹ã‡ A0pž{±}10 7à¹Ó‡ A0pž{±|10 7à¹Ã‡ A0pž{±{ ™P"'ÜnÆflÄà @òÀ,n.f	j;‡4c€;õR/
+‘"Íæ®½xŽ@d HÃ†¹ã11@ ƒ3`;$(„ƒâ A0(ƒ·“¯Y‚2àp    7"Ã#0ÿ@Î@D>q!“‘þ"Hp%—Û Bn€p ÁBl‹#(·Ðø¿!ÓOá#çàø¿!ÓOQûÈE8þ/DÈôƒAØ>rŽÿ2ýÄ`·Ü…ãÿB„L?1î#÷áø¿!ÓO‘û 1  ´  [d¼:¶Àg§Á–!øî4Ø2ž[†áËÓ`Ë@|zlŠoOƒ-ƒññi°e8¾>¶Èç§Á–!ùþ4Ø2(¨[†åÕ`ËÀ|¢lšoTƒ-ƒó‘j°ex¾R¶ÐW2[†è3Õ`Ë }§l¦Uƒ-õ¥j°e¨>U¶Ö·ªÁ–áúX5Ø2`_«[†ìsÕ`Ë }¯l¶Vƒ-÷Åj°eè>Y¶Þ7«Á–áûh5Ø2€ÁW«Á–!>[¶bðÝj°eƒWƒ-|¹lÊàÓÕ`Ë`ß®[†3øx5Ø2 Á×«Á–!>_¶jðýj°eXƒ\ƒ-|álÚà×`Ëàß¸[†7øXfË ŸÍlâà£§-ƒ|äl9æ@(×€3×à;×`Ë@º[†:ø^fË`_º[†;øÔ5Ø2àÁ‡O[†<øÖ5ØRèÀ®Á×®Á–a>w¶|ðéÓ–¡¾w¶~ðÁk°eøƒ/^ƒ-(|òlBá›×`Ë 
+½[†Qøê5Ø2Âg¯Á–¡¾{¶¦ðák°e8…/_ƒ-*|úlRáÛ×`Ë 
+¿[†Uøú5Ø2°Âç¯Á–¡¾•Ú2¸Â÷¯Á–á¾›Ú2ÀÂ7V[†XøâjË _XmfáC­--|5µe¨…o·¶¶ðíÕ–á>¶¸ð™Ó–!¾¶ºðÑ×–a¾¾Ú2ðÂ'²Á–¡>tÚ2øÂ7²Á–á¾¶Ù2€Ã÷6[†pøH6Ø2ˆÃW²Á–a¾;Û2ÃçB[†røXmË`_[mÎá3Ù`Ë€ßÉ[†tøP6Ør¨ƒ²§²Á·²Á–a>[Û2°ÃÇ²Á–¢„–>—¶îð¡Û–á¾—¶ððñÎ–!>˜¶òð•×–a¾˜¶ôð×–¡¾˜Û2ØÃ'³Á–á¾vÛ2àÃv[†|øf6Ø2èÃG³Á–a>ßÙ2ðÃW³Á–¡>›¶þðáÚ–á¾›¶ ñál°e‰/gƒ-ƒH|º¶e‰¯„¶$ñél°e(‰ogƒ-ƒI|±·e8‰/n¶(ññl°eH‰on¶*ñÕÍ–a%¾ž¶,!ølðýl°eh‰lƒ-ƒK|?³ex‰/lƒ-L|blbâ+›-ƒL|cl)fB Ûà+Û`Ë@ŸÙ[†šøÎfË`ßÙ[†›øÐ6Ø2àÄW;[†œøÒ6Ø2èÄ>[†øØgËÀŸÚ[†žøpgËà_
+m~â[Û`Ë ŸmÂâÛŸ-ƒX|llÆâkÛ`KA‚ÛßÛ[†²øà6Ø2˜Å7G[†³øphË€_Ü[†´øthË ŸÜ[†µøæ6Ø2°Å×?[†¶øè6Ø2¸ÅW·Á–â-»¾»¶pñám°eˆ‹ïÔ¶rñåm°e˜‹Œ¶tñém°e¨‹OŒ¶vñím°e¸‹oƒ-^|'´eÈ‹¯oƒ-ƒ^|~l)öBøÛàÝ`ËÀ_è[†¾øRmËàŸè[†¿øÈhË ßè[†ÐøÌhË é[†ÑøJ7Ø2Æ§>[†ÒøL7ØR˜†pºÁ‡ºÁ–á4>4Ú2 Æç_[†ÔøR7Ø2¨Æb[†ÕøT7Ø2°Æ§F[†ÖøDlËàßê[†×øHlË ë[†ØøZ7Ø2ÈÆgb[†Ùø\7ØRÐ†ðºÁ»Á–¡6>Û2ØÆ»Á–á6>Û2àÆ'»Á–"7„Ù>Ú¶ºñÕn°eØÅ¶¼ñÙn°eèïvƒ-ƒo|¸l~ãËÝ`Ë ßÝlÂãÓÝ`Ë ßî[†ñøT3Ø2ÇC[†òø\lË`ï[†óødkË€_ï[†ôøhkË ß}[†õø|7Ø2°Ç÷»Á–¡=>ð¶îñ½Õ–á=>Û2ÀÇ¾Á–!>¾¿Ú2ÈÇ'¾Á–a>>uÚ2ÐÇ—7[†úøÆ7Ø2ØÇZ[†ûøÈ7Ø2àÇ§K[†üøÊ7Ø2èÇg¾Á–a?¾ó¶üñ¡o°eè/}ƒ-ƒ|êlþã[ß`Ë "û[†ùÚ7Ø2ˆÈç¾Á–aD¾÷¶$òÁo°e(‘/~ƒ-ƒ‰|òlNä“™-Š|ólRä£ß`Ë "_ÊlVä«ß`ËÀ"_ÎlZä³ß`Ëà"ßÎl^ä»ß`Ë #þ[†ùzfË #_þ[†ùô7Ø2ÐÈg2[†ùö7Ø2ØÈÇ¿Á–áF¾þ   !1  ,   
+†X[pQ Ž-0B ‚[Ð$ÄPÆ(ØØ&AŒƒ(„A‚[à,FqH¢4¶ )ˆA0 ˜±Ì@Æ$Š 2¶  ˆ±†0@ ca €àÅ Â@¸Øah±…0 ‹-(„Vl ‚°`€`Á„(ŒCq$KóD>±`Â@‚¡8±X0 0a€       a   á  f     ¤”ÿÿ@l@”á5@J    ñ0  …	  "GÈQD   2   „]&OºLu™ <ë2AxØe‚ð´Ëáq—	Âó.„^&O¼Ly™ <ó2Axèe‚ðÔËá±—	Âs/„_&O¾L}™ <û2Axøe‚ðôËáñ—	Âó/„d&OÈL‘™ <#3AxHf‚ð”Ìá1™	Âs2„e&OÊL•™ <+3AxXf‚ð´Ìáq™	Âó2„f&OÌL™™ <33Axhf‚ðÔÌá±™	Âs3„g&OÎL™ <;3Axxf‚ðôÌáñ™	Âó3„l&OØL±™ <c3AxÈf‚ð”Íá1›	Âs6„m&OÚLµ™ <k3AxØf‚ð´Íáq›	Âó6„n&OÜL¹™ <s3Axèf‚ðÔÍá±›	Âs7„o&OÞL½™ <{3Axøf‚ðôÍáñ›	Âó7„t&OèLÑ™ <£3AxHg‚ð”Îá1	Âs:„u&OêLÕ™ <«3AxXg‚ð´Îáq	Âó:„v&OìLÙ™ <³3Axhg‚ðÔÎá±	Âs;„w&OîLÝ™ <»3Axxg‚ðôÎáñ	Âó;„|&OøLñ™ <ã3AxÈg‚ð”Ïá1Ÿ	Âs>„}&OúLõ™ <ë3AxØg‚ð´ÏáqŸ	Âó>„~&OüLù™ <ó3Axèg‚ðÔÏá±Ÿ	Âs?„&OþLý™ <û3Axøg‚ðôÏáñŸ	Âó?„„&OMš <#4AxHh‚ð”Ðá1¡	ÂsB„…&O
+Mš <+4AxXh‚ð´Ðáq¡	ÂóB„†&OMš <34Axhh‚ðÔÐá±¡	ÂsC„‡&OMš <;4Axxh‚ðôÐáñ¡	ÂóC„Œ&OM1š <c4AxÈh‚ð”Ñá1£	ÂsF„&OM5š <k4AxØh‚ð´Ñáq£	ÂóF„Ž&OM9š <s4Axèh‚ðÔÑá±£	ÂsG„&OM=š <{4Axøh‚ðôÑáñ£	ÂóG„”&O(MQš <£4AxHi‚ð”Òá1¥	ÂsJ„•&O*MUš <«4AxXiC]ØìÂ†€6~ò' *‚^ØøÂ†dTH%dadAd6¿°! ‡‰©œJ,ÈÂ,È‚,È-lÂaC ’TQ•X…YYZØŒÃ†$UX%dadAd6ä°!IW‰Y¨YY …A9lÌaC+±²0² ²@‚sØÀÊ¬Ä‚,Ì‚,È‚,ÐÂ† 6$°R+± ³ ² ´°!H‡	¬ÜJ,ÈÂ,È‚,È-lÔaC°’\Ñ•X…YYZØ°Ã†$Wx%d¡dAd6í°!É_‰Y˜YY …;lHr\bAjAdAhaCðxØˆË¸Ä‚,Ì‚,È‚,ÐÂ† 6$âR.± µ ² ´°!‡Á<lHÎ]bAfAdAhaC@’sQ—X…YYZØÔÃ†ä\Ø%d¡dAd6ö°!9w‰Y˜YY …Á=lHÎ^bAjAdAhaC€’s‘—X…YYZØäÃ†ä\è%d¡dAd6ú°!9{‰Y˜YY …Á>lHÎ_bAjAdAhaCÀ’sÑ—X…YYZØôÃ†À6$üÒ/± ³ ² ´°!ø‡	¿üK,ÈÂ,È‚,È-l@bCÂ/!²P² ²@‚ØðËÈÄ‚,Ì‚,È‚,ÐÂ†@$6$üR2± µ ² ´°!‰	¿œL,ÈÂ,È‚,È-lHbCÂ/)²P² ²@‚’ØðËÊÄ‚,Ì‚,È‚,ÐÂ†À$6$üÒ2± ³ ² ´°!é—‰Y°YY …I¿”L,È‚-È‚,È-lHú%ebAlAdAhaCp”ØÈÌÌÄ‚,Ì‚,È‚,ÐÂ† %6$2S3± ³ ² ´°!P‰‰ÌÜL,ÈÂ,È‚,È-lVbC"39²0² ²@–ØÈÌÎÄ‚,Ì‚,È‚,ÐÂ† %6$2Ó3± µ ² ´°!p‰‰ÌüL,ÈÂ,È‚,È-l^bC"3a²0² ²@˜ØÈÌØÄ‚,Ì‚,È‚,ÐÂ† &6$2S6± ³ ² ´°!‰‰ÌœM,ÈB-È‚,È-lfbC"3i²0² ²@šØÈÌÚÄ‚,Ì‚,È‚,ÐÂ† &6$2Ó6± µ ² ´°!°‰ÁMlHÞnbAfAdAhaC€’·‘›X…YYZØäÄ†ämè&d¡dAd6:±!y»‰Y˜YY …‰ª¸J,È‚-È‚,È-lHÆ¥\bAlAdAhaCR.ã²0² ²@’r)—X…ZYZØìÄ†„oø&d¡dAd6<±!á¿‰Y˜YY …‰ßðM,È‚-È‚,È-lHÐ…]bAlAdAhaC‚.ð²`² ²@t¡—X[YZØ ¾Ä‚,Ø‚,È‚,ÐÂ† '6$¥S:± µ ² ´°!ð‰IéœN,ÈÂ,È‚,È-l~bCR:©²0² ²@°Ø”ÎêÄ‚,Ô‚,È‚,ÐÂ† ,6$¥Ó:± ³ ² ´°!‹Ié¼N,ÈÂ,È‚,È-lÆbCR:±²P² ²@²Ø”ÎìÄ‚,Ì‚,È‚,ÐÂ† ,6$¥S;± ³ ² ´°!0‹IéÜN,ÈB-È‚,È-lÎbCR:¹²0² ²@’Ó)X[YZØœÎêÄ‚,Ø‚,È‚,ÐÂ†ätb'dÁdAd6$§s;± ¶ ² ´°!@‹ÉïüN,ÈB-È‚,È-lÒbCò;á²0² ²@µØüÎøÄ‚,Ì‚,È‚,ÐÂ†`-6$¿S>± ³ ² ´°!	Ÿß‰Y°YY …Iê”N,È‚-È‚,È-lHRgubAlAdAhaC’:±²`² ²@’Ô¹X[YZØ¬NéÄ‚,Ô‚,È‚,ÐÂ†duN'dadAd6$«“:± ³ ² ´°!YÕ‰Y¨YY …Éê´N,ÈÂ,È‚,È-lHVçubAfAdAhaC²:±²P² ²@’Õ™X…YYZØ¬NíÄ‚,Ì‚,È‚,ÐÂ†dun'd¡dAd6$«“;± ³ ² ´°!`‹ÉýÜO,ÈB-È‚,È-lÚbCr?ù²P² ²@·ØÜÏþÄ‚,Ì‚,È‚,ÐÂ†à-6$÷Ó?± µ ² ´°!€‹ÉýüO,ÈÂ,È‚,È-lâbCr?!²P² ²@¹ØÜÏÅ‚,Ì‚,È‚,ÐÂ†`.6$÷SB± µ ² ´°! ‹ÉýœP,ÈÂ,È‚,È-lêbCr?)²0² ²@»ØÜÏ
+Å‚,Ì‚,È‚,ÐÂ†dfz&dÁdAd6$3s6± ¶ ² ´°!™™¶‰Y°YY …Á]lH`†bAjAdAhaC€’¡X…YYZØäÅ††h(d¡dAd6z±!!ŠY˜YY …Á^lH`‡bAjAdAhaCÀÒ¡X…YYZØôÅ††x(d¡dAd6~±!!ŠY˜YY …Á_lH`ŒbAfAdAhaCÒ:¥²`² ²@’ÖYX[YZØ´NìÄ‚,Ø‚,È‚,ÐÂ†¤un'dÁdAd6$5Ó3± ¶ ² ´°!©™³‰Y°YY …IÍ´M,È‚-È‚,È-lHòç~bAjAdAhaC’?ù²P² ²@’üÙŸX…YYZØäOÿÄ‚,Ô‚,È‚,ÐÂ†$þ'dadAd6$ùB± µ ² ´°!ÉŸŠY˜YY …Iþ”P,ÈB-È‚,È-lHòç„bAfAdAhaC’?)²0² ²@’üY¡X…YYZØÜLÏÄ‚,Ø‚,È‚,ÐÂ†äfÎ&dÁdAd6$7Ó6± ¶ ² ´°!yÒ‰Y°YY …Éë¬N,È‚-È‚,È-lH^'vbAlAdAhaCò:·²`² ²@’Ø)X…ZYZØÄÎéÄ‚,Ì‚,È‚,ÐÂ†$vR'dadAd6$±³:± µ ² ´°!‰Ö‰Y˜YY …Iì¼N,ÈÂ,È‚,È-lHb'vbAjAdAhaC;³²0² ²@’Ø©X…YYZØÄÎíÄ‚,Ô‚,È‚,ÐÂ†$vr'dadAd6$9Ó3± ¶ ² ´°!É™³‰Y°YY …IÎ´M,È‚-È‚,È-lHd†bAlAdAhaC"C4²`² ²@Â¡X[YZØÈÅ‚,Ø‚,È‚,ÐÂ†„†`(d¡dAd6$4$C± ³ ² ´°!¡!ŠY¨YY …	ÙP,ÈÂ,È‚,È-lHh‡bAjAdAhaCBC:²0² ²@â¡X…ZYZØÐÅ‚,Ì‚,È‚,ÐÂ†„†À(dadAd6$;Ó3± ¶ ² ´°!Ù™³‰Y°YY …ÉÎ´M,È‚-È‚,È-lHzffbAfAdAhaCÒ35²0² ²@’ž¹™X…YYZØôLÎÄ‚,Ì‚,È‚,ÐÂ†¤gv&dadAd6$=Ó3± µ ² ´°!é™Ÿ‰Y˜YY …IÏ„M,ÈÂ,È‚,È-lHzflbAfAdAhaCÒ3e²0² ²@’ž9›X…ZYZØôLÚÄ‚,Ì‚,È‚,ÐÂ†¤gÖ&dadAd6$=Ó6± µ ² ´°!™Ò‰Y°YY …Éì¬N,È‚-È‚,È-lHf'vbAlAdAhaC2;·²`² ²@’Ÿé™X[YZØüÌÙÄ‚,Ø‚,È‚,ÐÂ†ägÚ&dÁdAd6$ûs?± ¶ ² ´°!ÙŸü‰Y°YY …ÉþôO,È‚-È‚,È-lHö'„bAlAdAhaC²?%²`² ²@’þ¹ŸX…ZYZØôOþÄ‚,Ô‚,È‚,ÐÂ†¤ö'dadAd6$ýÓ?± µ ² ´°!éŸÿ‰Y˜YY …Iÿ„P,ÈB-È‚,È-lHúg„bAfAdAhaCÒ?%²P² ²@’þ9¡X…YYZØôO
+Å‚,Ì‚,È‚,ÐÂ†¤V(dadAd6$aÓ3± ¶ ² ´°!	›³‰Y°YY …IØ´M,È‚-È‚,È-lHj§tbAlAdAhaCR;«²`² ²@’Ú‰X[YZØÔÎíÄ‚,Ø‚,È‚,ÐÂ†ävJ'd¡dAd6$·s:± ³ ² ´°!¹Ô‰Y˜YY …Éí¬N,ÈB-È‚,È-lHn§ubAfAdAhaCr;¯²0² ²@’Û‰X…ZYZØÜÎìÄ‚,Ì‚,È‚,ÐÂ†ävj'dadAd6$·s;± µ ² ´°!¹Ü‰Y˜YY …ÉØôL,È‚-È‚,È-lHÆælbAlAdAhaC26m²`² ²@‚¡X[YZØØÅ‚,Ø‚,È‚,ÐÂ†Ä†p(dÁdAd6$6ÄC± ¶ ² ´°!Á!ŠY¨YY …	ÉP,ÈÂ,È‚,È-lHpˆ†bAjAdAhaC‚C6²0² ²@Â¡X…ZYZØàÅ‚,Ì‚,È‚,ÐÂ†‡x(d¡dAd6$8äC± ³ ² ´°!Á!0ŠY˜YY …IÙôL,È‚-È‚,È-lHÊælbAlAdAhaCR6m²`² ²@’³™™X…YYZØœMÍÄ‚,Ì‚,È‚,ÐÂ†äln&dadAd6$g“3± ³ ² ´°!9›‰Y˜YY …ÉÙôL,ÈB-È‚,È-lHÎægbAfAdAhaCr6a²0² ²@’³›X…YYZØœMÙÄ‚,Ì‚,È‚,ÐÂ†älÎ&d¡dAd6$g“6± ³ ² ´°!9›µ‰Y˜YY …ÉÙ´M,ÈB-È‚,È-lHr§tbAlAdAhaC’;«²`² ²@’Ü‰X[YZØäÎíÄ‚,Ø‚,È‚,ÐÂ†$mz&dÁdAd6$is6± ¶ ² ´°!I›¶‰Y°YY …ÉÿÜO,È‚-È‚,È-lHþ'bAlAdAhaCò?ý²`² ²@’ÿ	¡X[YZØüO	Å‚,Ø‚,È‚,ÐÂ†$„î'd¡dAd6$!”?± µ ² ´°!	¡ý‰Y˜YY …IõO,ÈB-È‚,È-lHBèbAfAdAhaCB!²P² ²@’¡X…YYZØ„P	Å‚,Ô‚,È‚,ÐÂ†$„N(dadAd6$!”B± ³ ² ´°!	¡ŠY˜YY …ÉÚôL,È‚-È‚,È-lHÖælbAlAdAhaC²6m²`² ²@‚¡X[YZØèÅ‚,Ø‚,È‚,ÐÂ†D‡p(dÁdAd6$:ÄC± ¶ ² ´°!á!ŠY¨YY …	ÉP,ÈÂ,È‚,È-lHxˆ†bAjAdAhaCÂC6²0² ²@Â¡X…ZYZØðÅ‚,Ì‚,È‚,ÐÂ†„‡x(d¡dAd6$<äC± ³ ² ´°!á!0ŠY˜YY …ÉøüN,È‚-È‚,È-lH|†bAlAdAhaCâC4²`² ²@Â¡X[YZØøÅ‚,Ø‚,È‚,ÐÂ†D]Ø%dÁdAd6$ê/± ¶ ² ´°!Qz‰Y°YY …‰ºàK,È‚-È‚,È-lHØ]bAfAdAhaCÂ.ê²0² ²@va—X…ZYZØ°‹»Ä‚,Ì‚,È‚,ÐÂ†„]à%d¡dAd6$ì"/± ³ ² ´°!az‰Y¨YY …	»ØK,ÈÂ,È‚,È-lHØ_bAjAdAhaCÂ.ú²0² ²@0‚¡X[YZØ€Å‚,Ø‚,È‚,ÐÂ†Œp(dÁdAd6$`ÄC± ¶ ² ´°!qv‰Y°YY …‰»ÀK,È‚-È‚,È-lHÜ…^bAlAdAhaCâ.ø²`² ²@xA—X…YYZØÀ‹ºÄ‚,Ì‚,È‚,ÐÂ†^Ø%d¡dAd6$ðâ.± ³ ² ´°!x‰Y¨YY …	¼ÈK,ÈÂ,È‚,È-lHà…^bAjAdAhaC/ö²0² ²@xÁ—X…ZYZØÀ‹¾Ä‚,Ì‚,È‚,ÐÂ†D^Ø%dÁdAd6$ò/± ¶ ² ´°!‘z‰Y°YY …‰¼àK,È‚-È‚,È-lHè]bAfAdAhaCB/ê²0² ²@za—X…ZYZØÐ‹»Ä‚,Ì‚,È‚,ÐÂ†„^à%d¡dAd6$ô"/± ³ ² ´°!¡z‰Y¨YY …	½ØK,ÈÂ,È‚,È-lHè_bAjAdAhaCB/ú²0² ²@{a—X[YZØØ¼Ä‚,Ø‚,È‚,ÐÂ†Ä^è%dÁdAd6$ö‚/± ¶ ² ´°!Át‰Y˜YY …	¾¨K,ÈÂ,È‚,È-lHð…]bAjAdAhaC‚/î²0² ²@|—X…ZYZØà‹¼Ä‚,Ì‚,È‚,ÐÂ†_è%d¡dAd6$øb/± ³ ² ´°!Á|‰Y¨YY …	¾èK,ÈÂ,È‚,È-lHÊçwbAlAdAhaC2B÷²`² ²@’ÊŸX[YZØŒPÿÄ‚,Ø‚,È‚,ÐÂ†d„B(dÁdAd6$#TB± ¶ ² ´°!)¡û‰Y¨YY …I	åO,ÈB-È‚,È-lHJhbAfAdAhaCRBý²P² ²@’úŸX…YYZØ”PÅ‚,Ô‚,È‚,ÐÂ†¤„F(dadAd6$%TB± µ ² ´°!)¡ŠY˜YY …I	¥P,ÈÂ,È‚,È-lHJh…bAfAdAhaCrB÷²`² ²@’ÊŸX[YZØœPÿÄ‚,Ø‚,È‚,ÐÂ†ä„B(dÁdAd6$'TB± ¶ ² ´°!ù—‰Y°YY …É¿”L,È‚-È‚,È-lHþ%ebAlAdAhaC2ÿ²0² ²@’	™X…ZYZØ„ÌÈÄ‚,Ì‚,È‚,ÐÂ†$dJ&d¡dAd6$!s2± ³ ² ´°!	™”‰Y¨YY …IÈ¬L,ÈÂ,È‚,È-lHB¦ebAfAdAhaC22!²`² ²@’‘)™X[YZØŒLÊÄ‚,Ø‚,È‚,ÐÂ†¤dþ%dadAd6$%2± µ ² ´°!)™‘‰Y˜YY …IÉ”L,ÈB-È‚,È-lHJædbAfAdAhaCR2)²P² ²@’’Y™X…YYZØ”LËÄ‚,Ì‚,È‚,ÐÂ†ädB&dÁdAd6$'S2± ¶ ² ´°!9™”‰Y°YY …IÊüK,ÈÂ,È‚,È-lHR&dbAjAdAhaC’2#²0² ²@’”)™X…ZYZØ¤ÌÉÄ‚,Ì‚,È‚,ÐÂ†$eR&d¡dAd6$)³2± ³ ² ´°!I™–‰Y˜YY …ÉÊ„L,È‚-È‚,È-lHV¦dbAlAdAhaC²2)²`² ²@’¶™™X…YYZØ´MÍÄ‚,Ì‚,È‚,ÐÂ†¤mn&dadAd6$m“3± ³ ² ´°!i›‰Y˜YY …IÛôL,ÈB-È‚,È-lHÚægbAfAdAhaCÒ6a²0² ²@’¶›X…YYZØ´MÙÄ‚,Ì‚,È‚,ÐÂ†¤mÎ&d¡dAd6$m“6± ³ ² ´°!i›µ‰Y˜YY …IÛ´M,ÈB-È‚,È-lHà†nbAlAdAhaC’B÷²`² ²@’ÊŸX[YZØ¤PÿÄ‚,Ø‚,È‚,ÐÂ†$…B(dÁdAd6$)TB± ¶ ² ´°! É¹[,ÈB-È‚,È-lBcCrné²0² ²@ÑØœÛºÅ‚,Ì‚,È‚,ÐÂ†d…î'dÁdAd6$+”?± ¶ ² ´°!Y¡þ‰Y°YY …É
+…P,È‚-È‚,È-lHV¨„bAlAdAhaC’nç²`² ²@]á•X[YZØè
+¸Ä‚,Ø‚,È‚,ÐÂ†„Wt%dadAd6$¼Â+± µ ² ´°!á_‰Y˜YY …	¯€K,ÈB-È‚,È-lHä†nbAlAdAhaCB7p²0² ²@º‘›X…YYZØÐÝÄ‚,Ô‚,È‚,ÐÂ†„nì&dadAd6$¬â*± ¶ ² ´°!qU‰Y˜YY …‰«°J,ÈÂ,È‚,È-lH\ÅUbAjAdAhaCâ+à²`² ²@t§TPeUZåUd…VlWv¥W~%\ÈÅ\Òe]Úå]âe^êå^òe_üdD†dLeT†e\æe`&fhÆfpFgxÆgÀFlÈÆlÐFmØÆmâfnêænð&oôfoúæo@'tDgtHÇtPGuXÇu`GvhÇvpGwv‡wzÇwÀG|ÈÇ|Î}ÒG}Ö‡}ÚÇ}Þ~âG~æ‡~êÇ~ðGøÇ@H„HÈ„PH…X¨…\è…bh†jè†rh‡zè‡ÂHŒÆˆŒÊÈŒÎÒHÖˆÚÈÞŽâHŽæˆŽêÈŽîòHöˆúÈþ”BI”F‰”JÉ”N	•RI•V‰•ZÉ•^	–bI–f‰–jÉ–n	—rI—v‰—zÉ—~	œÂIœÆ‰œÊÉœÎ	ÒIÖ‰ÚÉÞ	žâIžæ‰žêÉžî	ŸòIŸö‰ŸúÉŸþ	¤BJ¤FŠ¤JÊ¤N
+¥RJ¥VŠ¥ZÊ¥^
+¦bJ¦fŠ¦jÊ¦n
+§rJ§vŠ§zÊ§~
+¬ÂJ¬ÆŠ¬ÊÊ¬Î
+­ÒJ­ÖŠ­ÚÊ­Þ
+®âJ®æŠ®êÊ®î
+¯òJ¯öŠ¯úÊ¯þ
+´BK´F‹´JË´NµRKµV‹µZËµ^¶bK¶f‹¶jË¶n·rK·v‹·zË·~¼ÂK¼Æ‹¼ÊË¼Î½ÒK½Ö‹½ÚË½Þ¾âK¾æ‹¾êË¾î¿òK¿ö‹¿úË¿þÄBLÄFŒÄJÌÄNÅRLÅVŒÅZÌÅ^ÆbLÆfŒÆjÌÆnÇrLÇvŒÇzÌÇ~ÌÂLÌÆŒÌÊÌÌÎÍÒLÍÖŒÍÚÌÍÞÎâLÎæŒÎêÌÎîÏòLÏöŒÏúÌÏþÔBMÔFÔJÍÔNÕRMÕVÕZÍÕ^ÖbMÖfÖjÍÖn×rM×v×zÍ×~ÜÂMÜÆÜÊÍÜÐMÝØ­ÝÜíÝà-ÞämÞè­ÞìíÞð-ßômßø­ßüíß@.äDnC0ÒØ”Æ†À46§±!@AjlTcC°ÖØ´Æ†À56¯±!€AlldcC0ÚØÔÆ†À66·±!ÀAnltcC°ÞØôÆ† 6¾±!øxlÂcC ‚ñØÇ† <6æ±!8zlÒcC ‚õØ°Ç† =6î±!x|lâcC ‚ùØÐÇ† >6ö±!¸~lòcC ‚ýØðÇ† ?6þ±!øˆlBdC "‚ÙÈ† D6&²!8‘ŠlRdC "‚Ù°È† E6.²!x‘ŒlbdC #‚ÙÐÈ† F66²!¸‘ŽlrdC #‚ÙðÈ† G6>²!ø‘˜lÂdC &‚1ÙÉ† L6f²!8“šlÒdC &‚5Ù°É† M6n²!x“œlâdC '‚9ÙÐÉ† N6v²!¸“žlòdC '‚=ÙðÉ† O  3i d¤0±()ÌD(J6
+3‡’‘ÂLD()ÌD,JF
+3Š’ÂL„¢d£0¡(Ù(ÌD(J6
+3Š’ÂL„¢d£0¡(Ù(ÌD(J6
+3Š’ÂL„¢d£0l@@F Ã„“À°Ñ`@ÏB†&  ŠR2l@8Ðsn.áƒÈ@‘ab	€¦ƒtcxiÅ( DŠM0 Ô(#ƒGº6ŒYK(cØ€ ‚6 €Y‚€8e7äd³‚Ä¥¤BPcÃ„ 	ƒÈ@‘aÂ€<e¦‚6 ¼` ÈSÆpCÐNhÁÓýõNÂ°AÁ (c¸!ˆ§0˜e †`–  2PÎSÃ„0KPg@O@e Œj,‡ˆ2€Ð@„Ên‚3˜e8Œ`– 6 Ø Æ€Ô@ÄÊÀ@aÂ‚ 6P±20@`Ø€pƒ` f	‚e\ðf9l@ÈA0 4Ê 9PÆpƒœÁ,ƒ’³Ý2.@³6 ò  ºeP(!†ˆ=€ô@”ÊÀ@ ab‚˜%X¨”qŸå°ñÁ ((ƒ@AÃBp³Ì8D
+Ê¸ ÔvØ€0…` ˆ”A£ 6 J!€Y‡TAÃÁM…Á,Ãt
+Ê TPB«À,ADª be` €À°á
+Á ÌDä
+ÊnÂÁf¤)6 `A`–à"XPÆpC h0ËPQÁ,5l@ÈÂ8À,5Kp‘-(ƒlA;l@àB0 „ÊÈà‘Îè6[Ê [P¹ å‚2†¶BƒY†f	´abÚj f	4Úe7î`³ÜÌtÃD/¼Ã ÌtÔÊÈà‘®óÖ[Ê6 È! úe7t³Þ:(ãY»ìA‡ˆr`– h”qÁ=(ƒ2N6 hÒ!h·a¢6 „! f	À€ÖAÃh…ÁþÀ(1l@¼C0 ³a@ü @†`–  xPÆpC`Za0Ë0dÌ”Ñƒ22 €þa!‚|6 B" €aB`– h”‘Á TéÆ¸–kÁ  ÔÊÈ  J‰ƒtcd+ä†ˆ`    7°ø¿!ÓOqŒÿ2ýÄ`õ%0þ/DÈôƒAØÇÀø¿!ÓOqãÿB„L?1~Œÿ2ýÄ`ùm0þ/DÈôƒAè7Âø¿!ÓO±  1  :  [ÁºPñDnË |#·e>’Û2_Ém†Ïä¶Äwr[†âC¹-ƒñ¥Ü–áøTnË€|+·eH>–Û2(_Ëm–Ïå¶Ì÷r[†æƒ¹-ƒóÅÜ–áùdnË }¢²eˆ¾RÙ2Hªl¦ïU¶Ôg*[†êÃ•-ƒõÊ–áúÂeË€}°²eÈ¾™Û2hÍm¶¯æ¶Üg.[†î“•-ƒ÷ÙÜ–áûnnË ÎmÂàÛ—-ƒ|ü²eƒ/ç¶dðéÜ–¡¾Û2˜Á3[†3øÜfË€ÏmÒàK•-ƒ|=·¥XÎç¾ŸÛ2°Á'.[†6øÀnËà¹lÞà»-|b·eˆƒoo¶rðõÍ–a¾sÙ2ÐÁ7v[†:øHgË`Ÿélîà#»-|e·eÈƒÏì¶zðùÎ–a>ðÙ2ðÁwv[†>øÐnËà_ÚmþàC-(|j·e…Ou¶¢ð­Ý–a>ûÙ2Â'3[†RøØnË`
+ßmNác-*|4³eH…¯í¶ªð¹Ý–a¾·Û2°Â‡?[†VølfËà
+Ÿël^áƒ»-,|°³eˆ…g¶²ðÅÐ–a¾¸Û2ÐÂ7C[†ZøänË`ŸÎlná›»-.|<³eÈ…Ov¶ºðùÌ–a>ºÛ2ðÂWw[†^øìnËàŸþl~á»»-8|ü³e‡l¶âðÑÎ–a>¼Û2Ãg;[†røÄfË`_mÎáË»-:|7´eH‡Oï¶êð‘Í–a¾½Û2°Ãg6[†vøpgËàÚlÞáã»-<|}·eˆ‡Ïï¶òðùÏ–a¾¿Û2ÐÃB[†zøÔfË`_mîá½->|;´eÈ‡/ô¶úð‰Ï–a>ÑÛ2ðÃ7z[†~øzhËà_ºlþá#½-H|ë²e‰¯ô¶"ñýÐ–a$¾vÙ2Ägz[†’øÞeË`ßémNâ‹—-J|¨·eH‰/õ¶*ñÍË–a%>ÕÛ2°ÄW/[†–øVoËàëm^âk½-L|÷²eˆ‰Ïõ¶2ñ½Þ–a&>òÙ2ÐÄ'B[†šø`oË`	mnâ3¡-N|±·eÈ‰Oö¶:ñÍÞ–a'>Ù2ðÄG{[†žø@fËàŸÈl~â«½-X|¶·e‹ïö¶bñ‘Ì–a,>ÜÛ2Åg2[†²øroË`ŸîmÎâÛ½-Z|(³eH‹÷¶jñ©Ì–a-¾ÞÛ2°Åç{[†¶ø~oËàÛlÞâ{›-\|à·eˆ‹/ü¶rñ¡Ð–a.>ñÛ2ÐÅ7~[†ºøÌmË`ùmîâS¡-^|å·eÈ‹Ý¶zñ™ß–a/¾óÛ2ðÅ—+[†¾øÐoËàß®lþâK¿-h|ê·e/n¶¢ñ­ß–a4>öÛ2Æ×~[†ÒøæfË`ŸûmNã[•-j|ï·eH¯U¶ªñÁß–a5¾ºÙ2°Æ[†ÖøäoËàßüm^ãS·-l|ô·eˆ¯W¶²ñÕß–a6¾_Ù2ÐÆg[†ÚøîoË`_¾lnãÃ¿-n|´²eÈ/ÿ¶ºñéß–a7>–Ù2ðÆ·[†ÞøleËàÿm~ãë¿-x|þ   !1  	   † (ƒ	C t† Ð&`MÀ™0À2a dÂ       a   õ  `     ¤”á5@JÁ”ÿÿ@Ô   ñ0  Û  "GÈQD   3   „§•&+MžWš <°4Axbi‚ðÈÒá™¥	ÂCK„§–&-Mž[š <¸4Axri‚ðèÒáÙ¥	ÂÃK„§—&/Mž_š <à4AxÂi‚ðˆÓá§	ÂCN„§œ&9Mžsš <è4AxÒi‚ð¨ÓáY§	ÂÃN„§&;Mžwš <ð4Axâi‚ðÈÓá™§	ÂCO„§ž&=Mž{š <ø4Axòi‚ðèÓáÙ§	ÂÃO„§Ÿ&?Mžš < 5AxBj‚ðˆÔá©	ÂCR„§¤&IMž“š <(5AxRj‚ð¨ÔáY©	ÂÃR„§¥&KMž—š <05Axbj‚ðÈÔá™©	ÂCS„§¦&MMž›š <85Axrj‚ðèÔáÙ©	ÂÃS„§§&OMžŸš <`5AxÂj‚ðˆÕá«	ÂCV„§¬&YMž³š <h5AxÒj‚ð¨ÕáY«	ÂÃV„§­&[Mž·š <p5Axâj‚ðÈÕá™«	ÂCW„§®&]Mž»š <x5Axòj‚ðèÕáÙ«	ÂÃW„§¯&_Mž¿š < 5AxBk‚ðˆÖá­	ÂCZ„§´&iMžÓš <¨5AxRk‚ð¨ÖáY­	ÂÃZ„§µ&kMž×š <°5Axbk‚ðÈÖá™­	ÂC[„§¶&mMžÛš <¸5Axrk‚ðèÖáÙ­	ÂÃ[„§·&oMžßš <à5AxÂk‚ðˆ×á¯	ÂC^„§¼&yMžóš <è5AxÒk‚ð¨×áY¯	ÂÃ^„§½&{Mž÷š <ð5Axâk‚ðÈ×á™¯	ÂC_„§¾&}Mžûš <ø5Axòk‚ðè×áÙ¯	ÂÃ_„§¿&Mžÿš < 6AxBlC]ØìÂ†€6.ò"0#‚^ØøÂ†dFh$dadAd6¿°! ‡‰ÜH,ÈÂ,È‚,È-lÂaC ’Ñ‘X…YYZØŒÃ†$Gx$dadAd6ä°!É‰Y¨YY …A9lÌaC&a²0² ²@‚sØ€É˜Ä‚,Ì‚,È‚,ÐÂ† 6$`R&± ³ ² ´°!H‡	˜œI,ÈÂ,È‚,È-lÔaC°’4Q“X…YYZØ°Ã†$MØ$d¡dAd6í°!p‡‰›¼I,ÈÂ,È‚,È-lÞaCâ&q²P² ²@xØÄÃ†dNè$dadAd6ò°!™;‰Y¨YY …Á<lHæObAfAdAhaC@’9Ñ“X…ZYZØÔÃ†dNø$dadAd6ö°!™?‰Y¨YY …Á=lHæTbAfAdAhaC€’9•X…ZYZØäÃ†dNH%dadAd6ú°!™S‰Y˜YY …Á>løaC‚*©²0² ²@‚~Ø ÊªÄ‚,Ì‚,È‚,ÐÂ†À6$¨Ò*± µ ² ´°!ø‡	ª¼J,ÈÂ,È‚,È-l@bC‚*±²P² ²@‚Ø Ê¬Ä‚,Ì‚,È‚,ÐÂ†@$6$¨R+± µ ² ´°!‰	ªÜJ,ÈÂ,È‚,È-lHbC‚*¹²0² ²@’Ti•X[YZØ¤J¬Ä‚,Ø‚,È‚,ÐÂ†$Uj%dÁdAd6%±!0‰‰¯üJ,ÈÂ,È‚,È-lNbCâ+á²0² ²@”ØøÊ¸Ä‚,Ì‚,È‚,ÐÂ† %6$¾R.± ³ ² ´°!P‰‰¯œK,ÈB-È‚,È-lVbCÀ’tQ—X…YYZØ´Ä†$]Ø%dadAd6.±!Iw‰Y¨YY …‰ŽøH,È‚-È‚,È-lHÔÅ]bAlAdAhaCð˜ØÈË¼Ä‚,Ø‚,È‚,ÐÂ† &6$õR/± µ ² ´°!‰I½ÜK,ÈB-È‚,È-lfbCR/ù²0² ²@šØÔË¾Ä‚,Ì‚,È‚,ÐÂ† &6$õÒ/± ³ ² ´°!°‰I½üK,ÈB-È‚,È-lnbCR/!²0² ²@œØÔËÈÄ‚,Ì‚,È‚,ÐÂ† '6$õR2± ³ ² ´°!y“8‰Y°YY …Iœ¼I,ÈÂ,È‚,È-lHâ$NbAjAdAhaC2/ò²0² ²@’y™—X…ZYZØèÄ†d^X&dadAd6$,3/± ¶ ² ´°!¹—z‰Y¨YY …É½ÜK,ÈB-È‚,È-lHî%_bAfAdAhaCr/û²0² ²@’{é—X…YYZØÜË¿Ä‚,Ô‚,È‚,ÐÂ†ä^B&dadAd6$÷22± ³ ² ´°!¹—’‰Y˜YY …	»¸K,È‚-È‚,È-lHÜE]bAfAdAhaCâ.ì²0² ²@wq—X…ZYZØäK½Ä‚,Ø‚,È‚,ÐÂ†$_î%dÁdAd6$ùò/± ¶ ² ´°!Y•V‰Y°YY …ÉªÄJ,È‚-È‚,È-lHV¥VbAlAdAhaCÒ*«²0² ²@’Vi•X…ZYZØ´Ê«Ä‚,Ì‚,È‚,ÐÂ†¤Ub%d¡dAd6$­2+± ³ ² ´°!i•Z‰Y¨YY …I«ÜJ,ÈÂ,È‚,È-lHZ%WbAfAdAhaCò*­²`² ²@’W‰•X[YZØ¼J­Ä‚,Ø‚,È‚,ÐÂ†$VV%dadAd6$±Ò*± µ ² ´°!‰•W‰Y˜YY …I¬ÄJ,ÈB-È‚,È-lHbeVbAfAdAhaC+µ²P² ²@’X¹•X…YYZØÄJ®Ä‚,Ì‚,È‚,ÐÂ†dVZ%dÁdAd6$³+± ¶ ² ´°!™•Z‰Y°YY …I­¬J,ÈÂ,È‚,È-lHj¥UbAjAdAhaCR+¯²0² ²@’Z‰•X…ZYZØÔÊ¬Ä‚,Ì‚,È‚,ÐÂ†¤Vj%d¡dAd6$µr+± ³ ² ´°!©•\‰Y˜YY …É¾ÔK,È‚-È‚,È-lHöå^bAlAdAhaC²/ÿ²`² ²@‚ØŒÎèÄ‚,Ô‚,È‚,ÐÂ†€'6$£S:± ³ ² ´°!é—z‰Y°YY …I¿ÜK,È‚-È‚,È-lHúå_bAlAdAhaCò/õ²P² ²@’¹—X…ZYZØüK¾Ä‚,Ì‚,È‚,ÐÂ†ä_ö%dadAd6$ÿÒ/± ³ ² ´°!ù—‰Y¨YY …É¿„L,ÈÂ,È‚,È-lHþedbAfAdAhaCò/%²0² ²@’_9—X[YZØôÄ†„vh'd¡dAd6>±!¡Û‰Y˜YY …ÁOlHhwbAjAdAhaC ÚÑX…YYZØ„Å†„vx'd¡dAd6b±!¡ß‰Y˜YY …ÁXlHh|bAjAdAhaC@ÚŸX…YYZØ”Å†„vÈ'dadAd6$!S/± ¶ ² ´°!	™{‰Y°YY …IÈüK,È‚-È‚,È-lHÂå\bAlAdAhaCb;´²`² ²@ÛÁX[YZØØïÄ‚,Ø‚,È‚,ÐÂ†ÄvÀ'dÁdAd6$¸C;± µ ² ´°!ÁÛ‰Y˜YY …	îàN,ÈB-È‚,È-lHpGwbAfAdAhaC‚;¼²P² ²@ÜñX…YYZØàøÄ‚,Ô‚,È‚,ÐÂ†wÄ'dadAd6$¸C>± ³ ² ´°!™z‰Y°YY …ÉÈÜK,È‚-È‚,È-lHFæ_bAlAdAhaC2.ç²`² ²@Ý¡X[YZØèîÄ‚,Ø‚,È‚,ÐÂ†Dwx'dÁdAd6$º>± ¶ ² ´°!áÚ‰Y¨YY …	ïØN,ÈÂ,È‚,È-lHxwbAjAdAhaCÂ;º²0² ²@ÞáX…ZYZØðŽïÄ‚,Ì‚,È‚,ÐÂ†„wÀ'd¡dAd6$¼#>± ³ ² ´°!áò‰Y˜YY …IÉÔK,È‚-È‚,È-lHJæ^bAlAdAhaCR2ÿ²`² ²@’r9—X[YZØøíÄ‚,Ø‚,È‚,ÐÂ†Äwp'dÁdAd6$¾Ã;± ¶ ² ´°!ñð‰Y°YY …	øÐN,ÈB-È‚,È-lHÀÇvbAfAdAhaC>¸²P² ²@ðÑX…YYZØ€ïÄ‚,Ô‚,È‚,ÐÂ†||'dadAd6$à>± µ ² ´°!ñ‰Y˜YY …	øO,ÈÂ,È‚,È-lHJgtbAlAdAhaC">´²`² ²@ñÁX[YZØˆïÄ‚,Ø‚,È‚,ÐÂ†D|À'dÁdAd6$tb'± ¶ ² ´°!¡=‰Y°YY …	øI,È‚-È‚,È-lHèDTbAlAdAhaCb't²0² ²@;±“X…ZYZØØ	žÄ‚,Ì‚,È‚,ÐÂ†ÄNô$d¡dAd6$vÂ'± ³ ² ´°!±?‰Y¨YY …‰€J,ÈÂ,È‚,È-lHìDTbAjAdAhaCb'¤²0² ²@;1•X…YYZØíÄ‚,Ø‚,È‚,ÐÂ†„|p'dÁdAd6$äÃ;± ¶ ² ´°!!ð‰Y°YY …	žØI,È‚-È‚,È-lHðDObAlAdAhaC‚'~²`² ²@<•X[YZØè	Ä‚,Ì‚,È‚,ÐÂ†DOì$d¡dAd6$z‚'± ³ ² ´°!Ñ=‰Y¨YY …‰žðI,ÈÂ,È‚,È-lHôÄObAjAdAhaC¢' ²0² ²@=•X…ZYZØè	©Ä‚,Ì‚,È‚,ÐÂ†DOL%dadAd6$|b'± ¶ ² ´°!á=‰Y°YY …	ŸøI,È‚-È‚,È-lHøDTbAlAdAhaCâ't²0² ²@?±“X…ZYZØø	žÄ‚,Ì‚,È‚,ÐÂ†ÄOô$d¡dAd6$~Â'± ³ ² ´°!ñ?‰Y¨YY …‰Ÿ€J,ÈÂ,È‚,È-lHüDTbAjAdAhaCâ'¤²0² ²@?1•X…YYZØ€ŠÄ‚,Ø‚,È‚,ÐÂ†Tô$dÁdAd6$ â'± ¶ ² ´°!Q‰Y°YY …‰¨ÐI,ÈÂ,È‚,È-lHDÅNbAjAdAhaC"*x²0² ²@QÑ“X…ZYZØˆ
+ŸÄ‚,Ì‚,È‚,ÐÂ†DTü$d¡dAd6$¢*± ³ ² ´°!Q‰Y¨YY …‰¨J,ÈÂ,È‚,È-lHDÅTbAfAdAhaCr+­²`² ²@’[‰•X[YZØÜJ­Ä‚,Ø‚,È‚,ÐÂ†ä\~%dadAd6$ç.± ³ ² ´°!9—q‰Y˜YY …É¹”K,ÈÂ,È‚,È-lHÎå\bAjAdAhaCB*v²`² ²@RÑ“X[YZØŠŸÄ‚,Ø‚,È‚,ÐÂ†„TD%dÁdAd6$jÂ&± ¶ ² ´°!a5‰Y˜YY …	›°I,ÈB-È‚,È-lHxÄGbAlAdAhaCâ#:²0² ²@á‘X…YYZØøˆÄ‚,Ô‚,È‚,ÐÂ†©Ù‘ù1!3A“5i8‘“:¹“<Ù“>ù“P•R9UaWY¡[Á]Ù^épr1tY—vyx‰z±|Ñ~ñ’1™“A™”Q™•i—y˜‰™™š©›¹œÉÙžéŸù°	±²)³9´IµY¶i·y¸‰¹™º©»¹¼É½Ù¾é¿ùÐ	Ñ!Ó9ÔIÕYÖi×yØ‰Ù™Ú¹ÜÙÞùðŸò1ŸóAŸôQŸõaŸöqŸ÷Ÿø‘Ÿù¡Ÿú±ŸûÁŸüÑŸýáŸþñŸÿ¡¡"¡2¡B¡R¡b¡r¡‚¡’¡¢¡²¡Â¡Ò¡â¡ò¡£0£1"£22£3B£4R£5b£6r£7‚£8’£9¢£:²£;Â£<Ò£=â£>ò£?¥P¥Q"¥R2¥SB¥TR¥Ub¥Vr¥W‚¥X’¥Y¢¥Z²¥[Â¥\Ò¥]â¥^ò¥_§p§q"§r2§sB§tR§ub§YlÎbC€‚´Ø¨Å†`-6l±!h‹[lÞbC ‚¸ØÈÅ†`.6t±!¨‹]lîbC€‚¼ØèÅ†`/6|±!è‹_lpaCðÐØ„Æ†@46£±! AilLcCpÔØ¤Æ†@56«±!`Akl\cCðØØÄÆ†@66³±! AmllcCpÜØäÆ†@76»±!àAol|cCððØ„Ç†@<6ã±! AylÌcCpôØ¤Ç†@=6ë±!`A{lÜcCðøØÄÇ†@>6ó±! A}lìcCpüØäÇ†@?6û±!àAlücCðÙ„È†@D6#²! ‘A‰lLdCp"Ù¤È†@E6+²!`‘A‹  3‹’‘ÂLD()ÌD(J6
+3‡’‘ÂLÄ¢d¤0‘JF
+3Š’ÂL„¢d£0¡(Ù(ÌD(J6
+3Š’ÂL„¢d£0¡(Ù(ÌD(J6
+Ã„ƒÀ°Ñ\0l@0Ö KE Ô¤dØ€P g!Ã 5éÆÔR-Q0ˆ6 –` (:H7† —PŒ@d È°Ñ@22x¤k˜©T@2†*€aâ§˜%HSÆpCNf0Ë |EÊnÆ)f" Jœ[0 ³yé€ØØ° „6 ´` HSÆ'–¸bÀ,AAœ2†w
+ƒà€3PbØ€ ƒ` È”‘Á#èì§
+”Af 6 Ð  Be7ø„³‡Ì Ã„äÓ Ì ¤ÊnôÀf”$˜%X†6Øƒ˜%X”qŠé°1Á (ã‚Óa‚‚ 9PÆ`–ÃÄ@v Œ|L‡‚‘
+ƒY††	f	ÂeÐ(†ˆ<`–À!>PÆk¦ÃAJ…Á,ô³ù2.Ð³$?P À,AD£ ŒüL‡˜
+ƒY†I
+f	(*e\PgI¥ 6 N!€YŠVAÃM…Á,Ce”
+Ê UPB­À,ÁE¬ re` €À°Á Ì\ÊnzÁf°,6 dÁ`– #YPÆpCàh0Ë°iÁ,7l@ÐÂ/À,7KÐ‘,(#ƒGº6”Ûk(cØ€È…` ”‘Á ä)éƒÜÚ°Â  ³ƒ2086 Ê!€Y‚€|A@æpn[¹Õ°@à Œ  u8H7†@®ÂmØ€Ðp      g°ø¿!ÓOq	Œÿ2ýÄ`õ10þ/DÈôƒAØ÷Àø¿!ÓOqŸãÿB„L?1~Œÿ2ýÄ`9 1  ö   [ÁºñØiË |í´e>wÚ2ß;m†ž¶ÄO[†â“§-ƒñÍÓ–áøèiË€|õ´eH>{Ú2(ß=m–Ÿ¶Ì—O[†æÓ§-ƒóÉÈ–áùjdË }8²eˆ¾Ù2HŸl¦M¶Ô7#[†êk“-ƒõÉ–áúöiË€}ü´eÈ¾~Ú2hŸœl¶OL¶ÜçO[†îû§-ƒ÷Ô–áûNeË ªlÂà©-ƒ|"µeƒo¤¶dðõÊ–¡>tÙ2˜ÁGR[†3ørdË€_Im)Ò€3©ï¤¶jð¥Ë–a>”Ú2°Á—R[†6øâeËàŸJmÞà£—-|+µeˆƒÏM¶rð±Ô–a>8Ù2ÐÁ×R[†:ø\jË`Ÿ¼lîà[™-|/µeÈƒ¦¶zðÙË–a¾˜Ú2ðÁ·.[†>ødjËàßLmþà£©-(|í²e…_¶¢ðÕÔ–a>›Ú2ÂwS[†RøTeË`
+NmNác•-*|®²eH…/§¶ªðéÔ–a¾Ú2°Â+[†VøxjËà
+Ÿ¬l^áë©-,|>µeˆ…ï§¶²ðÑÊ–a>°Ú2ÐÂ§/[†ZøÂjË`Ÿèlnáã—-.|bµeÈ…Ï_¶ºðùÊ–a¾±Ú2ðÂ7;[†^ø@fËàYm~á+«-8|fµe‡ï¬¶âðË–a¾ÚÙ2Ã‡V[†røngË`_ZmÎá™-:|jµeH‡o­¶êð±Õ–a¾¶Ú2°Ã'.[†vøÜjËà_îlÞá{«-<|»³eˆ‡®¶òð‘Ì–a¾¸Ú2ÐÃ'W[†zøæjË`]mîá#—->|uµeÈ‡¯w¶úðÙÕ–a¾ßÙ2ðÃwW[†~øHgËà^mþáË«-H|á³e‰oN¶"ñéÕ–a$¾:Ù2Ä·W[†’øÆgË`ßlNâã«-J|y²eH‰¯¯¶*ñíÉ–a%>¿Ú2°Ä÷W[†–øúdËàhm^âû“-L|¡µeˆ‰O´¶2ñÖ–a&¾PÙ2ÐÄGZ[†šøJkË`Ÿ­lnâ3­-N|§µeÈ‰µ¶:ñ™Ë–a'¾QÙ2ðÄ—Z[†žøÒdËàŸjm~â[“-X|«µe‹µ¶bñíÈ–a,¾ÖÚ2Å×#[†²ø\kË`_©lÎâ{­-Z|d²eH‹¶¶jñÅÖ–a->\Ù2°Å'[[†¶øÌdËàßlmÞâ£­-\|µ !1  G   ˆ@ VlÁ!D*¶à¢ ‚[pE, @ƒC ÜÁ" =XpQ Š- 8 œØDˆÂ 6X` &¶Àz Hš(eA¦qŒƒ(„xbÁ!DÆ‚=˜¨Êº°LÛ¸ÎûÀ Ä`È ÌàÐ Ô`Ø Üàà ä`è  X˜†(Œc@Åy H²ƒ;Àƒ<@§PY–i×y„Œ”œ¤¬´¼ÄÌÔÜäìôü(„ 
+…0„1
+¤P
+’(Ó8I•M€›0 5a€hÂ Î„! –	C        q      2"„‹èpxƒêN     e  —   ”°      ˜   .   L      X       X           Æ      Þ   	          P                 4      4      ÿÿÿÿ $  8      8      ÿÿÿÿ$  <      <      ÿÿÿÿ$  B      B      ÿÿÿÿ$  F      F      ÿÿÿÿ$  K      K      ÿÿÿÿ$  R      R      ÿÿÿÿ $  ]      ]      ÿÿÿÿ $  j      j      ÿÿÿÿ,  ‚      ‚      ÿÿÿÿ,                ÿÿÿÿ$              ÿÿÿÿ$              ÿÿÿÿ$  ç            ÿÿÿÿ               ÿÿÿÿ  í            ÿÿÿÿ               ÿÿÿÿ   *   
+   *   
+   ÿÿÿÿ   ô                   Ð                                           ]  A   ”õ   abufsbufstate.strstderr.str.1stepsizeTableindexTablemainreadperrorexitwritefprintfadpcm_coderadpcm_decoderllvm.lifetime.start.p0i8llvm.lifetime.end.p0i89.0.0 713d2f6594d9a0b77e7f9a120aaa7c917715a640x86_64-unknown-linux-gnullvm-link.L.str.L.str.1       

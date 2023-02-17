@@ -1,0 +1,629 @@
+make[1]: Entering directory '/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/fft_inv'
+./runEnablers.sh fft_inv fft_inv.bc large "-lm -lstdc++ -lpthread -ltermcap" -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier
+/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/fft_inv /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/fft_inv
+Cloning https://github.com/scampanoni/virgil.git
+Cloning into 'threadpool'...
+/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/fft_inv
+The IR has already been transformed for enabling parallelization
+noelle-parallelizer baseline_with_metadata.bc -o baseline_parallelized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix
+noelle-meta-loop-embed baseline_with_metadata.bc -o afterLoopMetadata.bc
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopMetadata.so -LoopMetadata baseline_with_metadata.bc -o afterLoopMetadata.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopMetadata.so -LoopMetadata baseline_with_metadata.bc -o afterLoopMetadata.bc
+noelle-parallelization-planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix
+noelle-parallel-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix
+Planner: Start
+Planner:  Fetching the program loops
+Noelle: Filter out cold code
+Noelle:  Function "main"
+Noelle:     Loop "  %exitcond26 = icmp eq i64 %indvars.iv23, %31, !noelle.pdg.inst.id !877" (8.755865e-05%)
+Noelle:  Disable loop "0" as cold code
+Noelle:     Loop "  %exitcond22 = icmp eq i64 %indvars.iv19, %25, !noelle.pdg.inst.id !895" (3.826677e+01%)
+Noelle:     Loop "  %exitcond18 = icmp eq i64 %indvars.iv15, %31, !noelle.pdg.inst.id !907" (3.825482e+01%)
+Noelle:     Loop "  %exitcond14 = icmp eq i64 %indvars.iv11, %25, !noelle.pdg.inst.id !943" (7.470922e-03%)
+Noelle:  Disable loop "3" as cold code
+Noelle:     Loop "  %exitcond = icmp eq i64 %indvars.iv, %25, !noelle.pdg.inst.id !954" (6.120195e+01%)
+Noelle:  Function "fft_float"
+Noelle:     Loop "  %exitcond44 = icmp eq i64 %indvars.iv41, %wide.trip.count39, !noelle.pdg.inst.id !332" (1.680961e-01%)
+Noelle:     Loop "  %exitcond40 = icmp eq i64 %indvars.iv37, %wide.trip.count39, !noelle.pdg.inst.id !316" (0.000000e+00%)
+Noelle:  Disable loop "6" as cold code
+Noelle:     Loop "  %48 = sext i32 %.01 to i64, !noelle.pdg.inst.id !354" (3.421712e-01%)
+Noelle:     Loop "  %60 = icmp ult i32 %.1, %0, !noelle.pdg.inst.id !371" (3.421703e-01%)
+Noelle:     Loop "  %lftr.wideiv = trunc i64 %66 to i32, !noelle.pdg.inst.id !382" (3.354463e-01%)
+Noelle:     Loop "  %exitcond = icmp eq i64 %indvars.iv, %wide.trip.count39, !noelle.pdg.inst.id !428" (1.270056e-02%)
+Noelle:  Disable loop "10" as cold code
+Noelle:  Function "ReverseBits"
+Noelle:     Loop "  %exitcond = icmp eq i32 %.02, %1, !noelle.pdg.inst.id !36" (1.516601e-01%)
+Noelle:  Function "NumberOfBitsNeeded"
+Noelle:  Disable "NumberOfBitsNeeded" as cold function
+Noelle:  Function "CheckPointer"
+Noelle:  Disable "CheckPointer" as cold function
+Noelle:  Function "IsPowerOfTwo"
+Noelle:  Disable "IsPowerOfTwo" as cold function
+Noelle:  Function "Index_to_frequency"
+Noelle:  Disable "Index_to_frequency" as cold function
+Noelle:  Function "atoi"
+Noelle:  Disable "atoi" as cold function
+Planner:    There are 8 loops in the program we are going to consider
+Planner:  Filter out loops not worth considering
+Planner:    Loop 6 has 2.030000e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:    Loop 11 has 4.490013e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:  There are 4 loop nesting trees in the program
+Planner:    ID: 7 (1)
+Planner:      Function: "fft_float"
+Planner:      Loop: "  %exitcond44 = icmp eq i64 %indvars.iv41, %wide.trip.count39, !noelle.pdg.inst.id !332"
+Planner:      Loop nesting level: 1
+Planner:      Hotness = 1.680961e-01 %
+Planner:      Average instructions per invocation = 5.898238e+07 %
+Planner:      Average iterations per invocation = 2.621430e+05 %
+Planner:    
+Planner:    ID: 9 (1)
+Planner:      Function: "fft_float"
+Planner:      Loop: "  %48 = sext i32 %.01 to i64, !noelle.pdg.inst.id !354"
+Planner:      Loop nesting level: 1
+Planner:      Hotness = 3.421712e-01 %
+Planner:      Average instructions per invocation = 1.200627e+08 %
+Planner:      Average iterations per invocation = 1.800000e+01 %
+Planner:    
+Planner:      ID: 10 (2)
+Planner:        Function: "fft_float"
+Planner:        Loop: "  %60 = icmp ult i32 %.1, %0, !noelle.pdg.inst.id !371"
+Planner:        Loop nesting level: 2
+Planner:        Hotness = 3.421703e-01 %
+Planner:        Average instructions per invocation = 6.670132e+06 %
+Planner:        Average iterations per invocation = 1.456450e+04 %
+Planner:      
+Planner:    ID: 1 (1)
+Planner:      Function: "main"
+Planner:      Loop: "  %exitcond22 = icmp eq i64 %indvars.iv19, %25, !noelle.pdg.inst.id !895"
+Planner:      Loop nesting level: 1
+Planner:      Hotness = 3.826677e+01 %
+Planner:      Average instructions per invocation = 1.342723e+10 %
+Planner:      Average iterations per invocation = 2.621430e+05 %
+Planner:    
+Planner:      ID: 2 (2)
+Planner:        Function: "main"
+Planner:        Loop: "  %exitcond18 = icmp eq i64 %indvars.iv15, %31, !noelle.pdg.inst.id !907"
+Planner:        Loop nesting level: 2
+Planner:        Hotness = 3.825482e+01 %
+Planner:        Average instructions per invocation = 5.120501e+04 %
+Planner:        Average iterations per invocation = 2.049000e+03 %
+Planner:      
+Planner:    ID: 4 (1)
+Planner:      Function: "main"
+Planner:      Loop: "  %exitcond = icmp eq i64 %indvars.iv, %25, !noelle.pdg.inst.id !954"
+Planner:      Loop nesting level: 1
+Planner:      Hotness = 6.120195e+01 %
+Planner:      Average instructions per invocation = 2.147484e+10 %
+Planner:      Average iterations per invocation = 2.147484e+09 %
+Planner:    
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector:  Loop 7 saves only 1.673491e-01 when parallelized. Skip it
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector:  Loop 10 saves only 1.404543e-01 when parallelized. Skip it
+Planner: LoopSelector:  Loop 9 saves only 1.404552e-01 when parallelized. Skip it
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector: Start
+Planner: LoopSelector:   Order of loops and their maximum savings
+Planner: LoopSelector:    Loop 1
+Planner: LoopSelector:      Function: "main"
+Planner: LoopSelector:      Loop nesting level: 1
+Planner: LoopSelector:      "  %exitcond22 = icmp eq i64 %indvars.iv19, %25, !noelle.pdg.inst.id !895"
+Planner: LoopSelector:      Coverage: 3.826677e+01%
+Planner: LoopSelector:      Whole-program savings = 3.673673e+01%
+Planner: LoopSelector:      Loop savings = 9.600164e+01%
+Planner: LoopSelector:    Loop 2
+Planner: LoopSelector:      Function: "main"
+Planner: LoopSelector:      Loop nesting level: 2
+Planner: LoopSelector:      "  %exitcond18 = icmp eq i64 %indvars.iv15, %31, !noelle.pdg.inst.id !907"
+Planner: LoopSelector:      Coverage: 3.825482e+01%
+Planner: LoopSelector:      Whole-program savings = 3.060386e+01%
+Planner: LoopSelector:      Loop savings = 8.000000e+01%
+Planner: LoopSelector: End
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector: Start
+Planner: LoopSelector:   Order of loops and their maximum savings
+Planner: LoopSelector:    Loop 4
+Planner: LoopSelector:      Function: "main"
+Planner: LoopSelector:      Loop nesting level: 1
+Planner: LoopSelector:      "  %exitcond = icmp eq i64 %indvars.iv, %25, !noelle.pdg.inst.id !954"
+Planner: LoopSelector:      Coverage: 6.120195e+01%
+Planner: LoopSelector:      Whole-program savings = 5.508176e+01%
+Planner: LoopSelector:      Loop savings = 9.000000e+01%
+Planner: LoopSelector: End
+Planner:   Maximum time saved = 9.181849e+01% (32217713631)
+Planner:   Maximum time saved with DOALL only = 0.000000e+00% (0)
+Planner: Exit
+noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+NOELLE: DeadFunctions: Start
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/RemoveFunction.so -noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/RemoveFunction.so -noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+RemoveFunction: Start
+RemoveFunction:   Check if function "SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION" exists
+RemoveFunction:     The function exists
+RemoveFunction:   Remove the function
+RemoveFunction: Exit
+NOELLE: DeadFunctions: Exit
+noelle-parallelizer-loop code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix
+noelle-parallel-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-helix
+Parallelizer: Start
+Parallelizer:  Analyzing the module code_to_parallelize.bc
+Parallelizer:  Fetching the program loops
+Noelle: Filter out cold code
+Noelle:  Function "main"
+Noelle:     Loop "  %exitcond26 = icmp eq i64 %indvars.iv23, %31, !noelle.pdg.inst.id !879" (8.755865e-05%)
+Noelle:  Disable loop "0" as cold code
+Noelle:     Loop "  %exitcond22 = icmp eq i64 %indvars.iv19, %25, !noelle.pdg.inst.id !897" (3.826677e+01%)
+Noelle:     Loop "  %exitcond18 = icmp eq i64 %indvars.iv15, %31, !noelle.pdg.inst.id !909" (3.825482e+01%)
+Noelle:     Loop "  %exitcond14 = icmp eq i64 %indvars.iv11, %25, !noelle.pdg.inst.id !945" (7.470922e-03%)
+Noelle:  Disable loop "3" as cold code
+Noelle:     Loop "  %exitcond = icmp eq i64 %indvars.iv, %25, !noelle.pdg.inst.id !956" (6.120195e+01%)
+Noelle:  Function "fft_float"
+Noelle:     Loop "  %exitcond44 = icmp eq i64 %indvars.iv41, %wide.trip.count39, !noelle.pdg.inst.id !334" (1.680956e-01%)
+Noelle:     Loop "  %exitcond40 = icmp eq i64 %indvars.iv37, %wide.trip.count39, !noelle.pdg.inst.id !318" (5.870872e-07%)
+Noelle:  Disable loop "6" as cold code
+Noelle:     Loop "  %48 = sext i32 %.01 to i64, !noelle.pdg.inst.id !356" (3.421712e-01%)
+Noelle:     Loop "  %60 = icmp ult i32 %.1, %0, !noelle.pdg.inst.id !373" (3.421703e-01%)
+Noelle:     Loop "  %lftr.wideiv = trunc i64 %66 to i32, !noelle.pdg.inst.id !384" (3.354463e-01%)
+Noelle:     Loop "  %exitcond = icmp eq i64 %indvars.iv, %wide.trip.count39, !noelle.pdg.inst.id !430" (1.270056e-02%)
+Noelle:  Disable loop "10" as cold code
+Noelle:  Function "ReverseBits"
+Noelle:     Loop "  %exitcond = icmp eq i32 %.02, %1, !noelle.pdg.inst.id !38" (1.516601e-01%)
+Noelle:  Function "NumberOfBitsNeeded"
+Noelle:  Disable "NumberOfBitsNeeded" as cold function
+Noelle:  Function "CheckPointer"
+Noelle:  Disable "CheckPointer" as cold function
+Noelle:  Function "IsPowerOfTwo"
+Noelle:  Disable "IsPowerOfTwo" as cold function
+Noelle:  Function "atoi"
+Noelle:  Disable "atoi" as cold function
+Noelle:  Function "Index_to_frequency"
+Noelle:  Disable "Index_to_frequency" as cold function
+Parallelizer:    There are 8 loops in the program we are going to consider
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+MemoryCloningAnalysis: Exit
+Parallelizer: parallelizerLoop: Start
+Parallelizer: parallelizerLoop:   Function = "main"
+Parallelizer: parallelizerLoop:   Loop 1 = "  %exitcond22 = icmp eq i64 %indvars.iv19, %25, !noelle.pdg.inst.id !897"
+Parallelizer: parallelizerLoop:   Nesting level = 1
+Parallelizer: parallelizerLoop:   Number of threads to extract = 8
+Parallelizer: parallelizerLoop:   Environment: live-in and live-out values
+Parallelizer: parallelizerLoop:   Environment:   Live-in 0 =   %36 = bitcast i8* %35 to float*, !noelle.pdg.inst.id !876
+Parallelizer: parallelizerLoop:   Environment:   Live-in 1 =   %38 = bitcast i8* %27 to float*, !noelle.pdg.inst.id !883
+Parallelizer: parallelizerLoop:   Environment:   Live-in 2 =   %39 = bitcast i8* %28 to float*, !noelle.pdg.inst.id !884
+Parallelizer: parallelizerLoop:   Environment:   Live-in 3 =   %25 = zext i32 %21 to i64, !noelle.pdg.inst.id !871
+Parallelizer: parallelizerLoop:   Environment:   Live-in 4 =   %31 = zext i32 %24 to i64, !noelle.pdg.inst.id !873
+Parallelizer: parallelizerLoop:   Environment:   Live-in 5 =   %34 = bitcast i8* %33 to float*, !noelle.pdg.inst.id !875
+DOALL: Checking if the loop is DOALL
+DOALL:   We found an SCC of the loop that is non clonable and non commutative
+DOALL:     Internal nodes: 1
+DOALL:     	  %60 = tail call i32 @rand() #12, !noelle.pdg.inst.id !84
+DOALL:     External nodes: 2
+DOALL:     	  br i1 %exitcond18, label %81, label %59, !prof !910, !noelle.loop.id !911, !noelle.pdg.inst.id !912, !noelle.parallelizer.looporder !899
+DOALL:     	  %61 = and i32 %60, 1, !noelle.pdg.inst.id !913
+DOALL:     Edges: 5
+DOALL:     Loop-carried data dependences
+DOALL:         %60 = tail call i32 @rand() #12, !noelle.pdg.inst.id !84 --->   %60 = tail call i32 @rand() #12, !noelle.pdg.inst.id !84 via memory
+DOALL:         %60 = tail call i32 @rand() #12, !noelle.pdg.inst.id !84 --->   %60 = tail call i32 @rand() #12, !noelle.pdg.inst.id !84 via memory
+DOALL:         %60 = tail call i32 @rand() #12, !noelle.pdg.inst.id !84 --->   %60 = tail call i32 @rand() #12, !noelle.pdg.inst.id !84 via memory
+DSWP: Start
+ParallelizationTechniqueForLoopsWithLoopCarriedDataDependences: Start
+ParallelizationTechniqueForLoopsWithLoopCarriedDataDependences:  Initial number of partitions: 6
+ParallelizationTechniqueForLoopsWithLoopCarriedDataDependences: Exit
+DSWP:  Before partitioning the SCCDAG
+Heuristic:   PCA: No candidates
+DSWP:  Final number of partitions: 4
+DSWP:  After partitioning the SCCDAG
+DSWP:  There are 4 partitions in the SCCDAG
+DSWP:  Pipeline stages
+DSWP:    Stage: 0
+DSWP:    SCC
+DSWP:      %indvars.iv19 = phi i64 [ 0, %.preheader ], [ %indvars.iv.next20, %81 ], !noelle.pdg.inst.id !896
+DSWP:      %exitcond22 = icmp eq i64 %indvars.iv19, %25, !noelle.pdg.inst.id !897
+DSWP:      br i1 %exitcond22, label %82, label %50, !prof !898, !noelle.loop.id !899, !noelle.pdg.inst.id !900, !noelle.parallelizer.looporder !881
+DSWP:      %indvars.iv.next20 = add nuw nsw i64 %indvars.iv19, 1, !noelle.pdg.inst.id !938
+DSWP:    
+DSWP:    Stage: 1
+DSWP:    SCC
+DSWP:      %55 = load float, float* %54, align 4, !noelle.pdg.inst.id !82
+DSWP:    
+DSWP:    SCC
+DSWP:      store float %.lcssa, float* %54, align 4, !noelle.pdg.inst.id !91
+DSWP:    
+DSWP:    Stage: 2
+DSWP:    SCC
+DSWP:      %60 = tail call i32 @rand() #12, !noelle.pdg.inst.id !84
+DSWP:    
+DSWP:    Stage: 3
+DSWP:    SCC
+DSWP:      store float %.lcssa7, float* %51, align 4, !noelle.pdg.inst.id !94
+DSWP:    
+DSWP:    SCC
+DSWP:      store float 0.000000e+00, float* %51, align 4, !tbaa !889, !noelle.pdg.inst.id !79
+DSWP:    
+DSWP:  Queues that connect the pipeline stages
+DSWP:    Stage: 0
+DSWP:      Push value queues: 0 1 3 4 5 
+DSWP:      Pop value queues: 
+DSWP:    Stage: 1
+DSWP:      Push value queues: 
+DSWP:      Pop value queues: 0 5 
+DSWP:    Stage: 2
+DSWP:      Push value queues: 2 
+DSWP:      Pop value queues: 4 
+DSWP:    Stage: 3
+DSWP:      Push value queues: 
+DSWP:      Pop value queues: 1 2 3 
+DSWP:    Queue: 0
+DSWP:     Producer:	  %indvars.iv19 = phi i64 [ 0, %.preheader ], [ %indvars.iv.next20, %81 ], !noelle.pdg.inst.id !896
+DSWP:     Consumer:	  %54 = getelementptr inbounds float, float* %39, i64 %indvars.iv19, !noelle.pdg.inst.id !904
+DSWP:    Queue: 1
+DSWP:     Producer:	  %indvars.iv19 = phi i64 [ 0, %.preheader ], [ %indvars.iv.next20, %81 ], !noelle.pdg.inst.id !896
+DSWP:     Consumer:	  %51 = getelementptr inbounds float, float* %38, i64 %indvars.iv19, !noelle.pdg.inst.id !901
+DSWP:     Consumer:	  %52 = trunc i64 %indvars.iv19 to i32, !noelle.pdg.inst.id !902
+DSWP:    Queue: 2
+DSWP:     Producer:	  %60 = tail call i32 @rand() #12, !noelle.pdg.inst.id !84
+DSWP:     Consumer:	  %61 = and i32 %60, 1, !noelle.pdg.inst.id !913
+DSWP:    Queue: 3
+DSWP:     Producer:	  %exitcond22 = icmp eq i64 %indvars.iv19, %25, !noelle.pdg.inst.id !897
+DSWP:     Consumer:	  br i1 %exitcond22, label %82, label %50, !prof !898, !noelle.loop.id !899, !noelle.pdg.inst.id !900, !noelle.parallelizer.looporder !881
+DSWP:    Queue: 4
+DSWP:     Producer:	  %exitcond22 = icmp eq i64 %indvars.iv19, %25, !noelle.pdg.inst.id !897
+DSWP:     Consumer:	  br i1 %exitcond22, label %82, label %50, !prof !898, !noelle.loop.id !899, !noelle.pdg.inst.id !900, !noelle.parallelizer.looporder !881
+DSWP:    Queue: 5
+DSWP:     Producer:	  %exitcond22 = icmp eq i64 %indvars.iv19, %25, !noelle.pdg.inst.id !897
+DSWP:     Consumer:	  br i1 %exitcond22, label %82, label %50, !prof !898, !noelle.loop.id !899, !noelle.pdg.inst.id !900, !noelle.parallelizer.looporder !881
+DSWP:  Environment
+DSWP:    Pre loop env 1, producer:	  %36 = bitcast i8* %35 to float*, !noelle.pdg.inst.id !876
+DSWP:    Pre loop env 2, producer:	  %38 = bitcast i8* %27 to float*, !noelle.pdg.inst.id !883
+DSWP:    Pre loop env 3, producer:	  %39 = bitcast i8* %28 to float*, !noelle.pdg.inst.id !884
+DSWP:    Pre loop env 4, producer:	  %25 = zext i32 %21 to i64, !noelle.pdg.inst.id !871
+DSWP:    Pre loop env 5, producer:	  %31 = zext i32 %24 to i64, !noelle.pdg.inst.id !873
+DSWP:    Pre loop env 6, producer:	  %34 = bitcast i8* %33 to float*, !noelle.pdg.inst.id !875
+DSWP:  Create 4 pipeline stages
+DSWP:  Loaded queue pointers
+DSWP:  Added queue pop and push instructions
+DSWP:  Loaded live-in variables
+DSWP:  Adjusted data flow between cloned instructions
+DSWP:  Stored live out instructions
+Pipeline stage 0:
+
+define void @noelle_task_0(i8*, i8*) {
+  %noelle.environment_variable.pointer = bitcast i8* %0 to [48 x i64]*
+  %3 = bitcast i8* %1 to [6 x i8*]*
+  %4 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 0
+  %5 = load i8*, i8** %4
+  %6 = alloca i64
+  %7 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 1
+  %8 = load i8*, i8** %7
+  %9 = alloca i64
+  %10 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 3
+  %11 = load i8*, i8** %10
+  %12 = alloca i1
+  %13 = bitcast i1* %12 to i8*
+  %14 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 4
+  %15 = load i8*, i8** %14
+  %16 = alloca i1
+  %17 = bitcast i1* %16 to i8*
+  %18 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 5
+  %19 = load i8*, i8** %18
+  %20 = alloca i1
+  %21 = bitcast i1* %20 to i8*
+  %22 = getelementptr inbounds [48 x i64], [48 x i64]* %noelle.environment_variable.pointer, i64 0, i64 24
+  %noelle_environment_variable_3 = load i64, i64* %22
+  br label %25
+
+23:                                               ; preds = %24
+  ret void
+
+24:                                               ; preds = %25
+  br label %23
+
+25:                                               ; preds = %2, %28
+  %26 = phi i64 [ 0, %2 ], [ %29, %28 ], !noelle.pdg.inst.id !30
+  store i64 %26, i64* %9
+  call void @queuePush64(i8* %8, i64* %9)
+  store i64 %26, i64* %6
+  call void @queuePush64(i8* %5, i64* %6)
+  %27 = icmp eq i64 %26, %noelle_environment_variable_3, !noelle.pdg.inst.id !31
+  store i1 %27, i1* %20
+  call void @queuePush8(i8* %19, i8* %21)
+  store i1 %27, i1* %16
+  call void @queuePush8(i8* %15, i8* %17)
+  store i1 %27, i1* %12
+  call void @queuePush8(i8* %11, i8* %13)
+  br i1 %27, label %24, label %30, !prof !32, !noelle.loop.id !33, !noelle.pdg.inst.id !34, !noelle.parallelizer.looporder !35
+
+28:                                               ; preds = %31
+  %29 = add nuw nsw i64 %26, 1, !noelle.pdg.inst.id !36
+  br label %25
+
+30:                                               ; preds = %25
+  br label %31
+
+31:                                               ; preds = %30
+  br label %28
+}
+
+DSWP:  Loaded queue pointers
+DSWP:  Added queue pop and push instructions
+DSWP:  Loaded live-in variables
+DSWP:  Adjusted data flow between cloned instructions
+DSWP:  Stored live out instructions
+Pipeline stage 1:
+
+define void @noelle_task_1(i8*, i8*) {
+  %noelle.environment_variable.pointer = bitcast i8* %0 to [48 x i64]*
+  %3 = bitcast i8* %1 to [6 x i8*]*
+  %4 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 0
+  %5 = load i8*, i8** %4
+  %6 = alloca i64
+  %7 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 5
+  %8 = load i8*, i8** %7
+  %9 = alloca i1
+  %10 = bitcast i1* %9 to i8*
+  %11 = getelementptr inbounds [48 x i64], [48 x i64]* %noelle.environment_variable.pointer, i64 0, i64 16
+  %12 = bitcast i64* %11 to float**
+  %noelle_environment_variable_2 = load float*, float** %12
+  %13 = getelementptr inbounds [48 x i64], [48 x i64]* %noelle.environment_variable.pointer, i64 0, i64 32
+  %noelle_environment_variable_4 = load i64, i64* %13
+  br label %16
+
+14:                                               ; preds = %15
+  ret void
+
+15:                                               ; preds = %16
+  br label %14
+
+16:                                               ; preds = %2, %28
+  call void @queuePop8(i8* %8, i8* %10)
+  %17 = load i1, i1* %9
+  call void @queuePop64(i8* %5, i64* %6)
+  %18 = load i64, i64* %6
+  br i1 %17, label %15, label %19, !prof !30, !noelle.loop.id !31, !noelle.pdg.inst.id !32, !noelle.parallelizer.looporder !33
+
+19:                                               ; preds = %16
+  %20 = getelementptr inbounds float, float* %noelle_environment_variable_2, i64 %18, !noelle.pdg.inst.id !34
+  %21 = load float, float* %20, align 4, !noelle.pdg.inst.id !35
+  br label %22
+
+22:                                               ; preds = %26, %19
+  %23 = phi i64 [ %27, %26 ], [ 0, %19 ], !noelle.pdg.inst.id !36
+  %24 = phi float [ 0.000000e+00, %26 ], [ %21, %19 ], !noelle.pdg.inst.id !37
+  %25 = icmp eq i64 %23, %noelle_environment_variable_4, !noelle.pdg.inst.id !38
+  br i1 %25, label %28, label %30, !prof !39, !noelle.loop.id !40, !noelle.pdg.inst.id !41, !noelle.parallelizer.looporder !31
+
+26:                                               ; preds = %30
+  %27 = add nuw nsw i64 %23, 1, !noelle.pdg.inst.id !42
+  br label %22
+
+28:                                               ; preds = %22
+  %29 = phi float [ %24, %22 ], !noelle.pdg.inst.id !43
+  store float %29, float* %20, align 4, !noelle.pdg.inst.id !44
+  br label %16
+
+30:                                               ; preds = %22
+  br label %26
+}
+
+DSWP:  Loaded queue pointers
+DSWP:  Added queue pop and push instructions
+DSWP:  Loaded live-in variables
+DSWP:  Adjusted data flow between cloned instructions
+DSWP:  Stored live out instructions
+Pipeline stage 2:
+
+define void @noelle_task_2(i8*, i8*) {
+  %noelle.environment_variable.pointer = bitcast i8* %0 to [48 x i64]*
+  %3 = bitcast i8* %1 to [6 x i8*]*
+  %4 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 2
+  %5 = load i8*, i8** %4
+  %6 = alloca i32
+  %7 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 4
+  %8 = load i8*, i8** %7
+  %9 = alloca i1
+  %10 = bitcast i1* %9 to i8*
+  %11 = getelementptr inbounds [48 x i64], [48 x i64]* %noelle.environment_variable.pointer, i64 0, i64 32
+  %noelle_environment_variable_4 = load i64, i64* %11
+  br label %14
+
+12:                                               ; preds = %13
+  ret void
+
+13:                                               ; preds = %14
+  br label %12
+
+14:                                               ; preds = %2, %23
+  call void @queuePop8(i8* %8, i8* %10)
+  %15 = load i1, i1* %9
+  br i1 %15, label %13, label %24, !prof !30, !noelle.loop.id !31, !noelle.pdg.inst.id !32, !noelle.parallelizer.looporder !33
+
+16:                                               ; preds = %21, %24
+  %17 = phi i64 [ %22, %21 ], [ 0, %24 ], !noelle.pdg.inst.id !34
+  %18 = icmp eq i64 %17, %noelle_environment_variable_4, !noelle.pdg.inst.id !35
+  br i1 %18, label %23, label %19, !prof !36, !noelle.loop.id !37, !noelle.pdg.inst.id !38, !noelle.parallelizer.looporder !31
+
+19:                                               ; preds = %16
+  %20 = tail call i32 @rand() #12, !noelle.pdg.inst.id !39
+  store i32 %20, i32* %6
+  call void @queuePush32(i8* %5, i32* %6)
+  br label %21
+
+21:                                               ; preds = %19
+  %22 = add nuw nsw i64 %17, 1, !noelle.pdg.inst.id !40
+  br label %16
+
+23:                                               ; preds = %16
+  br label %14
+
+24:                                               ; preds = %14
+  br label %16
+}
+
+DSWP:  Loaded queue pointers
+DSWP:  Added queue pop and push instructions
+DSWP:  Loaded live-in variables
+DSWP:  Adjusted data flow between cloned instructions
+DSWP:  Stored live out instructions
+Pipeline stage 3:
+
+define void @noelle_task_3(i8*, i8*) {
+  %noelle.environment_variable.pointer = bitcast i8* %0 to [48 x i64]*
+  %3 = bitcast i8* %1 to [6 x i8*]*
+  %4 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 1
+  %5 = load i8*, i8** %4
+  %6 = alloca i64
+  %7 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 2
+  %8 = load i8*, i8** %7
+  %9 = alloca i32
+  %10 = getelementptr inbounds [6 x i8*], [6 x i8*]* %3, i64 0, i64 3
+  %11 = load i8*, i8** %10
+  %12 = alloca i1
+  %13 = bitcast i1* %12 to i8*
+  %14 = getelementptr inbounds [48 x i64], [48 x i64]* %noelle.environment_variable.pointer, i64 0, i64 0
+  %15 = bitcast i64* %14 to float**
+  %noelle_environment_variable_0 = load float*, float** %15
+  %16 = getelementptr inbounds [48 x i64], [48 x i64]* %noelle.environment_variable.pointer, i64 0, i64 8
+  %17 = bitcast i64* %16 to float**
+  %noelle_environment_variable_1 = load float*, float** %17
+  %18 = getelementptr inbounds [48 x i64], [48 x i64]* %noelle.environment_variable.pointer, i64 0, i64 32
+  %noelle_environment_variable_4 = load i64, i64* %18
+  %19 = getelementptr inbounds [48 x i64], [48 x i64]* %noelle.environment_variable.pointer, i64 0, i64 40
+  %20 = bitcast i64* %19 to float**
+  %noelle_environment_variable_5 = load float*, float** %20
+  br label %23
+
+21:                                               ; preds = %22
+  ret void
+
+22:                                               ; preds = %23
+  br label %21
+
+23:                                               ; preds = %2, %59
+  call void @queuePop8(i8* %11, i8* %13)
+  %24 = load i1, i1* %12
+  call void @queuePop64(i8* %5, i64* %6)
+  %25 = load i64, i64* %6
+  br i1 %24, label %22, label %26, !prof !30, !noelle.loop.id !31, !noelle.pdg.inst.id !32, !noelle.parallelizer.looporder !33
+
+26:                                               ; preds = %23
+  %27 = getelementptr inbounds float, float* %noelle_environment_variable_1, i64 %25, !noelle.pdg.inst.id !34
+  store float 0.000000e+00, float* %27, align 4, !tbaa !35, !noelle.pdg.inst.id !39
+  %28 = trunc i64 %25 to i32, !noelle.pdg.inst.id !40
+  %29 = uitofp i32 %28 to float, !noelle.pdg.inst.id !41
+  br label %30
+
+30:                                               ; preds = %55, %26
+  %31 = phi i64 [ %58, %55 ], [ 0, %26 ], !noelle.pdg.inst.id !42
+  %32 = phi float [ %57, %55 ], [ 0.000000e+00, %26 ], !noelle.pdg.inst.id !43
+  %33 = icmp eq i64 %31, %noelle_environment_variable_4, !noelle.pdg.inst.id !44
+  br i1 %33, label %59, label %34, !prof !45, !noelle.loop.id !46, !noelle.pdg.inst.id !47, !noelle.parallelizer.looporder !31
+
+34:                                               ; preds = %30
+  call void @queuePop32(i8* %8, i32* %9)
+  %35 = load i32, i32* %9
+  %36 = and i32 %35, 1, !noelle.pdg.inst.id !48
+  %37 = icmp eq i32 %36, 0, !noelle.pdg.inst.id !49
+  %38 = getelementptr inbounds float, float* %noelle_environment_variable_5, i64 %31, !noelle.pdg.inst.id !50
+  %39 = load float, float* %38, align 4, !tbaa !35, !noelle.pdg.inst.id !51
+  %40 = fpext float %39 to double, !noelle.pdg.inst.id !52
+  %41 = getelementptr inbounds float, float* %noelle_environment_variable_0, i64 %31, !noelle.pdg.inst.id !53
+  %42 = load float, float* %41, align 4, !tbaa !35, !noelle.pdg.inst.id !54
+  %43 = fmul float %42, %29, !noelle.pdg.inst.id !55
+  %44 = fpext float %43 to double, !noelle.pdg.inst.id !56
+  br i1 %37, label %50, label %45, !prof !57, !noelle.pdg.inst.id !58
+
+45:                                               ; preds = %34
+  %46 = tail call double @cos(double %44) #12, !noelle.pdg.inst.id !59
+  %47 = fmul double %46, %40, !noelle.pdg.inst.id !60
+  %48 = fpext float %32 to double, !noelle.pdg.inst.id !61
+  %49 = fadd double %47, %48, !noelle.pdg.inst.id !62
+  br label %55
+
+50:                                               ; preds = %34
+  %51 = tail call double @sin(double %44) #12, !noelle.pdg.inst.id !63
+  %52 = fmul double %51, %40, !noelle.pdg.inst.id !64
+  %53 = fpext float %32 to double, !noelle.pdg.inst.id !65
+  %54 = fadd double %52, %53, !noelle.pdg.inst.id !66
+  br label %55
+
+55:                                               ; preds = %45, %50
+  %56 = phi double [ %54, %50 ], [ %49, %45 ], !noelle.pdg.inst.id !67
+  %57 = fptrunc double %56 to float, !noelle.pdg.inst.id !68
+  %58 = add nuw nsw i64 %31, 1, !noelle.pdg.inst.id !69
+  br label %30
+
+59:                                               ; preds = %30
+  %60 = phi float [ %32, %30 ], !noelle.pdg.inst.id !70
+  store float %60, float* %27, align 4, !noelle.pdg.inst.id !71
+  br label %23
+}
+
+DSWP:  Link pipeline stages
+DSWP: Exit
+Parallelizer: parallelizerLoop:   Link the parallelize loop
+Parallelizer: parallelizerLoop:   The loop has been parallelized with DSWP
+Parallelizer: parallelizerLoop: Exit
+Parallelizer:    Keep track of basic blocks being modified by the parallelization
+Parallelizer:    Loop 2 cannot be parallelized because one of its parent has been parallelized already
+Parallelizer: parallelizerLoop: Start
+Parallelizer: parallelizerLoop:   Function = "main"
+Parallelizer: parallelizerLoop:   Loop 4 = "  %exitcond = icmp eq i64 %indvars.iv, %36, !noelle.pdg.inst.id !955"
+Parallelizer: parallelizerLoop:   Nesting level = 1
+Parallelizer: parallelizerLoop:   Number of threads to extract = 8
+Parallelizer: parallelizerLoop:   Environment: live-in and live-out values
+Parallelizer: parallelizerLoop:   Environment:   Live-in 0 =   %36 = zext i32 %32 to i64, !noelle.pdg.inst.id !871
+Parallelizer: parallelizerLoop:   Environment:   Live-in 1 =   %97 = bitcast i8* %41 to float*, !noelle.pdg.inst.id !940
+DOALL: Checking if the loop is DOALL
+DOALL:   More than 1 loop exit blocks
+Parallelizer:    Loop 4 has 1.000000e+01 number of sequential instructions on average per loop iteration
+Parallelizer:    Loop 4 has 0.000000e+00 % sequential execution per loop iteration
+Parallelizer:      It will not be partitioned enough for DSWP. The thresholds are at least 20 instructions per iteration or at least 5.000000e-01 % sequential execution.
+Parallelizer: parallelizerLoop:   The loop has not been parallelized
+Parallelizer: parallelizerLoop: Exit
+Parallelizer: Exit
+noelle-meta-clean parallelized_unoptimized.bc parallelized_unoptimized.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CleanMetadata.so -CleanMetadata -clean-loop-metadata=true -clean-prof-metadata=true -clean-pdg-metadata=true parallelized_unoptimized.bc -o parallelized_unoptimized.bc
+noelle/core/Clean Loop Metadata
+noelle/core/Clean PDG Metadata
+noelle/core/Clean profiler metadata
+opt --strip-named-metadata parallelized_unoptimized.bc -o parallelized_unoptimized.bc
+clang -O3 -c -emit-llvm parallelized_unoptimized.bc -o baseline_parallelized.bc
+clang -O3 -c -emit-llvm baseline_parallelized.bc -o baseline_parallelized.bc
+cp baseline_parallelized.bc fft_inv.bc
+make[1]: Leaving directory '/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/fft_inv'

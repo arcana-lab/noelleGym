@@ -1,0 +1,2357 @@
+make[1]: Entering directory '/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/susan_s'
+./runEnablers.sh susan_s susan_s.bc large "-lm -lstdc++ -lpthread -ltermcap" -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier
+/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/susan_s /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/susan_s
+Cloning https://github.com/scampanoni/virgil.git
+Cloning into 'threadpool'...
+/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/susan_s
+The IR has already been transformed for enabling parallelization
+noelle-parallelizer baseline_with_metadata.bc -o baseline_parallelized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-dswp
+noelle-meta-loop-embed baseline_with_metadata.bc -o afterLoopMetadata.bc
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopMetadata.so -LoopMetadata baseline_with_metadata.bc -o afterLoopMetadata.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopMetadata.so -LoopMetadata baseline_with_metadata.bc -o afterLoopMetadata.bc
+noelle-parallelization-planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-dswp
+noelle-parallel-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-dswp
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-dswp
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Planner.so -planner afterLoopMetadata.bc -o baseline_with_parallel_plan.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-dswp
+Planner: Start
+Planner:  Fetching the program loops
+Noelle: Filter out cold code
+Noelle:  Function "main"
+Noelle:     Loop "  %21 = icmp slt i32 %.013, %0, !noelle.pdg.inst.id !3494" (7.999670e-09%)
+Noelle:  Disable loop "0" as cold code
+Noelle:     Loop "  %exitcond87 = icmp eq i32 %.0, 10000, !noelle.pdg.inst.id !4214" (0.000000e+00%)
+Noelle:  Disable loop "1" as cold code
+Noelle:     Loop "  %exitcond86 = icmp eq i32 %.0.us, 10000, !noelle.pdg.inst.id !4208" (0.000000e+00%)
+Noelle:  Disable loop "2" as cold code
+Noelle:     Loop "  %exitcond86.us = icmp eq i32 %.0.us.us, 10000, !noelle.pdg.inst.id !4202" (0.000000e+00%)
+Noelle:  Disable loop "3" as cold code
+Noelle:     Loop "  %exitcond85 = icmp eq i32 %.01, 1000, !noelle.pdg.inst.id !4184" (0.000000e+00%)
+Noelle:  Disable loop "4" as cold code
+Noelle:     Loop "  %exitcond85.us = icmp eq i32 %.01.us41, 1000, !noelle.pdg.inst.id !4147" (0.000000e+00%)
+Noelle:  Disable loop "5" as cold code
+Noelle:     Loop "  %exitcond84 = icmp eq i32 %.01.us, 1000, !noelle.pdg.inst.id !4178" (0.000000e+00%)
+Noelle:  Disable loop "6" as cold code
+Noelle:     Loop "  %exitcond84.us39 = icmp eq i32 %.01.us.us38, 1000, !noelle.pdg.inst.id !4172" (0.000000e+00%)
+Noelle:  Disable loop "7" as cold code
+Noelle:     Loop "  %exitcond84.us = icmp eq i32 %.01.us.us, 1000, !noelle.pdg.inst.id !4166" (0.000000e+00%)
+Noelle:  Disable loop "8" as cold code
+Noelle:     Loop "  %exitcond84.us.us = icmp eq i32 %.01.us.us.us, 1000, !noelle.pdg.inst.id !4157" (0.000000e+00%)
+Noelle:  Disable loop "9" as cold code
+Noelle:     Loop "  %exitcond = icmp eq i32 %.02, 1000, !noelle.pdg.inst.id !3668" (1.000000e+02%)
+Noelle:     Loop "  %exitcond4.i = icmp eq i64 %indvars.iv2.i, 257, !noelle.pdg.inst.id !3675" (1.368414e-03%)
+Noelle:  Disable loop "11" as cold code
+Noelle:     Loop "  %150 = icmp slt i64 %indvars.iv, %61, !noelle.pdg.inst.id !3706" (4.973913e-04%)
+Noelle:  Disable loop "12" as cold code
+Noelle:     Loop "  %157 = icmp slt i64 %indvars.iv1, %99, !noelle.pdg.inst.id !3720" (2.462644e-05%)
+Noelle:  Disable loop "13" as cold code
+Noelle:     Loop "  %174 = icmp slt i64 %indvars.iv5, %99, !noelle.pdg.inst.id !3744" (8.302395e-03%)
+Noelle:  Disable loop "14" as cold code
+Noelle:     Loop "  %178 = icmp slt i64 %indvars.iv3, %102, !noelle.pdg.inst.id !3751" (8.293141e-03%)
+Noelle:  Disable loop "15" as cold code
+Noelle:     Loop "  %323 = icmp slt i64 %indvars.iv7, %104, !noelle.pdg.inst.id !3953" (0.000000e+00%)
+Noelle:  Disable loop "16" as cold code
+Noelle:     Loop "  %335 = icmp slt i64 %indvars.iv31.i, %106, !noelle.pdg.inst.id !3968" (0.000000e+00%)
+Noelle:  Disable loop "17" as cold code
+Noelle:     Loop "  %exitcond8.i = icmp eq i32 %.01.i1, 7, !noelle.pdg.inst.id !4069" (0.000000e+00%)
+Noelle:  Disable loop "18" as cold code
+Noelle:     Loop "  %exitcond.i = icmp eq i64 %indvars.iv.i3, %indvars.iv6.i, !noelle.pdg.inst.id !4074" (0.000000e+00%)
+Noelle:  Disable loop "19" as cold code
+Noelle:     Loop "  %203 = icmp sgt i32 %.010.i, %., !noelle.pdg.inst.id !3782" (6.311897e-04%)
+Noelle:  Disable loop "20" as cold code
+Noelle:     Loop "  %207 = icmp sgt i32 %.013.i, %., !noelle.pdg.inst.id !3790" (6.093867e-04%)
+Noelle:  Disable loop "21" as cold code
+Noelle:     Loop "  %225 = icmp slt i64 %indvars.iv9, %116, !noelle.pdg.inst.id !3815" (9.998917e+01%)
+Noelle:     Loop "  %236 = icmp slt i64 %indvars.iv.i, %118, !noelle.pdg.inst.id !3829" (9.998849e+01%)
+Noelle:     Loop "  %245 = icmp sgt i32 %.017.i, %., !noelle.pdg.inst.id !3844" (9.951994e+01%)
+Noelle:     Loop "  %246 = icmp sgt i32 %.016.i, %., !noelle.pdg.inst.id !3854" (9.549543e+01%)
+Noelle:     Loop "  %exitcond8.i.i = icmp eq i32 %.01.i.i, 7, !noelle.pdg.inst.id !3915" (1.383472e-07%)
+Noelle:  Disable loop "26" as cold code
+Noelle:     Loop "  %exitcond.i.i = icmp eq i64 %indvars.iv.i.i, %indvars.iv6.i.i, !noelle.pdg.inst.id !3921" (1.195245e-07%)
+Noelle:  Disable loop "27" as cold code
+Noelle:  Function "get_image"
+Noelle:  Disable "get_image" as cold function
+Noelle:  Function "getint"
+Noelle:  Disable "getint" as cold function
+Noelle:  Function "put_image"
+Noelle:  Disable "put_image" as cold function
+Noelle:  Function "susan_smoothing"
+Noelle:  Disable "susan_smoothing" as cold function
+Noelle:  Function "setup_brightness_lut"
+Noelle:  Disable "setup_brightness_lut" as cold function
+Noelle:  Function "susan_principle"
+Noelle:  Disable "susan_principle" as cold function
+Noelle:  Function "susan_principle_small"
+Noelle:  Disable "susan_principle_small" as cold function
+Noelle:  Function "median"
+Noelle:  Disable "median" as cold function
+Noelle:  Function "enlarge"
+Noelle:  Disable "enlarge" as cold function
+Noelle:  Function "edge_draw"
+Noelle:  Disable "edge_draw" as cold function
+Noelle:  Function "susan_thin"
+Noelle:  Disable "susan_thin" as cold function
+Noelle:  Function "susan_edges"
+Noelle:  Disable "susan_edges" as cold function
+Noelle:  Function "susan_edges_small"
+Noelle:  Disable "susan_edges_small" as cold function
+Noelle:  Function "corner_draw"
+Noelle:  Disable "corner_draw" as cold function
+Noelle:  Function "usage"
+Noelle:  Disable "usage" as cold function
+Noelle:  Function "susan_corners"
+Noelle:  Disable "susan_corners" as cold function
+Noelle:  Function "susan_corners_quick"
+Noelle:  Disable "susan_corners_quick" as cold function
+Noelle:  Function "atof"
+Noelle:  Disable "atof" as cold function
+Noelle:  Function "atoi"
+Noelle:  Disable "atoi" as cold function
+Noelle:  Function "int_to_uchar"
+Noelle:  Disable "int_to_uchar" as cold function
+Planner:    There are 5 loops in the program we are going to consider
+Planner:  Filter out loops not worth considering
+Planner:    Loop 75 has 3.670000e+02 number of instructions per loop invocation
+Planner:      It is too low. The threshold is 2000
+Planner:  There are 1 loop nesting trees in the program
+Planner:    ID: 60 (1)
+Planner:      Function: "main"
+Planner:      Loop: "  %exitcond = icmp eq i32 %.02, 1000, !noelle.pdg.inst.id !3668"
+Planner:      Loop nesting level: 1
+Planner:      Hotness = 1.000000e+02 %
+Planner:      Average instructions per invocation = 6.375263e+11 %
+Planner:      Average iterations per invocation = 1.000000e+03 %
+Planner:    
+Planner:      ID: 72 (2)
+Planner:        Function: "main"
+Planner:        Loop: "  %225 = icmp slt i64 %indvars.iv9, %116, !noelle.pdg.inst.id !3815"
+Planner:        Loop nesting level: 2
+Planner:        Hotness = 9.998917e+01 %
+Planner:        Average instructions per invocation = 6.374572e+08 %
+Planner:        Average iterations per invocation = 2.889990e+02 %
+Planner:      
+Planner:        ID: 73 (3)
+Planner:          Function: "main"
+Planner:          Loop: "  %236 = icmp slt i64 %indvars.iv.i, %118, !noelle.pdg.inst.id !3829"
+Planner:          Loop nesting level: 3
+Planner:          Hotness = 9.998849e+01 %
+Planner:          Average instructions per invocation = 2.213378e+06 %
+Planner:          Average iterations per invocation = 3.849997e+02 %
+Planner:        
+Planner:          ID: 74 (4)
+Planner:            Function: "main"
+Planner:            Loop: "  %245 = icmp sgt i32 %.017.i, %., !noelle.pdg.inst.id !3844"
+Planner:            Loop nesting level: 4
+Planner:            Hotness = 9.951994e+01 %
+Planner:            Average instructions per invocation = 5.737000e+03 %
+Planner:            Average iterations per invocation = 1.600000e+01 %
+Planner:          
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3456
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3456 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3456
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3456 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3456
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3456
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3456
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3456
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3456
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3457
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3456
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+Planner: LoopSelector: Start
+Planner: LoopSelector:   Order of loops and their maximum savings
+Planner: LoopSelector:    Loop 73
+Planner: LoopSelector:      Function: "main"
+Planner: LoopSelector:      Loop nesting level: 3
+Planner: LoopSelector:      "  %236 = icmp slt i64 %indvars.iv.i, %118, !noelle.pdg.inst.id !3829"
+Planner: LoopSelector:      Coverage: 9.998849e+01%
+Planner: LoopSelector:      Whole-program savings = 9.998849e+01%
+Planner: LoopSelector:      Loop savings = 1.000000e+02%
+Planner: LoopSelector:    Loop 72
+Planner: LoopSelector:      Function: "main"
+Planner: LoopSelector:      Loop nesting level: 2
+Planner: LoopSelector:      "  %225 = icmp slt i64 %indvars.iv9, %116, !noelle.pdg.inst.id !3815"
+Planner: LoopSelector:      Coverage: 9.998917e+01%
+Planner: LoopSelector:      Whole-program savings = 9.995434e+01%
+Planner: LoopSelector:      Loop savings = 9.996517e+01%
+Planner: LoopSelector:    Loop 74
+Planner: LoopSelector:      Function: "main"
+Planner: LoopSelector:      Loop nesting level: 4
+Planner: LoopSelector:      "  %245 = icmp sgt i32 %.017.i, %., !noelle.pdg.inst.id !3844"
+Planner: LoopSelector:      Coverage: 9.951994e+01%
+Planner: LoopSelector:      Whole-program savings = 9.065561e+01%
+Planner: LoopSelector:      Loop savings = 9.109291e+01%
+Planner: LoopSelector:    Loop 60
+Planner: LoopSelector:      Function: "main"
+Planner: LoopSelector:      Loop nesting level: 1
+Planner: LoopSelector:      "  %exitcond = icmp eq i32 %.02, 1000, !noelle.pdg.inst.id !3668"
+Planner: LoopSelector:      Coverage: 1.000000e+02%
+Planner: LoopSelector:      Whole-program savings = 2.209140e+01%
+Planner: LoopSelector:      Loop savings = 2.209140e+01%
+Planner: LoopSelector: End
+Planner:   Maximum time saved = 9.998849e+01% (637452914964)
+Planner:   Maximum time saved with DOALL only = 0.000000e+00% (0)
+Planner: Exit
+noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+NOELLE: DeadFunctions: Start
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/RemoveFunction.so -noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/RemoveFunction.so -noelle-rm-function -function-name=SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION code_with_prototypes.bc -o code_to_parallelize.bc
+RemoveFunction: Start
+RemoveFunction:   Check if function "SIMONE_CAMPANONI_IS_GOING_TO_REMOVE_THIS_FUNCTION" exists
+RemoveFunction:     The function exists
+RemoveFunction:   Remove the function
+RemoveFunction: Exit
+NOELLE: DeadFunctions: Exit
+noelle-parallelizer-loop code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-dswp
+noelle-parallel-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-dswp
+noelle-load -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-dswp
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSvf.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libCudd.so -stat=false -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libSCAFUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/libMemoryAnalysisModules.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/AllocAA.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TalkDown.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CallGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDG.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/PDGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MemoryCloningAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Architecture.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/BasicUtilities.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/TypesManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ConstantsManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Dominators.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Task.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DataFlow.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HotProfiler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopStructure.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopEnvironment.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Forest.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Invariants.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/InductionVariables.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopCarriedDependencies.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopSCCDAGAttributes.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopContent.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopNestingGraph.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Scheduler.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/OutlinerPass.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/MetadataManager.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/LoopTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGAnalysis.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CFGTransformer.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Noelle.so -disable-basicaa -globals-aa -cfl-steens-aa -tbaa -scev-aa -cfl-anders-aa --objc-arc-aa -basic-loop-aa -scev-loop-aa -auto-restrict-aa -intrinsic-aa -global-malloc-aa -pure-fun-aa -semi-local-fun-aa -phi-maze-aa -no-capture-global-aa -no-capture-src-aa -type-aa -no-escape-fields-aa -acyclic-aa -disjoint-fields-aa -field-malloc-aa -loop-variant-allocation-aa -std-in-out-err-aa -array-of-structures-aa -kill-flow-aa -callsite-depth-combinator-aa -unique-access-paths-aa -llvm-aa-results -scalar-evolution -loops -domtree -postdomtree -noellescaf -noellesvf -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Heuristics.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/ParallelizationTechnique.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DSWP.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/DOALL.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/HELIX.so -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/Parallelizer.so -parallelizer code_to_parallelize.bc -o parallelized_unoptimized.bc -noelle-verbose=3 -noelle-pdg-verbose=1 -noelle-min-hot=1 -noelle-max-cores=8 -noelle-inliner-avoid-hoist-to-main -noelle-disable-whilifier -noelle-disable-dswp
+Parallelizer: Start
+Parallelizer:  Analyzing the module code_to_parallelize.bc
+Parallelizer:  Fetching the program loops
+Noelle: Filter out cold code
+Noelle:  Function "main"
+Noelle:     Loop "  %21 = icmp slt i32 %.013, %0, !noelle.pdg.inst.id !3496" (7.999670e-09%)
+Noelle:  Disable loop "0" as cold code
+Noelle:     Loop "  %exitcond87 = icmp eq i32 %.0, 10000, !noelle.pdg.inst.id !4220" (0.000000e+00%)
+Noelle:  Disable loop "1" as cold code
+Noelle:     Loop "  %exitcond86 = icmp eq i32 %.0.us, 10000, !noelle.pdg.inst.id !4214" (0.000000e+00%)
+Noelle:  Disable loop "2" as cold code
+Noelle:     Loop "  %exitcond86.us = icmp eq i32 %.0.us.us, 10000, !noelle.pdg.inst.id !4208" (0.000000e+00%)
+Noelle:  Disable loop "3" as cold code
+Noelle:     Loop "  %exitcond85 = icmp eq i32 %.01, 1000, !noelle.pdg.inst.id !4190" (0.000000e+00%)
+Noelle:  Disable loop "4" as cold code
+Noelle:     Loop "  %exitcond85.us = icmp eq i32 %.01.us41, 1000, !noelle.pdg.inst.id !4153" (0.000000e+00%)
+Noelle:  Disable loop "5" as cold code
+Noelle:     Loop "  %exitcond84 = icmp eq i32 %.01.us, 1000, !noelle.pdg.inst.id !4184" (0.000000e+00%)
+Noelle:  Disable loop "6" as cold code
+Noelle:     Loop "  %exitcond84.us39 = icmp eq i32 %.01.us.us38, 1000, !noelle.pdg.inst.id !4178" (0.000000e+00%)
+Noelle:  Disable loop "7" as cold code
+Noelle:     Loop "  %exitcond84.us = icmp eq i32 %.01.us.us, 1000, !noelle.pdg.inst.id !4172" (0.000000e+00%)
+Noelle:  Disable loop "8" as cold code
+Noelle:     Loop "  %exitcond84.us.us = icmp eq i32 %.01.us.us.us, 1000, !noelle.pdg.inst.id !4163" (0.000000e+00%)
+Noelle:  Disable loop "9" as cold code
+Noelle:     Loop "  %exitcond = icmp eq i32 %.02, 1000, !noelle.pdg.inst.id !3670" (1.000000e+02%)
+Noelle:     Loop "  %exitcond4.i = icmp eq i64 %indvars.iv2.i, 257, !noelle.pdg.inst.id !3678" (1.368414e-03%)
+Noelle:  Disable loop "11" as cold code
+Noelle:     Loop "  %150 = icmp slt i64 %indvars.iv, %61, !noelle.pdg.inst.id !3709" (4.973913e-04%)
+Noelle:  Disable loop "12" as cold code
+Noelle:     Loop "  %157 = icmp slt i64 %indvars.iv1, %99, !noelle.pdg.inst.id !3723" (2.462644e-05%)
+Noelle:  Disable loop "13" as cold code
+Noelle:     Loop "  %174 = icmp slt i64 %indvars.iv5, %99, !noelle.pdg.inst.id !3747" (8.302395e-03%)
+Noelle:  Disable loop "14" as cold code
+Noelle:     Loop "  %178 = icmp slt i64 %indvars.iv3, %102, !noelle.pdg.inst.id !3754" (8.293141e-03%)
+Noelle:  Disable loop "15" as cold code
+Noelle:     Loop "  %323 = icmp slt i64 %indvars.iv7, %104, !noelle.pdg.inst.id !3959" (0.000000e+00%)
+Noelle:  Disable loop "16" as cold code
+Noelle:     Loop "  %335 = icmp slt i64 %indvars.iv31.i, %106, !noelle.pdg.inst.id !3974" (0.000000e+00%)
+Noelle:  Disable loop "17" as cold code
+Noelle:     Loop "  %exitcond8.i = icmp eq i32 %.01.i1, 7, !noelle.pdg.inst.id !4075" (0.000000e+00%)
+Noelle:  Disable loop "18" as cold code
+Noelle:     Loop "  %exitcond.i = icmp eq i64 %indvars.iv.i3, %indvars.iv6.i, !noelle.pdg.inst.id !4080" (0.000000e+00%)
+Noelle:  Disable loop "19" as cold code
+Noelle:     Loop "  %203 = icmp sgt i32 %.010.i, %., !noelle.pdg.inst.id !3785" (6.311897e-04%)
+Noelle:  Disable loop "20" as cold code
+Noelle:     Loop "  %207 = icmp sgt i32 %.013.i, %., !noelle.pdg.inst.id !3793" (6.093867e-04%)
+Noelle:  Disable loop "21" as cold code
+Noelle:     Loop "  %225 = icmp slt i64 %indvars.iv9, %116, !noelle.pdg.inst.id !3818" (9.998917e+01%)
+Noelle:     Loop "  %236 = icmp slt i64 %indvars.iv.i, %118, !noelle.pdg.inst.id !3833" (9.998849e+01%)
+Noelle:     Loop "  %245 = icmp sgt i32 %.017.i, %., !noelle.pdg.inst.id !3849" (9.951994e+01%)
+Noelle:     Loop "  %246 = icmp sgt i32 %.016.i, %., !noelle.pdg.inst.id !3860" (9.549543e+01%)
+Noelle:     Loop "  %exitcond8.i.i = icmp eq i32 %.01.i.i, 7, !noelle.pdg.inst.id !3921" (1.383472e-07%)
+Noelle:  Disable loop "26" as cold code
+Noelle:     Loop "  %exitcond.i.i = icmp eq i64 %indvars.iv.i.i, %indvars.iv6.i.i, !noelle.pdg.inst.id !3927" (1.195245e-07%)
+Noelle:  Disable loop "27" as cold code
+Noelle:  Function "get_image"
+Noelle:  Disable "get_image" as cold function
+Noelle:  Function "getint"
+Noelle:  Disable "getint" as cold function
+Noelle:  Function "put_image"
+Noelle:  Disable "put_image" as cold function
+Noelle:  Function "susan_smoothing"
+Noelle:  Disable "susan_smoothing" as cold function
+Noelle:  Function "susan_principle_small"
+Noelle:  Disable "susan_principle_small" as cold function
+Noelle:  Function "median"
+Noelle:  Disable "median" as cold function
+Noelle:  Function "enlarge"
+Noelle:  Disable "enlarge" as cold function
+Noelle:  Function "edge_draw"
+Noelle:  Disable "edge_draw" as cold function
+Noelle:  Function "susan_thin"
+Noelle:  Disable "susan_thin" as cold function
+Noelle:  Function "susan_edges"
+Noelle:  Disable "susan_edges" as cold function
+Noelle:  Function "susan_edges_small"
+Noelle:  Disable "susan_edges_small" as cold function
+Noelle:  Function "corner_draw"
+Noelle:  Disable "corner_draw" as cold function
+Noelle:  Function "susan_corners"
+Noelle:  Disable "susan_corners" as cold function
+Noelle:  Function "susan_corners_quick"
+Noelle:  Disable "susan_corners_quick" as cold function
+Noelle:  Function "atof"
+Noelle:  Disable "atof" as cold function
+Noelle:  Function "atoi"
+Noelle:  Disable "atoi" as cold function
+Noelle:  Function "int_to_uchar"
+Noelle:  Disable "int_to_uchar" as cold function
+Noelle:  Function "setup_brightness_lut"
+Noelle:  Disable "setup_brightness_lut" as cold function
+Noelle:  Function "susan_principle"
+Noelle:  Disable "susan_principle" as cold function
+Noelle:  Function "usage"
+Noelle:  Disable "usage" as cold function
+Parallelizer:    There are 5 loops in the program we are going to consider
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3464
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3458 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3463
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3464
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3458 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3463
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3464
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3463
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3464
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3463
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3464
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3463
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3464
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   It is clonable
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis:   The stack object   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459 can be cloned
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3463
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3464
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3463
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %9 = alloca [15000 x %struct.anon], align 16, !noelle.pdg.inst.id !3464
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %4 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3459
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %3 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !3458
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %5 = alloca i8*, align 8, !noelle.pdg.inst.id !3460
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %6 = alloca i8*, align 8, !noelle.pdg.inst.id !3461
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %7 = alloca i32, align 4, !noelle.pdg.inst.id !3462
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca i32, align 4, !noelle.pdg.inst.id !3463
+ClonableMemoryObject:   We cannot identify memory accesses to it
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+Parallelizer: parallelizerLoop: Start
+Parallelizer: parallelizerLoop:   Function = "main"
+Parallelizer: parallelizerLoop:   Loop 73 = "  %236 = icmp slt i64 %indvars.iv.i, %118, !noelle.pdg.inst.id !3833"
+Parallelizer: parallelizerLoop:   Nesting level = 3
+Parallelizer: parallelizerLoop:   Number of threads to extract = 8
+Parallelizer: parallelizerLoop:   Environment: live-in and live-out values
+Parallelizer: parallelizerLoop:   Environment:   Live-in 0 =   %81 = bitcast [8 x i32]* %4 to i8*, !noelle.pdg.inst.id !3627
+Parallelizer: parallelizerLoop:   Environment:   Live-in 1 =   %82 = getelementptr inbounds [8 x i32], [8 x i32]* %4, i64 0, i64 0, !noelle.pdg.inst.id !3628
+Parallelizer: parallelizerLoop:   Environment:   Live-in 2 =   %83 = getelementptr inbounds [8 x i32], [8 x i32]* %4, i64 0, i64 1, !noelle.pdg.inst.id !3629
+Parallelizer: parallelizerLoop:   Environment:   Live-in 3 =   %84 = getelementptr inbounds [8 x i32], [8 x i32]* %4, i64 0, i64 2, !noelle.pdg.inst.id !3630
+Parallelizer: parallelizerLoop:   Environment:   Live-in 4 =   %85 = getelementptr inbounds [8 x i32], [8 x i32]* %4, i64 0, i64 3, !noelle.pdg.inst.id !3631
+Parallelizer: parallelizerLoop:   Environment:   Live-in 5 =   %86 = getelementptr inbounds [8 x i32], [8 x i32]* %4, i64 0, i64 4, !noelle.pdg.inst.id !3632
+Parallelizer: parallelizerLoop:   Environment:   Live-in 6 =   %87 = getelementptr inbounds [8 x i32], [8 x i32]* %4, i64 0, i64 5, !noelle.pdg.inst.id !3633
+Parallelizer: parallelizerLoop:   Environment:   Live-in 7 =   %88 = getelementptr inbounds [8 x i32], [8 x i32]* %4, i64 0, i64 6, !noelle.pdg.inst.id !3634
+Parallelizer: parallelizerLoop:   Environment:   Live-in 8 =   %89 = getelementptr inbounds [8 x i32], [8 x i32]* %4, i64 0, i64 7, !noelle.pdg.inst.id !3635
+Parallelizer: parallelizerLoop:   Environment:   Live-in 9 =   %. = select i1 %64, i32 %68, i32 1, !prof !3504, !noelle.pdg.inst.id !3636
+Parallelizer: parallelizerLoop:   Environment:   Live-in 10 =   %99 = sext i32 %. to i64, !noelle.pdg.inst.id !3647
+Parallelizer: parallelizerLoop:   Environment:   Live-in 11 =   %111 = sub nsw i32 0, %., !noelle.pdg.inst.id !3659
+Parallelizer: parallelizerLoop:   Environment:   Live-in 12 =   %114 = sext i32 %112 to i64, !noelle.pdg.inst.id !3662
+Parallelizer: parallelizerLoop:   Environment:   Live-in 13 =   %118 = sext i32 %117 to i64, !noelle.pdg.inst.id !3666
+Parallelizer: parallelizerLoop:   Environment:   Live-in 14 =   %124 = getelementptr inbounds i8, i8* %123, i64 258, !noelle.pdg.inst.id !3675
+Parallelizer: parallelizerLoop:   Environment:   Live-in 15 =   %147 = tail call noalias i8* @malloc(i64 %98) #11, !noelle.pdg.inst.id !271
+Parallelizer: parallelizerLoop:   Environment:   Live-in 16 =   %201 = tail call noalias i8* @malloc(i64 %110) #11, !noelle.pdg.inst.id !290
+Parallelizer: parallelizerLoop:   Environment:   Live-in 18 =   %.01.i = phi i8* [ %58, %222 ], [ %.12.i.lcssa, %.loopexit23 ], !noelle.pdg.inst.id !3817
+Parallelizer: parallelizerLoop:   Environment:   Live-in 19 =   %229 = getelementptr inbounds i8, i8* %223, i64 %228, !noelle.pdg.inst.id !3824
+Parallelizer: parallelizerLoop:   Environment:   Live-in 20 =   %230 = mul i64 %indvars.iv9, %95, !noelle.pdg.inst.id !3825
+Parallelizer: parallelizerLoop:   Environment:   Live-in 21 =   %232 = mul i64 %231, %95, !noelle.pdg.inst.id !3827
+Parallelizer: parallelizerLoop:   Environment:   Live-in 22 =   %234 = mul i64 %233, %95, !noelle.pdg.inst.id !3829
+Parallelizer: parallelizerLoop:   Environment:   Live-out 17 =   %.12.i = phi i8* [ %.2.i, %322 ], [ %.01.i, %226 ], !noelle.pdg.inst.id !3832
+DOALL: Checking if the loop is DOALL
+DOALL:   The next live-out variables are not reducable
+DOALL:     Live-out ID = 17
+HELIX:   Loop has 20 basic blocks:
+
+322:                                              ; preds = %317, %median.exit.i
+  %storemerge20.i.in = phi i32 [ %321, %317 ], [ %316, %median.exit.i ], !noelle.pdg.inst.id !3952
+  %storemerge20.i = trunc i32 %storemerge20.i.in to i8, !noelle.pdg.inst.id !3953
+  %.2.i = getelementptr inbounds i8, i8* %.12.i, i64 1, !noelle.pdg.inst.id !3954
+  store i8 %storemerge20.i, i8* %.12.i, align 1, !tbaa !3502, !noelle.pdg.inst.id !358
+  %indvars.iv.next.i = add nsw i64 %indvars.iv.i, 1, !noelle.pdg.inst.id !3955
+  br label %235, !noelle.pdg.inst.id !3956
+
+
+median.exit.i:                                    ; preds = %303
+  %313 = load i32, i32* %85, align 4, !tbaa !3896, !noelle.pdg.inst.id !354
+  %314 = load i32, i32* %86, align 16, !tbaa !3896, !noelle.pdg.inst.id !356
+  %315 = add nsw i32 %313, %314, !noelle.pdg.inst.id !3943
+  %316 = sdiv i32 %315, 2, !noelle.pdg.inst.id !3944
+  call void @llvm.lifetime.end.p0i8(i64 32, i8* nonnull %81) #11, !noelle.pdg.inst.id !3945
+  br label %322, !noelle.pdg.inst.id !3946
+
+
+311:                                              ; preds = %.preheader.i.i
+  %312 = add nuw nsw i32 %.01.i.i, 1, !noelle.pdg.inst.id !3940
+  %indvars.iv.next7.i.i = add nsw i64 %indvars.iv6.i.i, -1, !noelle.pdg.inst.id !3941
+  br label %303, !noelle.pdg.inst.id !3942
+
+
+._crit_edge.i.i:                                  ; preds = %.._crit_edge.i.i_crit_edge, %310
+  br label %.preheader.i.i, !noelle.pdg.inst.id !3939
+
+
+247:                                              ; preds = %.preheader.i
+  %248 = getelementptr inbounds i8, i8* %.18.i, i64 1, !noelle.pdg.inst.id !3864
+  %249 = load i8, i8* %.18.i, align 1, !tbaa !3502, !noelle.pdg.inst.id !298
+  %250 = zext i8 %249 to i32, !noelle.pdg.inst.id !3865
+  %251 = getelementptr inbounds i8, i8* %.36.i, i64 1, !noelle.pdg.inst.id !3866
+  %252 = load i8, i8* %.36.i, align 1, !tbaa !3502, !noelle.pdg.inst.id !300
+  %253 = zext i8 %252 to i32, !noelle.pdg.inst.id !3867
+  %254 = zext i8 %249 to i64, !noelle.pdg.inst.id !3868
+  %255 = sub nsw i64 0, %254, !noelle.pdg.inst.id !3869
+  %256 = getelementptr inbounds i8, i8* %243, i64 %255, !noelle.pdg.inst.id !3870
+  %257 = load i8, i8* %256, align 1, !tbaa !3502, !noelle.pdg.inst.id !302
+  %258 = zext i8 %257 to i32, !noelle.pdg.inst.id !3871
+  %259 = mul nuw nsw i32 %253, %258, !noelle.pdg.inst.id !3872
+  %260 = add nsw i32 %.119.i, %259, !noelle.pdg.inst.id !3873
+  %261 = mul nuw nsw i32 %259, %250, !noelle.pdg.inst.id !3874
+  %262 = add nsw i32 %.1.i, %261, !noelle.pdg.inst.id !3875
+  %263 = add nsw i32 %.016.i, 1, !noelle.pdg.inst.id !3876
+  br label %.preheader.i, !noelle.pdg.inst.id !3877
+
+
+.preheader.i:                                     ; preds = %.preheader.i.preheader, %247
+  %.119.i = phi i32 [ %260, %247 ], [ %.018.i, %.preheader.i.preheader ], !noelle.pdg.inst.id !3855
+  %.016.i = phi i32 [ %263, %247 ], [ %111, %.preheader.i.preheader ], !noelle.pdg.inst.id !3856
+  %.18.i = phi i8* [ %248, %247 ], [ %.07.i, %.preheader.i.preheader ], !noelle.pdg.inst.id !3857
+  %.36.i = phi i8* [ %251, %247 ], [ %.25.i, %.preheader.i.preheader ], !noelle.pdg.inst.id !3858
+  %.1.i = phi i32 [ %262, %247 ], [ %.0.i, %.preheader.i.preheader ], !noelle.pdg.inst.id !3859
+  %246 = icmp sgt i32 %.016.i, %., !noelle.pdg.inst.id !3860
+  br i1 %246, label %264, label %247, !prof !3861, !noelle.loop.id !3862, !noelle.pdg.inst.id !3863
+
+
+.preheader.i.preheader:                           ; preds = %244
+  br label %.preheader.i, !noelle.pdg.inst.id !3854
+
+
+244:                                              ; preds = %264, %237
+  %.018.i = phi i32 [ 0, %237 ], [ %.119.i.lcssa, %264 ], !noelle.pdg.inst.id !3844
+  %.017.i = phi i32 [ %111, %237 ], [ %266, %264 ], !noelle.pdg.inst.id !3845
+  %.07.i = phi i8* [ %238, %237 ], [ %265, %264 ], !noelle.pdg.inst.id !3846
+  %.25.i = phi i8* [ %201, %237 ], [ %.36.i.lcssa, %264 ], !noelle.pdg.inst.id !3847
+  %.0.i = phi i32 [ 0, %237 ], [ %.1.i.lcssa, %264 ], !noelle.pdg.inst.id !3848
+  %245 = icmp sgt i32 %.017.i, %., !noelle.pdg.inst.id !3849
+  br i1 %245, label %267, label %.preheader.i.preheader, !prof !3850, !noelle.loop.id !3851, !noelle.pdg.inst.id !3852, !noelle.parallelizer.looporder !3853
+
+
+235:                                              ; preds = %322, %226
+  %indvars.iv.i = phi i64 [ %indvars.iv.next.i, %322 ], [ %99, %226 ], !noelle.pdg.inst.id !3831
+  %.12.i = phi i8* [ %.2.i, %322 ], [ %.01.i, %226 ], !noelle.pdg.inst.id !3832
+  %236 = icmp slt i64 %indvars.iv.i, %118, !noelle.pdg.inst.id !3833
+  br i1 %236, label %237, label %.loopexit23, !prof !3834, !noelle.loop.id !3835, !noelle.pdg.inst.id !3836, !noelle.parallelizer.looporder !3837
+
+
+237:                                              ; preds = %235
+  %238 = getelementptr inbounds i8, i8* %229, i64 %indvars.iv.i, !noelle.pdg.inst.id !3838
+  %239 = add i64 %230, %indvars.iv.i, !noelle.pdg.inst.id !3839
+  %240 = getelementptr inbounds i8, i8* %147, i64 %239, !noelle.pdg.inst.id !3840
+  %241 = load i8, i8* %240, align 1, !tbaa !3502, !noelle.pdg.inst.id !296
+  %242 = zext i8 %241 to i64, !noelle.pdg.inst.id !3841
+  %243 = getelementptr inbounds i8, i8* %124, i64 %242, !noelle.pdg.inst.id !3842
+  br label %244, !noelle.pdg.inst.id !3843
+
+
+317:                                              ; preds = %267
+  %318 = zext i8 %241 to i32, !noelle.pdg.inst.id !3947
+  %319 = mul nsw i32 %318, -10000, !noelle.pdg.inst.id !3948
+  %320 = add i32 %.0.i.lcssa, %319, !noelle.pdg.inst.id !3949
+  %321 = sdiv i32 %320, %268, !noelle.pdg.inst.id !3950
+  br label %322, !noelle.pdg.inst.id !3951
+
+
+264:                                              ; preds = %.preheader.i
+  %.119.i.lcssa = phi i32 [ %.119.i, %.preheader.i ], !noelle.pdg.inst.id !3878
+  %.18.i.lcssa = phi i8* [ %.18.i, %.preheader.i ], !noelle.pdg.inst.id !3879
+  %.36.i.lcssa = phi i8* [ %.36.i, %.preheader.i ], !noelle.pdg.inst.id !3880
+  %.1.i.lcssa = phi i32 [ %.1.i, %.preheader.i ], !noelle.pdg.inst.id !3881
+  %265 = getelementptr inbounds i8, i8* %.18.i.lcssa, i64 %114, !noelle.pdg.inst.id !3882
+  %266 = add nsw i32 %.017.i, 1, !noelle.pdg.inst.id !3883
+  br label %244, !noelle.pdg.inst.id !3884
+
+
+267:                                              ; preds = %244
+  %.018.i.lcssa = phi i32 [ %.018.i, %244 ], !noelle.pdg.inst.id !3885
+  %.0.i.lcssa = phi i32 [ %.0.i, %244 ], !noelle.pdg.inst.id !3886
+  %268 = add nsw i32 %.018.i.lcssa, -10000, !noelle.pdg.inst.id !3887
+  %269 = icmp eq i32 %268, 0, !noelle.pdg.inst.id !3888
+  br i1 %269, label %270, label %317, !prof !3889, !noelle.pdg.inst.id !3890
+
+
+270:                                              ; preds = %267
+  call void @llvm.lifetime.start.p0i8(i64 32, i8* nonnull %81) #11, !noelle.pdg.inst.id !3891
+  %271 = add i64 %232, %indvars.iv.i, !noelle.pdg.inst.id !3892
+  %272 = add i64 %271, -1, !noelle.pdg.inst.id !3893
+  %273 = getelementptr inbounds i8, i8* %147, i64 %272, !noelle.pdg.inst.id !3894
+  %274 = load i8, i8* %273, align 1, !tbaa !3502, !noelle.pdg.inst.id !304
+  %275 = zext i8 %274 to i32, !noelle.pdg.inst.id !3895
+  store i32 %275, i32* %82, align 16, !tbaa !3896, !noelle.pdg.inst.id !306
+  %276 = getelementptr inbounds i8, i8* %147, i64 %271, !noelle.pdg.inst.id !3898
+  %277 = load i8, i8* %276, align 1, !tbaa !3502, !noelle.pdg.inst.id !309
+  %278 = zext i8 %277 to i32, !noelle.pdg.inst.id !3899
+  store i32 %278, i32* %83, align 4, !tbaa !3896, !noelle.pdg.inst.id !311
+  %279 = add nsw i64 %271, 1, !noelle.pdg.inst.id !3900
+  %280 = getelementptr inbounds i8, i8* %147, i64 %279, !noelle.pdg.inst.id !3901
+  %281 = load i8, i8* %280, align 1, !tbaa !3502, !noelle.pdg.inst.id !314
+  %282 = zext i8 %281 to i32, !noelle.pdg.inst.id !3902
+  store i32 %282, i32* %84, align 8, !tbaa !3896, !noelle.pdg.inst.id !316
+  %283 = add i64 %239, -1, !noelle.pdg.inst.id !3903
+  %284 = getelementptr inbounds i8, i8* %147, i64 %283, !noelle.pdg.inst.id !3904
+  %285 = load i8, i8* %284, align 1, !tbaa !3502, !noelle.pdg.inst.id !319
+  %286 = zext i8 %285 to i32, !noelle.pdg.inst.id !3905
+  store i32 %286, i32* %85, align 4, !tbaa !3896, !noelle.pdg.inst.id !321
+  %287 = add nsw i64 %239, 1, !noelle.pdg.inst.id !3906
+  %288 = getelementptr inbounds i8, i8* %147, i64 %287, !noelle.pdg.inst.id !3907
+  %289 = load i8, i8* %288, align 1, !tbaa !3502, !noelle.pdg.inst.id !324
+  %290 = zext i8 %289 to i32, !noelle.pdg.inst.id !3908
+  store i32 %290, i32* %86, align 16, !tbaa !3896, !noelle.pdg.inst.id !326
+  %291 = add i64 %234, %indvars.iv.i, !noelle.pdg.inst.id !3909
+  %292 = add i64 %291, -1, !noelle.pdg.inst.id !3910
+  %293 = getelementptr inbounds i8, i8* %147, i64 %292, !noelle.pdg.inst.id !3911
+  %294 = load i8, i8* %293, align 1, !tbaa !3502, !noelle.pdg.inst.id !329
+  %295 = zext i8 %294 to i32, !noelle.pdg.inst.id !3912
+  store i32 %295, i32* %87, align 4, !tbaa !3896, !noelle.pdg.inst.id !331
+  %296 = getelementptr inbounds i8, i8* %147, i64 %291, !noelle.pdg.inst.id !3913
+  %297 = load i8, i8* %296, align 1, !tbaa !3502, !noelle.pdg.inst.id !334
+  %298 = zext i8 %297 to i32, !noelle.pdg.inst.id !3914
+  store i32 %298, i32* %88, align 8, !tbaa !3896, !noelle.pdg.inst.id !336
+  %299 = add nsw i64 %291, 1, !noelle.pdg.inst.id !3915
+  %300 = getelementptr inbounds i8, i8* %147, i64 %299, !noelle.pdg.inst.id !3916
+  %301 = load i8, i8* %300, align 1, !tbaa !3502, !noelle.pdg.inst.id !339
+  %302 = zext i8 %301 to i32, !noelle.pdg.inst.id !3917
+  store i32 %302, i32* %89, align 4, !tbaa !3896, !noelle.pdg.inst.id !341
+  br label %303, !noelle.pdg.inst.id !3918
+
+
+303:                                              ; preds = %311, %270
+  %indvars.iv6.i.i = phi i64 [ %indvars.iv.next7.i.i, %311 ], [ 7, %270 ], !noelle.pdg.inst.id !3919
+  %.01.i.i = phi i32 [ %312, %311 ], [ 0, %270 ], !noelle.pdg.inst.id !3920
+  %exitcond8.i.i = icmp eq i32 %.01.i.i, 7, !noelle.pdg.inst.id !3921
+  br i1 %exitcond8.i.i, label %median.exit.i, label %.preheader.i.i.preheader, !prof !3922, !noelle.loop.id !3923, !noelle.pdg.inst.id !3924
+
+
+.preheader.i.i.preheader:                         ; preds = %303
+  br label %.preheader.i.i, !noelle.pdg.inst.id !3925
+
+
+.preheader.i.i:                                   ; preds = %.preheader.i.i.preheader, %._crit_edge.i.i
+  %indvars.iv.i.i = phi i64 [ %indvars.iv.next.i.i, %._crit_edge.i.i ], [ 0, %.preheader.i.i.preheader ], !noelle.pdg.inst.id !3926
+  %exitcond.i.i = icmp eq i64 %indvars.iv.i.i, %indvars.iv6.i.i, !noelle.pdg.inst.id !3927
+  br i1 %exitcond.i.i, label %311, label %304, !prof !3928, !noelle.loop.id !3929, !noelle.pdg.inst.id !3930
+
+
+304:                                              ; preds = %.preheader.i.i
+  %305 = getelementptr inbounds [8 x i32], [8 x i32]* %4, i64 0, i64 %indvars.iv.i.i, !noelle.pdg.inst.id !3931
+  %306 = load i32, i32* %305, align 4, !tbaa !3896, !noelle.pdg.inst.id !344
+  %indvars.iv.next.i.i = add nuw nsw i64 %indvars.iv.i.i, 1, !noelle.pdg.inst.id !3932
+  %307 = getelementptr inbounds [8 x i32], [8 x i32]* %4, i64 0, i64 %indvars.iv.next.i.i, !noelle.pdg.inst.id !3933
+  %308 = load i32, i32* %307, align 4, !tbaa !3896, !noelle.pdg.inst.id !346
+  %309 = icmp sgt i32 %306, %308, !noelle.pdg.inst.id !3934
+  br i1 %309, label %310, label %.._crit_edge.i.i_crit_edge, !prof !3935, !noelle.pdg.inst.id !3936
+
+
+.._crit_edge.i.i_crit_edge:                       ; preds = %304
+  br label %._crit_edge.i.i, !noelle.pdg.inst.id !3937
+
+
+310:                                              ; preds = %304
+  store i32 %308, i32* %305, align 4, !tbaa !3896, !noelle.pdg.inst.id !348
+  store i32 %306, i32* %307, align 4, !tbaa !3896, !noelle.pdg.inst.id !351
+  br label %._crit_edge.i.i, !noelle.pdg.inst.id !3938
+
+HELIX:   Next are all loop-carried dependences of the loop
+HELIX:       br i1 %236, label %237, label %.loopexit23, !prof !3834, !noelle.loop.id !3835, !noelle.pdg.inst.id !3836, !noelle.parallelizer.looporder !3837 --->   %indvars.iv.i = phi i64 [ %indvars.iv.next.i, %322 ], [ %99, %226 ], !noelle.pdg.inst.id !3831 control
+HELIX:       br i1 %236, label %237, label %.loopexit23, !prof !3834, !noelle.loop.id !3835, !noelle.pdg.inst.id !3836, !noelle.parallelizer.looporder !3837 --->   %.12.i = phi i8* [ %.2.i, %322 ], [ %.01.i, %226 ], !noelle.pdg.inst.id !3832 control
+HELIX:       br i1 %236, label %237, label %.loopexit23, !prof !3834, !noelle.loop.id !3835, !noelle.pdg.inst.id !3836, !noelle.parallelizer.looporder !3837 --->   %236 = icmp slt i64 %indvars.iv.i, %118, !noelle.pdg.inst.id !3833 control
+HELIX:       br i1 %236, label %237, label %.loopexit23, !prof !3834, !noelle.loop.id !3835, !noelle.pdg.inst.id !3836, !noelle.parallelizer.looporder !3837 --->   br i1 %236, label %237, label %.loopexit23, !prof !3834, !noelle.loop.id !3835, !noelle.pdg.inst.id !3836, !noelle.parallelizer.looporder !3837 control
+HELIX:       %.2.i = getelementptr inbounds i8, i8* %.12.i, i64 1, !noelle.pdg.inst.id !3954 --->   %.12.i = phi i8* [ %.2.i, %322 ], [ %.01.i, %226 ], !noelle.pdg.inst.id !3832 via variable
+HELIX:       %indvars.iv.next.i = add nsw i64 %indvars.iv.i, 1, !noelle.pdg.inst.id !3955 --->   %indvars.iv.i = phi i64 [ %indvars.iv.next.i, %322 ], [ %99, %226 ], !noelle.pdg.inst.id !3831 via variable
+HELIX: Start the parallelization
+HELIX:   Initialize the environment of the loop
+HELIX:   Cloning loop in task
+HELIX:   Check if we need to spill variables because they are part of loop carried data dependencies
+HELIX:   Adjusting loop IVs
+HELIX:  Constructing task dependence graph
+HELIX:  Constructing task loop dependence info
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !30
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+MemoryCloningAnalysis: Start
+ClonableMemoryObject: Start
+ClonableMemoryObject:   Object =   %8 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !30
+ClonableMemoryObject:   There are RAW memory data dependences between loop iterations
+ClonableMemoryObject: Exit
+MemoryCloningAnalysis: Exit
+HELIX:   Loop has 20 basic blocks:
+
+86:                                               ; preds = %103
+  %87 = getelementptr inbounds i8, i8* %106, i64 1, !noelle.pdg.inst.id !59
+  %88 = load i8, i8* %106, align 1, !tbaa !42, !noelle.pdg.inst.id !60
+  %89 = zext i8 %88 to i32, !noelle.pdg.inst.id !61
+  %90 = getelementptr inbounds i8, i8* %107, i64 1, !noelle.pdg.inst.id !62
+  %91 = load i8, i8* %107, align 1, !tbaa !42, !noelle.pdg.inst.id !63
+  %92 = zext i8 %91 to i32, !noelle.pdg.inst.id !64
+  %93 = zext i8 %88 to i64, !noelle.pdg.inst.id !65
+  %94 = sub nsw i64 0, %93, !noelle.pdg.inst.id !66
+  %95 = getelementptr inbounds i8, i8* %128, i64 %94, !noelle.pdg.inst.id !67
+  %96 = load i8, i8* %95, align 1, !tbaa !42, !noelle.pdg.inst.id !68
+  %97 = zext i8 %96 to i32, !noelle.pdg.inst.id !69
+  %98 = mul nuw nsw i32 %92, %97, !noelle.pdg.inst.id !70
+  %99 = add nsw i32 %104, %98, !noelle.pdg.inst.id !71
+  %100 = mul nuw nsw i32 %98, %89, !noelle.pdg.inst.id !72
+  %101 = add nsw i32 %108, %100, !noelle.pdg.inst.id !73
+  %102 = add nsw i32 %105, 1, !noelle.pdg.inst.id !74
+  br label %103, !noelle.pdg.inst.id !75
+
+
+68:                                               ; preds = %129, %77
+  %69 = phi i32 [ %133, %129 ], [ %81, %77 ], !noelle.pdg.inst.id !39
+  %70 = trunc i32 %69 to i8, !noelle.pdg.inst.id !40
+  %71 = getelementptr inbounds i8, i8* %120, i64 1, !noelle.pdg.inst.id !41
+  store i8 %70, i8* %120, align 1, !tbaa !42, !noelle.pdg.inst.id !45
+  %72 = add nsw i64 %119, 1, !noelle.pdg.inst.id !46
+  %73 = add i64 %72, %63
+  %74 = ptrtoint i8* %71 to i64
+  %75 = add i64 %74, %65
+  %76 = inttoptr i64 %75 to i8*
+  br label %118, !noelle.pdg.inst.id !47
+
+
+141:                                              ; preds = %111
+  %142 = phi i32 [ %112, %111 ], !noelle.pdg.inst.id !122
+  %143 = phi i32 [ %116, %111 ], !noelle.pdg.inst.id !123
+  %144 = add nsw i32 %142, -10000, !noelle.pdg.inst.id !124
+  %145 = icmp eq i32 %144, 0, !noelle.pdg.inst.id !125
+  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+
+
+146:                                              ; preds = %141
+  %147 = add i64 %noelle_environment_variable_21, %119, !noelle.pdg.inst.id !128
+  %148 = add i64 %147, -1, !noelle.pdg.inst.id !129
+  %149 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %148, !noelle.pdg.inst.id !130
+  %150 = load i8, i8* %149, align 1, !tbaa !42, !noelle.pdg.inst.id !131
+  %151 = zext i8 %150 to i32, !noelle.pdg.inst.id !132
+  store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133
+  %152 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %147, !noelle.pdg.inst.id !134
+  %153 = load i8, i8* %152, align 1, !tbaa !42, !noelle.pdg.inst.id !135
+  %154 = zext i8 %153 to i32, !noelle.pdg.inst.id !136
+  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+  %155 = add nsw i64 %147, 1, !noelle.pdg.inst.id !138
+  %156 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %155, !noelle.pdg.inst.id !139
+  %157 = load i8, i8* %156, align 1, !tbaa !42, !noelle.pdg.inst.id !140
+  %158 = zext i8 %157 to i32, !noelle.pdg.inst.id !141
+  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+  %159 = add i64 %124, -1, !noelle.pdg.inst.id !143
+  %160 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %159, !noelle.pdg.inst.id !144
+  %161 = load i8, i8* %160, align 1, !tbaa !42, !noelle.pdg.inst.id !145
+  %162 = zext i8 %161 to i32, !noelle.pdg.inst.id !146
+  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+  %163 = add nsw i64 %124, 1, !noelle.pdg.inst.id !148
+  %164 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %163, !noelle.pdg.inst.id !149
+  %165 = load i8, i8* %164, align 1, !tbaa !42, !noelle.pdg.inst.id !150
+  %166 = zext i8 %165 to i32, !noelle.pdg.inst.id !151
+  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+  %167 = add i64 %noelle_environment_variable_22, %119, !noelle.pdg.inst.id !153
+  %168 = add i64 %167, -1, !noelle.pdg.inst.id !154
+  %169 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %168, !noelle.pdg.inst.id !155
+  %170 = load i8, i8* %169, align 1, !tbaa !42, !noelle.pdg.inst.id !156
+  %171 = zext i8 %170 to i32, !noelle.pdg.inst.id !157
+  store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158
+  %172 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %167, !noelle.pdg.inst.id !159
+  %173 = load i8, i8* %172, align 1, !tbaa !42, !noelle.pdg.inst.id !160
+  %174 = zext i8 %173 to i32, !noelle.pdg.inst.id !161
+  store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162
+  %175 = add nsw i64 %167, 1, !noelle.pdg.inst.id !163
+  %176 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %175, !noelle.pdg.inst.id !164
+  %177 = load i8, i8* %176, align 1, !tbaa !42, !noelle.pdg.inst.id !165
+  %178 = zext i8 %177 to i32, !noelle.pdg.inst.id !166
+  store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167
+  br label %179, !noelle.pdg.inst.id !168
+
+
+118:                                              ; preds = %7, %68
+  %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96
+  %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97
+  %121 = icmp sge i64 %119, %noelle_environment_variable_13, !noelle.pdg.inst.id !98
+  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+
+
+103:                                              ; preds = %86, %110
+  %104 = phi i32 [ %99, %86 ], [ %112, %110 ], !noelle.pdg.inst.id !76
+  %105 = phi i32 [ %102, %86 ], [ %noelle_environment_variable_11, %110 ], !noelle.pdg.inst.id !77
+  %106 = phi i8* [ %87, %86 ], [ %114, %110 ], !noelle.pdg.inst.id !78
+  %107 = phi i8* [ %90, %86 ], [ %115, %110 ], !noelle.pdg.inst.id !79
+  %108 = phi i32 [ %101, %86 ], [ %116, %110 ], !noelle.pdg.inst.id !80
+  %109 = icmp sgt i32 %105, %noelle_environment_variable_9, !noelle.pdg.inst.id !81
+  br i1 %109, label %134, label %86, !prof !82, !noelle.loop.id !83, !noelle.pdg.inst.id !84
+
+
+122:                                              ; preds = %118
+  %123 = getelementptr inbounds i8, i8* %noelle_environment_variable_19, i64 %119, !noelle.pdg.inst.id !103
+  %124 = add i64 %noelle_environment_variable_20, %119, !noelle.pdg.inst.id !104
+  %125 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %124, !noelle.pdg.inst.id !105
+  %126 = load i8, i8* %125, align 1, !tbaa !42, !noelle.pdg.inst.id !106
+  %127 = zext i8 %126 to i64, !noelle.pdg.inst.id !107
+  %128 = getelementptr inbounds i8, i8* %noelle_environment_variable_14, i64 %127, !noelle.pdg.inst.id !108
+  br label %111, !noelle.pdg.inst.id !109
+
+
+111:                                              ; preds = %122, %134
+  %112 = phi i32 [ 0, %122 ], [ %135, %134 ], !noelle.pdg.inst.id !86
+  %113 = phi i32 [ %noelle_environment_variable_11, %122 ], [ %140, %134 ], !noelle.pdg.inst.id !87
+  %114 = phi i8* [ %123, %122 ], [ %139, %134 ], !noelle.pdg.inst.id !88
+  %115 = phi i8* [ %noelle_environment_variable_16, %122 ], [ %137, %134 ], !noelle.pdg.inst.id !89
+  %116 = phi i32 [ 0, %122 ], [ %138, %134 ], !noelle.pdg.inst.id !90
+  %117 = icmp sgt i32 %113, %noelle_environment_variable_9, !noelle.pdg.inst.id !91
+  br i1 %117, label %141, label %110, !prof !92, !noelle.loop.id !93, !noelle.pdg.inst.id !94, !noelle.parallelizer.looporder !95
+
+
+134:                                              ; preds = %103
+  %135 = phi i32 [ %104, %103 ], !noelle.pdg.inst.id !115
+  %136 = phi i8* [ %106, %103 ], !noelle.pdg.inst.id !116
+  %137 = phi i8* [ %107, %103 ], !noelle.pdg.inst.id !117
+  %138 = phi i32 [ %108, %103 ], !noelle.pdg.inst.id !118
+  %139 = getelementptr inbounds i8, i8* %136, i64 %noelle_environment_variable_12, !noelle.pdg.inst.id !119
+  %140 = add nsw i32 %113, 1, !noelle.pdg.inst.id !120
+  br label %111, !noelle.pdg.inst.id !121
+
+
+129:                                              ; preds = %141
+  %130 = zext i8 %126 to i32, !noelle.pdg.inst.id !110
+  %131 = mul nsw i32 %130, -10000, !noelle.pdg.inst.id !111
+  %132 = add i32 %143, %131, !noelle.pdg.inst.id !112
+  %133 = sdiv i32 %132, %144, !noelle.pdg.inst.id !113
+  br label %68, !noelle.pdg.inst.id !114
+
+
+179:                                              ; preds = %146, %82
+  %180 = phi i64 [ %84, %82 ], [ 7, %146 ], !noelle.pdg.inst.id !169
+  %181 = phi i32 [ %83, %82 ], [ 0, %146 ], !noelle.pdg.inst.id !170
+  %182 = icmp eq i32 %181, 7, !noelle.pdg.inst.id !171
+  br i1 %182, label %77, label %183, !prof !172, !noelle.loop.id !173, !noelle.pdg.inst.id !174
+
+
+85:                                               ; preds = %195, %194
+  br label %184, !noelle.pdg.inst.id !58
+
+
+184:                                              ; preds = %183, %85
+  %185 = phi i64 [ %190, %85 ], [ 0, %183 ], !noelle.pdg.inst.id !176
+  %186 = icmp eq i64 %185, %180, !noelle.pdg.inst.id !177
+  br i1 %186, label %82, label %187, !prof !178, !noelle.loop.id !179, !noelle.pdg.inst.id !180
+
+
+82:                                               ; preds = %184
+  %83 = add nuw nsw i32 %181, 1, !noelle.pdg.inst.id !55
+  %84 = add nsw i64 %180, -1, !noelle.pdg.inst.id !56
+  br label %179, !noelle.pdg.inst.id !57
+
+
+183:                                              ; preds = %179
+  br label %184, !noelle.pdg.inst.id !175
+
+
+77:                                               ; preds = %179
+  %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+  %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+  %80 = add nsw i32 %78, %79, !noelle.pdg.inst.id !52
+  %81 = sdiv i32 %80, 2, !noelle.pdg.inst.id !53
+  br label %68, !noelle.pdg.inst.id !54
+
+
+110:                                              ; preds = %111
+  br label %103, !noelle.pdg.inst.id !85
+
+
+187:                                              ; preds = %184
+  %188 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 %185, !noelle.pdg.inst.id !181
+  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+  %190 = add nuw nsw i64 %185, 1, !noelle.pdg.inst.id !183
+  %191 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 %190, !noelle.pdg.inst.id !184
+  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+  %193 = icmp sgt i32 %189, %192, !noelle.pdg.inst.id !186
+  br i1 %193, label %195, label %194, !prof !187, !noelle.pdg.inst.id !188
+
+
+195:                                              ; preds = %187
+  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+  br label %85, !noelle.pdg.inst.id !192
+
+
+194:                                              ; preds = %187
+  br label %85, !noelle.pdg.inst.id !189
+
+HELIX:   There are 13 SCCs that have loop-carried dependences that cannot be broken
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51 via memory
+HELIX:           store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51 via memory
+HELIX:           store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51 via memory
+HELIX:           store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51 via memory
+HELIX:       Nodes within the SCC: 1
+HELIX:       	  %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 5
+HELIX:       	  %80 = add nsw i32 %78, %79, !noelle.pdg.inst.id !52
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:       Edges: 5
+HELIX:         From:	  %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+HELIX:         To:	  %80 = add nsw i32 %78, %79, !noelle.pdg.inst.id !52
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:         To:	  %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:         To:	  %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+HELIX:         Attributes: Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         To:	  %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         To:	  %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50 via memory
+HELIX:           store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50 via memory
+HELIX:           store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50 via memory
+HELIX:           store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50 via memory
+HELIX:       Nodes within the SCC: 1
+HELIX:       	  %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 5
+HELIX:       	  %80 = add nsw i32 %78, %79, !noelle.pdg.inst.id !52
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:       Edges: 5
+HELIX:         From:	  %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+HELIX:         To:	  %80 = add nsw i32 %78, %79, !noelle.pdg.inst.id !52
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:         To:	  %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:         To:	  %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+HELIX:         Attributes: Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         To:	  %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         To:	  %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51 via memory
+HELIX:           store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51 via memory
+HELIX:           store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50 via memory
+HELIX:           store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50 via memory
+HELIX:           %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50 via memory
+HELIX:           store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50 via memory
+HELIX:           store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       Nodes within the SCC: 6
+HELIX:       	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:       	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:       	  %193 = icmp sgt i32 %189, %192, !noelle.pdg.inst.id !186
+HELIX:       	  br i1 %193, label %195, label %194, !prof !187, !noelle.pdg.inst.id !188
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 15
+HELIX:       	  %188 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 %185, !noelle.pdg.inst.id !181
+HELIX:       	  %191 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 %190, !noelle.pdg.inst.id !184
+HELIX:       	  store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133
+HELIX:       	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:       	  %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+HELIX:       	  %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+HELIX:       	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:       	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:       	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:       	  store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158
+HELIX:       	  store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162
+HELIX:       	  store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167
+HELIX:       	  br i1 %186, label %82, label %187, !prof !178, !noelle.loop.id !179, !noelle.pdg.inst.id !180
+HELIX:       	  br label %85, !noelle.pdg.inst.id !189
+HELIX:       	  br label %85, !noelle.pdg.inst.id !192
+HELIX:       Edges: 57
+HELIX:         From:	  %188 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 %185, !noelle.pdg.inst.id !181
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %188 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 %185, !noelle.pdg.inst.id !181
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %191 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 %190, !noelle.pdg.inst.id !184
+HELIX:         To:	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %191 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 %190, !noelle.pdg.inst.id !184
+HELIX:         To:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:         To:	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:         To:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:         To:	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:         To:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         ....
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       Nodes within the SCC: 1
+HELIX:       	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 6
+HELIX:       	  %154 = zext i8 %153 to i32, !noelle.pdg.inst.id !136
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:       	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:       Edges: 6
+HELIX:         From:	  %154 = zext i8 %153 to i32, !noelle.pdg.inst.id !136
+HELIX:         To:	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:         To:	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:         To:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:         To:	  store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+HELIX:         Attributes: Control 
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       Nodes within the SCC: 1
+HELIX:       	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 7
+HELIX:       	  %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  %162 = zext i8 %161 to i32, !noelle.pdg.inst.id !146
+HELIX:       	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:       	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:       Edges: 7
+HELIX:         From:	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:         To:	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  %162 = zext i8 %161 to i32, !noelle.pdg.inst.id !146
+HELIX:         To:	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:         To:	  %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+HELIX:         Attributes: Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:         To:	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+HELIX:         To:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       Nodes within the SCC: 1
+HELIX:       	  store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 6
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  %178 = zext i8 %177 to i32, !noelle.pdg.inst.id !166
+HELIX:       	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:       	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:       Edges: 6
+HELIX:         From:	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:         To:	  store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  %178 = zext i8 %177 to i32, !noelle.pdg.inst.id !166
+HELIX:         To:	  store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167
+HELIX:         To:	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167
+HELIX:         To:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       Nodes within the SCC: 1
+HELIX:       	  store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 4
+HELIX:       	  %151 = zext i8 %150 to i32, !noelle.pdg.inst.id !132
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       Edges: 4
+HELIX:         From:	  %151 = zext i8 %150 to i32, !noelle.pdg.inst.id !132
+HELIX:         To:	  store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:         To:	  store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133
+HELIX:         Attributes: Control 
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       Nodes within the SCC: 1
+HELIX:       	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 6
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  %158 = zext i8 %157 to i32, !noelle.pdg.inst.id !141
+HELIX:       	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:       	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:       Edges: 6
+HELIX:         From:	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:         To:	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  %158 = zext i8 %157 to i32, !noelle.pdg.inst.id !141
+HELIX:         To:	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:         To:	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+HELIX:         To:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       Nodes within the SCC: 1
+HELIX:       	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 7
+HELIX:       	  %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  %166 = zext i8 %165 to i32, !noelle.pdg.inst.id !151
+HELIX:       	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:       	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:       Edges: 7
+HELIX:         From:	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:         To:	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  %166 = zext i8 %165 to i32, !noelle.pdg.inst.id !151
+HELIX:         To:	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:         To:	  %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+HELIX:         Attributes: Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:         To:	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+HELIX:         To:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:       Nodes within the SCC: 1
+HELIX:       	  store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 6
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  %174 = zext i8 %173 to i32, !noelle.pdg.inst.id !161
+HELIX:       	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:       	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:       Edges: 6
+HELIX:         From:	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:         To:	  store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  %174 = zext i8 %173 to i32, !noelle.pdg.inst.id !161
+HELIX:         To:	  store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162
+HELIX:         To:	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162
+HELIX:         To:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:           store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       Nodes within the SCC: 1
+HELIX:       	  store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 6
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  %171 = zext i8 %170 to i32, !noelle.pdg.inst.id !157
+HELIX:       	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:       	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:       	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:       	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:       Edges: 6
+HELIX:         From:	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:         To:	  store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  %171 = zext i8 %170 to i32, !noelle.pdg.inst.id !157
+HELIX:         To:	  store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158
+HELIX:         To:	  %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158
+HELIX:         To:	  %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+HELIX:         Attributes: Loop-carried Data RAW (may) from memory 
+
+HELIX:         From:	  store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158
+HELIX:         To:	  store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:         From:	  store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158
+HELIX:         To:	  store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+HELIX:         Attributes: Loop-carried Data WAW (may) from memory 
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           %76 = inttoptr i64 %75 to i8* --->   %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97 via variable
+HELIX:           br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97 control
+HELIX:           br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97 control
+HELIX:       Nodes within the SCC: 5
+HELIX:       	  %71 = getelementptr inbounds i8, i8* %120, i64 1, !noelle.pdg.inst.id !41
+HELIX:       	  %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97
+HELIX:       	  %74 = ptrtoint i8* %71 to i64
+HELIX:       	  %75 = add i64 %74, %65
+HELIX:       	  %76 = inttoptr i64 %75 to i8*
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 2
+HELIX:       	  store i8 %70, i8* %120, align 1, !tbaa !42, !noelle.pdg.inst.id !45
+HELIX:       	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:       Edges: 11
+HELIX:         From:	  %71 = getelementptr inbounds i8, i8* %120, i64 1, !noelle.pdg.inst.id !41
+HELIX:         To:	  %74 = ptrtoint i8* %71 to i64
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97
+HELIX:         To:	  %71 = getelementptr inbounds i8, i8* %120, i64 1, !noelle.pdg.inst.id !41
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97
+HELIX:         To:	  store i8 %70, i8* %120, align 1, !tbaa !42, !noelle.pdg.inst.id !45
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  %71 = getelementptr inbounds i8, i8* %120, i64 1, !noelle.pdg.inst.id !41
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97
+HELIX:         Attributes: Loop-carried Control 
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  %74 = ptrtoint i8* %71 to i64
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  %75 = add i64 %74, %65
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  %76 = inttoptr i64 %75 to i8*
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  %74 = ptrtoint i8* %71 to i64
+HELIX:         To:	  %75 = add i64 %74, %65
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %75 = add i64 %74, %65
+HELIX:         To:	  %76 = inttoptr i64 %75 to i8*
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %76 = inttoptr i64 %75 to i8*
+HELIX:         To:	  %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97
+HELIX:         Attributes: Loop-carried Data RAW (must)
+
+HELIX:     SCC:
+HELIX:       Loop-carried dependences
+HELIX:           br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97 control
+HELIX:           br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   %121 = icmp sge i64 %119, %noelle_environment_variable_13, !noelle.pdg.inst.id !98 control
+HELIX:           br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96 control
+HELIX:           br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 control
+HELIX:           %73 = add i64 %72, %63 --->   %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96 via variable
+HELIX:           br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97 control
+HELIX:       Nodes within the SCC: 5
+HELIX:       	  %72 = add nsw i64 %119, 1, !noelle.pdg.inst.id !46
+HELIX:       	  %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96
+HELIX:       	  %121 = icmp sge i64 %119, %noelle_environment_variable_13, !noelle.pdg.inst.id !98
+HELIX:       	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:       	  %73 = add i64 %72, %63
+HELIX:       Nodes outside the SCC and connected with at least one node within the SCC: 30
+HELIX:       	  %71 = getelementptr inbounds i8, i8* %120, i64 1, !noelle.pdg.inst.id !41
+HELIX:       	  %69 = phi i32 [ %133, %129 ], [ %81, %77 ], !noelle.pdg.inst.id !39
+HELIX:       	  %70 = trunc i32 %69 to i8, !noelle.pdg.inst.id !40
+HELIX:       	  store i8 %70, i8* %120, align 1, !tbaa !42, !noelle.pdg.inst.id !45
+HELIX:       	  br label %118, !noelle.pdg.inst.id !47
+HELIX:       	  %112 = phi i32 [ 0, %122 ], [ %135, %134 ], !noelle.pdg.inst.id !86
+HELIX:       	  %113 = phi i32 [ %noelle_environment_variable_11, %122 ], [ %140, %134 ], !noelle.pdg.inst.id !87
+HELIX:       	  %114 = phi i8* [ %123, %122 ], [ %139, %134 ], !noelle.pdg.inst.id !88
+HELIX:       	  %115 = phi i8* [ %noelle_environment_variable_16, %122 ], [ %137, %134 ], !noelle.pdg.inst.id !89
+HELIX:       	  %116 = phi i32 [ 0, %122 ], [ %138, %134 ], !noelle.pdg.inst.id !90
+HELIX:       	  %117 = icmp sgt i32 %113, %noelle_environment_variable_9, !noelle.pdg.inst.id !91
+HELIX:       	  br i1 %117, label %141, label %110, !prof !92, !noelle.loop.id !93, !noelle.pdg.inst.id !94, !noelle.parallelizer.looporder !95
+HELIX:       	  %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97
+HELIX:       	  %123 = getelementptr inbounds i8, i8* %noelle_environment_variable_19, i64 %119, !noelle.pdg.inst.id !103
+HELIX:       	  %124 = add i64 %noelle_environment_variable_20, %119, !noelle.pdg.inst.id !104
+HELIX:       	  %125 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %124, !noelle.pdg.inst.id !105
+HELIX:       	  %126 = load i8, i8* %125, align 1, !tbaa !42, !noelle.pdg.inst.id !106
+HELIX:       	  %127 = zext i8 %126 to i64, !noelle.pdg.inst.id !107
+HELIX:       	  %128 = getelementptr inbounds i8, i8* %noelle_environment_variable_14, i64 %127, !noelle.pdg.inst.id !108
+HELIX:       	  br label %111, !noelle.pdg.inst.id !109
+HELIX:       	  %142 = phi i32 [ %112, %111 ], !noelle.pdg.inst.id !122
+HELIX:       	  %143 = phi i32 [ %116, %111 ], !noelle.pdg.inst.id !123
+HELIX:       	  %144 = add nsw i32 %142, -10000, !noelle.pdg.inst.id !124
+HELIX:       	  %145 = icmp eq i32 %144, 0, !noelle.pdg.inst.id !125
+HELIX:       	  br i1 %145, label %146, label %129, !prof !126, !noelle.pdg.inst.id !127
+HELIX:       	  %147 = add i64 %noelle_environment_variable_21, %119, !noelle.pdg.inst.id !128
+HELIX:       	  %167 = add i64 %noelle_environment_variable_22, %119, !noelle.pdg.inst.id !153
+HELIX:       	  %74 = ptrtoint i8* %71 to i64
+HELIX:       	  %75 = add i64 %74, %65
+HELIX:       	  %76 = inttoptr i64 %75 to i8*
+HELIX:       Edges: 42
+HELIX:         From:	  %72 = add nsw i64 %119, 1, !noelle.pdg.inst.id !46
+HELIX:         To:	  %73 = add i64 %72, %63
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96
+HELIX:         To:	  %72 = add nsw i64 %119, 1, !noelle.pdg.inst.id !46
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96
+HELIX:         To:	  %121 = icmp sge i64 %119, %noelle_environment_variable_13, !noelle.pdg.inst.id !98
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96
+HELIX:         To:	  %123 = getelementptr inbounds i8, i8* %noelle_environment_variable_19, i64 %119, !noelle.pdg.inst.id !103
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96
+HELIX:         To:	  %124 = add i64 %noelle_environment_variable_20, %119, !noelle.pdg.inst.id !104
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96
+HELIX:         To:	  %147 = add i64 %noelle_environment_variable_21, %119, !noelle.pdg.inst.id !128
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96
+HELIX:         To:	  %167 = add i64 %noelle_environment_variable_22, %119, !noelle.pdg.inst.id !153
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  %121 = icmp sge i64 %119, %noelle_environment_variable_13, !noelle.pdg.inst.id !98
+HELIX:         To:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         Attributes: Data RAW (must)
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  %72 = add nsw i64 %119, 1, !noelle.pdg.inst.id !46
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  %71 = getelementptr inbounds i8, i8* %120, i64 1, !noelle.pdg.inst.id !41
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  %69 = phi i32 [ %133, %129 ], [ %81, %77 ], !noelle.pdg.inst.id !39
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  %70 = trunc i32 %69 to i8, !noelle.pdg.inst.id !40
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  store i8 %70, i8* %120, align 1, !tbaa !42, !noelle.pdg.inst.id !45
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  br label %118, !noelle.pdg.inst.id !47
+HELIX:         Attributes: Control 
+
+HELIX:         From:	  br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+HELIX:         To:	  %112 = phi i32 [ 0, %122 ], [ %135, %134 ], !noelle.pdg.inst.id !86
+HELIX:         Attributes: Control 
+
+HELIX:         ....
+HELIX:   Next are all loop-carried dependences of the loop
+HELIX:       store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       store i32 %151, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:       store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       store i32 %154, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:       br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96 control
+HELIX:       br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97 control
+HELIX:       br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   %121 = icmp sge i64 %119, %noelle_environment_variable_13, !noelle.pdg.inst.id !98 control
+HELIX:       br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 --->   br i1 %121, label %check_if_last_iteration_is_missing, label %122, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102 control
+HELIX:       store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:       store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       store i32 %158, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:       store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:       store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       store i32 %162, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:       store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:       store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       store i32 %166, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:       store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:       store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       store i32 %171, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:       store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:       store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       store i32 %174, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:       store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:       store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       store i32 %178, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:       %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:       store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50 via memory
+HELIX:       store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51 via memory
+HELIX:       store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   %189 = load i32, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !182 via memory
+HELIX:       store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 --->   store i32 %192, i32* %188, align 4, !tbaa !48, !noelle.pdg.inst.id !190 via memory
+HELIX:       store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %78 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50 via memory
+HELIX:       store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %79 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51 via memory
+HELIX:       store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   %192 = load i32, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !185 via memory
+HELIX:       store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 --->   store i32 %189, i32* %191, align 4, !tbaa !48, !noelle.pdg.inst.id !191 via memory
+HELIX:       %73 = add i64 %72, %63 --->   %119 = phi i64 [ %73, %68 ], [ %57, %7 ], !noelle.pdg.inst.id !96 via variable
+HELIX:       %76 = inttoptr i64 %75 to i8* --->   %120 = phi i8* [ %76, %68 ], [ %61, %7 ], !noelle.pdg.inst.id !97 via variable
+ParallelizationTechniqueForLoopsWithLoopCarriedDataDependences: Start
+ParallelizationTechniqueForLoopsWithLoopCarriedDataDependences:  Initial number of partitions: 100
+ParallelizationTechniqueForLoopsWithLoopCarriedDataDependences: Exit
+HELIX:   Identifying sequential segments
+ParallelizationTechniqueForLoopsWithLoopCarriedDataDependences: Start
+ParallelizationTechniqueForLoopsWithLoopCarriedDataDependences:  Initial number of partitions: 100
+ParallelizationTechniqueForLoopsWithLoopCarriedDataDependences: Exit
+HELIX:  Synchronizing sequential segments
+HELIX: no sequential segments, skipping synchronization
+HELIX:  Storing live out variables and exit block index
+HELIX:  Linking task function
+HELIX:  Task code:
+
+define void @noelle_task_0(i8*, i8*, i8*, i8*, i64, i64, i64*) {
+  %8 = alloca [8 x i32], align 16, !noelle.pdg.inst.id !30
+  %noelle.environment_variable.pointer = bitcast i8* %0 to [184 x i64]*
+  %9 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 0
+  %10 = bitcast i64* %9 to i8**
+  %noelle_environment_variable_0 = load i8*, i8** %10
+  %11 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 8
+  %12 = bitcast i64* %11 to i32**
+  %noelle_environment_variable_1 = load i32*, i32** %12
+  %13 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 16
+  %14 = bitcast i64* %13 to i32**
+  %noelle_environment_variable_2 = load i32*, i32** %14
+  %15 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 24
+  %16 = bitcast i64* %15 to i32**
+  %noelle_environment_variable_3 = load i32*, i32** %16
+  %17 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 32
+  %18 = bitcast i64* %17 to i32**
+  %noelle_environment_variable_4 = load i32*, i32** %18
+  %19 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 40
+  %20 = bitcast i64* %19 to i32**
+  %noelle_environment_variable_5 = load i32*, i32** %20
+  %21 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 48
+  %22 = bitcast i64* %21 to i32**
+  %noelle_environment_variable_6 = load i32*, i32** %22
+  %23 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 56
+  %24 = bitcast i64* %23 to i32**
+  %noelle_environment_variable_7 = load i32*, i32** %24
+  %25 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 64
+  %26 = bitcast i64* %25 to i32**
+  %noelle_environment_variable_8 = load i32*, i32** %26
+  %27 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 72
+  %28 = bitcast i64* %27 to i32*
+  %noelle_environment_variable_9 = load i32, i32* %28
+  %29 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 80
+  %noelle_environment_variable_10 = load i64, i64* %29
+  %30 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 88
+  %31 = bitcast i64* %30 to i32*
+  %noelle_environment_variable_11 = load i32, i32* %31
+  %32 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 96
+  %noelle_environment_variable_12 = load i64, i64* %32
+  %33 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 104
+  %noelle_environment_variable_13 = load i64, i64* %33
+  %34 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 112
+  %35 = bitcast i64* %34 to i8**
+  %noelle_environment_variable_14 = load i8*, i8** %35
+  %36 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 120
+  %37 = bitcast i64* %36 to i8**
+  %noelle_environment_variable_15 = load i8*, i8** %37
+  %38 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 128
+  %39 = bitcast i64* %38 to i8**
+  %noelle_environment_variable_16 = load i8*, i8** %39
+  %40 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 144
+  %41 = bitcast i64* %40 to i8**
+  %noelle_environment_variable_18 = load i8*, i8** %41
+  %42 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 152
+  %43 = bitcast i64* %42 to i8**
+  %noelle_environment_variable_19 = load i8*, i8** %43
+  %44 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 160
+  %noelle_environment_variable_20 = load i64, i64* %44
+  %45 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 168
+  %noelle_environment_variable_21 = load i64, i64* %45
+  %46 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 176
+  %noelle_environment_variable_22 = load i64, i64* %46
+  %47 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 6, !noelle.pdg.inst.id !31
+  %48 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 5, !noelle.pdg.inst.id !32
+  %49 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 4, !noelle.pdg.inst.id !33
+  %50 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 7, !noelle.pdg.inst.id !34
+  %51 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 0, !noelle.pdg.inst.id !35
+  %52 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 1, !noelle.pdg.inst.id !36
+  %53 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 2, !noelle.pdg.inst.id !37
+  %54 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 3, !noelle.pdg.inst.id !38
+  %55 = bitcast i8* %1 to [0 x i64]*
+  %56 = mul i64 1, %4
+  %57 = add i64 %noelle_environment_variable_10, %56
+  %58 = mul i64 1, %4
+  %59 = ptrtoint i8* %noelle_environment_variable_18 to i64
+  %60 = add i64 %59, %58
+  %61 = inttoptr i64 %60 to i8*
+  %62 = sub i64 %5, 1
+  %63 = mul i64 1, %62
+  %64 = sub i64 %5, 1
+  %65 = mul i64 1, %64
+  %66 = getelementptr inbounds [184 x i64], [184 x i64]* %noelle.environment_variable.pointer, i64 0, i64 136
+  %67 = bitcast i64* %66 to i8**
+  br label %120
+
+68:                                               ; preds = %69
+  ret void
+
+69:                                               ; preds = %check_if_last_iteration_is_missing, %very_last_bb_before_exiting_task
+  br label %68
+
+70:                                               ; preds = %131, %79
+  %71 = phi i32 [ %135, %131 ], [ %83, %79 ], !noelle.pdg.inst.id !39
+  %72 = trunc i32 %71 to i8, !noelle.pdg.inst.id !40
+  %73 = getelementptr inbounds i8, i8* %122, i64 1, !noelle.pdg.inst.id !41
+  store i8 %72, i8* %122, align 1, !tbaa !42, !noelle.pdg.inst.id !45
+  %74 = add nsw i64 %121, 1, !noelle.pdg.inst.id !46
+  %75 = add i64 %74, %63
+  %76 = ptrtoint i8* %73 to i64
+  %77 = add i64 %76, %65
+  %78 = inttoptr i64 %77 to i8*
+  br label %120, !noelle.pdg.inst.id !47
+
+79:                                               ; preds = %181
+  %80 = load i32, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !50
+  %81 = load i32, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !51
+  %82 = add nsw i32 %80, %81, !noelle.pdg.inst.id !52
+  %83 = sdiv i32 %82, 2, !noelle.pdg.inst.id !53
+  br label %70, !noelle.pdg.inst.id !54
+
+84:                                               ; preds = %186
+  %85 = add nuw nsw i32 %183, 1, !noelle.pdg.inst.id !55
+  %86 = add nsw i64 %182, -1, !noelle.pdg.inst.id !56
+  br label %181, !noelle.pdg.inst.id !57
+
+87:                                               ; preds = %197, %196
+  br label %186, !noelle.pdg.inst.id !58
+
+88:                                               ; preds = %105
+  %89 = getelementptr inbounds i8, i8* %108, i64 1, !noelle.pdg.inst.id !59
+  %90 = load i8, i8* %108, align 1, !tbaa !42, !noelle.pdg.inst.id !60
+  %91 = zext i8 %90 to i32, !noelle.pdg.inst.id !61
+  %92 = getelementptr inbounds i8, i8* %109, i64 1, !noelle.pdg.inst.id !62
+  %93 = load i8, i8* %109, align 1, !tbaa !42, !noelle.pdg.inst.id !63
+  %94 = zext i8 %93 to i32, !noelle.pdg.inst.id !64
+  %95 = zext i8 %90 to i64, !noelle.pdg.inst.id !65
+  %96 = sub nsw i64 0, %95, !noelle.pdg.inst.id !66
+  %97 = getelementptr inbounds i8, i8* %130, i64 %96, !noelle.pdg.inst.id !67
+  %98 = load i8, i8* %97, align 1, !tbaa !42, !noelle.pdg.inst.id !68
+  %99 = zext i8 %98 to i32, !noelle.pdg.inst.id !69
+  %100 = mul nuw nsw i32 %94, %99, !noelle.pdg.inst.id !70
+  %101 = add nsw i32 %106, %100, !noelle.pdg.inst.id !71
+  %102 = mul nuw nsw i32 %100, %91, !noelle.pdg.inst.id !72
+  %103 = add nsw i32 %110, %102, !noelle.pdg.inst.id !73
+  %104 = add nsw i32 %107, 1, !noelle.pdg.inst.id !74
+  br label %105, !noelle.pdg.inst.id !75
+
+105:                                              ; preds = %88, %112
+  %106 = phi i32 [ %101, %88 ], [ %114, %112 ], !noelle.pdg.inst.id !76
+  %107 = phi i32 [ %104, %88 ], [ %noelle_environment_variable_11, %112 ], !noelle.pdg.inst.id !77
+  %108 = phi i8* [ %89, %88 ], [ %116, %112 ], !noelle.pdg.inst.id !78
+  %109 = phi i8* [ %92, %88 ], [ %117, %112 ], !noelle.pdg.inst.id !79
+  %110 = phi i32 [ %103, %88 ], [ %118, %112 ], !noelle.pdg.inst.id !80
+  %111 = icmp sgt i32 %107, %noelle_environment_variable_9, !noelle.pdg.inst.id !81
+  br i1 %111, label %136, label %88, !prof !82, !noelle.loop.id !83, !noelle.pdg.inst.id !84
+
+112:                                              ; preds = %113
+  br label %105, !noelle.pdg.inst.id !85
+
+113:                                              ; preds = %124, %136
+  %114 = phi i32 [ 0, %124 ], [ %137, %136 ], !noelle.pdg.inst.id !86
+  %115 = phi i32 [ %noelle_environment_variable_11, %124 ], [ %142, %136 ], !noelle.pdg.inst.id !87
+  %116 = phi i8* [ %125, %124 ], [ %141, %136 ], !noelle.pdg.inst.id !88
+  %117 = phi i8* [ %noelle_environment_variable_16, %124 ], [ %139, %136 ], !noelle.pdg.inst.id !89
+  %118 = phi i32 [ 0, %124 ], [ %140, %136 ], !noelle.pdg.inst.id !90
+  %119 = icmp sgt i32 %115, %noelle_environment_variable_9, !noelle.pdg.inst.id !91
+  br i1 %119, label %143, label %112, !prof !92, !noelle.loop.id !93, !noelle.pdg.inst.id !94, !noelle.parallelizer.looporder !95
+
+120:                                              ; preds = %7, %70
+  %121 = phi i64 [ %75, %70 ], [ %57, %7 ], !noelle.pdg.inst.id !96
+  %122 = phi i8* [ %78, %70 ], [ %61, %7 ], !noelle.pdg.inst.id !97
+  %123 = icmp sge i64 %121, %noelle_environment_variable_13, !noelle.pdg.inst.id !98
+  br i1 %123, label %check_if_last_iteration_is_missing, label %124, !prof !99, !noelle.loop.id !100, !noelle.pdg.inst.id !101, !noelle.parallelizer.looporder !102
+
+124:                                              ; preds = %120
+  %125 = getelementptr inbounds i8, i8* %noelle_environment_variable_19, i64 %121, !noelle.pdg.inst.id !103
+  %126 = add i64 %noelle_environment_variable_20, %121, !noelle.pdg.inst.id !104
+  %127 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %126, !noelle.pdg.inst.id !105
+  %128 = load i8, i8* %127, align 1, !tbaa !42, !noelle.pdg.inst.id !106
+  %129 = zext i8 %128 to i64, !noelle.pdg.inst.id !107
+  %130 = getelementptr inbounds i8, i8* %noelle_environment_variable_14, i64 %129, !noelle.pdg.inst.id !108
+  br label %113, !noelle.pdg.inst.id !109
+
+131:                                              ; preds = %143
+  %132 = zext i8 %128 to i32, !noelle.pdg.inst.id !110
+  %133 = mul nsw i32 %132, -10000, !noelle.pdg.inst.id !111
+  %134 = add i32 %145, %133, !noelle.pdg.inst.id !112
+  %135 = sdiv i32 %134, %146, !noelle.pdg.inst.id !113
+  br label %70, !noelle.pdg.inst.id !114
+
+136:                                              ; preds = %105
+  %137 = phi i32 [ %106, %105 ], !noelle.pdg.inst.id !115
+  %138 = phi i8* [ %108, %105 ], !noelle.pdg.inst.id !116
+  %139 = phi i8* [ %109, %105 ], !noelle.pdg.inst.id !117
+  %140 = phi i32 [ %110, %105 ], !noelle.pdg.inst.id !118
+  %141 = getelementptr inbounds i8, i8* %138, i64 %noelle_environment_variable_12, !noelle.pdg.inst.id !119
+  %142 = add nsw i32 %115, 1, !noelle.pdg.inst.id !120
+  br label %113, !noelle.pdg.inst.id !121
+
+143:                                              ; preds = %113
+  %144 = phi i32 [ %114, %113 ], !noelle.pdg.inst.id !122
+  %145 = phi i32 [ %118, %113 ], !noelle.pdg.inst.id !123
+  %146 = add nsw i32 %144, -10000, !noelle.pdg.inst.id !124
+  %147 = icmp eq i32 %146, 0, !noelle.pdg.inst.id !125
+  br i1 %147, label %148, label %131, !prof !126, !noelle.pdg.inst.id !127
+
+148:                                              ; preds = %143
+  %149 = add i64 %noelle_environment_variable_21, %121, !noelle.pdg.inst.id !128
+  %150 = add i64 %149, -1, !noelle.pdg.inst.id !129
+  %151 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %150, !noelle.pdg.inst.id !130
+  %152 = load i8, i8* %151, align 1, !tbaa !42, !noelle.pdg.inst.id !131
+  %153 = zext i8 %152 to i32, !noelle.pdg.inst.id !132
+  store i32 %153, i32* %51, align 16, !tbaa !48, !noelle.pdg.inst.id !133
+  %154 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %149, !noelle.pdg.inst.id !134
+  %155 = load i8, i8* %154, align 1, !tbaa !42, !noelle.pdg.inst.id !135
+  %156 = zext i8 %155 to i32, !noelle.pdg.inst.id !136
+  store i32 %156, i32* %52, align 4, !tbaa !48, !noelle.pdg.inst.id !137
+  %157 = add nsw i64 %149, 1, !noelle.pdg.inst.id !138
+  %158 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %157, !noelle.pdg.inst.id !139
+  %159 = load i8, i8* %158, align 1, !tbaa !42, !noelle.pdg.inst.id !140
+  %160 = zext i8 %159 to i32, !noelle.pdg.inst.id !141
+  store i32 %160, i32* %53, align 8, !tbaa !48, !noelle.pdg.inst.id !142
+  %161 = add i64 %126, -1, !noelle.pdg.inst.id !143
+  %162 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %161, !noelle.pdg.inst.id !144
+  %163 = load i8, i8* %162, align 1, !tbaa !42, !noelle.pdg.inst.id !145
+  %164 = zext i8 %163 to i32, !noelle.pdg.inst.id !146
+  store i32 %164, i32* %54, align 4, !tbaa !48, !noelle.pdg.inst.id !147
+  %165 = add nsw i64 %126, 1, !noelle.pdg.inst.id !148
+  %166 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %165, !noelle.pdg.inst.id !149
+  %167 = load i8, i8* %166, align 1, !tbaa !42, !noelle.pdg.inst.id !150
+  %168 = zext i8 %167 to i32, !noelle.pdg.inst.id !151
+  store i32 %168, i32* %49, align 16, !tbaa !48, !noelle.pdg.inst.id !152
+  %169 = add i64 %noelle_environment_variable_22, %121, !noelle.pdg.inst.id !153
+  %170 = add i64 %169, -1, !noelle.pdg.inst.id !154
+  %171 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %170, !noelle.pdg.inst.id !155
+  %172 = load i8, i8* %171, align 1, !tbaa !42, !noelle.pdg.inst.id !156
+  %173 = zext i8 %172 to i32, !noelle.pdg.inst.id !157
+  store i32 %173, i32* %48, align 4, !tbaa !48, !noelle.pdg.inst.id !158
+  %174 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %169, !noelle.pdg.inst.id !159
+  %175 = load i8, i8* %174, align 1, !tbaa !42, !noelle.pdg.inst.id !160
+  %176 = zext i8 %175 to i32, !noelle.pdg.inst.id !161
+  store i32 %176, i32* %47, align 8, !tbaa !48, !noelle.pdg.inst.id !162
+  %177 = add nsw i64 %169, 1, !noelle.pdg.inst.id !163
+  %178 = getelementptr inbounds i8, i8* %noelle_environment_variable_15, i64 %177, !noelle.pdg.inst.id !164
+  %179 = load i8, i8* %178, align 1, !tbaa !42, !noelle.pdg.inst.id !165
+  %180 = zext i8 %179 to i32, !noelle.pdg.inst.id !166
+  store i32 %180, i32* %50, align 4, !tbaa !48, !noelle.pdg.inst.id !167
+  br label %181, !noelle.pdg.inst.id !168
+
+181:                                              ; preds = %148, %84
+  %182 = phi i64 [ %86, %84 ], [ 7, %148 ], !noelle.pdg.inst.id !169
+  %183 = phi i32 [ %85, %84 ], [ 0, %148 ], !noelle.pdg.inst.id !170
+  %184 = icmp eq i32 %183, 7, !noelle.pdg.inst.id !171
+  br i1 %184, label %79, label %185, !prof !172, !noelle.loop.id !173, !noelle.pdg.inst.id !174
+
+185:                                              ; preds = %181
+  br label %186, !noelle.pdg.inst.id !175
+
+186:                                              ; preds = %185, %87
+  %187 = phi i64 [ %192, %87 ], [ 0, %185 ], !noelle.pdg.inst.id !176
+  %188 = icmp eq i64 %187, %182, !noelle.pdg.inst.id !177
+  br i1 %188, label %84, label %189, !prof !178, !noelle.loop.id !179, !noelle.pdg.inst.id !180
+
+189:                                              ; preds = %186
+  %190 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 %187, !noelle.pdg.inst.id !181
+  %191 = load i32, i32* %190, align 4, !tbaa !48, !noelle.pdg.inst.id !182
+  %192 = add nuw nsw i64 %187, 1, !noelle.pdg.inst.id !183
+  %193 = getelementptr inbounds [8 x i32], [8 x i32]* %8, i64 0, i64 %192, !noelle.pdg.inst.id !184
+  %194 = load i32, i32* %193, align 4, !tbaa !48, !noelle.pdg.inst.id !185
+  %195 = icmp sgt i32 %191, %194, !noelle.pdg.inst.id !186
+  br i1 %195, label %197, label %196, !prof !187, !noelle.pdg.inst.id !188
+
+196:                                              ; preds = %189
+  br label %87, !noelle.pdg.inst.id !189
+
+197:                                              ; preds = %189
+  store i32 %194, i32* %190, align 4, !tbaa !48, !noelle.pdg.inst.id !190
+  store i32 %191, i32* %193, align 4, !tbaa !48, !noelle.pdg.inst.id !191
+  br label %87, !noelle.pdg.inst.id !192
+
+check_if_last_iteration_is_missing:               ; preds = %120
+  %198 = sub i64 %121, 1
+  %199 = icmp sge i64 %198, %noelle_environment_variable_13, !noelle.pdg.inst.id !98
+  br i1 %199, label %69, label %last_iteration
+
+last_iteration:                                   ; preds = %check_if_last_iteration_is_missing
+  %200 = sub i64 %121, 1
+  %201 = icmp sge i64 %200, %noelle_environment_variable_13, !noelle.pdg.inst.id !98
+  br i1 %201, label %very_last_bb_before_exiting_task, label %code_executed_only_by_the_last_loop_iteration
+
+very_last_bb_before_exiting_task:                 ; preds = %last_iteration, %code_executed_only_by_the_last_loop_iteration
+  br label %69
+
+code_executed_only_by_the_last_loop_iteration:    ; preds = %last_iteration
+  store i8* %122, i8** %67, !noelle.environment_variable.live_out.store !193
+  br label %very_last_bb_before_exiting_task
+}
+
+Parallelizer: parallelizerLoop:   Link the parallelize loop
+Parallelizer: parallelizerLoop:   The loop has been parallelized with HELIX
+Parallelizer: parallelizerLoop: Exit
+Parallelizer:    Keep track of basic blocks being modified by the parallelization
+Parallelizer:    Loop 72 cannot be parallelized because one of its parent has been parallelized already
+Parallelizer:    Loop 74 cannot be parallelized because one of its parent has been parallelized already
+Parallelizer:    Loop 60 cannot be parallelized because one of its parent has been parallelized already
+Parallelizer: Exit
+noelle-meta-clean parallelized_unoptimized.bc parallelized_unoptimized.bc
+opt -load /nfs-scratch/simonec/parallelism/parallelization/Gyms/0/NOELLE/install/lib/CleanMetadata.so -CleanMetadata -clean-loop-metadata=true -clean-prof-metadata=true -clean-pdg-metadata=true parallelized_unoptimized.bc -o parallelized_unoptimized.bc
+noelle/core/Clean Loop Metadata
+noelle/core/Clean PDG Metadata
+noelle/core/Clean profiler metadata
+opt --strip-named-metadata parallelized_unoptimized.bc -o parallelized_unoptimized.bc
+clang -O3 -c -emit-llvm parallelized_unoptimized.bc -o baseline_parallelized.bc
+clang -O3 -c -emit-llvm baseline_parallelized.bc -o baseline_parallelized.bc
+cp baseline_parallelized.bc susan_s.bc
+make[1]: Leaving directory '/nfs-scratch/simonec/parallelism/parallelization/Gyms/0/all_benchmark_suites/build/MiBench/benchmarks/susan_s'
