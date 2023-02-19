@@ -6,12 +6,12 @@ function run_with_technique {
   local haveAllRun=$(are_all_benchmarks_run_for_all_suites $technique);
   if test "$haveAllRun" == "0" ; then
     aBenchmarkRun="1" ;
-    echo "${prefixString}   Start running $technique binaries";
+    echo "${prefixString}       Start running $technique binaries";
     ./scripts/generate_NOELLE_binaries.sh $technique >> output.txt 2>&1 ;
-    echo "${prefixString}     Binaries are generated" ;
+    echo "${prefixString}       Binaries are generated" ;
     ./scripts/run_NOELLE_binaries.sh $technique >> output.txt 2>&1 ;
   fi
-  echo "${prefixString}     Binaries succesfully generated with $technique have run" ;
+  echo "${prefixString}       Binaries succesfully compiled and optimized with $technique have run" ;
 
   return ;
 }
@@ -31,20 +31,26 @@ export NOELLE_CORES=8 ;
 source scripts/misc.sh
 
 # Generate and run the baseline binaries
+echo "${prefixString}     Run the baseline" ;
 ./bin/runBaseline
 
 # Generate times for parallelization enablers
+echo "${prefixString}     Run with only enablers" ;
 ./scripts/copy_NOELLE_enablers.sh >> output.txt 2>&1 ;
 aBenchmarkRun="0" ;
 run_with_technique "NONE" ;
+exit
 
 # Generate times of DOALL parallelized binaries for all benchmarks
+echo "${prefixString}     Run with DOALL" ;
 run_with_technique "DOALL" ;
 
 # Generate times of HELIX parallelized binaries for all benchmarks
+echo "${prefixString}     Run with HELIX" ;
 run_with_technique "HELIX" ;
 
 # Generate times of DSWP parallelized binaries for all benchmarks
+echo "${prefixString}     Run with DSWP" ;
 run_with_technique "DSWP" ;
 
 # Compute the parallelization statistics
