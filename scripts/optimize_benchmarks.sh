@@ -1,39 +1,5 @@
 #!/bin/bash
 
-function compile_benchmark {
-  local suiteOfBench=$1 ;
-  local benchToOptimize=$2 ;
-
-  # Check if the baseline IR has been generated
-  if ! test -f ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc ; then
-    return ;
-  fi
-
-  # Check if the benchmark has been optimized already
-  if test -e ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_${optimizationName}.bc ; then
-    return ;
-  fi
-  echo "Optimizing $benchToOptimize using ${optimizationName}" ;
-  echo "  File that will be generated = ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_parallelized_${optimizationName}.bc";
-
-  # Copy the code to parallelize
-  cp ${origDir}/results/current_machine/IR/${suiteOfBench}/benchmarks/${benchToOptimize}/baseline_with_metadata.bc benchmarks/${benchToOptimize}/ ;
-
-  # Check if there is a benchmark-specific makefile
-  if test -f ${origDir}/makefiles/${suite}/${optimizationName}/${benchToOptimize}/Makefile ; then
-    cp ${origDir}/makefiles/${suite}/${optimizationName}/${benchToOptimize}/* makefiles/ ;
-  else
-
-    # Copy the optimization-specific makefile
-    cp ${origDir}/makefiles/${suite}/${optimizationName}/* makefiles/ ;
-  fi
-
-  # The benchmark needs to be optimized
-  make optimization BENCHMARK=$benchToOptimize ;
-
-  return ;
-}
-
 function compile_suite {
   local suite=$1 ;
 
@@ -69,6 +35,9 @@ origDir="`pwd`" ;
 
 # Enable NOELLE
 source NOELLE/enable ;
+
+# Include compile_benchmark
+source scripts/misc.sh
 
 # Compile all benchmark suites
 cd all_benchmark_suites/build ;

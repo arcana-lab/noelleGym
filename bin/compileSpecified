@@ -1,0 +1,43 @@
+#!/bin/bash
+
+if test $# -lt 2 ; then
+  echo "USAGE: `basename $0` SUITE/BENCHMARK OPTIMIZATION"
+  exit 1;
+fi
+
+suite=$(awk -F '/' '{print $1}' <<< $1)
+bench=$(awk -F '/' '{print $2}' <<< $1)
+optimizationName="$2"
+origDir=$(pwd)
+
+echo "Optimizing $bench (in $suite) with $optimizationName"
+
+outputDir="${origDir}/results/current_machine/IR/${suite}/benchmarks/${bench}"
+baselineIRFile="${outputDir}/baseline_with_metadata.bc"
+if ! test -e $baselineIRFile ; then
+  echo "Missing baseline with metadata at:"
+  echo "${baselineIRFile}"
+  exit 1 ;
+fi
+
+outputIRFile="${outputDir}/baseline_parallelized_${optimizationName}.bc"
+if test -e $outputIRFile ; then
+  echo "Removing previous parallelized IR"
+  rm $outputIRFile
+fi
+
+# Include compile_benchmark
+source scripts/misc.sh
+
+buildDir="${origDir}/all_benchmark_suites/build/${suite}"
+buildResultDir="${buildDir}/benchmarks/${bench}"
+
+cd $buildResultDir
+echo "Removing previous build results"
+make clean > /dev/null
+
+cd $buildDir
+compile_benchmark $suite $bench
+
+cp "${buildResultDir}/baseline_parallelized.bc" "${outputDir}/baseline_parallelized_${optimizationName}.bc"
+cp "${buildResultDir}/noelle_output.txt" "${outputDir}/baseline_parallelized_${optimizationName}_noelle_output.txt"
