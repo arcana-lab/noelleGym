@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# Fetch the inputs
+if test $# -lt 2 ; then
+  echo "USAGE: `basename $0` SUITE/BENCHMARK OPTIMIZATION"
+  exit 1;
+fi
+suite=$(awk -F '/' '{print $1}' <<< $1)
+bench=$(awk -F '/' '{print $2}' <<< $1)
+optimizationName="$2"
+origDir=$(pwd)
+
+# Print the header
+prefixString="### NOELLE Gym: OptimizeBenchmark ###" ;
+echo "${prefixString} Benchmark ${bench} from $suite will be optimized with $optimizationName" ;
+echo "${prefixString} Results will be stored in `pwd`/results/current_machine" ;
+echo "${prefixString} The output of each step will be stored in `pwd`/output.txt" ;
+echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current state at finer granularity)" ;
+echo "" ;
+
+# Setup
+echo "${prefixString}   Setup" ;
+./bin/setup >> output.txt 2>&1 ;
+
+# Configure NOELLE
+source NOELLE/enable ;
+export NOELLE_CORES=8 ;
+
+# Check the baseline IR exists
+outputDir="${origDir}/results/current_machine/IR/${suite}/benchmarks/${bench}"
+baselineIRFile="${outputDir}/baseline_with_metadata.bc"
+if ! test -e $baselineIRFile ; then
+  echo "${prefixString}   ERROR = missing baseline with metadata at:"
+  echo "${prefixString}     ${baselineIRFile}"
+  exit 1 ;
+fi
+
+# Delete the IR that will be generated
+outputIRFile="${outputDir}/baseline_parallelized_${optimizationName}.bc"
+if test -e $outputIRFile ; then
+  echo "${prefixString}   Removing previously optimized IR"
+  rm $outputIRFile
+fi
+
+# Include compile_benchmark
+source scripts/misc.sh
+
+# Clean the outputs of previous compilation
+buildDir="${origDir}/all_benchmark_suites/build/${suite}"
+buildResultDir="${buildDir}/benchmarks/${bench}"
+cd $buildResultDir
+make clean > /dev/null
+
+# Optimize the benchmark
+echo "${prefixString}   Optimize the IR"
+cd $buildDir
+compile_benchmark $suite $bench
+
+# Copy the optimized IR and output
+if test -f "${buildResultDir}/baseline_parallelized.bc" ; then
+  echo "${prefixString}   Copy the optimized IR"
+  cp "${buildResultDir}/baseline_parallelized.bc" "${outputDir}/baseline_parallelized_${optimizationName}.bc"
+  cp "${buildResultDir}/noelle_output.txt" "${outputDir}/baseline_parallelized_${optimizationName}_noelle_output.txt"
+
+else
+  echo "${prefixString}   ERROR = the optimized IR has not been generated";
+fi
+  
+echo "${prefixString} Exit" ;
