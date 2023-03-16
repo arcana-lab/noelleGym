@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Fetch the inputs
+if test $# -lt 1 ; then
+  echo "USAGE: `basename $0` SUITE/BENCHMARK"
+  exit 1;
+fi
+suite=$(awk -F '/' '{print $1}' <<< $1)
+bench=$(awk -F '/' '{print $2}' <<< $1)
+origDir=$(pwd)
+
+# Check the inputs
+IRBenchDir="${origDir}/results/current_machine/IR/${suite}/benchmarks/${bench}" ;
+if ! test -d ${IRBenchDir} ; then
+  echo "Directory ${IRBenchDir} does not exist" ;
+  exit 1;
+fi
+
+# Remove the files
+rm -f ${IRBenchDir}/baseline* ;
+rm -f "${origDir}/results/current_machine/dependences/${suite}/noelle/${bench}.txt" ;
+rm -f "${origDir}/results/current_machine/dependences/${suite}/llvm/${bench}.txt" ;
+rm -f "${origDir}/results/current_machine/loops/${suite}/raw/${bench}.txt" ;
+eval rm -f "${origDir}/results/current_machine/time/${suite}/*/${bench}.txt" ;
