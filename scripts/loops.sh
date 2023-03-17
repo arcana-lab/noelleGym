@@ -28,7 +28,8 @@ function generate_loop_results {
     cd $j ;
     mkdir -p ${currentIVResult}/raw ;
     if ! test -e ${currentIVResult}/raw/${j}.txt ; then
-      noelle-loop-stats baseline_with_metadata.bc &> ${currentIVResult}/raw/${j}.txt
+      noelle-meta-loop-embed baseline_with_metadata.bc -o baseline_with_loop_metadata.bc
+      noelle-loop-stats baseline_with_loop_metadata.bc &> ${currentIVResult}/raw/${j}.txt
     fi
     popd &>/dev/null ;
   done
