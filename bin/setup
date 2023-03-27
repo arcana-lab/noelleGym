@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 prefixString="### NOELLE Gym: Setup ###" ;
 echo "${prefixString} All benchmarks from all benchmark suites will be compiled" ;
@@ -35,17 +35,27 @@ rm $tmpFile ;
 # Compile NOELLE
 echo "${prefixString}   Start compiling NOELLE" ;
 ./scripts/compile_NOELLE.sh >> ${origDir}/output.txt 2>&1 ;
+if test $? -ne 0 ; then
+  exit 1;
+fi
 echo "${prefixString}     NOELLE has been compiled succesfully" ;
 
 # Download the git repository
 echo "${prefixString}   Setup the benchmark suites" ;
 if ! test -d all_benchmark_suites ; then
   git clone https://github.com/scampanoni/wholeprogram_benchmarks.git all_benchmark_suites >> ${origDir}/output.txt 2>&1 ;
+  if test $? -ne 0 ; then
+    exit 1;
+  fi
 fi
 cd all_benchmark_suites ;
 if ! test -e install ; then
   echo "${prefixString}     Compile" ;
   make >> ${origDir}/output.txt 2>&1 ;
+  if test $? -ne 0 ; then
+    exit 1;
+  fi
 fi
 
 echo "${prefixString} Exit" ;
+exit 0;
