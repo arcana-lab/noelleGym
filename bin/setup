@@ -30,6 +30,20 @@ if test $? -ne 0 ; then
   rm $tmpFile ;
   exit 1;
 fi
+if ! command -v gclang &> /dev/null ; then
+  echo "${prefixString} ERROR: \"gclang\" cannot be found. Please enable a gclang installation for LLVM 9.0.0. If you are in Zythos, run the following command:" ;
+  echo "${prefixString}  \"source /project/gllvm/enable\"" ;
+  rm $tmpFile ;
+  exit 1;
+fi
+gclang --version &> $tmpFile ;
+grep "clang version" $tmpFile | grep 9.0.0 &> /dev/null ;
+if test $? -ne 0 ; then
+  echo "${prefixString} ERROR: \"gclang\" installed is version `gclang --version | grep 'clang version'`"
+  echo "${prefixString}   You need glang for LLVM 9.0.0 to use NOELLE"
+  rm $tmpFile ;
+  exit 1;
+fi
 rm $tmpFile ;
 
 # Compile NOELLE
