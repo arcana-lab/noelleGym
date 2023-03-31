@@ -30,6 +30,14 @@ export NOELLE_CORES=8 ;
 outputDir="${origDir}/results/current_machine/IR/${suite}/benchmarks/${bench}"
 baselineIRFile="${outputDir}/baseline_with_metadata.bc"
 if ! test -e $baselineIRFile ; then
+  echo "${prefixString}     The baseline IR for this benchmark is missing (${baselineIRFile})"
+
+  # Compile all benchmarks
+  echo "${prefixString}     Start generating the IR baseline file"; 
+  ./scripts/compile_benchmarks.sh >> output.txt 2>&1 ;
+  echo "${prefixString}       Done" ;
+fi
+if ! test -e $baselineIRFile ; then
   echo "${prefixString}   ERROR = missing baseline with metadata at:"
   echo "${prefixString}     ${baselineIRFile}"
   exit 1 ;
