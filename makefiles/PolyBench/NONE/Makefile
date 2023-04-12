@@ -12,14 +12,5 @@ NOELLE_OPTIONS=-noelle-nondeterministic-prvgs -noelle-verbose=3 -noelle-pdg-verb
 LIBS=-lm -lstdc++ -lpthread -L/usr/lib64 -L/usr/lib
 PROFILE_INPUT=large
 
-all: baseline_parallelized.bc
+include ./Makefile.common
 
-baseline_parallelized.bc:
-	./runEnablers.sh $(BENCHMARK) $(BENCHMARK).bc $(PROFILE_INPUT) "$(LIBS)" $(NOELLE_OPTIONS)
-	noelle-parallelizer baseline_with_metadata.bc -o $@ $(NOELLE_OPTIONS) $(PARALLELIZATION_OPTIONS)
-	cp $@ $(BENCHMARK).bc
-
-clean:
-	rm -rf include/ Parallelizer_utils.* baseline* default.profraw output.prof noelle*.txt *.dot
-
-.PHONY: all clean
