@@ -20,17 +20,25 @@ echo "${prefixString}   Start compiling all benchmarks for all configurations";
 ./scripts/compile_benchmarks.sh >> output.txt 2>&1 ;
 echo "${prefixString}     All benchmarks have been compiled for enablers-only and DOALL" ;
 
-# Compile using DOALL 
-echo "${prefixString}   Start generating parallelized binaries";
-./scripts/optimize_benchmarks.sh "DOALL" >> output.txt 2>&1 ;
-echo "${prefixString}     All benchmarks have been compiled for DOALL" ;
+if test -z ${NOELLE_AUTOTUNER_ONLY} ; then
 
-# Compile using HELIX
-./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
-echo "${prefixString}     All benchmarks have been compiled for HELIX" ;
+  # Compile using DOALL 
+  echo "${prefixString}   Start generating parallelized binaries";
+  ./scripts/optimize_benchmarks.sh "DOALL" >> output.txt 2>&1 ;
+  echo "${prefixString}     All benchmarks have been compiled for DOALL" ;
 
-# Compile using DSWP
-./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
+  # Compile using HELIX
+  ./scripts/optimize_benchmarks.sh "HELIX" >> output.txt 2>&1 ;
+  echo "${prefixString}     All benchmarks have been compiled for HELIX" ;
+
+  # Compile using DSWP
+  ./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
+  echo "${prefixString}     All benchmarks have been compiled for DSWP" ;
+
+fi
+
+# Compile using AUTOTUNER
+./scripts/optimize_benchmarks.sh "AUTOTUNER" >> output.txt 2>&1 ;
 echo "${prefixString}     All benchmarks have been compiled for DSWP" ;
 
 # Compile using enablers
