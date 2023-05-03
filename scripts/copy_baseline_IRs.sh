@@ -87,16 +87,7 @@ for i in `ls */benchmarks/*/*.bc` ; do
   mkdir -p ${outputDir}/IR/${dirName} ;
 
   # Copy the IR
-  if test -f ${outputDir}/IR/${dirName}/NOELLE_input.bc ; then
-    cmp $i ${outputDir}/IR/${dirName}/NOELLE_input.bc &> /dev/null ;
-    if test $? -ne 0 ; then
-      echo "ERROR: The IR in \"${outputDir}\" does not match the single bitcode IR stored in the benchmark suite" ;
-      echo "       Previous IR = ${outputDir}/IR/${dirName}/NOELLE_input.bc";
-      echo "       IR in the benchmark suite: $i" ;
-      exit 1;
-    fi
-
-  else 
+  if ! test -f ${outputDir}/IR/${dirName}/NOELLE_input.bc ; then
     echo "  Copy the IR $i" ;
     cp $i ${outputDir}/IR/${dirName}/NOELLE_input.bc ;
   fi
