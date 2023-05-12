@@ -115,7 +115,7 @@ echo $dirResult ;
 origDir=`pwd` ;
 tempFile=`mktemp` ;
 
-optimizations=( NONE DOALL HELIX DSWP ) ;
+optimizations=( NONE DOALL HELIX DSWP AUTOTUNER ) ;
 # Generate the results for all benchmarks in all benchmark suites
 pushd ./ ;
 cd $dirResult ; 

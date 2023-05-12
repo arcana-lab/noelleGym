@@ -40,21 +40,17 @@ echo "${prefixString}     Run with only enablers" ;
 aBenchmarkRun="0" ;
 run_with_technique "NONE" ;
 
-if test -z ${NOELLE_AUTOTUNER_ONLY} ; then
+# Generate times of DOALL parallelized binaries for all benchmarks
+echo "${prefixString}     Run with DOALL" ;
+run_with_technique "DOALL" ;
 
-  # Generate times of DOALL parallelized binaries for all benchmarks
-  echo "${prefixString}     Run with DOALL" ;
-  run_with_technique "DOALL" ;
+# Generate times of HELIX parallelized binaries for all benchmarks
+echo "${prefixString}     Run with HELIX" ;
+run_with_technique "HELIX" ;
 
-  # Generate times of HELIX parallelized binaries for all benchmarks
-  echo "${prefixString}     Run with HELIX" ;
-  run_with_technique "HELIX" ;
-
-  # Generate times of DSWP parallelized binaries for all benchmarks
-  echo "${prefixString}     Run with DSWP" ;
-  run_with_technique "DSWP" ;
-
-fi
+# Generate times of DSWP parallelized binaries for all benchmarks
+echo "${prefixString}     Run with DSWP" ;
+run_with_technique "DSWP" ;
 
 # Generate times of DSWP parallelized binaries for all benchmarks
 echo "${prefixString}     Run with AUTOTUNER" ;
