@@ -29,6 +29,7 @@ for i in `ls` ; do
   numberOfDOALL="`ls -l ${i}/benchmarks/*/baseline_parallelized_DOALL.bc 2> /dev/null | wc -l`" ;
   numberOfDSWP="`ls -l ${i}/benchmarks/*/baseline_parallelized_DSWP.bc 2> /dev/null | wc -l`" ;
   numberOfHELIX="`ls -l ${i}/benchmarks/*/baseline_parallelized_HELIX.bc 2> /dev/null | wc -l`" ;
+  numberOfAUTOTUNER="`ls -l ${i}/benchmarks/*/baseline_parallelized_AUTOTUNER.bc 2> /dev/null | wc -l`" ;
   if test "$numberOfBenchmarks" != "$numberOfBaselines" ; then
     echo "The suite \"$i\" has only $numberOfBaselines (over $numberOfBenchmarks) baselines" ;
   fi
@@ -43,6 +44,9 @@ for i in `ls` ; do
   fi
   if test "$numberOfBenchmarks" != "$numberOfDSWP" ; then
     echo "The suite \"$i\" has only $numberOfDSWP (over $numberOfBenchmarks) benchmarks parallelized with DSWP benchmarks" ;
+  fi
+  if test "$numberOfBenchmarks" != "$numberOfAUTOTUNER" ; then
+    echo "The suite \"$i\" has only $numberOfAUTOTUNER (over $numberOfBenchmarks) benchmarks parallelized with AUTOTUNER benchmarks" ;
   fi
 done
 popd &> /dev/null ;
@@ -121,6 +125,7 @@ if test -d time ; then
     numberOfBaselines="`ls -l ${i}/baseline/*.txt 2> /dev/null | wc -l`" ;
     numberOfNONE="`ls -l ${i}/NONE/*.txt 2> /dev/null | wc -l`" ;
     numberOfDOALL="`ls -l ${i}/DOALL/*.txt 2> /dev/null | wc -l`" ;
+    numberOfAUTOTUNER="`ls -l ${i}/AUTOTUNER/*.txt 2> /dev/null | wc -l`" ;
     if test -d ${i}/HELIX ; then
       numberOfHELIX="`ls -l ${i}/HELIX/*.txt 2> /dev/null | wc -l`" ;
     else
@@ -146,6 +151,10 @@ if test -d time ; then
     if test "$numberOfBenchmarks" != "$numberOfDSWP" ; then
       echo "The suite \"$i\" has only $numberOfDSWP (over $numberOfBenchmarks) benchmarks parallelized with DSWP with execution times" ;
     fi
+    if test "$numberOfBenchmarks" != "$numberOfAUTOTUNER" ; then
+      echo "The suite \"$i\" has only $numberOfAUTOTUNER (over $numberOfBenchmarks) benchmarks parallelized with AUTOTUNER with execution times" ;
+    fi
+
   done
   popd &> /dev/null ;
 
