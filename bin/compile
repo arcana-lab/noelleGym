@@ -33,13 +33,13 @@ echo "${prefixString}     All benchmarks have been compiled for HELIX" ;
 ./scripts/optimize_benchmarks.sh "DSWP" >> output.txt 2>&1 ;
 echo "${prefixString}     All benchmarks have been compiled for DSWP" ;
 
-# Compile using AUTOTUNER
-./scripts/optimize_benchmarks.sh "AUTOTUNER" >> output.txt 2>&1 ;
-echo "${prefixString}     All benchmarks have been compiled for DSWP" ;
-
 # Compile using enablers
 ./scripts/optimize_benchmarks.sh "NONE" >> output.txt 2>&1 ;
 echo "${prefixString}     All benchmarks have been compiled for NONE" ;
+
+# Compile using AUTOTUNER
+./scripts/optimize_benchmarks.sh "AUTOTUNER" >> output.txt 2>&1 ;
+echo "${prefixString}     All benchmarks have been compiled for DSWP" ;
 
 # Clean
 echo "${prefixString}   Clean" ;
