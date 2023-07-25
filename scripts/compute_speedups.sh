@@ -130,8 +130,8 @@ for currentDirectory in `ls` ; do
   for optimizationName in ${optimizations[@]} ; do
 
     # Clean previous files
-      rm -f "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
-      rm -f "${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt" ;
+    rm -f "${dirResult}/${currentDirectory}/${optimizationName}.txt" ;
+    rm -f "${dirResult}/${currentDirectory}/${optimizationName}_tmp.txt" ;
 
     # Check if we have results for the current benchmark suite
     currentResults="${dirResult}/${currentDirectory}/${optimizationName}" ;
