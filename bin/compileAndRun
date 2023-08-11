@@ -1,5 +1,40 @@
 #!/bin/bash -e
 
+while [[ $# -gt 0 ]] ;
+do
+    case $1 in
+        -y)
+            useCondorChoice="y"
+            shift
+            ;;
+        -n)
+            useCondorChoice="n"
+            shift
+            ;;
+        *)
+            echo "Unknown option $1" ;
+            exit 1
+            ;;
+    esac
+done
+
+if [ -z "${useCondorChoice+x}" ]  ; then
+    if [[ "$(hostname)" =~ ^peroni\..*$ ]] ; then
+        read -p "Looks like you're on peroni, would you like to run with Condor? [Y/n] " useCondorChoice ;
+        useCondorChoice=${useCondorChoice:-"y"} ;
+        if [[ ! "${useCondorChoice}" =~ ^[NnYy]$ ]] ; then
+            echo "Unknown selection ${useCondorChoice}" ;
+            exit 1 ;
+        fi
+    fi
+fi
+
+if [[ "${useCondorChoice}" =~ ^[Yy]$ ]] ; then
+    runSuffix="Condor" ;
+else
+    runSuffix="" ;
+fi
+
 prefixString="### NOELLE Gym ###" ;
 echo "${prefixString} All benchmarks from all benchmark suites will be compiled, run, and statistics will be collected" ;
 echo "${prefixString} Results will be stored in `pwd`/results/current_machine" ;
@@ -23,7 +58,7 @@ echo "${prefixString}   Compute statistics" ;
 
 # Run the binaries
 echo "${prefixString}   Run binaries" ;
-./bin/run >> output.txt 2>&1 ;
+./bin/run${runSuffix} >> output.txt 2>&1 ;
 
 # Clean
 echo "${prefixString}   Clean" ;
