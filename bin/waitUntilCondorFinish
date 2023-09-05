@@ -8,7 +8,7 @@ while [ true ] ; do
   fetchRunningJobNum="condor_q `whoami` -run -l | grep ^Arguments | grep `pwd` | wc -l" ;
   runningJobNum=`eval $fetchRunningJobNum` ;
 
-  if [[ $runningJobNum -ne 0 ]] ; then
+  if [[ $runningJobNum -eq 0 ]] ; then
     echo "Your job has finished." ;
     exit 0 ;
   else
