@@ -1,0 +1,30 @@
+#!/bin/bash -e
+
+# Get the inputs
+if test $# -lt 1 ; then
+  echo "USAGE: `basename $0` JOBNAME" ;
+  exit 1;
+fi
+jobName=$1 ;
+
+# Generate executable file $jobName.con ;
+awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v jobName="$jobName" '{
+    if ($1 == "RepoPath"){
+      printf("%s = %s\n", $1, repoDir);
+
+    } else if ($1 == "Notify_User"){
+      printf("%s = %s@eecs.northwestern.edu\n", $1, myUsername);
+
+    } else if ($1 == "JobName"){
+      printf("%s = %s\n", $1, jobName);
+
+    } else {
+      print ;
+    }
+  }' scripts/condor/bin_condor.con > $jobName.con ;
+
+# submit condor job
+condor_submit $jobName.con ;
+
+# wait until condor job finishes
+./bin/waitUntilCondorFinish ;

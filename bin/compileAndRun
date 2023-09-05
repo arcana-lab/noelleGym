@@ -30,10 +30,11 @@ if [ -z "${useCondorChoice+x}" ]  ; then
 fi
 
 if [[ "${useCondorChoice}" =~ ^[Yy]$ ]] ; then
-    runSuffix="Condor" ;
+    useCondor=true ;
 else
-    runSuffix="" ;
+    useCondor=false ;
 fi
+
 
 prefixString="### NOELLE Gym ###" ;
 echo "${prefixString} All benchmarks from all benchmark suites will be compiled, run, and statistics will be collected" ;
@@ -44,21 +45,37 @@ echo "${prefixString} If the execution ends and you don't see \"Exit\" printed, 
 echo "${prefixString} To check the current macro steps of the overall process, please run the following command: \"grep \#\# output.txt\"";
 echo "" ;
 
+# UseCondor
+echo "${prefixString}   Use Condor: ${useCondor}" ;
+
 # Setup
 echo "${prefixString}   Setup" ;
 ./bin/setup >> output.txt 2>&1 ;
 
 # Compile the system and the benchmarks
 echo "${prefixString}   Compile" ;
-./bin/compile >> output.txt 2>&1 ;
+if [ $useCondor ] ; then
+    ./bin/submitCondorAndWait compile ;
+else
+    ./bin/compile >> output.txt 2>&1 ;
+fi
 
 # Compute statistics
 echo "${prefixString}   Compute statistics" ;
-./bin/statistics >> output.txt 2>&1 ;
+if [ $useCondor ] ; then
+    ./bin/submitCondorAndWait statistics ;
+else
+    ./bin/statistics >> output.txt 2>&1 ;
+fi
 
 # Run the binaries
 echo "${prefixString}   Run binaries" ;
-./bin/run${runSuffix} >> output.txt 2>&1 ;
+if [ $useCondor ] ; then
+    ./bin/runCondor >> output.txt 2>&1 ;
+    ./waitUntilCondorFinish ;
+else
+    ./bin/run >> output.txt 2>&1 ;
+fi
 
 # Clean
 echo "${prefixString}   Clean" ;
