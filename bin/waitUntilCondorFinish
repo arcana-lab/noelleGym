@@ -4,7 +4,7 @@
 runningMinute=0 ;
 
 while [ true ] ; do
-  sleep 15m ;
+  sleep 5m ;
   fetchRunningJobNum="condor_q `whoami` -run -l | grep ^Arguments | grep `pwd` | wc -l" ;
   runningJobNum=`eval $fetchRunningJobNum` ;
 
@@ -12,7 +12,7 @@ while [ true ] ; do
     echo "Your job has finished." ;
     exit 0 ;
   else
-    runningMinute=$(( $runningMinute + 15 )) ;
+    runningMinute=$(( $runningMinute + 5 )) ;
     hour=$(( $runningMinute / 60 )) ;
     minute=$(( $runningMinute % 60 )) ;
     mod10=$(( $minute % 10 )) ;
