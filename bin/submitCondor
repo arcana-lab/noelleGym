@@ -1,0 +1,58 @@
+#!/bin/bash -e
+
+# Get the inputs
+if test $# -lt 1 ; then
+  echo "USAGE: `basename $0` JOBNAME" ;
+  exit 1;
+fi
+
+machineName=$1 ;
+jobFolder=$2 ;
+jobName=$3 ;
+jobParams=$4 ;
+outputFile=$5 ;
+
+if [[ $machineName == "default" ]] ; then
+    requirements='(Machine != "fix.cs.northwestern.edu") && (Machine != "allagash.cs.northwestern.edu") && (Machine != "piraat.cs.northwestern.edu")' ;
+    wholeMachineJob=false;
+else
+    requirements="(Machine == \"${machineName}.cs.northwestern.edu\")" ;
+    wholeMachineJob=true;
+fi
+
+fileName="${jobName}_`echo ${jobParams} | tr -s ' ' '_' | tr -d "'"`" ;
+
+# Generate executable file $jobName.con ;
+awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v wholeMachineJob="$wholeMachineJob" -v requirements="$requirements" -v jobFolder="$jobFolder" -v jobName="$jobName" -v jobParams="$jobParams" -v outputFile="$outputFile" '{
+    if ($1 == "RepoPath"){
+      printf("%s = %s\n", $1, repoDir);
+
+    } else if ($1 == "Notify_User"){
+      printf("%s = %s@eecs.northwestern.edu\n", $1, myUsername);
+
+    } else if ($1 == "+IsWholeMachineJob"){
+      printf("%s = %s\n", $1, wholeMachineJob);
+
+    } else if ($1 == "Requirements"){
+      printf("%s = %s\n", $1, requirements);
+
+    } else if ($1 == "JobFolder"){
+      printf("%s = %s\n", $1, jobFolder);
+
+    } else if ($1 == "JobName"){
+      printf("%s = %s\n", $1, jobName);
+
+    } else if ($1 == "JobParams"){
+      printf("%s = %s\n", $1, jobParams);
+
+    } else if ($1 == "OutputFile"){
+      printf("%s = %s\n", $1, outputFile);
+
+    } else {
+      print ;
+    }
+  }' scripts/condor/submit_condor.con > $fileName.con ;
+
+
+# submit condor job
+condor_submit ${fileName}.con ;

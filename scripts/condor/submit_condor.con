@@ -2,7 +2,7 @@
 Universe = vanilla
 
 # Describe the target machine
-Requirements = (Machine != "fix.cs.northwestern.edu") && (Machine != "allagash.cs.northwestern.edu") && (Machine != "piraat.cs.northwestern.edu") 
+Requirements = 
 
 Rank = TARGET.Mips
 Copy_To_Spool = False
@@ -21,7 +21,8 @@ RepoPath =
 
 # Set the directories for the execution
 InitialDir = $(RepoPath)
-Executable = $(RepoPath)/scripts/condor/bin_condor.sh
+JobFolder = 
+Executable = $(RepoPath)/scripts/condor/$(JobFolder)_condor.sh
 
 # Define the output directories
 LogDir = $(RepoPath)/log/condor
@@ -30,15 +31,17 @@ Error = $(LogDir)/condor_$(Cluster)_$(Process).err
 Log = $(LogDir)/condor_$(Cluster)_$(Process).log
 
 # Each job requires access to the whole machine
-+IsWholeMachineJob      = false
-+IsSuspensionJob        = true
++IsWholeMachineJob = 
++IsSuspensionJob = false
 
 # Set the priority
 priority = 0
 
 # Set job name
 JobName =
+JobParams =
+OutputFile =
 
 # Arguments of bin_condor.sh
-Arguments = "$(InitialDir) $(JobName)"
+Arguments = "$(InitialDir) $(JobName) $(JobParams) $(OutputFile)"
 Queue

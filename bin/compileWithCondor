@@ -1,0 +1,72 @@
+#!/bin/bash -e
+
+prefixString="### NOELLE Gym: Compile ###" ;
+echo "${prefixString} All benchmarks from all benchmark suites will be compiled" ;
+echo "${prefixString} Results will be stored in `pwd`/results/current_machine" ;
+echo "${prefixString} The output of each step will be stored in `pwd`/output.txt" ;
+echo "${prefixString}     (you can run \"tail -f output.txt\" to see the current state at finer granularity)" ;
+echo "" ;
+
+# Setup
+echo "${prefixString}   Setup" ;
+./bin/setup >> output.txt 2>&1 ;
+
+# Configure NOELLE
+source NOELLE/enable ;
+export NOELLE_CORES=8 ;
+
+# Enable NOELLE
+source NOELLE/enable ;
+
+
+# Generate single IR file for each benchmark
+./scripts/copy_baseline_IRs.sh ;
+
+
+# Run enablers
+echo "${prefixString} Run enablers for suites MiBench, PARSEC3, PolyBench, NAS" ;
+
+./bin/submitCondor "default" "scripts" "run_enablers_for_suite" "MiBench" "output.txt";
+./bin/submitCondor "default" "scripts" "run_enablers_for_suite" "PARSEC3" "ouptut.txt";
+./bin/submitCondor "default" "scripts" "run_enablers_for_suite" "PolyBench" "output.txt";
+./bin/submitCondor "default" "scripts" "run_enablers_for_suite" "NAS" "output.txt"; 
+./bin/waitUntilCondorFinish ;
+
+
+# Run non-autotuner parallelization techniques
+echo "${prefixString} Run parallelization techniques DOALL, HELIX, DSWP, NONE" ;
+
+./bin/submitCondor "default" "scripts" "optimize_benchmarks" "DOALL" "output.txt";
+./waitUntilCondorFinish ;
+
+./bin/submitCondor "default" "scripts" "optimize_benchmarks" "HELIX" "output.txt";
+./waitUntilCondorFinish ;
+
+./bin/submitCondor "default" "scripts" "optimize_benchmarks" "DSWP" "output.txt";
+./waitUntilCondorFinish ;
+
+./bin/submitCondor "default" "scripts" "optimize_benchmarks" "NONE" "output.txt";
+./waitUntilCondorFinish ;
+
+
+# Run autotuner
+echo "${prefixString} Run parallelization technique AUTOTUNER" ;
+
+./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER MiBench'" "output.txt";
+./waitUntilCondorFinish ;
+
+./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER PARSEC3'" "output.txt";
+./waitUntilCondorFinish ;
+
+./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER PolyBench'" "output.txt";
+./waitUntilCondorFinish ;
+
+./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER NAS'" "output.txt";
+./waitUntilCondorFinish ;
+
+
+# Clean
+echo "${prefixString}   Clean" ;
+./scripts/clean.sh >> output.txt 2>&1 ;
+
+echo "${prefixString} Exit" ;

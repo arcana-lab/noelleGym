@@ -55,30 +55,31 @@ echo "${prefixString}   Setup" ;
 # Compile the system and the benchmarks
 echo "${prefixString}   Compile" ;
 if [ $useCondor ] ; then
-    ./bin/submitCondorAndWait compile ;
+    ./bin/compileWithCondor >> output.txt 2>&1 ;
 else
     ./bin/compile >> output.txt 2>&1 ;
 fi
 
 # Compute statistics
-echo "${prefixString}   Compute statistics" ;
-if [ $useCondor ] ; then
-    ./bin/submitCondorAndWait statistics ;
-else
-    ./bin/statistics >> output.txt 2>&1 ;
-fi
+# echo "${prefixString}   Compute statistics" ;
+# if [ $useCondor ] ; then
+#     ./bin/submitCondor statistics ;
+#     ./waitUntilCondorFinish ;
+# else
+#     ./bin/statistics >> output.txt 2>&1 ;
+# fi
 
-# Run the binaries
-echo "${prefixString}   Run binaries" ;
-if [ $useCondor ] ; then
-    ./bin/runCondor >> output.txt 2>&1 ;
-    ./waitUntilCondorFinish ;
-else
-    ./bin/run >> output.txt 2>&1 ;
-fi
+# # Run the binaries
+# echo "${prefixString}   Run binaries" ;
+# if [ $useCondor ] ; then
+#     ./bin/runCondor >> output.txt 2>&1 ;
+#     ./waitUntilCondorFinish ;
+# else
+#     ./bin/run >> output.txt 2>&1 ;
+# fi
 
-# Clean
-echo "${prefixString}   Clean" ;
-./scripts/clean.sh >> output.txt 2>&1 ;
+# # Clean
+# echo "${prefixString}   Clean" ;
+# ./scripts/clean.sh >> output.txt 2>&1 ;
 
-echo "${prefixString} Exit" ;
+# echo "${prefixString} Exit" ;

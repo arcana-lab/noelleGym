@@ -13,4 +13,4 @@ cd $1 ;
 jobName=$2 ;
 jobParams=$3 ;
 outputFile=$4 ;
-./bin/$jobName `echo $jobParams` >> $outputFile 2>&1 ;
+./scripts/$jobName.sh `echo $jobParams` >> $outputFile 2>&1 ;
