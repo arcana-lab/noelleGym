@@ -37,32 +37,32 @@ echo "${prefixString} Run enablers for suites MiBench, PARSEC3, PolyBench, NAS" 
 echo "${prefixString} Run parallelization techniques DOALL, HELIX, DSWP, NONE" ;
 
 ./bin/submitCondor "default" "scripts" "optimize_benchmarks" "DOALL" "output.txt";
-./waitUntilCondorFinish ;
+./bin/waitUntilCondorFinish ;
 
 ./bin/submitCondor "default" "scripts" "optimize_benchmarks" "HELIX" "output.txt";
-./waitUntilCondorFinish ;
+./bin/waitUntilCondorFinish ;
 
 ./bin/submitCondor "default" "scripts" "optimize_benchmarks" "DSWP" "output.txt";
-./waitUntilCondorFinish ;
+./bin/waitUntilCondorFinish ;
 
 ./bin/submitCondor "default" "scripts" "optimize_benchmarks" "NONE" "output.txt";
-./waitUntilCondorFinish ;
+./bin/waitUntilCondorFinish ;
 
 
 # Run autotuner
 echo "${prefixString} Run parallelization technique AUTOTUNER" ;
 
 ./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER MiBench'" "output.txt";
-./waitUntilCondorFinish ;
+./bin/waitUntilCondorFinish ;
 
 ./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER PARSEC3'" "output.txt";
-./waitUntilCondorFinish ;
+./bin/waitUntilCondorFinish ;
 
 ./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER PolyBench'" "output.txt";
-./waitUntilCondorFinish ;
+./bin/waitUntilCondorFinish ;
 
 ./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER NAS'" "output.txt";
-./waitUntilCondorFinish ;
+./bin/waitUntilCondorFinish ;
 
 
 # Clean

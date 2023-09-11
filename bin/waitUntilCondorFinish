@@ -5,7 +5,11 @@ runningMinute=0 ;
 
 while [ true ] ; do
   sleep 5m ;
-  fetchRunningJobNum="condor_q `whoami` -run -l | grep ^Arguments | grep `pwd` | wc -l" ;
+  # https://pages.cs.wisc.edu/~adesmet/status.html
+  idle=1 ;
+  running=2 ;
+  suspended=5 ;
+  fetchRunningJobNum="condor_q `whoami` -constraint \"JobStatus == ${idle} || JobStatus == ${running} || JobStatus == ${suspended}\" -l | grep ^Arguments | grep `pwd` | wc -l" ;
   runningJobNum=`eval $fetchRunningJobNum` ;
 
   if [[ $runningJobNum -eq 0 ]] ; then
