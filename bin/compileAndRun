@@ -72,7 +72,7 @@ fi
 # Run the binaries
 echo "${prefixString}   Run binaries" ;
 if [ $useCondor ] ; then
-    ./bin/runCondor >> output.txt 2>&1 ;
+    ./bin/runCondor "fix" >> output.txt 2>&1 ;
     ./waitUntilCondorFinish ;
 else
     ./bin/run >> output.txt 2>&1 ;
