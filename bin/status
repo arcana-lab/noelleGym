@@ -121,7 +121,12 @@ if test -d time ; then
       continue ;
     fi
 
+    # Fetch the number of benchmarks of the current suite
     numberOfBenchmarks="`ls -l ${resultDir}/IR/${i}/benchmarks/*/NOELLE_input.bc 2> /dev/null | wc -l`" ;
+    if test "$numberOfBenchmarks" == "0"; then
+      echo "The suite \"$i\" does not have any NOELLE_input.bc. This typically happens when a benchmark suite has not been compiled" ;
+      continue ;
+    fi
     numberOfBaselines="`ls -l ${i}/baseline/*.txt 2> /dev/null | wc -l`" ;
     numberOfNONE="`ls -l ${i}/NONE/*.txt 2> /dev/null | wc -l`" ;
     numberOfDOALL="`ls -l ${i}/DOALL/*.txt 2> /dev/null | wc -l`" ;
