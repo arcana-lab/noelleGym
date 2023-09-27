@@ -1,0 +1,47 @@
+# Set the universe
+Universe = vanilla
+
+# Describe the target machine
+Requirements = 
+
+Rank = TARGET.Mips
+Copy_To_Spool = False
+
+# Notification
+Notification = error
+
+# Notification email
+Notify_User = 
+
+# Set the environment
+Getenv = True
+
+# Set the repository
+RepoPath = 
+
+# Set the directories for the execution
+InitialDir = $(RepoPath)
+JobFolder = 
+Executable = $(RepoPath)/scripts/condor/$(JobFolder)_condor.sh
+
+# Define the output directories
+LogDir = $(RepoPath)/log/condor
+Output = $(LogDir)/condor_$(Cluster)_$(Process).out
+Error = $(LogDir)/condor_$(Cluster)_$(Process).err
+Log = $(LogDir)/condor_$(Cluster)_$(Process).log
+
+# Each job requires access to the whole machine
++IsWholeMachineJob = 
++IsSuspensionJob = false
+
+# Set the priority
+priority = 0
+
+# Set job name
+JobName =
+JobParams =
+OutputFile =
+
+# Arguments of bin_condor.sh
+Arguments = "$(InitialDir) $(JobName) $(JobParams) $(OutputFile)"
+Queue
