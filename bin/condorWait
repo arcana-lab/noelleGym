@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+# wait until condor job finishes
+logFiles="$@";
+
+echo "CondorWait Start" ;
+
+for logFile in $logFiles ; do
+  echo "condor_wait $logFile" ;
+  condor_wait $logFile ;
+done
+
+
+echo "CondorWait Exit" ;
