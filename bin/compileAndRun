@@ -2,39 +2,38 @@
 
 while [[ $# -gt 0 ]] ;
 do
-    case $1 in
-        -y)
-            useCondorChoice="y"
-            shift
-            ;;
-        -n)
-            useCondorChoice="n"
-            shift
-            ;;
-        *)
-            echo "Unknown option $1" ;
-            exit 1
-            ;;
-    esac
+  case $1 in
+    -y)
+      useCondorChoice="y"
+      shift
+      ;;
+    -n)
+      useCondorChoice="n"
+      shift
+      ;;
+    *)
+      echo "Unknown option $1" ;
+      exit 1
+      ;;
+  esac
 done
 
 if [ -z "${useCondorChoice+x}" ]  ; then
-    if [[ "$(hostname)" =~ ^peroni\..*$ ]] ; then
-        read -p "Looks like you're on peroni, would you like to run with Condor? [Y/n] " useCondorChoice ;
-        useCondorChoice=${useCondorChoice:-"y"} ;
-        if [[ ! "${useCondorChoice}" =~ ^[NnYy]$ ]] ; then
-            echo "Unknown selection ${useCondorChoice}" ;
-            exit 1 ;
-        fi
+  if [[ "$(hostname)" =~ ^peroni\..*$ ]] ; then
+    read -p "Looks like you're on peroni, would you like to run with Condor? [Y/n] " useCondorChoice ;
+    useCondorChoice=${useCondorChoice:-"y"} ;
+    if [[ ! "${useCondorChoice}" =~ ^[NnYy]$ ]] ; then
+        echo "Unknown selection ${useCondorChoice}" ;
+        exit 1 ;
     fi
+  fi
 fi
 
 if [[ "${useCondorChoice}" =~ ^[Yy]$ ]] ; then
-    useCondor=true ;
+  useCondor=true ;
 else
-    useCondor=false ;
+  useCondor=false ;
 fi
-
 
 prefixString="### NOELLE Gym ###" ;
 echo "${prefixString} All benchmarks from all benchmark suites will be compiled, run, and statistics will be collected" ;
@@ -54,28 +53,28 @@ echo "${prefixString}   Setup" ;
 
 # Compile the system and the benchmarks
 echo "${prefixString}   Compile" ;
-if [ $useCondor ] ; then
-    ./bin/compileWithCondor >> output.txt 2>&1 ;
+if [[ $useCondor = true ]] ; then
+  ./bin/compileWithCondor >> output.txt 2>&1 ;
 else
-    ./bin/compile >> output.txt 2>&1 ;
+  ./bin/compile >> output.txt 2>&1 ;
 fi
 
 # Compute statistics
 echo "${prefixString}   Compute statistics" ;
-if [ $useCondor ] ; then
-    ./bin/submitCondor "default" "bin" "statistics" "" "output.txt";
-    ./waitUntilCondorFinish ;
+if [[ $useCondor = true ]] ; then
+  ./bin/submitCondor "default" "bin" "statistics" "" "output.txt";
+  ./waitUntilCondorFinish ;
 else
-    ./bin/statistics >> output.txt 2>&1 ;
+  ./bin/statistics >> output.txt 2>&1 ;
 fi
 
 # Run the binaries
 echo "${prefixString}   Run binaries" ;
-if [ $useCondor ] ; then
-    ./bin/runCondor "fix" >> output.txt 2>&1 ;
-    ./waitUntilCondorFinish ;
+if [[ $useCondor = true ]] ; then
+  ./bin/runCondor "fix" >> output.txt 2>&1 ;
+  ./waitUntilCondorFinish ;
 else
-    ./bin/run >> output.txt 2>&1 ;
+  ./bin/run >> output.txt 2>&1 ;
 fi
 
 # Clean
