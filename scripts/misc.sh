@@ -99,5 +99,6 @@ function compile_benchmark {
   # The benchmark needs to be optimized
   make optimization BENCHMARK=$benchToOptimize ;
 
+  echo "";
   return ;
 }
