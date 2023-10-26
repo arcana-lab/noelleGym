@@ -3,7 +3,7 @@ all: baseline_parallelized.bc
 baseline_parallelized.bc:
 	./runEnablers.sh $(BENCHMARK) $(BENCHMARK).bc $(PROFILE_INPUT) "$(LIBS)" $(NOELLE_OPTIONS)
 	../../scripts/extractInput.sh $(AUTOTUNER_INPUT)
-	noelle-parallelizer-autotuner --parallelizer-args="baseline_with_metadata.bc -o $@ $(NOELLE_OPTIONS) $(PARALLELIZATION_OPTIONS)" --libs="$(LIBS)" --input="autotuner_input.txt" --autotuner-time="3600" --autotuner-numconf="500"
+	noelle-parallelizer-autotuner --parallelizer-args="baseline_with_metadata.bc -o $@ $(NOELLE_OPTIONS) $(PARALLELIZATION_OPTIONS)" --libs="$(LIBS)" --input="autotuner_input.txt" --autotuner-time="36000" --autotuner-numconf="5000"
 	cp $@ $(BENCHMARK).bc
 
 clean:
