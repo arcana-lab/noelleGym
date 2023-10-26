@@ -13,7 +13,13 @@ function compile_suite {
     # Fetch the file name of the archive
     if test "$suite" == "PARSEC3" ; then
       benchmarkSuiteArchive="${origDir}/benchmarkSuites/parsec-3.0.tar.gz"; 
-      wget --no-check-certificate http://parsec.cs.princeton.edu/download/3.0/parsec-3.0.tar.gz -O "${benchmarkSuiteArchive}" ;
+      if ! test -f "${benchmarkSuiteArchive}" ; then
+        if test -f /project/benchmarks/parsec-3.0.tar.gz ; then
+          cp /project/benchmarks/parsec-3.0.tar.gz "${benchmarkSuiteArchive}" ;
+        else 
+          wget --no-check-certificate http://parsec.cs.princeton.edu/download/3.0/parsec-3.0.tar.gz -O "${benchmarkSuiteArchive}" ;
+        fi
+      fi
 
     elif test "$suite" == "MiBench" ; then
       benchmarkSuiteArchive="${origDir}/benchmarkSuites/mibench-master.tar.bz2"; 
