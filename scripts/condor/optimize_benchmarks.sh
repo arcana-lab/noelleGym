@@ -54,12 +54,12 @@ source NOELLE/enable ;
 
 # Compile all benchmark suites
 compile_suite "PolyBench" ;
-# compile_suite "MiBench" ;
-# compile_suite "PARSEC3" ;
-# compile_suite "NAS" ;
-# if ! test -z ${NOELLE_SPEC} ; then
-#   compile_suite "SPEC2017" ;
-# fi
+compile_suite "MiBench" ;
+compile_suite "PARSEC3" ;
+compile_suite "NAS" ;
+if ! test -z ${NOELLE_SPEC} ; then
+  compile_suite "SPEC2017" ;
+fi
 
 
 

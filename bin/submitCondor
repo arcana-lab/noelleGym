@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # Get the inputs
-if test $# -lt 5 ; then
+if test $# -lt 4 ; then
   echo "USAGE: `basename $0` JOBNAME" ;
   exit 1;
 fi
@@ -25,7 +25,7 @@ fi
 jobName="`echo ${jobFile} | tr -s '/' '_' | tr -d '.sh'`_`echo ${jobParams} | tr -s ' ' '_' | tr -d "'"`" ;
 
 # Generate executable file $jobName.con ;
-awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v wholeMachineJob="$wholeMachineJob" -v requirements="$requirements" -v jobDir="$jobDir" -v jobFile="$jobFile" -v jobParams="$jobParams" -v jobName="$jobName" '{
+awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v wholeMachineJob="$wholeMachineJob" -v requirements="$requirements" -v jobFile="$jobFile" -v jobParams="$jobParams" -v jobName="$jobName" '{
     if ($1 == "RepoPath"){
       printf("%s = %s\n", $1, repoDir);
 
@@ -37,9 +37,6 @@ awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v wholeMachineJob="$wholeMachin
 
     } else if ($1 == "Requirements"){
       printf("%s = %s\n", $1, requirements);
-
-    } else if ($1 == "JobDir"){
-      printf("%s = %s\n", $1, jobDir);
 
     } else if ($1 == "JobFile"){
       printf("%s = %s\n", $1, jobFile);

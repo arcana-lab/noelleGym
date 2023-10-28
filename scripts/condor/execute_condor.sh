@@ -1,18 +1,17 @@
 #!/bin/bash -e
 
 # Fetch the inputs
-if test $# -lt 4; then
+if test $# -lt 3; then
   echo "USAGE: `basename $0` JOB NAME UNSPECIFIED" ;
   exit 1;
 fi
 
 
 repoPath=$1 ;
-jobDir=$2 ;
-jobFile=$3 ;
-jobParams=$4 ;
+jobFile=$2 ;
+jobParams=$3 ;
 
 # Go to the repository
 cd ${repoPath} ;
 
-./${jobDir}/${jobFile} `echo ${jobParams}`;
+./${jobFile} `echo ${jobParams}`;
