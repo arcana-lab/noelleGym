@@ -22,7 +22,9 @@ fi
 # jobName is the refined concatenation of jobFile and jobParams, hence it's unique
 # jobFile = scripts/compile_benchmark_condor.sh; jobParams = 'MiBench Basicmath'
 # jobName = scripts_compile_benchmark_condor_MiBench_Basicmath
-jobName="`echo ${jobFile} | tr -s '/' '_' | tr -d '.sh'`_`echo ${jobParams} | tr -s ' ' '_' | tr -d "'"`" ;
+jobName="`echo ${jobFile%.sh} | tr -s '/' '_'`_`echo ${jobParams} | tr -s ' ' '_' | tr -d "'"`" ;
+
+
 
 # Generate executable file $jobName.con ;
 awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v wholeMachineJob="$wholeMachineJob" -v requirements="$requirements" -v jobFile="$jobFile" -v jobParams="$jobParams" -v jobName="$jobName" '{
