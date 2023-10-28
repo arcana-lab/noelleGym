@@ -6,6 +6,7 @@ if test $# -lt 1 ; then
   exit 1;
 fi
 machineName=$1 ;
+outputFile=$2 ;
 
 awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v machineName="$machineName" '{
     if ($1 == "RepoPath"){
@@ -22,4 +23,9 @@ awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v machineName="$machineName" '{
     }
   }' scripts/condor/performance.con > performance.con ;
 
-condor_submit performance.con ;
+# submit condor job
+condor_submit performance.con >> ${outputFile} 2>&1;
+
+logDir="`pwd`/log/condor" ;
+logFile="${logDir}/performance.log" ;
+echo $logFile ;

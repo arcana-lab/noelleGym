@@ -53,17 +53,17 @@ echo "${prefixString}   Setup" ;
 
 # Compile the system and the benchmarks
 echo "${prefixString}   Compile" ;
-if [[ $useCondor = true ]] ; then
+if [[ ${useCondor} = true ]] ; then
   ./bin/compileWithCondor >> output.txt 2>&1 ;
 else
   ./bin/compile >> output.txt 2>&1 ;
 fi
 
-# Compute statistics
+# # Compute statistics
 echo "${prefixString}   Compute statistics" ;
 if [[ $useCondor = true ]] ; then
-  ./bin/submitCondor "default" "bin" "statistics" "" "output.txt";
-  ./waitUntilCondorFinish ;
+  local logFile=$(./bin/submitCondor "default" "bin/statistics" "" "output.txt");
+  ./bin/condorWait ${logFile} ;
 else
   ./bin/statistics >> output.txt 2>&1 ;
 fi
@@ -71,8 +71,8 @@ fi
 # Run the binaries
 echo "${prefixString}   Run binaries" ;
 if [[ $useCondor = true ]] ; then
-  ./bin/runCondor "fix" >> output.txt 2>&1 ;
-  ./waitUntilCondorFinish ;
+  local logFile=$(./bin/runCondor "fix" "output.txt") ;
+  ./bin/condorWait ${logFile} ;
 else
   ./bin/run >> output.txt 2>&1 ;
 fi

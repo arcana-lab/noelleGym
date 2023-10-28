@@ -15,58 +15,31 @@ echo "${prefixString}   Setup" ;
 source NOELLE/enable ;
 export NOELLE_CORES=8 ;
 
-# Clean
-echo "${prefixString}   Clean" ;
-./scripts/clean.sh >> output.txt 2>&1 ;
+# Compile all benchmarks
+echo "${prefixString}   Start compiling all benchmarks for all configurations (with condor)";
+./scripts/condor/compile_benchmarks.sh >> output.txt 2>&1 ;
+echo "${prefixString}     All benchmarks have been compiled for enablers-only and DOALL" ;
 
-# Generate single IR file for each benchmark
-echo "" ;
-./scripts/copy_baseline_IRs.sh ;
+# Compile using DOALL 
+echo "${prefixString}   Start generating parallelized binaries";
+./scripts/condor/optimize_benchmarks.sh "DOALL" "default" >> output.txt 2>&1 ;
+echo "${prefixString}     All benchmarks have been compiled for DOALL" ;
 
-# Run enablers
-echo "" ;
-echo "${prefixString} Run enablers for suites MiBench, PARSEC3, PolyBench, NAS" ;
+# Compile using HELIX
+./scripts/condor/optimize_benchmarks.sh "HELIX" "default" >> output.txt 2>&1 ;
+echo "${prefixString}     All benchmarks have been compiled for HELIX" ;
 
-logfile_enablers_mibench=$(./bin/submitCondor "default" "scripts" "run_enablers_for_suite" "MiBench" "output.txt");
-logfile_enablers_parsec3=$(./bin/submitCondor "default" "scripts" "run_enablers_for_suite" "PARSEC3" "output.txt");
-logfile_enablers_polybench=$(./bin/submitCondor "default" "scripts" "run_enablers_for_suite" "PolyBench" "output.txt");
-logfile_enablers_nas=$(./bin/submitCondor "default" "scripts" "run_enablers_for_suite" "NAS" "output.txt"); 
-./bin/condorWait $logfile_enablers_mibench $logfile_enablers_parsec3 $logfile_enablers_polybench $logfile_enablers_nas;
+# Compile using DSWP
+./scripts/condor/optimize_benchmarks.sh "DSWP" "default" >> output.txt 2>&1 ;
+echo "${prefixString}     All benchmarks have been compiled for DSWP" ;
 
+# Compile using enablers
+./scripts/condor/optimize_benchmarks.sh "NONE" "default" >> output.txt 2>&1 ;
+echo "${prefixString}     All benchmarks have been compiled for NONE" ;
 
-# Run non-autotuner parallelization techniques
-echo "" ;
-echo "${prefixString} Run parallelization techniques DOALL, HELIX, DSWP, NONE" ;
-
-logfile_doall=$(./bin/submitCondor "default" "scripts" "optimize_benchmarks" "DOALL" "output.txt");
-./bin/condorWait $logfile_doall;
-
-logfile_helix=$(./bin/submitCondor "default" "scripts" "optimize_benchmarks" "HELIX" "output.txt");
-./bin/condorWait $logfile_helix;
-
-logfile_dswp=$(./bin/submitCondor "default" "scripts" "optimize_benchmarks" "DSWP" "output.txt");
-./bin/condorWait $logfile_dswp;
-
-logfile_none=$(./bin/submitCondor "default" "scripts" "optimize_benchmarks" "NONE" "output.txt");
-./bin/condorWait $logfile_none;
-
-
-# Run autotuner
-echo "" ;
-echo "${prefixString} Run parallelization technique AUTOTUNER" ;
-
-logfile_autotuner_mibench=$(./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER MiBench'" "output.txt");
-./bin/condorWait $logfile_autotuner_mibench;
-
-logfile_autotuner_parsec3=$(./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER PARSEC3'" "output.txt");
-./bin/condorWait $logfile_autotuner_parsec3;
-
-logfile_autotuner_polybench=$(./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER PolyBench'" "output.txt");
-./bin/condorWait $logfile_autotuner_polybench;
-
-logfile_autotuner_nas=$(./bin/submitCondor "fix" "scripts" "optimize_one_suite" "'AUTOTUNER NAS'" "output.txt");
-./bin/condorWait $logfile_autotuner_nas;
-
+# Compile using AUTOTUNER
+./scripts/condor/optimize_benchmarks.sh "AUTOTUNER" "fix" >> output.txt 2>&1 ;
+echo "${prefixString}     All benchmarks have been compiled for AUTOTUNER" ;
 
 # Clean
 echo "${prefixString}   Clean" ;

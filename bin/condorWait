@@ -3,12 +3,12 @@
 # wait until condor job finishes
 logFiles="$@";
 
+sleep 1m ;
+
 echo "CondorWait Start" ;
 
-for logFile in $logFiles ; do
-  echo "condor_wait $logFile" ;
-  condor_wait $logFile ;
+for logFile in ${logFiles[@]} ; do
+  condor_wait ${logFile} >/dev/null 2>&1 ;
 done
-
 
 echo "CondorWait Exit" ;
