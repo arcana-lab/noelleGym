@@ -78,7 +78,7 @@ for i in `ls */benchmarks/*/noelle_output.txt` ; do
   echo $i ;
 
   dirName="`dirname $i`" ;
-  echo $dirName
+  echo $dirName ;
 
   # Copy the optimized IR file
   mkdir -p ${outputDir}/IR/${dirName} ;
