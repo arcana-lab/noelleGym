@@ -14,4 +14,5 @@ optimizationName=$3 ;
 
 
 cd all_benchmark_suites/build/${suiteOfBench} ;
-compile_benchmark ${suiteOfBench} ${benchToOptimize} ;
+compile_benchmark ${suiteOfBench} ${benchToOptimize} 2>&1 ;
+exit 0 ;

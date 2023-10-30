@@ -60,4 +60,5 @@ suiteOfBench=$1 ;
 benchToOptimize=$2 ;
 origDir="`pwd`" ;
 
-compile_benchmark ;
+compile_benchmark 2>&1 ;
+exit 0 ;
