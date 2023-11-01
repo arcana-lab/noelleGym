@@ -1,18 +1,17 @@
 #!/bin/bash -e
 
 # Get the inputs
-if test $# -lt 1 ; then
+if test $# -lt 4 ; then
   echo "USAGE: `basename $0` JOBNAME" ;
   exit 1;
 fi
 
 machineName=$1 ;
-jobFolder=$2 ;
-jobName=$3 ;
-jobParams=$4 ;
-outputFile=$5 ;
+jobFile=$2 ;
+jobParams=$3 ;
+outputFile=$4 ;
 
-if [[ $machineName == "default" ]] ; then
+if [[ ${machineName} == "default" ]] ; then
     requirements='(Machine != "fix.cs.northwestern.edu") && (Machine != "allagash.cs.northwestern.edu") && (Machine != "piraat.cs.northwestern.edu")' ;
     wholeMachineJob=false;
 else
@@ -20,10 +19,15 @@ else
     wholeMachineJob=true;
 fi
 
-fileName="${jobName}_`echo ${jobParams} | tr -s ' ' '_' | tr -d "'"`" ;
+# jobName is the refined concatenation of jobFile and jobParams, hence it's unique
+# jobFile = scripts/compile_benchmark_condor.sh; jobParams = 'MiBench Basicmath'
+# jobName = scripts_compile_benchmark_condor_MiBench_Basicmath
+jobName="`echo ${jobFile%.sh} | tr -s '/' '_'`_`echo ${jobParams} | tr -s ' ' '_' | tr -d "'"`" ;
+
+
 
 # Generate executable file $jobName.con ;
-awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v wholeMachineJob="$wholeMachineJob" -v requirements="$requirements" -v jobFolder="$jobFolder" -v jobName="$jobName" -v jobParams="$jobParams" -v outputFile="$outputFile" -v fileName="$fileName" '{
+awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v wholeMachineJob="$wholeMachineJob" -v requirements="$requirements" -v jobFile="$jobFile" -v jobParams="$jobParams" -v jobName="$jobName" '{
     if ($1 == "RepoPath"){
       printf("%s = %s\n", $1, repoDir);
 
@@ -36,32 +40,23 @@ awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v wholeMachineJob="$wholeMachin
     } else if ($1 == "Requirements"){
       printf("%s = %s\n", $1, requirements);
 
-    } else if ($1 == "JobFolder"){
-      printf("%s = %s\n", $1, jobFolder);
-
-    } else if ($1 == "JobName"){
-      printf("%s = %s\n", $1, jobName);
+    } else if ($1 == "JobFile"){
+      printf("%s = %s\n", $1, jobFile);
 
     } else if ($1 == "JobParams"){
       printf("%s = %s\n", $1, jobParams);
 
-    } else if ($1 == "OutputFile"){
-      printf("%s = %s\n", $1, outputFile);
-
-    } else if ($1 == "FileName") {
-      printf("%s = %s\n", $1, fileName);
+    } else if ($1 == "JobName") {
+      printf("%s = %s\n", $1, jobName);
 
     } else {
       print ;
     }
-  }' scripts/condor/submit_condor.con > $fileName.con ;
-
+  }' scripts/condor/submit_condor.con > ${jobName}.con ;
 
 # submit condor job
-echo "Submit Condor Job: $fileName" >> $outputFile 2>&1;
-condor_submit ${fileName}.con >> $outputFile 2>&1;
-echo "" >> $outputFile 2>&1;
+condor_submit ${jobName}.con >> ${outputFile} 2>&1;
 
 logDir="`pwd`/log/condor" ;
-logFile="${logDir}/${fileName}.log" ;
+logFile="${logDir}/${jobName}.log" ;
 echo $logFile ;
