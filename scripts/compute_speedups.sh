@@ -181,12 +181,4 @@ mkdir -p $plotsDir ;
 
 # Generate plots per benchmark suite
 ./scripts/barplotSpeedup.sh $dirResult $plotsDir ;
-
-python3 ./scripts/gather.py ./results/current_machine
-python3 ./scripts/perfprof.py \
-  --xlimit 1.5 \
-  --marker-size 7 \
-  --marker '.' \
-  --output $plotsDir/parallelization_perfprof.pdf \
-  results.csv
-rm results*.csv
+./scripts/perfProf.sh $dirResult $plotsDir ;

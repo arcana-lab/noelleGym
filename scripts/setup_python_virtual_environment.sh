@@ -18,6 +18,8 @@ if ! test -d ${virtualEnvDir} ; then
     pip install matplotlib ;
     pip install numpy ;
 
+    pip install pandas ;
+
 else
   source ${virtualEnvDir}/bin/activate ;
 fi
