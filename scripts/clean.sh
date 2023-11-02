@@ -6,6 +6,7 @@ rm -f log/condor/*.out ;
 rm -f log/condor/*.err ;
 rm -f log/condor/*.log ;
 rm -f *.con ;
+rm -f tmp.* ;
 
 find ./results/ -empty -delete ;
 
