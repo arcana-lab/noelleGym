@@ -71,7 +71,7 @@ fi
 # Run the binaries
 echo "${prefixString}   Run binaries" ;
 if [[ $useCondor = true ]] ; then
-  ./bin/runCondor "fix" >> output.txt 2>&1 ;
+  ./bin/runCondor "piraat" >> output.txt 2>&1 ;
   logFiles=`ls log/condor/condor_*.log` ;
   ./bin/condorWait ${logFiles} >> output.txt 2>&1 ;
 else
