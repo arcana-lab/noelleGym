@@ -23,10 +23,28 @@ function generate_results {
       continue ;
     fi
 
-    # Check if the benchmark already run
+    # Compute how many times the benchmark have run
     outputFile="${currentResults}/${bench}.txt" ;
+    executionsDone="0" ;
     if test -e $outputFile ; then
+
+      # The benchmark already run. 
+      # Let's check how many times.
+      executionsDone=`wc -l $outputFile | awk '{print $1}'` ;
+    fi
+
+    # Check if we need to run the benchmark more times
+    areWeDone=`echo "$executionsDone >= $numRuns" | bc` ;
+    if test "$areWeDone" == "1" ; then
+
+      # The benchmark has executed enough times
       continue ;
+    fi
+
+    # The benchmark did not execute enough times
+    # Compute how many times are left by setting the initial value of the sequence
+    if test "$executionsDone" == "0" ; then
+      executionsDone="1" ;
     fi
 
     # Create the output file
@@ -34,7 +52,7 @@ function generate_results {
 
     # Run the benchmark enough times
     echo "    Benchmark $bench ($numRuns runs)" ;
-    for i in `seq 1 $numRuns` ; do
+    for i in `seq $executionsDone $numRuns` ; do
 
         inputToUse="native" ;
         if [ "${benchSuite}" == "SPEC2017" ] ; then
