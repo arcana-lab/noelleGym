@@ -59,7 +59,7 @@ else
   ./bin/compile >> output.txt 2>&1 ;
 fi
 
-# # Compute statistics
+# Compute statistics
 echo "${prefixString}   Compute statistics" ;
 if [[ $useCondor = true ]] ; then
   logFile=$(./bin/submitCondor "default" "bin/statistics" "''" "output.txt");
@@ -74,6 +74,7 @@ if [[ $useCondor = true ]] ; then
   ./bin/runCondor "piraat" >> output.txt 2>&1 ;
   logFiles=`ls log/condor/condor_*.log` ;
   ./bin/condorWait ${logFiles} >> output.txt 2>&1 ;
+  ./bin/plot >> output.txt 2>&1 ;
 else
   ./bin/run >> output.txt 2>&1 ;
 fi
