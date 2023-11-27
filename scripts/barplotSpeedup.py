@@ -18,7 +18,8 @@ def getArgs():
 def collectBenchmarkSuites(pathToTimeDir):
   benchSuites = []
   for benchSuite in os.listdir(pathToTimeDir):
-    benchSuites.append(benchSuite)
+    if (os.path.isdir(os.path.join(pathToTimeDir, benchSuite))):
+      benchSuites.append(benchSuite)
 
   return benchSuites
 
