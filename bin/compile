@@ -11,9 +11,8 @@ echo "" ;
 echo "${prefixString}   Setup" ;
 ./bin/setup >> output.txt 2>&1 ;
 
-# Configure NOELLE
-source NOELLE/enable ;
-export NOELLE_CORES=8 ;
+# Enable external software 
+source scripts/source_externals.sh 
 
 # Compile all benchmarks
 echo "${prefixString}   Start compiling all benchmarks for all configurations";

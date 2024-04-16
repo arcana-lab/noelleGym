@@ -33,8 +33,8 @@ fi
 optimizationName="$1" ;
 origDir="`pwd`" ;
 
-# Enable NOELLE
-source NOELLE/enable ;
+# Enable external software 
+source scripts/source_externals.sh 
 
 # Include compile_benchmark
 source scripts/misc.sh

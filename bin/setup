@@ -1,5 +1,7 @@
 #!/bin/bash
 
+llvmRequiredVersion="9.0.0" ;
+
 prefixString="### NOELLE Gym: Setup ###" ;
 echo "${prefixString} All benchmarks from all benchmark suites will be compiled" ;
 echo "${prefixString} Results will be stored in `pwd`/results/current_machine" ;
@@ -17,30 +19,30 @@ if ! command -v go &> /dev/null; then
 fi
 if ! command -v clang &> /dev/null ; then
   echo "${prefixString} ERROR: \"clang\" cannot be found. Please enable a clang/LLVM installation. If you are in Zythos, run the following command:" ;
-  echo "${prefixString}  \"source /project/extra/llvm/9.0.0/enable\"" ;
+  echo "${prefixString}  \"source /project/extra/llvm/${llvmRequiredVersion}/enable\"" ;
   exit 1;
 fi
 tmpFile="`mktemp`" ;
 clang --version &> $tmpFile ;
-grep "clang version" $tmpFile | grep 9.0.0 &> /dev/null ;
+grep "clang version" $tmpFile | grep ${llvmRequiredVersion} &> /dev/null ;
 if test $? -ne 0 ; then
   echo "${prefixString} ERROR: \"clang/LLVM\" installed is version `clang --version | grep 'clang version'`"
-  echo "${prefixString}   You need LLVM 9.0.0 to use NOELLE"
+  echo "${prefixString}   You need LLVM ${llvmRequiredVersion} to use NOELLE"
   echo "${prefixString}   Please read README.md of NOELLE: https://github.com/arcana-lab/noelle/blob/master/README.md";
   rm $tmpFile ;
   exit 1;
 fi
 if ! command -v gclang &> /dev/null ; then
-  echo "${prefixString} ERROR: \"gclang\" cannot be found. Please enable a gclang installation for LLVM 9.0.0. If you are in Zythos, run the following command:" ;
+  echo "${prefixString} ERROR: \"gclang\" cannot be found. Please enable a gclang installation for LLVM ${llvmRequiredVersion}. If you are in Zythos, run the following command:" ;
   echo "${prefixString}  \"source /project/gllvm/enable\"" ;
   rm $tmpFile ;
   exit 1;
 fi
 gclang --version &> $tmpFile ;
-grep "clang version" $tmpFile | grep 9.0.0 &> /dev/null ;
+grep "clang version" $tmpFile | grep ${llvmRequiredVersion} &> /dev/null ;
 if test $? -ne 0 ; then
   echo "${prefixString} ERROR: \"gclang\" installed is version `gclang --version | grep 'clang version'`"
-  echo "${prefixString}   You need glang for LLVM 9.0.0 to use NOELLE"
+  echo "${prefixString}   You need glang for LLVM ${llvmRequiredVersion} to use NOELLE"
   rm $tmpFile ;
   exit 1;
 fi

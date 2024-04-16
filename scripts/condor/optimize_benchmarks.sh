@@ -49,8 +49,8 @@ optimizationName="$1" ;
 machineName="$2" ;
 origDir="`pwd`" ;
 
-# Enable NOELLE
-source NOELLE/enable ;
+# Enable external software 
+source scripts/source_externals.sh 
 
 # Compile all benchmark suites
 compile_suite "PolyBench" ;

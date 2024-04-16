@@ -63,8 +63,8 @@ function compile_suite {
 
 origDir="`pwd`" ;
 
-# Enable NOELLE
-source NOELLE/enable ;
+# Enable external software 
+source scripts/source_externals.sh 
 
 # Compile all benchmark suites
 cd all_benchmark_suites/build ;

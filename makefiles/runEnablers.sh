@@ -55,8 +55,7 @@ mv default.profraw pre.profraw ;
 noelle-meta-prof-embed pre.profraw baseline.bc -o baseline_pre.bc ;
 
 # Run the enablers
-noelle-pre baseline_pre.bc ${NOELLE_OPTIONS} ;
-noelle-meta-clean baseline_pre.bc baseline_pre.bc ;
+gino-pre baseline_pre.bc ${NOELLE_OPTIONS} ;
 
 # Profile the code
 noelle-prof-coverage baseline_pre.bc baseline_pre_prof ${LIBS}

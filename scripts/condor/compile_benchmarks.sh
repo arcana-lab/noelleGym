@@ -41,8 +41,8 @@ function compile_suite {
 
 origDir="`pwd`" ;
 
-# Enable NOELLE
-source NOELLE/enable ;
+# Enable external software 
+source scripts/source_externals.sh 
 
 # Copy the baseline IR files
 ./scripts/copy_baseline_IRs.sh ;
