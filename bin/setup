@@ -48,13 +48,20 @@ if test $? -ne 0 ; then
 fi
 rm $tmpFile ;
 
-# Compile NOELLE
-echo "${prefixString}   Start compiling NOELLE" ;
+# Compile external software
+echo "${prefixString}   Start compiling external software" ;
+echo "${prefixString}     Compiling NOELLE" ;
 ./scripts/compile_NOELLE.sh >> ${origDir}/output.txt 2>&1 ;
 if test $? -ne 0 ; then
   exit 1;
 fi
-echo "${prefixString}     NOELLE has been compiled succesfully" ;
+echo "${prefixString}       NOELLE has been compiled succesfully" ;
+echo "${prefixString}     Compiling Gino" ;
+./scripts/compile_GINO.sh >> ${origDir}/output.txt 2>&1 ;
+if test $? -ne 0 ; then
+  exit 1;
+fi
+echo "${prefixString}       GINO has been compiled succesfully" ;
 
 # Download the git repository
 echo "${prefixString}   Setup the benchmark suites" ;
