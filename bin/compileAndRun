@@ -62,7 +62,7 @@ fi
 # Compute statistics
 echo "${prefixString}   Compute statistics" ;
 if [[ $useCondor = true ]] ; then
-  logFile=$(./bin/submitCondor "default" "bin/statistics" "''" "output.txt");
+  logFile=$(./bin/submitCondor "default" "0" "bin/statistics" "''" "output.txt");
   ./bin/condorWait ${logFile} >> output.txt 2>&1 ;
 else
   ./bin/statistics >> output.txt 2>&1 ;
@@ -71,17 +71,15 @@ fi
 # Run the binaries
 echo "${prefixString}   Run binaries" ;
 if [[ $useCondor = true ]] ; then
-  logFile=$(./bin/submitCondor "piraat" "bin/run" "''" "output.txt");
+  logFile=$(./bin/submitCondor "piraat" "1" "bin/run" "''" "output.txt");
   ./bin/condorWait ${logFile} >> output.txt 2>&1 ;
 else
   ./bin/run >> output.txt 2>&1 ;
 fi
 
 # Plot the speedups
-if test $aBenchmarkRun != "0" ; then
-  echo "${prefixString}   Plot the speedups" ;
-  ./bin/plot >> output.txt 2>&1 ;
-fi
+echo "${prefixString}   Plot the speedups" ;
+./bin/plot >> output.txt 2>&1 ;
 
 # Clean
 echo "${prefixString}   Clean" ;

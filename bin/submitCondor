@@ -2,29 +2,31 @@
 
 # Get the inputs
 if test $# -lt 4 ; then
-  echo "USAGE: `basename $0` JOBNAME" ;
+  echo "USAGE: `basename $0` MACHINE IS_WHOLE_MACHINE_JOB SCRIPT_TO_INVOKE PARAMETERS OUTPUT_FILE" ;
   exit 1;
 fi
 
 machineName=$1 ;
-jobFile=$2 ;
-jobParams=$3 ;
-outputFile=$4 ;
+isWholeMachineJob=$2 ;
+jobFile=$3 ;
+jobParams=$4 ;
+outputFile=$5 ;
 
 if [[ ${machineName} == "default" ]] ; then
-    requirements='(Machine != "fix.cs.northwestern.edu") && (Machine != "allagash.cs.northwestern.edu") && (Machine != "piraat.cs.northwestern.edu")' ;
-    wholeMachineJob=false;
+  requirements='(Machine != "fix.cs.northwestern.edu") && (Machine != "allagash.cs.northwestern.edu") && (Machine != "piraat.cs.northwestern.edu")' ;
 else
-    requirements="(Machine == \"${machineName}.cs.northwestern.edu\")" ;
-    wholeMachineJob=true;
+  requirements="(Machine == \"${machineName}.cs.northwestern.edu\")" ;
+fi
+if [[ ${isWholeMachineJob} == "0" ]] ; then
+  wholeMachineJob=false;
+else
+  wholeMachineJob=true;
 fi
 
 # jobName is the refined concatenation of jobFile and jobParams, hence it's unique
 # jobFile = scripts/compile_benchmark_condor.sh; jobParams = 'MiBench Basicmath'
 # jobName = scripts_compile_benchmark_condor_MiBench_Basicmath
 jobName="`echo ${jobFile%.sh} | tr -s '/' '_'`_`echo ${jobParams} | tr -s ' ' '_' | tr -d "'"`" ;
-
-
 
 # Generate executable file $jobName.con ;
 awk -v repoDir="`pwd`" -v myUsername="`whoami`" -v wholeMachineJob="$wholeMachineJob" -v requirements="$requirements" -v jobFile="$jobFile" -v jobParams="$jobParams" -v jobName="$jobName" '{

@@ -21,23 +21,23 @@ echo "${prefixString}     All benchmarks have been compiled for enablers-only an
 
 # Compile using DOALL 
 echo "${prefixString}   Start generating parallelized binaries";
-./scripts/condor/optimize_benchmarks.sh "DOALL" "default" >> output.txt 2>&1 ;
+./scripts/condor/optimize_benchmarks.sh "DOALL" "default" "0" >> output.txt 2>&1 ;
 echo "${prefixString}     All benchmarks have been compiled for DOALL" ;
 
 # Compile using HELIX
-./scripts/condor/optimize_benchmarks.sh "HELIX" "default" >> output.txt 2>&1 ;
+./scripts/condor/optimize_benchmarks.sh "HELIX" "default" "0" >> output.txt 2>&1 ;
 echo "${prefixString}     All benchmarks have been compiled for HELIX" ;
 
 # Compile using DSWP
-./scripts/condor/optimize_benchmarks.sh "DSWP" "default" >> output.txt 2>&1 ;
+./scripts/condor/optimize_benchmarks.sh "DSWP" "default" "0" >> output.txt 2>&1 ;
 echo "${prefixString}     All benchmarks have been compiled for DSWP" ;
 
 # Compile using enablers
-./scripts/condor/optimize_benchmarks.sh "NONE" "default" >> output.txt 2>&1 ;
+./scripts/condor/optimize_benchmarks.sh "NONE" "default" "0" >> output.txt 2>&1 ;
 echo "${prefixString}     All benchmarks have been compiled for NONE" ;
 
 # Compile using AUTOTUNER
-./scripts/condor/optimize_benchmarks.sh "AUTOTUNER" "default" >> output.txt 2>&1 ;
+./scripts/condor/optimize_benchmarks.sh "AUTOTUNER" "default" "1" >> output.txt 2>&1 ;
 echo "${prefixString}     All benchmarks have been compiled for AUTOTUNER" ;
 
 # Clean

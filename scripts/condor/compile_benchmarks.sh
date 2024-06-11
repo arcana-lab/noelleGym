@@ -30,7 +30,7 @@ function compile_suite {
       continue ;
     fi
     # compile_benchmark $suite $bench ;
-    local benchLogFile=$(./bin/submitCondor "default" "scripts/condor/compile_benchmark.sh" "'${suite} ${bench}'" "output.txt");
+    local benchLogFile=$(./bin/submitCondor "default" "0" "scripts/condor/compile_benchmark.sh" "'${suite} ${bench}'" "output.txt");
     benchLogFiles+=($benchLogFile) ;
   done
 

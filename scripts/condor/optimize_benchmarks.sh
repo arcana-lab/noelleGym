@@ -31,7 +31,7 @@ function compile_suite {
     fi
 
     # compile_benchmark $suite $bench ;
-    local benchLogFile=$(./bin/submitCondor "${machineName}" "scripts/condor/optimize_benchmark.sh" "'${suite} ${bench} ${optimizationName}'" "output.txt");
+    local benchLogFile=$(./bin/submitCondor "${machineName}" "${isWholeMachineJob}" "scripts/condor/optimize_benchmark.sh" "'${suite} ${bench} ${optimizationName}'" "output.txt");
     benchLogFiles+=($benchLogFile) ;
   done
 
@@ -41,12 +41,13 @@ function compile_suite {
 
 
 # Fetch the inputs
-if test $# -lt 1 ; then
-  echo "USAGE: `basename $0` OPTIMIZATION" ;
+if test $# -lt 3 ; then
+  echo "USAGE: `basename $0` OPTIMIZATION MACHINE IS_WHOLE_MACHINE_JOB" ;
   exit 1;
 fi
 optimizationName="$1" ;
 machineName="$2" ;
+isWholeMachineJob=$3 ;
 origDir="`pwd`" ;
 
 # Enable external software 
