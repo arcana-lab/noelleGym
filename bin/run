@@ -55,10 +55,4 @@ run_with_technique "DSWP" ;
 echo "${prefixString}     Run with AUTOTUNER" ;
 run_with_technique "AUTOTUNER" ;
 
-# Compute the parallelization statistics
-if test $aBenchmarkRun != "0" ; then
-  echo "${prefixString}   Compute the impact of the parallelization techniques" ;
-  ./bin/plot >> output.txt 2>&1 ;
-fi
-
 echo "${prefixString} Exit" ;

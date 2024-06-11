@@ -77,6 +77,12 @@ else
   ./bin/run >> output.txt 2>&1 ;
 fi
 
+# Plot the speedups
+if test $aBenchmarkRun != "0" ; then
+  echo "${prefixString}   Plot the speedups" ;
+  ./bin/plot >> output.txt 2>&1 ;
+fi
+
 # Clean
 echo "${prefixString}   Clean" ;
 ./scripts/clean.sh >> output.txt 2>&1 ;
