@@ -103,7 +103,7 @@ for i in `ls */benchmarks/*/noelle_output.txt` ; do
   echo $i ;
 
   dirName="`dirname $i`" ;
-  echo $dirName
+  echo $dirName ;
 
   # Copy the optimized IR file
   mkdir -p ${outputDir}/IR/${dirName} ;
@@ -113,4 +113,5 @@ for i in `ls */benchmarks/*/noelle_output.txt` ; do
 
   # Copy the NOELLE output if it exists 
   cp ${dirName}/noelle_output.txt ${outputDir}/IR/${dirName}/baseline_with_metadata_noelle_output.txt ;
+
 done
