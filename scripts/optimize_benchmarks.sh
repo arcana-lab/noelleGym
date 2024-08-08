@@ -18,6 +18,9 @@ function compile_suite {
 
   # Fetch the benchmarks that might need to be optimized
   for bench in `ls benchmarks` ; do
+    if test -e ${outputDir}/IR/${suite}/benchmarks/${bench}/baseline_parallelized_${optimizationName}.bc ; then
+      continue ;
+    fi
     compile_benchmark $suite $bench ;
   done
 
@@ -31,7 +34,10 @@ if test $# -lt 1 ; then
   exit 1;
 fi
 optimizationName="$1" ;
+
+# Set the variables
 origDir="`pwd`" ;
+outputDir="${origDir}/results/current_machine" ;
 
 # Enable external software 
 source scripts/source_externals.sh 
@@ -41,16 +47,15 @@ source scripts/misc.sh
 
 # Compile all benchmark suites
 cd all_benchmark_suites/build ;
+compile_suite "PolyBench" ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
-compile_suite "PolyBench" ;
 compile_suite "NAS" ;
 if ! test -z ${NOELLE_SPEC} ; then
   compile_suite "SPEC2017" ;
 fi
 
 # Cache the bitcode files
-outputDir="${origDir}/results/current_machine" ;
 for i in `ls */benchmarks/*/noelle_output.txt` ; do
   echo $i ;
 

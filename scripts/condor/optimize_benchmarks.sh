@@ -29,6 +29,9 @@ function compile_suite {
     if ! test -d ${benchmarksDir}/${bench} ; then
       continue ;
     fi
+    if test -e ${outputDir}/IR/${suite}/benchmarks/${bench}/baseline_parallelized_${optimizationName}.bc ; then
+      continue ;
+    fi
 
     # compile_benchmark $suite $bench ;
     local benchLogFile=$(./bin/submitCondor "${machineName}" "${isWholeMachineJob}" "scripts/condor/optimize_benchmark.sh" "'${suite} ${bench} ${optimizationName}'" "output.txt");
@@ -38,8 +41,6 @@ function compile_suite {
   return ;
 }
 
-
-
 # Fetch the inputs
 if test $# -lt 3 ; then
   echo "USAGE: `basename $0` OPTIMIZATION MACHINE IS_WHOLE_MACHINE_JOB" ;
@@ -48,7 +49,10 @@ fi
 optimizationName="$1" ;
 machineName="$2" ;
 isWholeMachineJob=$3 ;
+
+# Set the variables
 origDir="`pwd`" ;
+outputDir="${origDir}/results/current_machine" ;
 
 # Enable external software 
 source scripts/source_externals.sh 
@@ -62,8 +66,6 @@ if ! test -z ${NOELLE_SPEC} ; then
   compile_suite "SPEC2017" ;
 fi
 
-
-
 # Wait until all jobs done
 ./bin/condorWait ${benchLogFiles[@]} ;
 
@@ -74,17 +76,13 @@ for benchLogFile in ${benchLogFiles[@]} ; do
   cat ${benchOutputFile} ;
 done
 
-
-
 # Cache the bitcode files
-outputDir="${origDir}/results/current_machine" ;
-
 cd ${origDir}/all_benchmark_suites/build ;
 for i in `ls */benchmarks/*/noelle_output.txt` ; do
   echo $i ;
 
   dirName="`dirname $i`" ;
-  echo $dirName ;
+  echo $dirName
 
   # Copy the optimized IR file
   mkdir -p ${outputDir}/IR/${dirName} ;

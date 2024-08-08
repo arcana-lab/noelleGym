@@ -50,9 +50,7 @@ function generate_results {
 
     # The benchmark did not execute enough times
     # Compute how many times are left by setting the initial value of the sequence
-    if test "$executionsDone" == "0" ; then
-      executionsDone="1" ;
-    fi
+    executionsDone=`echo "$executionsDone + 1" | bc` ;
 
     # Create the output file if it doesn't exist already
     touch $outputFile ;
