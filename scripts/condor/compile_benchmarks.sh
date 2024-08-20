@@ -22,14 +22,22 @@ function compile_suite {
   # Fetch the benchmarks that might need to be optimized
   echo "  Compile benchmarks included in the suite" ;
   benchmarksDir="`pwd`/benchmarks";
-
   popd &>/dev/null ;
-
   for bench in `ls ${benchmarksDir}` ; do
+
+    # Check if the benchmark directory exists
     if ! test -d ${benchmarksDir}/${bench} ; then
       continue ;
     fi
-    # compile_benchmark $suite $bench ;
+
+    # Check if the benchmark has been already compiled for the baseline
+    if test -e ${outputDir}/IR/${suite}/benchmarks/${bench}/baseline_with_metadata.bc ; then
+      continue ;
+    fi
+    echo "    Compile benchmark ${bench}" ;
+
+    # Compile the benchmark
+    # This is equivalent to compile_benchmark $suite $bench ;
     local benchLogFile=$(./bin/submitCondor "default" "0" "scripts/condor/compile_benchmark.sh" "'${suite} ${bench}'" "output.txt");
     benchLogFiles+=($benchLogFile) ;
   done
@@ -37,9 +45,9 @@ function compile_suite {
   return ;
 }
 
-
-
+# Set the directories
 origDir="`pwd`" ;
+outputDir="${origDir}/results/current_machine" ;
 
 # Enable external software 
 source scripts/source_externals.sh 
@@ -47,7 +55,7 @@ source scripts/source_externals.sh
 # Copy the baseline IR files
 ./scripts/copy_baseline_IRs.sh ;
 
-# Submit condor jobs to compile all benchmark suites
+# Compile all benchmark suites
 compile_suite "PolyBench" ;
 compile_suite "MiBench" ;
 compile_suite "PARSEC3" ;
@@ -55,8 +63,6 @@ compile_suite "NAS" ;
 if ! test -z ${NOELLE_SPEC} ; then
   compile_suite "SPEC2017" ;
 fi
-
-
 
 # Wait until all jobs done
 ./bin/condorWait ${benchLogFiles[@]} ;
@@ -71,7 +77,6 @@ done
 
 
 # Cache the bitcode files
-outputDir="${origDir}/results/current_machine" ;
 
 cd ${origDir}/all_benchmark_suites/build ;
 for i in `ls */benchmarks/*/noelle_output.txt` ; do

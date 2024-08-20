@@ -71,7 +71,21 @@ function compile_suite {
 
   # Fetch the benchmarks that might need to be optimized
   echo "  Compile benchmarks included in the suite" ;
-  for bench in `ls benchmarks` ; do
+  benchmarksDir="`pwd`/benchmarks";
+  for bench in `ls ${benchmarksDir}` ; do
+
+    # Check if the benchmark directory exists
+    if ! test -d ${benchmarksDir}/${bench} ; then
+      continue ;
+    fi
+
+    # Check if the benchmark has been already compiled for the baseline
+    if test -e ${outputDir}/IR/${suite}/benchmarks/${bench}/baseline_with_metadata.bc ; then
+      continue ;
+    fi
+    echo "    Compile benchmark ${bench}" ;
+
+    # Compile the benchmark
     compile_benchmark $suite $bench ;
   done
 
@@ -79,7 +93,9 @@ function compile_suite {
   return ;
 }
 
+# Set the directories
 origDir="`pwd`" ;
+outputDir="${origDir}/results/current_machine" ;
 
 # Enable external software 
 source scripts/source_externals.sh 
@@ -98,7 +114,6 @@ if ! test -z ${NOELLE_SPEC} ; then
 fi
 
 # Cache the bitcode files
-outputDir="${origDir}/results/current_machine" ;
 for i in `ls */benchmarks/*/noelle_output.txt` ; do
   echo $i ;
 
